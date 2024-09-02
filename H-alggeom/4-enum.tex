@@ -1,0 +1,76 @@
+\documentclass[article, a4paper, twoside]{universal}
+
+\setshowlvl{1}
+\begin{document}
+\confighead{}{}{}
+\printhead{}{}{1}
+
+\sct{Virtual moduli cycle of stable morphisms}
+
+Ref:~\cite{LT1998}.
+
+\begin{cmt}[0]
+    \begin{dfn}
+        Let $X$ be a smooth projective variety, $D\sbs C$ an $n$-pointed connected nodal curve. Say $f:D\sbs C\ar X$ is stable if $\Hom{C}{}{(\Oga_{C}(D),\cO_{C})}\ar\Hom{C}{}{(f\xS\Oga_{X},\cO_{C})}$ is surjective.
+    \end{dfn}
+\end{cmt}
+
+\begin{cmt}[0]
+    Let $\kF:\Sch_{\bC}\ar\Set$ be a moduli functor, whose tangent-obstruction complex $\cT\xB\kF_{g,n}^{\afa,X}$ is perfect and realized by the cohomology of $[\cE_{1}\ar\cE_{2}]$ over $S$.
+
+    \red{For constructing the Kuranishi family, see Section~3}
+\end{cmt}
+
+\begin{stp}
+    Let $X$ be a smooth projective variety over $\bC$, $\afa\in\CH{1}{}{(X)}$ and $g,n$ be integers. Let $\kF_{g,n}^{\afa,X}:\Sch_{\bC}\ar\Set$ be the moduli functor of stable morphisms to $X$, and $\cM_{g,n}^{\afa,X}$ be its coarse moduli scheme.
+
+    Let $S\in\Sch_{\bC}$ be affine, $\cF\in\Mod_{S}$ and $\eta\in\kF_{g,n}^{\afa,X}(S)$ representing $f:D\sbs C\ar X$, then the standard tangent-obstruction complex of $\kF_{g,n}^{\afa,X}$ is given by $\cT\xB\kF_{g,n}^{\afa,X}(\eta)(\cF)=[\Ext{C/S}{\blt}{([f\xS\Oga_{X}\ar\Oga_{C/S}(D)],\pi\xS\cF)}]$, this complex is perfect, realized by the cohomology of $[\cE_{\eta}^{1}\ar\cE_{\eta}^{2}]$, where $\cL$ is sufficiently ample over $X$, and
+    \begin{gather*}
+      \cE_{\eta}^{1}=\Ext{C/S}{1}{([\cW_{1}\ar\Oga_{C/S}(D)],\cO_{C})},\quad \cE_{\eta}^{2}=\Ext{C/S}{1}{([\cW_{2}\ar0],\cO_{C})}, \\
+      \cW_{1}=\pi_{S}\xS\pi_{S,*}(\oga_{C/S}(D)^{\ot5}\ot f\xS(\cL\ot\Oga_{X}))\ot(\oga_{C/S}(D)^{\ot5}\ot f\xS\cL)\xI,\quad \cW_{2}=\Ker(\cW_{1}\atr f\xS\Oga_{X}).
+    \end{gather*}
+
+    One obtains $[\cM_{g,n}^{\afa,X}]^{\T{vir}}\in\CH{\blt}{}{(\cM_{g,n}^{\afa,X})}$ as the pullback of a canonical cone via the Gysin map.
+\end{stp}
+
+\begin{thm}[{\cite[Theorem~4.3, Theorem~5.2]{LT1998}}]
+    The virtual moduli cycle $[\cM_{g,n}^{\afa,X}]^{\T{vir}}$ satisfies the following
+    \begin{enr}
+        \item (Dimension) $[\cM_{g,n}^{\afa,X}]^{\T{vir}}\in\CH{k}{}{(\cM_{g,n}^{\afa,X})}$ and $k=(3-\Dim X)(g-1)+n+\afa\cdot c_{1}(X)$.
+        \item (Permutation) $\phi_{\sgm}:\cM_{g,n}^{\afa,X}\ar\cM_{g,n}^{\afa,X}$ is an isomorphism for any $\sgm\in\kS_{n}$, and $\phi_{\sgm,*}[\cM_{g,n}^{\afa,X}]^{\T{vir}}=[\cM_{g,n}^{\afa,X}]^{\T{vir}}$.
+        \item (Forgetting) $\pi_{n}:\cM_{g,n}^{\afa,X}\ar\cM_{g,n-1}^{\afa,X}$ is flat of relative dimension $1$, denote $\ev_{n}:\cM_{g,n}^{\afa,X}\ar X$, then
+        \[
+            \pi_{n}\xS[\cM_{g,n-1}^{\afa,X}]^{\T{vir}}=[\cM_{g,n}^{\afa,X}]^{\T{vir}},\quad \pi_{n,*}(\ev_{n}\xS\bta\cdot[\cM_{g,n}^{\afa,X}]^{\T{vir}})=\deg(\afa\cdot\bta)\cdot[\cM_{g,n-1}^{\afa,X}]^{\T{vir}},\fal \bta\in\CH{}{1}{(X)}
+        \]
+        \item (Composition)
+            \begin{itm}
+                \item The clutching morphism $\tau_{g\zB,n\zB}:\cM_{g_{1},n_{1}+1}\tms\cM_{g_{2},n_{2}+1}\ar\cM_{g,n}$ induces the following,
+                \[
+                    \begin{tikzcd}
+                        X\ar[d, "\Dta"'] & Z_{\afa_{1},\afa_{2}}\ar[l]\ar[d, "\Dta"]\ar[r, "\Phi"]\ar[ld, phantom, "\wsq"] & W_{\afa}\ar[d, "\tau_{g\zB,n\zB}"']\ar[r]\ar[dr, phantom, "\wsq"] & \cM_{g_{1},n_{1}+1}\tms\cM_{g_{2},n_{2}+1}\ar[d, "\tau_{g\zB,n\zB}"]\\
+                        X\tms X & \cM_{g_{1},n_{1}+1}^{\afa_{1},X}\tms\cM_{g_{2},n_{2}+1}^{\afa_{2},X}\ar[l] & \cM_{g,n}^{\afa,X}\ar[r, "\pi_{n}^{\afa}"] & \cM_{g,n}
+                    \end{tikzcd}
+                \]
+                where $\Phi$ is canonical, finite unramified and dominant, and
+                \[
+                    \Phi\zS\sum_{\afa_{1}+\afa_{2}=\afa}\Dta\xE[\cM_{g_{1},n_{1}+1}^{\afa_{1},X}\tms\cM_{g_{2},n_{2}+1}^{\afa_{2},X}]^{\T{vir}}=\tau_{g\zB,n\zB}\xE[\cM_{g,n}^{\afa,X}]^{\T{vir}}.
+                \]
+                \item The clutching morphism $\tau_{g-1,n+2}:\cM_{g-1,n+2}\ar\cM_{g,n}$ induces the following,
+                \[
+                    \begin{tikzcd}
+                        X\ar[d, "\Dta"'] & Z_{1}\ar[l]\ar[d, "\Dta"]\ar[r, "\Phi"]\ar[ld, phantom, "\wsq"] & Z_{2}\ar[d, "\tau_{g-1,n+2}"']\ar[r]\ar[dr, phantom, "\wsq"] & \cM_{g-1,n+2}\ar[d, "\tau_{g-1,n+2}"]\\
+                        X\tms X & \cM_{g-1,n+2}^{\afa,X}\ar[l] & \cM_{g,n}^{\afa,X}\ar[r, "\pi_{n}^{\afa}"] & \cM_{g,n}
+                    \end{tikzcd}
+                \]
+                where $\Phi$ is canonical, finite unramified and dominant, and
+                \[
+                    \Phi\zS\Dta\xE[\cM_{g-1,n+2}^{\afa,X}]^{\T{vir}}=\tau_{g-1,n+2}\xE[\cM_{g,n}^{\afa,X}]^{\T{vir}}.
+                \]
+            \end{itm}
+    \end{enr}
+\end{thm}
+
+
+\printref
+\end{document}
+

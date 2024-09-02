@@ -1,0 +1,126 @@
+\documentclass[article, a4paper, twoside]{universal}
+
+\setshowlvl{1}
+\begin{document}
+\confighead{}{}{}
+\printhead{}{}{1}
+
+
+\sct{Local special cycles}
+
+Ref:~\cite{Cho2019,LRZ2024Quasi}.
+
+\begin{stp}
+	Let $p$ be an odd prime, $F$ finite extension of $\bQ_{p}$ with residue field $k=\bF_{q}$ and uniformizer $\vpi$. Let $E$ be the unramified quadratic extension of $F$ with quadratic character $\eta:F\xT\ar\{\pm1\}$ and involution $\sgm\in\Gal(E/F)$.
+
+
+	Let $\bX_{E/F, n}^{(r),[h]}\ar\Spc{\oL{k}}$ be the formal $\vpi$-divisible $\cO_{F}$-module of relative height $2n$ and dimension $n$ equipped with (1) an action $\ita:\cO_{E}\ar\End{}{}{(\bX_{E/F,n}^{(r), [h]})}$ extending the action of $\cO_{F}$ of signature $(r,n-r)$ and (2) a polarization $\lda:\bX_{E/F,n}^{(r),[h]}\ar\bX_{E/F,n}^{(r),[h],\vee}$ whose Rosati involution induces $\sgm$ and such that $\Ker{\lda}\sbs\bX_{E/F,n}^{(r),[h]}[\vpi]$ and has degree $q^{2h}$. It is unique up to $\cO_{E}$-linear quasi-isogeny compatible with polarization.
+
+
+	With the framing $\bX_{E/F,n}^{(r),[h]}$, let $\cN_{E/F,n}^{(r),[h]}\ar\Spf{\cO_{\oB{E}}}$ be unitary Rapoport-Zink space of maximal parahoric level, and $\cN_{E/F,n}^{(r),[h_{1},h_{2}]}\ar\Spf{\cO_{\oB{E}}}$ be the unitary Rapoport-Zink space of parahoric level. They are formally locally of finite type, regular, and of relative dimension $n-1$ and of semistable reduction over $\Spf{\cO_{\oB{E}}}$, one has projections
+	\[
+		\cN_{E/F,n}^{(r),[h_{1}]}\axl{\pr_{1}}\cN_{E/F,n}^{(r),[h_{1},h_{2}]}\axr{\pr_{2}}\cN_{E/F,n}^{(r),[h_{2}]}.
+	\]
+
+	\red{
+		Notation here: $\cN_{E/F,n}^{(r),[h]}=\cN_{E/F}^{h}(r, n-r)$ in \cite{Cho2019}; $\cN_{E/F,n}^{(1),[r]}=\cN_{n}^{[r]}$ and $\cN_{E/F,n}^{(1),[0]}=\cN_{n}$ in \cite{LRZ2024Quasi};
+	}
+
+	Let $\bW_{E/F,n}^{(r),[h]}=\Hom{\cO_{E}}{\cc}{(\bX_{E/F,1}^{(0),[0]},\bX_{E/F,n}^{(r),[h]})}$ be the non-degenerate $E/F$-Hermitian space of dimension $n$ of special quasi-homomorphisms. It is split if $h$ is odd and non-split if $h$ is even.
+
+	For any $0\neq u\in\bW_{E/F,n}^{(r),[h]}$, denote by $\cZ_{E/F,n}^{(r),[h]}(u)\sbs\cN_{E/F,n}^{(r),[h]}$ the Kudla-Rapoport divisor, which only depends on the $\cO_{E}$-lattice $\sA{u}$.
+
+\end{stp}
+
+% \spg{Notations compare} \cite{LRZ2024Quasi}
+
+% \begin{dfn}
+% 	Let $W$ be a non-degenerate $E/F$ Hermitian space and $L\sbs W$ an $\cO_{E}$-lattice.
+
+% 	$L$ is \tbf{integral} if $L\sbs L\xV$; its \tbf{fundamental invariant} is $(a_{1},\lds,a_{n})$ such that $L\xV/L\cong\Op_{i=1}^{n}\cO_{E}/\vpi_{E}^{a_{i}}$; its \tbf{valuation} is $\Val(L)=\sum_{i=1}^{n}a_{i}$; its \tbf{type} is $t(L)=\#\{1\lqs i\lqs n:a_{i}\neq0\}$, denote by $L\sbs^{t}L\xV$.
+
+% 	$L$ is \tbf{minuscule} if $L\xV\sbs\vpi_{E}\xI L$, denote by $\Vlat^{t}(W)$ the set of minuscule, integral lattices of type $t$ in $W$.
+
+% 	$L$ is \tbf{self-dual} if $L\in\Vlat^{0}(W)$, and \tbf{almost self-dual} if $L\in\Vlat^{1}(W)$.
+% \end{dfn}
+
+
+\begin{stp}
+	From now on assume $h$ is odd and $r=1$. Let $\oT{\cN}_{E/F,n}^{(1),[h]}$ be the closed formal subscheme of $\cN_{E/F,n}^{(1),[h]}\tms\cN_{E/F,n+1}^{(1),[0]}$ defined by the following, the two natural projections $\pi_{1},\pi_{2}$ are both proper.
+	\[
+		\begin{tikzcd}
+			\cN_{E/F,n+1}^{(1),[h+1]} & \cN_{E/F,n+1}^{(1),[h+1,0]}\ar[l, "\pr_{1}"']\ar[r, "\pr_{2}"] & \cN_{E/F,n+1}^{(1),[0]} \\
+			\cN_{E/F,n}^{(1),[h]}\ar[u, hook] & \oT{\cN}_{E/F,n}^{(1),[h]}\ar[l, "\pi_{1}"']\ar[r, "\pi_{2}"]\ar[u, hook]\ar[ul, phantom, "\wsq"] & \cZ_{E/F,n+1}^{(1),[0]}(u)\ar[u, hook]
+		\end{tikzcd}
+	\]
+\end{stp}
+
+\begin{cnj}[{\cite[Conjecture~3.5.1]{LRZ2024Quasi}}]\label{cnj:regular}
+	The formal scheme $\oT{\cN}_{E/F,n}^{(1),[h]}\ar\Spf{\cO_{\oB{E}}}$ is regular. At every point $\oT{z}\in\oT{\cN}_{E/F,n,\oL{k}}^{(1),[h]}$, there is a regular system of parameters $X_{1},\lds,X_{n}$ in $\oH{\cO}_{\oT{z}}$ such that $\vpi=\prod_{i=1}^{n}X_{i}^{r_{i}}$.
+\end{cnj}
+
+\begin{thm}[{\cite[Proposition~14.2.4, Theorem~14.6.2, Theorem~16.6.1]{LRZ2024Quasi}}]
+	Assume $h=1$, one has
+	\[
+		\begin{tikzcd}
+			\cN_{E/F,n}^{(1),[1], \text{ns}}\ar[r, hook] &\cN_{E/F,n}^{(1),[1]}& \oT{\cN}_{E/F,n}^{(1),[1]}\ar[l, "\pi_{1}"']\ar[r, "\pi_{2}"] & \cZ_{E/F,n+1}^{(1),[0]}(u) \\
+			\cN_{E/F,n}^{(1),[1], \cc}\ar[r, hook] &\cN_{E/F,n}^{(1),[1],\blt}\ar[u, hook] & \oT{\cN}_{E/F,n}^{(1),[1], \text{exc}}\ar[l, "\pi_{1}"', "\cong"]\ar[r, "\pi_{2}"]\ar[u, hook] & \cZ_{E/F,n+1}^{(1),[0], \text{cent}}(u)\ar[u, hook] \\
+			& \cN_{E/F,n}^{(1),[1],\dag}\ar[u, hook] & &
+		\end{tikzcd}
+	\]
+	\begin{itm}
+		\item If $z\in\cN_{E/F,n,\oL{k}}^{(1),[1]}$, then
+		\[
+			\oH{\cO}_{z}=\begin{cases}
+			  \cO_{\oB{E}}\dS{T_{1},\lds,T_{n-1}} & z\nin\oT{\cN}_{E/F,n,\oL{k}}^{(1),[1], \dag} \\
+			  \cO_{\oB{E}}\dS{T_{1},\lds,T_{n}}/(T_{1}T_{2}-\vpi) & z\in \oT{\cN}_{E/F,n,\oL{k}}^{(1),[1],\dag}
+			\end{cases}
+		\]
+		\item (1) $\oT{\cN}_{E/F,n}^{(1),[1]}$ is regular of dimension $n$; (2) $\pi_{1}$ is finite flat of degree $q+1$, {\'e}tale away from and totally ramified along $\cN_{E/F,n}^{(1),[1], \blt}$; (3) $\pi_{2}$ is proper, with blow-up center $\cZ_{E/F,n}^{(1),[0], \text{cent}}(u)$; (4) If $\oT{z}\in\oT{\cN}_{E/F,n,\oL{k}}^{(1),[1]}$, then
+		\[
+			\oH{\cO}_{\oT{z}}=\begin{cases}
+			  \cO_{\oB{E}}\dS{T_{1},\lds,T_{n-1}}, & \oT{z}\in\oT{\cN}_{E/F,n,\oL{k}}^{(1),[1], \text{ns}} \\
+			  \cO_{\oB{E}}\dS{T_{1},\lds,T_{n}}/(T_{1}^{q+1}-\vpi), & \oT{z}\in\oT{\cN}_{E/F,n,\oL{k}}^{(1),[1], \cc} \\
+			  \cO_{\oB{E}}\dS{T_{1},\lds,T_{n}}/(T_{1}^{q+1}T_{2}-\vpi), & \oT{z}\in\oT{\cN}_{E/F,n,\oL{k}}^{(1),[1], \dag}
+			\end{cases}
+		\]
+	\end{itm}
+	In particular, \cref{cnj:regular} holds for $h=1$.
+\end{thm}
+
+\hrule
+
+\begin{rmk}
+	We'd like to prove similar results concerning the structure of $\cN_{E/F,n}^{(1),[h]}$ for general odd $h$, then we are insterested in establishing all properties related to $\cN_{E/F,n}^{(r),[h]}$. Recall the proof strategy in \cite{LRZ2024Quasi}:
+
+	(1) one must have results for the singularity of $\cN_{E/F,n}^{(1),[h]}$ analogous to \cite[Proposition~14.2.4]{LRZ2024Quasi}, use~\cite[4.4.5]{Gortz2001}, the singularity defined by $AB=BA=\vpi$ could be very complicated to describe, however.
+
+	(2) to establish properties linking $\cN$ and $\oT{\cN}$, one must have everything desired over the special fiber~\cite[Lemma~14.7.1]{LRZ2024Quasi}, for the balloon-ground stratification of $\cN_{E/F,n}^{(1),[h]}$, it should also admit $p$-adic Hodge theoretic description similar to~\cite[15.3]{LRZ2024Quasi}, use~\cite[Chapter~2,3]{Cho2019}.
+
+\end{rmk}
+
+\ssc{Structure of the special fiber}
+
+\begin{thm}
+	The structure of the special fiber of $\cN_{E/F,n}^{(1),[h]}\ar\Spf{\cO_{\oB{E}}}$ is given by the following:
+	\begin{itm}
+		\item (\cite[Proposition~2.4]{Cho2019}) Define the set of special pairs of $\cO_{\oB{E}}$-lattices of rank $n$,
+		\[
+			\cP_{E/F,n}^{(1),[h]}=\sC{(A,B):B\xV\sbs^{1}A\sbs^{h}B\sbs\bW_{E/F,n,\oB{E}}^{(1),[h]}},
+		\]
+		then there is a bijection by taking Dieudonn{\'e} modules $\cN_{E/F,n,\oL{k}}^{(1),[h]}\alr \cP_{E/F,n}^{(1),[h]}$.
+		\item (\cite[Proposition~2.10, Proposition~2.11, Proposition~2.12]{Cho2019}) There is a stratification
+		\[
+			\cP_{E/F,n}^{(1),[h]}=\bcup_{t=0}^{h-1}\bcup_{\Lda_{t}}\sC{(A,B)\in\cP_{E/F,n}^{(1),[h]}:A\sbs\Lda_{t,\cO_{\oB{E}}}}\bcup\bcup_{t=h+1}^{n}\bcup_{\Lda_{t}}\sC{(A,B)\in\cP_{E/F,n}^{(1),[h]}:\Lda_{t,\cO_{\oB{E}}}\sbs B\xV},
+		\]
+		where $\Lda_{t}$ runs through $\Vlat_{E/F,n}^{(1),[h],t}=\sC{\Lda\sbs\bW_{E/F,n}^{(1),[h]}:\Lda\sbs^{t}\Lda\xV\sbs^{n-t}\vpi^{-1}\Lda}$.
+	\end{itm}
+\end{thm}
+
+\begin{rmk}
+	The result should easily generalize to $\cN_{E/F,n}^{(r),[h]}$ combining \cite[Lemma~1.5]{Vollaard2010} and \cite[Lemma~2.7]{Cho2019}.
+\end{rmk}
+
+
+\printref
+\end{document}

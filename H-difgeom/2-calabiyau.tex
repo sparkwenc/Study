@@ -1,0 +1,61 @@
+\documentclass[article, a4paper, twoside]{universal}
+
+\setshowlvl{1}
+\begin{document}
+\confighead{}{}{}
+\printhead{}{}{1}
+
+\sct{Calabi--Yau theorem}
+
+Ref:~\cite{Yau1978}.
+
+Historically the uniqueness and openness in the continuity method have been resolved by Calabi himself and Yau's contribution is the hardest a priori estimates to establish closedness. We adopt the whole original treatment of Yau anyway.
+
+\begin{thm}[Calabi--Yau]
+	Let $M$ be a complex compact K{\"a}hler manifold of dimension $m$ with K{\"a}hler metric $g_{0}=g_{i\oL{j}}\dif{z}^{i}\ot\dif{\oL{z}}^{j}$, K{\"a}hler form $\oga_{0}=g_{i\oL{j}}\dif{z}^{i}\wge\dif{\oL{z}}^{j}$, and Ricci form $R_{0}=R_{i\oL{j}}\dif{z}^{i}\wge\dif{\oL{z}}^{j}$. Note $[R_{0}]=2\pi c_{1}(M)$.
+
+	Then any form $R_{1}$ cohomologous to $R_{0}$ determines a unique K{\"a}hler metric $g_{1}$ cohomologous to $g_{0}$.
+\end{thm}
+\begin{prf}[Sketch of the proof]
+	In local coordinates, one has $R_{i\oL{j}}=-\ptl_{i}\oL{\ptl}_{j}\log\Det(g_{s\oL{t}})$, thus by the $\ptl\oL{\ptl}$-lemma, the original question reduces to proving the following theorem in partial differential equations:
+
+	(\cite[Theorem~1]{Yau1978}) For any $F\in C^{\ift}(M)$ with $\int_{M}e^{F}\oga_{0}^{m}=\Vol(M)$, there exists a unique $\vfi\in C^{\ift}(M)$ such that (1) $\int_{M}\vfi\oga_{0}^{m}=0$, (2) $g_{1}=(g_{i\oL{j}}+\vfi_{i\oL{j}})\dif{z}^{i}\ot\dif{\oL{z}}^{j}$ is a K{\"a}hler metric, (3) $\Det(g_{i\oL{j}}+\vfi_{i\oL{j}})\Det(g_{i\oL{j}})\xI=e^{F}$.
+
+	\spg{Uniqueness:} (\cite[Page~375]{Yau1978}) If $\psi$ is another solution, then $\Det(g_{i\oL{j}}+\vfi_{i\oL{j}}+(\psi-\vfi)_{i\oL{j}})=\Det(g_{i\oL{j}}+\vfi_{i\oL{j}})$. Thus by the arithmetic-geometric mean inequality, $\frac{1}{m}(m+\Dta_{g_{1}}(\psi-\vfi))\gqs1$. One can moreover assume $\psi-\vfi\gqs0$ by adding a constant. Note that $(\psi-\vfi)^{2}$ has bounded second-order derivatives, therefore,
+		\[
+			0=\int_{M}\Dta_{g_{1}}(\psi-\vfi)^{2}\oga_{0}^{m}=2\int_{M}(\psi-\vfi)\Dta_{g_{1}}(\psi-\vfi)\oga_{0}^{m}+2\int_{M}\sP{\nbl_{g_{1}}(\psi-\vfi)}^{2}\oga_{0}^{m},
+		\]
+	one has $\nbl_{g_{1}}(\psi-\vfi)=0$, so they differ by a constant, by condition (1), they must be the same.
+
+
+
+	\spg{Existence:} (\cite[Page~361]{Yau1978}) Consider the following equations indexed by $t\in[0,1]$,
+	\[
+		\Det(g_{i\oL{j}}+\vfi_{i\oL{j}})\Det(g_{i\oL{j}})\xI=e^{tF}\frac{\Vol(M)}{\int_{M}e^{tF}\oga_{0}^{m}},
+	\]
+	denote by $S\sbs[0,1]$ the set of $t$ such that the above equation has a solution, clearly $0\in S$. To prove $1\in S$, it suffices to prove $S$ is both open and closed. Openness is a consequence of inverse function theorem, closedness is a consequence of Arzel{\`a}-Ascoli theorem.
+	\begin{enr}[label = (\arabic*)]
+		\item To prove $S$ is open, choose a H{\"o}lder parameter $0<\afa<1$, consider $G(\vfi)=\Det(g_{i\oL{j}}+\vfi_{i\oL{j}})\Det(g_{i\oL{j}})\xI$,
+		\[
+			G:\sC{\vfi\in C^{k+1,\afa}(M):1+\vfi_{i\oL{i}}>0,\fal i, \int_{M}\vfi\oga_{0}^{m}=0}\ar \sC{f\in C^{k-1,\afa}(M):\int_{M}f\oga_{0}^{m}=\Vol(M)},
+		\]
+		then $\dif{G}_{\vfi_{0}}$ is given by $G(\vfi_{0})\Dta_{\vfi_{0}}$. Note that the tangent space of the codomain is $\{f\in C^{k-1,\afa}(M):\int_{M}f\oga_{0}^{m}=0\}$, thus $\dif{G}_{\vfi_{0}}$ is invertible, by the inverse function theorem, $S$ is open.
+		\item To prove $S$ is closed, by Arzel{\`a}-Ascoli theorem, it suffices to prove solutions $\vfi$ has uniformly bounded $C^{k+1,\afa}$-norm. By Schauder estimates, one only needs to complete $C^{2,\afa}$-estimate of $\vfi$ with constants depending only on $M$ and $F$ (\cite[Proposion~2.1, Proposition~3.1]{Yau1978}). Note $M$ is compact, one can take a finite cover of $M$, so it suffices to perform the estimate in local geodesic coordinates with respect to $g_{0}$.
+
+		We only sketch how one perform up to second-order estimate, note that $\sup_{M}\vfi,\int_{M}\sP{\vfi}\oga_{0}^{m}$ can be obtained for free by integrating the Green's function with respect to $\Dta_{g_{0}}$. One proceeds by computing explicitly (1) Second order derivative of $\log\Det(g_{i\oL{j}}+\vfi_{i\oL{j}})-\log\Det(g_{i\oL{j}})=F$, and (2) $\Dta_{g_{1}}(e^{-N\vfi}(m+\Dta_{g_{0}}\vfi))$, then one arrives at three key estimates
+		\begin{align*}
+		  (2.24)&\quad 0<m+\Dta_{g_{0}}\vfi<C_{1}e^{C(\vfi-\inf_{M}\vfi)},\\
+		  (2.46)&\quad \sup_{M}\sP{\nbl\vfi}\lqs C_{7}(e^{-C\inf_{M}\vfi}+1),\\
+		  (2.53)&\quad \int_{M}\sP{\nbl e^{-N\vfi/2}}^{2}\oga_{0}^{m}\lqs \frac{1}{4}C_{10}m\xI e^{-\inf_{M}F}\int_{M}e^{-N\vfi}\oga_{0}^{m}.
+		\end{align*}
+		Now by a contradiction argument one can use (2.53) to prove $\int_{M}e^{-N\vfi}\oga_{0}^{m}$ is upper bounded dependent only on $N,F,M$. However by choosing $N$ to be sufficiently large one has a geodesic ball with radius less than the injective radius, over which the integration of $e^{-N\vfi}$ is no less than
+		\[
+			C_{12}e^{-N\inf_{M}\vfi/2}(-\inf_{M}\vfi/2)^{2m}C_{7}^{-2m}(e^{-C\inf_{M}\vfi}+1)^{-2m},
+		\]
+		thus $-\inf_{M}\vfi$ is upper bounded. One thus has uniform bounds for $\sup_{M}\sP{\vfi},\sup_{M}\sP{\nbl\vfi}$ and $1+\vfi_{i\oL{i}}$.
+	\end{enr}
+\end{prf}
+
+
+\printref
+\end{document}

@@ -1,0 +1,45 @@
+\documentclass[article, a4paper, twoside]{universal}
+
+\setshowlvl{1}
+\begin{document}
+\confighead{}{}{}
+\printhead{}{}{1}
+
+\sct{Arithmetic fundamental lemma}
+
+Ref:~\cite{Zhang2012,RSZ2017,RSZ2018,Zhang2021Weil}, \cite{LRZ2024Quasi}.
+
+\begin{stp}
+	Let $p$ be an odd prime, $F$ a finite extension of $\bQ_{p}$, $E/F$ a quadratic extension. Let $W_{n,E/F}^{\blt}$ be the split and non-split $E/F$-Hermitian space of dimension $n+1$ where $\blt\in\{\text{ns}, \text{sp}\}$, fix $u_{n,E/F}^{\blt}\in W_{n,E/F}^{\blt}$ the special vectors and $W_{n,E/F}^{\blt,\flt}$ their orthogonal completement, let $\RU_{n,E/F}^{\blt},\RU_{n,E/F}^{\blt,\flt}$ be their unitary groups. The following actions define regular semisimple elements explicitly and there are bijections
+	\[
+		\begin{tikzcd}
+			\RU_{n,E/F}^{\blt}\ar[r, hook] & \GL_{n+1}(E) & \RS_{n+1}(E)\ar[l, hook'] & \RU_{n,E/F}^{\blt,\flt}\tms\RU_{n,E/F}^{\blt}\ar[r, hook] & \GL_{n}(E)\tms\GL_{n+1}(E) \\
+			\RU_{n,E/F}^{\blt,\flt}\ar[u, phantom, "\Lcc"]\ar[r, hook] & \GL_{n}(E)\ar[u, phantom, "\Lcc"] & \GL_{n}(F)\ar[u, phantom, "\Lcc"]\ar[l, hook'] & \RU_{n,E/F}^{\blt,\flt}\tms\RU_{n,E/F}^{\blt,\flt}\ar[r, hook]\ar[u, phantom, "\Lcc"] & \GL_{n}(E)\tms\sR{\GL_{n}(F)\tms\GL_{n+1}(F)}\ar[u, phantom, "\Lcc"]
+		\end{tikzcd}
+	\]
+	\[
+		\RS_{n+1}{(E)}^{\text{rs}}=\RU_{n,E/F}^{\text{sp}, \text{rs}}\coprod \RU_{n,E/F}^{\text{ns}, \text{rs}},\quad \sR{\GL_{n}(E)\tms\GL_{n+1}(E)}^{\text{rs}}=\sR{\RU_{n,E/F}^{\text{sp},\flt}\tms \RU_{n,E/F}^{\text{sp}}}^{\text{rs}}\coprod\sR{\RU_{n,E/F}^{\text{ns},\flt}\tms\RU_{n,E/F}^{\text{ns}}}^{\text{rs}}
+	\]
+\end{stp}
+
+\begin{thm}[Arithmetic fundamental lemma]
+	Suppose (1) $E/F$ is unramified, (2) $u_{n,E/F}^{\text{ns}}$ has unit length, (3) $\mbm{1}$ is the characteristic function of a hyperspecial open compact subgroup.
+
+	Then for all $\gma\in\sR{\GL_{n}(E)\tms\GL_{n+1}(E)}^{\text{rs}}$ matching with $g\in\sR{\RU_{n,E/F}^{\text{ns},\flt}\tms\RU_{n,E/F}^{\text{ns}}}^{\text{rs}}$, it holds that
+	\[
+		\sA{\Dta,g\Dta}_{\cN_{n}\tms\cN_{n+1}}\cdot\log{q}=-\frac{1}{2}\ptl\Orb(\gma,\mbm{1}).
+	\]
+\end{thm}
+
+\begin{rmk}
+	Current progress:
+	\begin{itm}
+		\item Local proofs: \cite{Zhang2012} ($n=1,2$); \cite{RTZ2013,HLZ2019} (minuscule elements).
+		\item Global proofs: \cite{Zhang2021Weil,Zhang2023Modularity,MZ2024}.
+	\end{itm}
+\end{rmk}
+
+
+
+\printref
+\end{document}

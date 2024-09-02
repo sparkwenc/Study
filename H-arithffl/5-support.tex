@@ -1,0 +1,307 @@
+\documentclass[article, a4paper, twoside]{universal}
+
+\setshowlvl{1}
+\begin{document}
+\confighead{}{}{}
+\printhead{}{}{1}
+
+
+\sct{Endoscopic fundamental lemma}
+
+Ref:~\cite{Ngo2010Lemme}, \cite{Ngo2006Hitchin,Yun2009Thesis}.
+
+The complexity is group-theoretic and local, the proof is global. One proves the support theorem for $\dta$-regular abelian fibrations and applies to Hitchin fibrations to overcome the difficulty posed by the bad locus.
+
+\red{Is the correct notion in between weak and $\dta$-regular abelian fibration mentioned in \cite[7.1]{Ngo2010Lemme} known now?}
+
+
+\ssc{Kostant section and the regular centralizer}
+
+\begin{stp}
+	Let $k=\bF_{q}$ be a finite field of characteristic $p$; $\bG$ a split reductive group over $k$ of rank $r$ with Coxeter number $h$ such that $p>2h$; fix a pinning with maximal torus $\bT$ and Borel subgroup $\bB$ with outer automorphism group $\Out(\bG)=\Aut(\bG)/\bG^{\text{ad}}$. Let $\Phi_{\bG}$ and $\Dta_{\bG}$ be the set of roots and simple roots of $\bG$ with the action of Weyl group $W_{\bG}$; let $\kC_{\bG}=\Lie{\bT}\ssl W_{\bG}=\Lie{\bG}\ssl\bG$ be the space of characteristic polynomials with the action of $\bG_{m}$ by homothety, $\kD_{\bG}\sbs\kC_{\bG}$ the discriminant divisor defined by $\prod_{\afa\in\Phi_{\bG}}\dif{\afa}$, and $\kC_{\bG}^{\text{rs}}:=\kC_{\bG}-\kD_{\bG}$ the regular semisimple locus; let $\chi:\Lie{\bG}\ar\kC_{\bG}$ be the Chevalley restriction, and $\eps:\kC_{\bG}\ar\Lie{\bG}^{\text{reg}}\ahr\Lie{\bG}$ the Kostant section; denote by $\pi:\Lie{\bT}\ar\kC_{\bG}$ the finite cover ramified along $\kD_{\bG}$ with Galois group $W_{\bG}$.
+
+	Take $\kpa\in\oH{\bT}$, the endoscopic group $\bH$ is given by $\oH{\bH}:={(\oH{\bG}\rtm\Out(\bG))}{}_{\kpa}^{0}$ and $\pi_{0}(\kpa):=\pi_{0}({(\oH{\bG}\rtm\Out(\bG))}_{\kpa})$ with canonical morphisms $\Out(\bH)\al\pi_{0}(\kpa)\ar\Out(\bG)$; let $\Psi\sbs\Phi_{\bG}-\Phi_{\bH}$ be any subset such that $\#\{\pm \afa\}\cap\Psi=1$ holds for any pair $\pm \afa\in\Phi_{\bG}-\Phi_{\bH}$, the ramification divisor $\kR_{(\bG,\bH)}\sbs\kC_{\bH}$ defined by $\prod_{\afa\in\Psi}\dif{\afa}$ is effective; the inclusion $W_{\bH}\ahr W_{\bG}$ induces a morphism $\nu_{\kpa}:\kC_{\bH}\ar\kC_{\bG}$, one has $\nu_{\kpa}\xS\kD_{\bG}=\kD_{\bH}+2\kR_{(\bG,\bH)}$.
+\end{stp}
+
+\begin{thm}[Regular centralizer]
+	One has the commutative diagram
+	\[
+		\begin{tikzcd}
+			\oT{\Lie{\bG}}\ar[r, "\oT{\pi}"]\ar[d, "\oT{\chi}"] & \Lie{\bG}\ar[d, "\chi"] & I_{\bG}\ar[l]\ar[r, equal] & \{(x,g)\in\Lie{\bG}\tms\bG:\adj(g)x=x\} \\
+			\Lie{\bT}\ar[r, "\pi"] & \kC_{\bG} & J_{\bG}\ar[u, "\chi\xS"]\ar[l]\ar[r, hook] & J_{\bG}^{1}:={\pi\zS(\bT\tms\Lie{\bT})}^{W_{\bG}}
+		\end{tikzcd}
+	\]
+	satisfying the following properties:
+	\begin{itm}
+		\item (\cite[Lemma~2.2.5, Construction~4.1.2]{Yun2009Thesis}) The Grothendieck-Springer resolution is $\oT{\Lie{\bG}}=\Lie{\bB}\tms^{\bB}\bG$, the Steinberg variety is $\St_{\bG}=\oT{\Lie{\bG}}\tms_{\Lie{\bG}}\oT{\Lie{\bG}}$. One has $[\Lie{\bB}^{\text{reg}}/\bB]\cong[\Lie{\bG}^{\text{reg}}/\bG]\tms_{\kC_{\bG}}\Lie{\bT}$ and $[\St_{\bG}/\bG]=[\Lie{\bB}/\bB]\tms_{[\Lie{\bG}/\bG]}[\Lie{\bB}/\bB]$.
+		\item (\cite[Lemma~2.1.1, Proposition~2.3.1]{Ngo2010Lemme}) (1) The centralizer $I_{\bG}^{\text{reg}}\ar\Lie{\bG}^{\text{reg}}$ and the regular centralizer $J_{\bG}\ar\kC_{\bG}$ are both smooth and commutative group schemes. (2) If $\bG$ has connected center, then $J_{\bG}$ has connected fibers. (3) There is a $\bG$-equivariant isomorphism $\chi\xS J_{\bG}|_{\Lie{\bG}^{\text{reg}}}\cong I_{\bG}^{\text{reg}}$ extending to $\chi\xS J_{\bG}\ar I_{\bG}$, thus an action $\bB J_{\bG}\Lac [\Lie{\bG}/\bG]$ over $\kC_{\bG}$.
+		\item (\cite[Lemma~2.4.1, Proposition~2.4.2, Proposition~2.4.7]{Ngo2010Lemme}) (1) $J_{\bG}^{1}\ar\kC_{\bG}$ is a smooth and commutative group scheme. (2) $J_{\bG}\ahr J_{\bG}^{1}$ is an isomorphism over $\kC_{\bG}^{\text{rs}}$. (3) $J_{\bG}\ahr J_{\bG}^{1}$ as an affine open locus is characterized as the $W_{\bG}$-equivariant morphisms $f:\Lie{\bT}\ar \bT$ such that for all geometric point $x$ of $\Lie{\bT}$ fixed by some simple involution $\afa\in W_{\bG}$, one has $\afa(f(x))\neq-1$.
+		\item (\cite[Proposition~2.5.1]{Ngo2010Lemme}) $\nu_{\kpa}\xS J_{\bG}\ar J_{\bH}$ is an isomorphism above the open $\kC_{\bH}^{\bG- \text{rs}}:=\nu_{\kpa}\xI(\kC_{\bG}^{\text{rs}})\sbs\kC_{\bH}$.
+	\end{itm}
+\end{thm}
+
+
+\begin{thm}[{Kostant section, \cite[Lemma~1.2.3, Proposition~2.2.1, Lemma~2.2.5]{Ngo2010Lemme}}]
+	The commutative diagram of algebraic stacks satisfies the following properties,
+	\[
+		\begin{tikzcd}
+			\Lie{\bG}^{\text{reg}}\ar[d, shift left, "\chi^{\text{reg}}"]\ar[r] & \sS{\Lie{\bG}^{\text{reg}}/\bG}\ar[d, shift left, "\sS{\chi^{\text{reg}}}"]\ar[r] & \sS{\Lie{\bG}^{\text{reg}}/\bG\tms\bG_{m}}\ar[d, shift left, "\sS{\chi^{\text{reg}}/\bG_{m}}"]\ar[r] & \bB\bG\tms\bB\bG_{m}\ar[d] & \\
+			\kC_{\bG}\ar[u, shift left, "\eps"]\ar[r, equal] & \kC_{\bG}\ar[u, shift left, "\sS{\eps}"]\ar[r] & \sS{\kC_{\bG}/\bG_{m}}\ar[u, shift left, "\sS{\eps}_{D'}"]\ar[r] & \bB\bG_{m} & S\ar[l, "h_{D}"']
+		\end{tikzcd}
+	\]
+	(1) $\chi^{\text{reg}}:\Lie{\bG}^{\text{reg}}\ar\kC_{\bG}$ is a smooth $\bG$-torsor. (2) $[\chi^{\text{reg}}]:[\Lie{\bG}^{\text{reg}}/\bG]\ar\kC_{\bG}$ is a neutral $J_{\bG}$-gerbe given by the Kostant section $[\eps]$. (3) $[\chi^{\text{reg}}/\bG_{m}]:[\Lie{\bG}^{\text{reg}}/\bG\tms\bG_{m}]\ar[\kC_{\bG}/\bG_{m}]$ is a $J_{\bG}$-gerbe, and admits the section ${[\eps]}_{D'}$ above those $a:S\ar[\kC_{\bG}/\bG_{m}]$ whose divisor $D$ admits a square root $D'$, where $S$ is any $k$-scheme.
+\end{thm}
+
+\begin{stp}
+	Let $X$ be any $k$-scheme with a geometric point $\blt$, take homomorphisms $\rho_{\bG,X}\xB:\pi_{1}(X,\blt)\ar\Out(\bG)$ factoring through $\pi_{\bG,X}\xB:\pi_{1}(X,\blt)\ar W_{\bG}\rtm\Out(\bG)$ and $\rho_{\kpa,X}\xB:\pi_{1}(X,\blt)\ar\pi_{0}(\kpa)$ such that one has
+	\[
+		\begin{tikzcd}
+			W_{\bH}\rtm\Out(\bH)\ar[d, two heads] & \ar[l, "\pi_{\bH,X}\xB"'] \pi_{1}(X,\blt)\ar[d, "\rho_{\kpa,X}\xB"]\ar[rd, "\rho_{\bG,X}\xB"]\ar[ld, "\rho_{\bH,X}\xB"']\ar[r, "\pi_{\bG,X}\xB"] & W_{\bG}\rtm\Out(\bG)\ar[d, two heads] \\
+			\Out(\bH) & \pi_{0}(\kpa)\ar[r, "o_{\bG}(\kpa)"]\ar[l, "o_{\bH}(\kpa)"'] & \Out(\bG)
+		\end{tikzcd}
+	\]
+	The quasi-split forms over $X$ associated to $\rho_{\bG,X}\xB$ and the endoscopic data $\rho_{\kpa,X}\xB$ are given by outer twists,
+	\begin{align*}
+		W_{\bG,X}:=W_{\bG}\tms^{\Out(\bG)}\rho_{\bG,X},\quad &\kC_{\bG,X}:=\kC_{\bG}\tms^{\Out(\bG)}\rho_{\bG,X}=\Lie{\bT}\tms^{\pi_{0}(\kpa)}\rho_{\kpa,X}\ssl W_{\bG}\rtm\pi_{0}(\kpa), \\
+		W_{\bH,X}:=W_{\bH}\tms^{\Out(\bH)}\rho_{\bH,X},\quad &\kC_{\bH,X}:=\kC_{\bH}\tms^{\Out(\bH)}\rho_{\bH,X}=\Lie{\bT}\tms^{\pi_{0}(\kpa)}\rho_{\kpa,X}\ssl W_{\bH}\rtm\pi_{0}(\kpa),
+	\end{align*}
+	the canonical (\cite[Lemma~1.9.1]{Ngo2010Lemme}) morphism $W_{\bH}\rtm\pi_{0}(\kpa)\ar W_{\bG}\rtm\pi_{0}(\kpa)$ induces $\nu_{\kpa,X}:\kC_{\bH,X}\ar\kC_{\bG,X}$, and the divisors $\kD_{\bG,X},\kD_{\bH,X},\kR_{(\bG,\bH),X}$ satisfy $\nu_{\kpa,X}\xS\kD_{\bG,X}=\kD_{\bH,X}+2\kR_{(\bG,\bH),X}$. For any divisor $D$, denote by $\rho_{D}$ the associated $\bG_{m}$-torsor, and ${(-)}_{D}$ the corresponding object twisted by $\rho_{D}$.
+
+\end{stp}
+
+
+\ssc{Support theorem and geometric stabilization}
+
+\spg{Global theory: Hitchin fibration}
+
+\begin{stp}
+	Let $X$ be a smooth projective geometrically connected curve over $k$ of genus $g$, fix a divisor $D$ on $X$ with square root $D'$, a geometric point $\ift$, and a homomorphism $\rho_{\bG,X}\xF:\pi_{1}(X,\ift)\ar\Out(\bG)$ for outer twists, denote by $\Tta_{\bG,X}$ the Galois group of the {\'e}tale cover $X_{\rho}\ar X$ which trivializes the torsor $\rho_{\bG,X}$.
+
+	The moduli of morphisms of $X$ to the algebraic stacks $\bB J_{\bG,X,D}\Lac \sS{\Lie{\bG}/\bG}_{X,D}$ over $\kC_{\bG,X,D}$ gives the global Hitchin fibration $f_{\bG,X,D}:\cM_{\bG,X,D}\ar\cA_{\bG,X,D}$ equipped with the global Kostant section $\eps_{\bG,X,D}:\cA_{\bG,X,D}\ar\cM_{\bG,X,D}$ and the action of the smooth (\cite[Proposition~4.3.5]{Ngo2010Lemme}) Picard stack $g_{\bG,X,D}:\cP_{\bG,X,D}\ar\cA_{\bG,X,D}$, such that the regular open locus $\cM_{\bG,X,D}^{\text{reg}}\ar\cA_{\bG,X,D}$ is a $\cP_{\bG,X,D}$-torsor (\cite[Proposition~4.3.3]{Ngo2010Lemme}).
+
+	Let $\pi:\oT{\cA}_{\bG,X,D}\ar \cA_{\bG,X,D}\tms X$ be the universal cameral cover and $U=\ev\xI(\kC_{\bG,X,D}^{\text{rs}})$; for any $a\in\cA_{\bG,X,D}$ let $\pi_{a}:\oT{X}_{a}\ar X$ be the correponding cover and $U_{a}:=\ev_{a}^{-1}(\kC_{\bG,X,D}^{\text{rs}})\sbs X$ the open locus over which $\pi_{a}$ is an {\'e}tale $W_{\bG}$-torsor, let $\pi_{a}\xL:\oT{X}_{a}\xL\ar X$ be the normalization of the cameral cover; correspondingly, let $J_{\bG,X,D}\xL$ be the global N{\'e}ron model of $J_{\bG,X,D}$ and $\cP_{\bG,X,D}\xL$ its Picard stack, then $J_{\bG,X,D,a}\xL\cong{\pi_{a,*}\xL(\bT_{X,D}\tms_{X}\oT{X}_{a}\xL)}^{W_{\bG,X,D}}$, denote $\cR_{\bG,X,D}:=\Ker(\cP_{\bG,X,D}\ar\cP_{\bG,X,D}\xL)$. The enhanced Hitchin fibration $\oT{f}_{\bG,X,D}:\oT{\cM}_{\bG,X,D}\ar\oT{\cA}_{\bG,X,D}$ is equipped with the action by $\oT{g}_{\bG,X,D}:\oT{\cP}_{\bG,X,D}\ar\oT{\cA}_{\bG,X,D}$ (\cite[Lemma~2.2.3]{Yun2009Thesis}),
+
+	one has the following diagram
+	\[
+		\begin{tikzcd}
+			\oT{\cM}_{\bG,X,D}\ar[r, " \mathrm{ev}"]\ar[d, "\pi"] & \sS{\Lie{\bB}/\bB}_{X,D}\ar[r]\ar[d, "\pi"] & \Lie{\bT}_{X,D}\ar[d, "\pi"] & \oT{\cA}_{\bG,X,D}\ar[l, " \mathrm{ev}"']\ar[d, "\pi"] & \oT{X}_{a}\ar[d, "\pi_{a}"]\ar[l, "i_{a}"'] & \oT{X}_{a}\xL\ar[l]\ar[d, "\pi_{a}\xL"] \\
+			\cM_{\bG,X,D}\tms X\ar[r, " \mathrm{ev}"] & \sS{\Lie{\bG}/\bG}_{X,D}\ar[r, "\chi"] & \kC_{\bG,X,D} & \cA_{\bG,X,D}\tms X\ar[l, "\mathrm{ev}"'] & X\ar[l, shift right, "i_{a}"']\ar[from=l, shift right, "\pr_{2}"'] & X\ar[l, equal] \\
+			\cM_{\bG,X,D}\ar[u, shift right, "i_{\ift}"']\ar[from=u, shift right, "\pr_{1}"']\ar[r, equal] & \cM_{\bG,X,D}\ar[u, " \mathrm{ev}_{\ift}"]\ar[r, shift left, "f_{\bG,X,D}"]\ar[from=r, shift left, "\eps_{\bG,X,D}"] & \cA_{\bG,X,D}\ar[u, " \mathrm{ev}_{\ift}"]\ar[r, equal] & \cA_{\bG,X,D}\ar[u, shift left, "i_{\ift}"]\ar[from=u, shift left, "\pr_{1}"] & &
+		\end{tikzcd}
+	\]
+
+	For the endoscopic morphism $\nu_{\kpa,X,D}:\kC_{\bH,X,D}\ar\kC_{\bG,X,D}$, the induced morphism $\nu_{\kpa,X,D}:\cA_{\bH,X,D}\ar\cA_{\bG,X,D}$ is finite and unramified over $\cA_{\bG,X,D}^{\hrts}$ and of codimension $r_{\bH}^{\bG}(D)=(\#\Phi_{\bG}-\#\Phi_{\bH})\Deg{D}/2$.
+
+\end{stp}
+
+
+\begin{thm}
+	Denote by $\cA_{\bG,X,D}\sps\cA_{\bG,X,D}^{\hrts}\sps\cA_{\bG,X,D}^{\text{ani}}\sps\cA_{\bG,X,D}^{\dmds}$ the generically semisimple, anisotropic and smooth locus. The Hitchin fibration and cameral covers satisfy the following,
+	\begin{itm}
+		\item $\cA_{\bG,X,D}^{\hrts}:=\{a\in\cA_{\bG,X,D}:\ev_{a}(X)\nsbs\kD_{\bG,X,D}\}=\pr_{1}(U)$,
+		\begin{enr}[label=(\arabic*)]
+			\item (\cite[Lemma~4.5.1, Proposition~4.6.1]{Ngo2010Lemme}) $\oT{X}_{a}$ is reduced; if $\Deg{D}>2g$, then $\oT{X}_{a}$ is connected.
+			\item (\cite[Theorem~4.14.1]{Ngo2010Lemme}) For $(E,\phi)\in\cM_{\bG,X,D}^{\hrts}$, if $\Deg{D}>2g-2$, then $\HH{}{1}{(X,\adj(E,\phi))}=0$, $(E,\phi)$ is a smooth point.
+			\item (\cite[Proposition~4.16.1, Corollary~4.16.3, Corollary~4.16.4]{Ngo2010Lemme}) $\cM_{\bG,X,D,a}^{\text{reg}}\ahr\cM_{\bG,X,D,a}$ is dense; $\cM_{\bG,X,D,a}$ is equidimensional of dimension $\#\Phi_{\bG}\Deg{D}/2+r(g-1)$; if $\Deg{D}>2g-2$, then $f_{\bG,X,D}^{\hrts}:\cM_{\bG,X,D}^{\hrts}\ar\cA_{\bG,X,D}^{\hrts}$ is flat of relative dimension $d$ with geometrically reduced fibers.
+		\end{enr}
+		\item $\cA_{\bG,X,D}^{\text{ani}}:=\{a\in\cA_{\bG,X,D}:\pi_{0}(\cP_{\bG,X,D,a}) \text{ is finite}\}$,
+		\begin{enr}[label=(\arabic*)]
+			\item \red{$a\in\cA_{\bG,X,D}^{\text{ani}}$ if and only if $\oT{X}_{a}$ is integral?}
+			\item (\cite[Lemma~6.1.2, Theorem~4.14.1]{Ngo2010Lemme}) $(E,\phi)\in\cM_{\bG,X,D}^{\text{ani}}$ is stable; if $\Deg{D}\gqs2g-2$, then $\HH{}{1}{(X,\adj(E,\phi))}=0$, $(E,\phi)$ is a smooth point.
+		\end{enr}
+		\item $\cA_{\bG,X,D}^{\dmds}:=\{a\in\cA_{\bG,X,D}:\ev_{a}(X) \text{ transversally intersects } \kD_{\bG,X,D}\}$,
+		\begin{enr}[label=(\arabic*)]
+			\item (\cite[Proposition~4.7.1, Lemma~4.7.3]{Ngo2010Lemme}) $a\in\cA_{\bG,X,D}^{\dmds}$ if and only if $\oT{X}_{a}$ is smooth; if $\Deg{D}>2g$, then $\cA_{\bG,X,D}^{\dmds}$ is non-empty.
+			\item (\cite[Proposition~4.7.7]{Ngo2010Lemme}) $\cM_{\bG,X,D,a}^{\text{reg}}=\cM_{\bG,X,D,a}$, $\cP_{\bG,X,D}^{0}$ is an abelian stack.
+		\end{enr}
+	\end{itm}
+\end{thm}
+
+
+\spg{Global Springer theory}
+
+\begin{stp}
+	Let $\oT{W}_{\bG}:=\bX\zS(\bT)\rtm W_{\bG}$ be the extended affine Weyl group; let $\oT{\bT}=\bG_{m}^{\text{cen}}\tms\bT\tms\bG_{m}^{\text{rot}}$ be the universal Cartan torus and $H_{\bG,\oL{\bQ_{\ell}}}:=\oL{\bQ_{\ell}}[\oT{W}_{\bG}]\ot\Sym\bX\xS{(\oT{\bT})}_{\oL{\bQ_{\ell}}}\ot\oL{\bQ_{\ell}}[u]$ the graded double affine Hecke algebra. Denote the parabolic Hitchin fibration by $f^{\text{par}}_{\bG,X,D}:\oT{\cM}_{\bG,X,D}\ar\oT{\cA}_{\bG,X,D}\ar\cA_{\bG,X,D}\tms X$.
+\end{stp}
+
+\begin{thm}[{\cite[Theorem~4.4.2, Proposition~4.4.5, Theorem~5.3.4]{Yun2009Thesis}}]
+	There is an action of $\oT{W}_{\bG}$ on $f^{\text{par}}_{\bG,X,D,*}\oL{\bQ_{\ell}}\in D_{c}^{b}(\cA_{\bG,X,D}\tms X,\oL{\bQ_{\ell}})$ compatible with Verdier duality and extends to a graded algebra homomorphism
+	\[
+		H_{\bG,\oL{\bQ_{\ell}}}\ar\Op_{k\in\bZ}\End{\cA_{\bG,X,D}\tms X}{2k}{(f^{\text{par}}_{\bG,X,D,*}\oL{\bQ_{\ell}})}(k),
+	\]
+	such that the action is given by morphisms in $D_{c}^{b}(\cA_{\bG,X,D}\tms X, \oL{\bQ_{\ell}})$:
+	\begin{itm}
+		\item $\oT{w}\in\oT{W}_{\bG}$ acts via correspondence, $[\cH_{\oT{w}}]_{\#}:f^{\text{par}}_{\bG,X,D,*}\oL{\bQ_{\ell}}\ar f^{\text{par}}_{\bG,X,D,*}\oL{\bQ_{\ell}}$.
+		\item $\xi\in\bX\xS(\oT{\bT})$ acts via cup product, $-\cup f_{\bG,X,D,*}^{\text{par}}c_{1}(\cL(\xi))):f^{\text{par}}_{\bG,X,D,*}\oL{\bQ_{\ell}}\ar f^{\text{par}}_{\bG,X,D,*}\oL{\bQ_{\ell}}[2](1)$.
+		\item $u$ acts via cup product, $-\cup c_{1}(\pr_{2}\xS\cO_{X}(D)):f^{\text{par}}_{\bG,X,D,*}\oL{\bQ_{\ell}}\ar f^{\text{par}}_{\bG,X,D,*}\oL{\bQ_{\ell}}[2](1)$.
+	\end{itm}
+\end{thm}
+
+\spg{Support theorem}
+
+\begin{stp}
+	One has an {\'e}tale open map $\oT{\cA}_{\bG,X,D}^{\ift}\ar\cA_{\bG,X,D}^{\ift}:= \mathrm{ev}_{\ift}^{-1}(\kC_{\bG,X,D}^{\text{rs}})\sbs\cA_{\bG,X,D}^{\hrts}$, $\oT{\cA}_{\bG,X,D}^{\ift}$ is smooth and geometrically irreducible (\cite[Lemma~5.3.2]{Ngo2010Lemme}) for $\Deg{D}>2g$. Denote by $\cB_{\bG,X,D}^{\hrts}\ar\cA_{\bG,X,D}^{\hrts}$ the simultaneous normalization, $\cB_{\bG,X,D}^{\hrts}$ is a finite type $k$-scheme (\cite[Proposition~5.2.1]{Ngo2010Lemme}), one has
+	\[
+		\begin{tikzcd}
+			\oT{\cB}_{\bG,X,D}^{\ift}\ar[r]\ar[d] & \oT{\cA}_{\bG,X,D}^{\ift}\ar[r]\ar[d] & \Lie{\bT}_{X,D}\ar[d, "\pi"] \\
+			\cB_{\bG,X,D}^{\hrts}\ar[r] & \cA_{\bG,X,D}^{\hrts}\ar[r, " \mathrm{ev}_{\ift}"] & \kC_{\bG,X,D}^{\text{rs}}
+		\end{tikzcd}
+	\]
+	the morphism $\oT{\cB}_{\bG,X,D}^{\ift}\ar\oT{\cA}_{\bG,X,D}^{\ift}$ is a bijection on geometric points, by Zariski's main theorem and Noetherian induction, one has a stratification indexed by $\Psi_{\bG,X,D}$,
+	\[
+		\oT{\cA}_{\bG,X,D,\oL{k}}^{\ift}=\coprod_{\psi\in\Psi_{\bG,X,D}}\oT{\cA}_{\bG,X,D,\oL{k}}^{\ift,\psi},
+	\]
+	for each $\psi\in\Psi_{\bG,X,D}$, $\oT{\cA}_{\bG,X,D,\oL{k}}^{\ift,\psi}$ is locally closed and irreducible, and $\oT{\cB}_{\bG,X,D,\oL{k}}^{\ift,\psi}\ar\oT{\cA}_{\bG,X,D,\oL{k}}^{\ift,\psi}$ is finite radicial; the set $\Psi_{\bG,X,D}$ admits a partial order and has a maximal element denoted by $\psi_{\bG,X,D}$.
+\end{stp}
+
+\begin{thm}[Monodromy invariant and Serre invariants]
+	For $\oT{a}=(a,\oT{\ift})\in\oT{\cA}_{\bG,X,D}^{\ift}$,
+	\begin{itm}
+		\item (\cite[Proposition~5.4.3, Lemma~5.4.5, Lemma~5.4.8]{Ngo2010Lemme}) the monodromy invariant $\oT{a}\amt(I_{\oT{a}},W_{\oT{a}})$ given by
+	\[
+		I_{\oT{a}}:=\Ker(\pi_{1}(U_{a},\ift)\ar\pi_{1}(X,\ift)),\quad W_{\oT{a}}:=\Img(\pi_{1}(U_{a},\ift)\ar W_{\bG}\rtm\Out(\bG)),
+	\]
+	is constant over each stratum $\oT{\cA}_{\bG,X,D,\oL{k}}^{\ift,\psi}$; the corresponding map $\psi\amt(I_{\psi},W_{\psi})$ is increasing; the maximal element $\psi_{\bG,X,D}$ satisfies $(I_{\psi_{\bG,X,D}},W_{\psi_{\bG,X,D}})=(W_{\bG},W_{\bG}\rtm\Tta_{\rho})$.
+	\item (\cite[Lemma~5.6.1, Lemma~5.6.4, Proposition~5.7.2]{Ngo2010Lemme}) the Serre invariant $\oT{a}\amt\dta(a)$ given by
+	\[
+		\dta(a):=\Dim\cR_{\bG,X,D,a}=\sum_{v\in \sP{X-U_{a}}}\Dim\cR_{\bG,X_{v},D,a}=\sum_{v\in \sP{X-U_{a}}}\dta_{v}(a),
+	\]
+	is constant over each stratum $\oT{\cA}_{\bG,X,D,\oL{k}}^{\ift,\psi}$; the corresponding map $\psi\amt\dta(\psi)$ is decreasing; the maximal element $\psi_{\bG,X,D}$ satisfies $\dta(\psi_{\bG,X,D})=0$; the corresponding stratification $\oT{\cA}_{\bG,X,D,\oL{k}}^{\ift}=\coprod_{\dta\in\bN}\oT{\cA}_{\bG,X,D,\oL{k}}^{\ift,\dta}$ satisfies that for any $\dta$, there exists some $N$ such that if $\Deg{D}>N$, then the global codimension estimate holds,
+	\[
+		\Cdm(\oT{\cA}_{\bG,X,D,\oL{k}}^{\ift,\dta},\oT{\cA}_{\bG,X,D,\oL{k}}^{\ift})\gqs\dta.
+	\]
+	\end{itm}
+\end{thm}
+
+\begin{thm}[{\cite[Theorem~7.2.1]{Ngo2010Lemme}}]
+	Let $S$ be a geometrically irreducible $k$-scheme of finite type. Let $f:M\ar S$ be a projective morphism purely of relative dimension $d$ equipped with the action of a smooth group scheme $g:P\ar S$ which is a $\dta$-regular abelian fibration. Suppose the constant sheaf $\oL{\bQ_{\ell}}$ on $M$ is pure.
+
+	Let $\cK$ be a geometrically simple perverse factor in $\pHH{n}{(f\zS\oL{\bQ_{\ell}})}$ with support $Z$, then there exists an open set $U$ of $S_{\oL{k}}$ such that $U\cap Z$ is non-empty, and a non-trivial local system $\cL$ over $U\cap Z$, and $i\zS\cL$ is a direct factor of $\HH{}{2d}{(f\zS\oL{\bQ_{\ell}})}|_{U}$, where $i$ is the closed immersion $U\cap Z\ar U$.
+\end{thm}
+
+\begin{thm}
+	Applying to $\oT{f}_{\bG,X,D}^{\ift,\text{ani}}:\oT{\cM}_{\bG,X,D}^{\ift,\text{ani}}\ar\oT{\cA}_{\bG,X,D}^{\ift,\text{ani}}$ with the action by $\oT{g}_{\bG,X,D}^{\ift,\text{ani}}:\oT{\cP}_{\bG,X,D}^{\ift,\text{ani}}\ar\oT{\cA}_{\bG,X,D}^{\ift,\text{ani}}$. Let $\cK$ be a geometrically simple perverse factor in $\pHH{n}{(\oT{f}_{\bG,X,D,*}^{\ift,\text{ani}}\oL{\bQ}_{\ell})}_{\blt}$ with support $Z$, where $\blt\in\{\text{st},\kpa\}$, then
+	\begin{enr}[label=(\arabic*)]
+		\item (\cite[Theorem~7.8.3]{Ngo2010Lemme}) $\blt=\text{st}$: if $Z\cap\oT{\cA}_{\bG,X,D}^{\ift,\text{good}}\neq\ept$, then $Z=\oT{\cA}_{\bG,X,D}^{\ift,\text{ani}}$.
+		\item (\cite[Theorem~7.8.5]{Ngo2010Lemme}) $\blt=\kpa$: there exists $(\kpa,\rho_{\kpa}\xB)$ such that $Z\sbs\oT{\nu}_{\kpa,X,D}(\oT{\cA}_{\bH,X,D}^{\ift})$;
+
+		if $Z\cap\oT{\nu}_{\kpa,X,D}(\oT{\cA}_{\bH,X,D}^{\ift,\text{good}})\neq\ept$, then $Z=\oT{\nu}_{\kpa,X,D}(\oT{\cA}_{\bH,X,D}^{\ift,\text{ani}})$.
+	\end{enr}
+\end{thm}
+
+\spg{Geometric stabilization}
+
+
+\begin{thm}
+	The geometric stabilization theorem holds, one has
+	\begin{itm}
+		\item (\cite[Theorem~6.4.2]{Ngo2010Lemme}) an isomorphism over $k$ of the semisimplification of the graded perverse sheaves
+	\[
+	  \Op_{n}\oT{\nu}_{\kpa,X,D}\xS \pHH{n}{(\oT{f}^{\ift,\text{ani}}_{\bG,X,D,*}\oL{\bQ_{\ell}})}_{\kpa}[2r_{\bH}^{\bG}(D)](r_{\bH}^{\bG}(D))\cong\Op_{n}\pHH{n}{(\oT{f}^{\ift,\text{ani}}_{\bH,X,D,*}\oL{\bQ_{\ell}})}_{\text{st}}.
+  	\]
+		\item (\cite[Theorem~6.4.1]{Ngo2010Lemme}) an isomorphism over $\oL{k}$ of the graded perverse sheaves
+	\[
+		\Op_{n}\pHH{n}{(\oT{f}^{\ift,\text{ani}}_{\bG,X,D,*}\oL{\bQ_{\ell}})}_{\kpa}[2r_{\bH}^{\bG}(D)](r_{\bH}^{\bG}(D))\cong\Op_{n}\Op_{\rho_{\kpa_{\xi}}\xB}\oT{\nu}_{\kpa_{\xi},X,D,*}\pHH{n}{(\oT{f}^{\ift,\text{ani}}_{\bH_{\xi},X,D,*}\oL{\bQ_{\ell}})}_{\text{st}},
+	\]
+	where $\xi$ runs through all pointed endoscopic datum $(\kpa,\rho_{\kpa_{\xi}}\xB)$.
+	\end{itm}
+\end{thm}
+
+
+\begin{rmk}
+	Let $\cC_{(\bG,\bH),X,D}$ be the endoscopic correspondence constructed directly via $\nu_{\kpa,X,D}\xS\cP_{\bG,X,D}\ar\cP_{\bH,X,D}$; let $\cC_{(\bG,\bH),X,D}^{\text{mod}}$ be the modular endoscopic correspondence constructed from the natural $\bG\tms\bH$-equivariant morphism $\kT_{(\bG,\bH)}^{\text{reg}}\ar\Lie{\bG}^{\text{reg}}\tms_{\kC_{\bG}}\Lie{\bH}^{\text{reg}}$, then $\cC_{(\bG,\bH),X,D}^{\text{mod}}$ is the moduli of morphisms of $X$ to ${[\kT_{(\bG,\bH)}/\bG\tms\bH]}_{X,D}$,
+	\[
+		\begin{tikzcd}
+			\cC_{(\bG,\bH),X,D}\ar[r]\ar[d] & \cM_{\bH,X,D}\ar[d] & \cC_{(\bG,\bH),X,D}^{\text{mod}}\ar[l]\ar[d] \\
+			\cM_{\bG,X,D}\tms_{\cA_{\bG,X,D}}\cA_{\bH,X,D}\ar[r] & \cA_{\bH,X,D} & \cM_{\bG,X,D}\tms_{\cA_{\bG,X,D}}\cA_{\bH,X,D}\ar[l]
+		\end{tikzcd}
+	\]
+	the geometry of the generic locus of $\cC_{(\bG,\bH),X,D}$ is given by ([Ng\^{o}, unpublished], \cite[Lemma~8.3.9]{Yun2009Thesis}), one has that $\cC_{(\bG,\bH),X,D}^{\text{mod}}\sps\cC_{(\bG,\bH),X,D}$ but their precise relationship seems not well-established (\cite[Page~130]{Yun2009Thesis}).
+
+	\red{Is it expected that $\cC_{(\bG,\bH),X,D}^{\text{mod}}$ contains the same information as $\cC_{(\bG,\bH),X,D}$ in some suitable sense?}
+
+	Using the correspondence given by $\oT{\cC}_{(\bG,\bH),X,D}$, one has endoscopic decomposition on the level of complexes.
+\end{rmk}
+
+\begin{thm}[{\cite[Theorem~8.2.6]{Yun2009Thesis}}]
+	There is a canonical isomorphism in $D_{c}^{b}(\oT{\cA}_{\bG,X,D},\oL{\bQ_{\ell}})$,
+	\[
+		{(\oT{f}_{\bG,X,D,*}\oL{\bQ_{\ell}})}_{\kpa}[2r_{\bH}^{\bG}(D)](r_{\bH}^{\bG}(D))\cong\Op_{\rho_{\kpa_{\xi}}\xB}\oT{\nu}_{\kpa_{\xi},X,D,*}{(\oT{f}_{\bH_{\xi},X,D,*}\oL{\bQ_{\ell}})}_{\text{st}}.
+	\]
+\end{thm}
+
+
+
+\ssc{Point counting and the fundamental lemma}
+
+\spg{Local theory: affine Springer fibration}
+
+\begin{stp}
+	Take a place $v$ of $X$ and a geometric point $x$ of the formal unit disk $X_{v}=\Spc{\cO_{v}}$ with uniformizer $\vpi_{v}$, fix homomorphisms $\rho_{\bG,X_{v}}^{x}:\pi_{1}(X_{v},x)\ar\Out(\bG)$ and $\rho_{\kpa,X_{v}}^{x}:\pi_{1}(X_{v},x)\ar\pi_{0}(\kpa)$.
+
+	The moduli of morphisms of $X_{v}$ to the algebraic stacks $\bB J_{\bG,X_{v},D}\Lac {[\Lie{\bG}/\bG]}_{X_{v},D}$ over $\kC_{\bG,X_{v},D}$ gives the local affine Springer fibration $f_{\bG,X_{v},D}:\cM_{\bG,X_{v},D}\ar\cA_{\bG,X_{v},D}$ equipped with the local Kostant section $\eps_{\bG,X_{v},D}:\cA_{\bG,X_{v},D}\ar\cM_{\bG,X_{v},D}$ and the action of the Picard stack $g_{\bG,X_{v},D}:\cP_{\bG,X_{v},D}\ar\cA_{\bG,X_{v},D}$.
+
+	Let $\pi_{a}:\oT{X}_{v,a}\ar X_{v}$ be the local cameral cover, $\pi_{a}\xL:\oT{X}_{v,a}\xL\ar X_{v}$ its normalization, and $\pi_{a}\xB:I_{v}\atr I_{v}^{t}\ar W_{\bG}$ the morphism determined by the punctured cameral cover $\oT{X}_{v,a}\xB\ar X_{v}\xB$. Let $J_{\bG,X_{v},D}\xL$ be the local N{\'e}ron model, and $\cP_{\bG,X_{v},D}\xL$ the Picard stack, then one has $J_{\bG,X_{v},D,a}\xL={\pi_{a,*}\xL(\bT_{X_{v},D}\tms_{X_{v}}\oT{X}_{v,a}\xL)}^{W_{\bG,X_{v},D}}$ (\cite[Proposition~3.8.2]{Ngo2010Lemme}), and $\cR_{\bG,X_{v},D}:=\Ker(\cP_{\bG,X_{v},D}\ar\cP_{\bG,X_{v},D}\xL)$ is a finite type affine group scheme (\cite[Lemma~3.8.1]{Ngo2010Lemme}).
+
+\end{stp}
+
+\begin{thm}
+	The regular open locus $\cM_{\bG,X_{v},D}^{\text{reg}}\ar\cA_{\bG,X_{v},D}$ satisfies:
+	\begin{itm}
+		\item (\cite[Lemma~3.3.1, Proposition~3.7.5]{Ngo2010Lemme}) it is a $\cP_{\bG,X_{v},D}$-torsor; the local Serre invariant is given by
+		\[
+			\dta_{v}(a):=\Dim\cP_{\bG,X_{v},D,a}^{\text{reg}}=\frac{1}{2}(\Deg_{v}(\ev_{a}\xS\kD_{\bG,X_{v},D})-(\Dim\bT-\Dim\bT^{\pi_{a}\xB(I_{v})})).
+		\]
+		\item (\cite[Proposition~3.7.1, Proposition~3.10.1]{Ngo2010Lemme}) the complement of $\cM_{\bG,X_{v},D,a}^{\text{reg}}$ in $\cM_{\bG,X_{v},D,a}$ has dimension strictly less than $\Dim\cM_{\bG,X_{v},D,a}$; in particular, $\cM_{\bG,X_{v},D,a}^{\text{reg}}$ is dense in $\cM_{\bG,X_{v},D,a}$.
+	\end{itm}
+\end{thm}
+
+\begin{thm}
+	Over the generically semisimple locus $\cA_{\bG,X_{v},D}^{\hrts}$, one has
+	\begin{itm}
+		\item (Structure) (\cite[Proposition~3.2.1, Proposition~3.4.1]{Ngo2010Lemme}) For each $a\in\cA_{\bG,X_{v},D}^{\hrts}$, $\cM_{\bG,X_{v},D,a}\ahr\Gr_{\bG,X_{v}}$ is a closed immersion, $\cM_{\bG,X_{v},D,a}^{\text{red}}$ is a scheme locally of finite type; the maximal free quotient $\pi_{0}(\cP_{\bG,X_{v},D,a})\atr\Lda$ acts on $\cM_{\bG,X_{v},D,a}^{\text{red}}$ and $\cM_{\bG,X_{v},D,a}^{\text{red}}/\Lda$ is a projective scheme.
+		\item (Approximation) (\cite[Proposition~3.5.1]{Ngo2010Lemme}) For any $a\in\cA_{\bG,X_{v},D}^{\hrts}(k)$, there exists a natural number $N$ such that for all finite extension $k'$ of $k$ and $a'\in\cA_{\bG,X_{v},D}(k')$ such that $a\eqv a'\bmod{\vpi_{v}^{N}}$, the action $\cM_{\bG,X_{v},D,a'}\Rac\cP_{\bG,X_{v},D,a'}$ is isomorphic to the action $\cM_{\bG,X_{v},D,a,k'}\Rac\cP_{\bG,X_{v},D,a,k'}$.
+	\end{itm}
+\end{thm}
+
+\begin{thm}[Product formula]
+	The local-global relation is given by
+	\begin{itm}
+		\item (\cite[Theorem~4.6]{Ngo2006Hitchin}) For all $a\in\cA_{\bG,X,D}^{\hrts}$, the following morphism is an equivalence on geometric points.
+		\[
+			\prod_{v\in \sP{X-U_{a}}}[\cM_{\bG,X_{v},D,a}/\cP_{\bG,X_{v},D,a}]\ar[\cM_{\bG,X,D,a}/\cP_{\bG,X,D,a}]
+		\]
+		\item (\cite[Proposition~4.15.1]{Ngo2010Lemme}) For all $a\in\cA_{\bG,X,D}^{\text{ani}}$, the following morphism is a homeomorphism.
+		\[
+			\prod_{v\in \sP{X-U_{a}}}[\cM_{\bG,X_{v},D,a}^{\text{red}}/\cP_{\bG,X_{v},D,a}^{\text{red}}]\ar[\cM_{\bG,X,D,a}/\cP_{\bG,X,D,a}]
+		\]
+	\end{itm}
+\end{thm}
+
+\begin{rmk}
+	The latter one is also expected to hold over $\cA_{\bG,X,D}^{\hrts}$.
+\end{rmk}
+
+\spg{Endoscopic fundamental lemma}
+
+\begin{stp}
+	For $a_{H}\in\cA_{\bH,X_{v}}^{\bG-\hrts}$ with image $a_{G}\in\cA_{\bG,X_{v}}^{\hrts}$, let $\cR_{(\bG,\bH),X_{v},a_{H}}:=\Ker(\cP_{\bG,X_{v},a_{G}}\ar\cP_{\bH,X_{v},a_{H}})$, then one has $\Dim\cR_{(\bG,\bH),X_{v},a_{H}}=:r_{(\bG,\bH),X_{v},a_{H}}=\Deg_{v}(\ev_{a_{H}}\xS\kR_{(\bG,\bH),X_{v}})$.
+	(\cite[Lemma~3.11.2]{Ngo2010Lemme}),
+\end{stp}
+
+\begin{thm}[{\cite[Theorem~1.11.1]{Ngo2010Lemme}}]
+	The endoscopic fundamental lemma holds,
+	\[
+		\Orb^{\kpa}(a_{G},\mbm{1}_{\kg})=q^{r_{(\bG,\bH),X_{v},a_{H}}}\Orb^{\text{st}}(a_{H},\mbm{1}_{\kh}),
+	\]
+	where $\kg=\Lie{\bG}_{X_{v}}$ and $\kh=\Lie{\bH}_{X_{v}}$.
+\end{thm}
+
+\begin{rmk}
+	One first proves the geometric stabilization over the good locus using support theorem and the computation of Labesse-Langlands, and then use approximation theorem and product formula to deduce the fundamental lemma, and then deduce the geometric stabilization over the whole anisotropic locus.
+\end{rmk}
+
+
+
+\printref
+\end{document}

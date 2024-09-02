@@ -1,0 +1,348 @@
+\documentclass[article, a4paper, twoside]{universal}
+
+\setshowlvl{1}
+\begin{document}
+\confighead{}{}{}
+\printhead{}{}{1}
+
+
+\sct{On elliptic curves}
+
+\ssc{Leading conjectures}
+\begin{cnj}[Birch--Swinnerton-Dyer]
+	Let $E$ be an elliptic curve over $\bQ$, then
+	\[
+		\begin{tikzcd}
+			\Ord_{s=1}L(s,E)=r\ar[r, Leftrightarrow] & \Rnk_{\bZ}E(\bQ)=r,\quad \#\Sha(E)<\ift.
+		\end{tikzcd}
+	\]
+\end{cnj}
+
+\begin{rmk}
+	Known results:
+	\begin{itm}
+		\item[\DONE] $r=0; \aoR:\quad$ \cite{GZ1986,Kolyvagin1990,KL1989}.
+		\item[\DONE] $r=0; \aoL:\quad$ \cite{SU2014,Wan2012}.
+		\item[\DONE] $r=1; \aoR:\quad$ \cite{GZ1986,Kolyvagin1990,KL1989}.
+		\item[\TODO] $r=1; \aoL:\quad$ \cite{Rubin1992,Skinner2020,Zhang2014Selmer}.
+	\end{itm}
+	\red{TODO}:	Note that $n\eqv5,6,7\bmod{8}$ are congruent numbers if one has $\Ord_{s=1}L(s,E)\gqs1\aoR\Rnk_{\bZ}E(\bQ)\gqs1$, read \cite{Tian2014}. Indeed, one only needs a converse theorem of Coates--Wiles\cite{CW1977,Rubin1999}.
+\end{rmk}
+
+\begin{cnj}[Sato--Tate]
+	Let $E$ be an elliptic curve over $\bQ$ without complex multiplication, then $\{a_{p}/(2\sqrt{p})\}$ is equidistributed in $[-1,1]$ with respect to the measure $(2/\pi)\sqrt{1-t^{2}}\dif{t}$.
+\end{cnj}
+
+\begin{rmk}
+	Known results:
+	\begin{itm}
+		\item[\DONE] True for any CM fields \cite[Corollary~7.1.14]{ACCGHLNSTT2023}.
+	\end{itm}
+	\red{TODO}: Read \cite{CHT2008,Taylor2008,HSBT2010,ACCGHLNSTT2023}.
+\end{rmk}
+
+\begin{cnj}[Lang--Trotter]
+	Let $E$ be an elliptic curve over $\bQ$ without complex multiplication, then
+	\[
+		\#\{p<x: \text{$E$ is supersingular at $p$}\}=O(x^{1/2}/\log{x}),
+	\]
+	with the constant depending only on $j(E)$.
+\end{cnj}
+
+\begin{cnj}[Lang]
+	There exists an effectively computable constant $C$ such that:
+
+	For any elliptic curve $E$ over $\bQ$ and any non-torsion point $P\in E(\bQ)$, one has
+	\[
+		h_{\text{NT}}(P)\gqs C\log\sP{\Dta_{E}}.
+	\]
+\end{cnj}
+
+\begin{rmk}
+	Discriminant conjecture is stronger than this, read \cite{HS1988}.
+\end{rmk}
+
+\ssc{Reduction and Ogg--Saito}
+
+For Tate's algorithm, read \cite{Tate1975}, \cite[Page~365]{Silverman1994}, \cite{Liu2002}, \cite{Lorenzini2010}, \cite{Szydlo1999}, \cite{Szydlo2004}, \href{https://mathoverflow.net/questions/127908/reduction-types-of-elliptic-curves}{MathOverflow}. To understand the formula of Ogg--Saito, read \cite{Ogg1967}, \cite{Saito1988Noether}, \href{https://www.math.u-bordeaux.fr/~qliu/Notes/Ogg-Saito.pdf}{Liu's Notes}. Also read many of Liu's work on the reduction of genus $2$ curves.
+
+\begin{qst}
+	Note that $v_{p}(N)=v_{p}(\Dta)-m+1$. There is no upper bound of $m$ in terms of $v_{p}(N)$, can I do or find something among literatures to make precise the heuristic ``As the discriminant increases, the number of bad places should increase (at least from 1 to 2)''?
+\end{qst}
+
+For the Brumer--Kramer bound, use \cite{BK1994} and 2302.13127.
+
+\ssc{Global minimal models}
+
+Ref:~\cite{Gross1982Minimal,Silverman1984}
+
+
+\ssc{Infinitude of supersingular primes}
+
+\begin{thm}[{\cite[Theorem~1]{Elkies1987Invent}}]
+	Let $E$ be any elliptic curve over $\bQ$ and $S$ any finite set of primes. There exists a prime $p\nin S$ such that $E$ has supersingular reduction at $p$.
+\end{thm}
+
+\begin{prf}[Sketch of the proof]
+	The proof goes in three steps.
+
+	\spg{Step 1} Recall that $E$ is supersingular at $p$ if and only if there exists an imaginary quadratic order $\cO_{\Dta}$ with $\Dta\eqv0,1\bmod{4}$ such that $H_{\Dta}(j(E))\eqv0\bmod{p}$ and $p$ is not split in $K=\bQ(\sqrt{\Dta})$.
+
+	\spg{Step 2} Take a rational prime $\ell\eqv3\bmod{4}$, then $y^{2}=x^{3}-x$ has $j$-invariant $1728$, is supersingular at $\ell$, and admits complex multiplication by both $\cO_{-\ell}$ and $\cO_{-4\ell}$, one has
+	\[
+		H_{-\ell}(X)\eqv(X-1728)R(X)^{2}\bmod{\ell},\quad H_{-4\ell}(X)\eqv(X-1728)S(X)^{2}\bmod{\ell}.
+	\]
+
+	\spg{Step 3} Assume $S$ contains all bad primes of $E$. By Dirichlet's theorem, there exists $\ell\eqv3\bmod{4}$ satisfying $(-1/\ell)=-1$ and $(p/\ell)=1,\fal p\in S$ and $H_{-\ell}(j(E))>0, H_{-4\ell}(j(E))<0$. Then the numerator of $H_{-\ell}(j(E))H_{-4\ell}(j(E))$ must contain a prime $q$ such that $q=\ell$ or $(q/\ell)=-1$, in either case $E$ is supersingular at $q\nin S$.
+\end{prf}
+
+\begin{rmk}
+	Read \cite{Elkies1991Supersingular}, who further proved
+	\[
+		\#\{p<x:E\text{ is supersingular at } p\}=O(x^{3/4}\log{x}).
+	\]
+\end{rmk}
+
+\ssc{Classification theorem of torsion}
+
+\begin{thm}
+	Let $E$ be an elliptic curve over $\bQ$, if $\Phi$ is a torsion subgroup of $E(\bQ)$, then
+	\[
+		\Phi=\begin{cases}
+			\bZ/m\bZ & \text{$1\lqs m\lqs10$ or $m=12$} \\
+			\bZ/2\bZ\tms\bZ/2n\bZ & \text{$1\lqs n\lqs 4$}
+		  \end{cases},
+	\]
+	these correspond to rational points of $X_{1}(m),X(2)\tms_{X_{1}(2)}X_{1}(2n)$, all of which are isomorphic to $\bP_{\bQ}^{1}$.
+\end{thm}
+
+\begin{prf}[Sketch of the proof of \cite{Mazur1977Eisenstein}]
+	Combining with the results of Kubert\cite[Theorem~IV.1.2]{Kubert1976}, it suffices to show that $E$ does not contain a rational point of prime order $p\gqs23$. Denote by $\cE$ the N{\'e}ron model of $E$ over $\bZ$ and $L=\bQ(E[p]), K=\bQ(\zta_{p})$, suppose on the contrary that such a torsion point exists, then there is an inclusion of group schemes $\uL{\bZ/p\bZ}\ahr\cE$ over $\bZ$.
+
+	\spg{Step~1} $\cE$ is semistable over $\bZ$, $\{2,3\}$ are bad primes, and for all bad primes $q$, $(\uL{\bZ/p\bZ})_{\bF_{q}}\not\sbs(\cE_{\bF_{q}})^{0}$.
+
+	If $q$ is a prime at which $\cE$ has additive reduction, then $(\cE_{\bF_{q}})^{0}$ is an additive group of index $2^{a}3^{b}$ in $\cE_{\bF_{q}}$, therefore ${(\uL{\bZ/p\bZ})}_{\bF_{q}}\sbs{(\cE_{\bF_{q}})}^{0}$ and $q=p$. A classical result says that there exists a finite extension $K/\bQ_{p}$ with ramification index $e\lqs6$, such that $E_{K}$ has semistable reduction at $\km_{K}$. If $G_{\cO_{K}}$ is the closed subgroup scheme generated by $\uL{\bZ/p\bZ}_{K}\sbs E_{K}$, then $(\uL{\bZ/p\bZ})_{\cO_{K}}\ar G_{\cO_{K}}$ is an isomorphism on the generic fiber but not an isomorphism on the special fiber, because the N{\'e}ron model of $E$ over $\cO_{K}$ is not $\cE_{\cO_{K}}$. Now $G_{\cO_{K}}$ is a finite flat group scheme of order $p>e+1$, by a theorem of Raynaud, $G$ is determined by its generic fiber, so $G_{\cO}\cong(\uL{\bZ/p\bZ})_{\cO_{K}}$, a contradiction.
+
+	If $q\in\{2,3\}$, suppose $q$ is good, then by the Weil conjecture, $p\lqs1+q+2\sqrt{q}$, which is impossible since $p\gqs23$. By a result of Tate, $(\cE_{\bF_{q^{2}}})^{0}\cong\bG_{m,\bF_{q^{2}}}$ cannot contain $\bZ/p\bZ$.
+
+	If $q\nin\{2,3,p\}$ is a prime at which $\cE$ has multiplicative reduction, let $T=\Spc{\bZ[1/2p]}$, then $(\cE_{T},(\uL{\bZ/p\bZ})_{T})$ determines a $T$-valued point $x$ of $X_{0}(N)_{T}$ such that $x_{\bF_{3}}=\ift_{\bF_{3}}$ and $x_{\bF_{p}}=0_{\bF_{p}}$. Consider the Eisenstein quotient $\oT{J}$, then $\oT{J}\ar\oT{J}(\bF_{\ell})$ is injective by Tate-Oort classification, and $\oT{x}_{\bF_{3}}=\oT{\ift}_{\bF_{3}}, \oT{x}_{\bF_{p}}=\oT{0}_{\bF_{p}}$ implies that $\oT{0}-\oT{\ift}$ is of order $1$ in $\oT{J}$, which is only possible if $p\lqs7$ or $p=13$.
+
+	\spg{Step~2} $L=K$, and equivalently, the exact sequence of $G_{\bQ}$-modules $0\ar\bZ/p\bZ\ar E[p]\ar \mu_{p}\ar 0$ splits.
+
+	If $q$ is good and $q\neq p$, then $\cE[p]_{\bZ_{q}}$ is an {\'e}tale finite flat group scheme, so $L/K$ is unramified over $q$. If $q$ is good and $q=p$, or $q$ is bad, then $(\cE[p])_{\bZ_{q}}\cong(\uL{\bZ/p\bZ})_{\bZ_{q}}\tms(\mu_{p})_{\bZ_{q}}$, so $L/K$ is unramified over $q$. Therefore, $L/K$ is unramified, suppose further that $L/K$ is non-trivial, then it must be a $p$-cyclic extension and $p$ is an irregular prime, which is impossible, so $L=K$.
+
+	\spg{Step~3} There is an infinite sequence of maps of elliptic curves $E=E^{(0)}\ar E^{(1)}\ar\cdots$ by taking quotient by $\mu_{p}$ repeatedly. By Shafarevich's theorem, the isomorphism classes of these elliptic curves are finite, so there exists some $E^{(i)}$ admitting complex multiplication over $\bQ$, which is impossible, so one arrives at a contradiction by assuming an inclusion $\bZ/p\bZ\ahr E$ exists.
+\end{prf}
+
+\begin{prf}[Sketch of the proof of \cite{Mazur1978}]
+	If $E$ admits an isogeny of prime degree $N$ over $\bQ$, then the only possible $N$ are
+		\[
+			N\in\{2,3,5,7,11,13,17,19,37,43,67,163\}.
+		\]
+\end{prf}
+
+\ssc{Complex multiplication case}
+
+% \ssc{Mordell curves}
+
+% Consider $E_{k}$ defined by $y^{2}=x^{3}+k, k\in\bZ$. Use \href{https://kconrad.math.uconn.edu/blurbs/gradnumthy/mordelleqn1.pdf}{Conrad's notes}, try to determine $E_{k}(\oL{\bQ})$.
+
+% \ssc{Congruent number curves}
+
+% Consider $E_{n}$ defined by $y^{2}=x^{3}-n^{2}x$.
+
+\spg{Sectional Goals}
+\begin{itm}
+	\item[\TODO] Learn to work with Gross's $A(p)$ and $B(p)=\Res_{H\xP/\bQ}A(p)$, compute all associated invariants.
+	\item[\HOLD] Prove the full Szpiro conjecture for $A(p)$.
+	\item[\HOLD] Prove the full Colmez conjecture for $B(p)$.
+	\item[\TODO] Find answer to the questions of Gross:
+	\begin{itm}
+		\item[\DONE] (23.1.1) Does $A(p)$ has a global minimal model over $H\xP$? This is answered positively in \cite{Gross1982Minimal}.
+		\item[\TODO] (20.1.5) Is $B(p)$ isomorphic to $B_{0}$ over $\bQ$ cut out by its $L$-function in $J_{0}(p^{2})$?
+		\item[\TODO] (23.2.2) Is the modular form $g=(1/h)\Trc_{H\xP/\bQ}f_{A}$ equal to the theta series $\tta_{B}$?
+	\end{itm}
+\end{itm}
+\begin{rmk}
+	Read also \cite[6.2]{Ribet1992}, all $\bQ$-curves are modular.
+\end{rmk}
+
+% \begin{thm}
+% 	Szpiro's conjecture holds for $A(p)$.
+% \end{thm}
+% \begin{prf}[Sketch of the proof]
+% 	By \cite[Proposition~3.2]{Gross1982Minimal}, $A(p)$ admits a global minimal model over $H\xP=\bQ(j_{D})$ with discriminant $\Dta_{A(p)}=-p^{3}$.
+
+% 	$A(p)$ is good at $2$ and $3$, so the conductor is at most $p^{2}$???
+% \end{prf}
+
+% \begin{thm}
+% 	Colmez's conjecture holds for $B(p)$.
+% \end{thm}
+% \begin{prf}[Sketch of the proof]
+% 	Note that one has isomorphism $B(p)\cong\prod_{\sgm\in\Gal(H/K)}\sgm(A(p))$ over $H$. $A(p)$ already satisfies Colmez's conjecture, Faltings height is additive for products and is Galois invariant, one has that
+% 	\[
+% 		h_{\mathrm{Fal}}^{\mathrm{st}}(B(p))=hh_{\mathrm{Fal}}^{\mathrm{st}}(A(p))=-\frac{h}{2}\frac{L'(0,\chi)}{L(0,\chi)}-\frac{h}{4}\log{p}-\frac{h}{2}\log{2\pi},
+% 	\]
+% 	so the difficulty here is to analyze the CM field $T=\End_{K}(B(p))\ot\bQ$.
+
+% 	\red{How to determine all Artin characters arised from a CM pair $(T,\Phi)$ here? It seems the hard part of Colmez conjecture is on the complexity of the CM field. Note that the calculation of \cite{Yang2010Colmez,Yang2010Hilbert} depends on explicit decomposition of $A_{E,\Phi}^{0}$. Read \cite{MM1997} for analytic inputs...}
+% \end{prf}
+
+Ref:~\cite{Gross1980,Cox2013}.
+
+\begin{stp}
+	Let $K$ be an imaginary quadratic field with discriminant $\Dta_{K}$, Dirichlet character $\chi_{K}$ and Hilbert class field $H$. One has $\Gal(H/\bQ)=\Cl(\cO_{K})\rtm\sA{\tau}$.
+\end{stp}
+
+
+\begin{thm}[{\cite[Section~8]{Gross1980}}]
+	Let $E$ be an elliptic curve over a number field $F$ with complex multiplication by an order in $\cO\sbs\cO_{K}$, then one necessarily has $K\ahr H\ahr F$. $E$ uniquely determines
+	\begin{itm}
+		\item Galois representations $\rho_{\ell}:\Gal_{F}\ar K_{\ell}\xT$ for each rational prime $\ell$,
+		\item A Hecke character $\chi_{E}:\bA_{F}\xT\ar K\xT$ with conductor $f_{E}$ such that $N_{E}=f_{E}^{2}$,
+	\end{itm}
+	and that $\chi_{E,\ell}=\rho_{\ell}$ for each $\ell$, furthermore, $L(s,E/F)=L(s,\chi_{E})L(s,\oL{\chi}_{E})$.
+\end{thm}
+
+
+\begin{thm}[{\cite[Section~9]{Gross1980}}]
+	The pairs $(j_{E},\chi_{E})$ satisfying
+	\[
+		j_{E}\in H, H_{\Dta_{K}}(j_{E})=0,\quad \chi_{E}\in\Hom{}{}{(\bA_{H}\xT,K\xT)}, \chi_{E}|_{H\xT}=\Nrm_{H/K}
+	\]
+	are in bijection with elliptic curves over $H$ with complex multiplication by $\cO_{K}$, more precisely,
+	\begin{itm}
+		\item $\chi_{E}$ determines the isogeny class of $E$ over $H$.
+		\item $j_{E}$ determines the isomorphism class of $E$ over $\oL{H}$.
+	\end{itm}
+\end{thm}
+
+\begin{thm}[{\cite[Section~10]{Gross1980}}]
+	Let $E$ be an elliptic curve over $H$ with complex multiplication by $\cO_{K}$. Then $E$ descends to $H\xP$ if and only if $j_{E}$ and $\chi_{E}$ are both fixed by $\tau$, indeed,
+	\begin{itm}
+		\item $\chi_{E}$ determines the isogeny class of $E$ over $H\xP$.
+		\item $j_{E}$ determines two isomorphism classes over $H\xP$, the isogeny is a quadratic twist over $H\xP$ and is the complex multiplication over $H$.
+	\end{itm}
+	In such a case, $L(s,E/H\xP)=L(s,\chi_{E})=L(s,\oL{\chi}_{E})$.
+\end{thm}
+
+\begin{thm}[{\cite[Section~11]{Gross1980}}]
+	Let $E$ an elliptic curve over $H$ with complex multiplication by $\cO_{K}$. Then $E$ is said to be a $\bQ$-curve if it is $H$-isogenous to $\sgm(E)$ for all $\sgm\in\Gal(H/\bQ)$, if and only if $\sgm(\chi_{E})=\chi_{E}$ for all $\sgm\in\Gal(H/\bQ)$.
+	\begin{itm}
+		\item If $\Dta_{K}$ is odd, then a canonical isogeny class of $\bQ$-curve exists over $H$.
+		\item If $\Dta_{K}$ is even, then
+		\begin{itm}
+			\item $\bQ$-curves exist if $8\mid D$ or $p\mid D$ for some $p\eqv3\bmod{4}$,
+			\item $\bQ$-curves do not exist if $D=4\prod_{i}p_{i}$ where $p_{i}\eqv1\bmod{4}$.
+		\end{itm}
+	\end{itm}
+\end{thm}
+
+
+\begin{stp}
+	Assume from now on that $p\eqv3\bmod{4}$ and $p>3$, then $\cO_{K}\xT=\{\pm1\}$, the class number $h$ is odd, and the $\bQ$-curves exist.
+\end{stp}
+
+\begin{thm}[{\cite[Section~12]{Gross1980}}]
+	There is a unique $\bQ$-curve $A(p)$ over $H\xP$ with $\chi_{A(p)}=\chi_{p}$ and $\Dta_{A(p)/H\xP}=(-p^{3})$, its quadratic twist $A(p)^{-p}$ in the same isogeny class has $\Dta_{A(p)\xS/H\xP}=\kp^{6}(-p^{3})$. All other descended curves and $\bQ$-curves over $H\xP$ are quadratic twists of $A(p)$ via Kummer sequence $H^{+\tms}/H^{+\tms2}\cong \mathrm{H}_{}^{1}(G_{H\xP},\cO_{K}\xT)$.
+	\[
+		\begin{tikzcd}
+			H^{+\tms}/H^{+\tms2}\ar[r, leftrightarrow] & \text{descended curves} \\
+			\bQ\xT/\bQ^{\tms2}\ar[r, leftrightarrow]\ar[u, hook] & \bQ-\text{curves}\ar[u, hook]
+		\end{tikzcd}
+	\]
+\end{thm}
+
+\begin{thm}[{\cite[Section~13]{Gross1980}}]
+	Let $C(p)$ be the kernel of the two isogenies of minimal degree between $A(p)$ and $A(p)\xS$, then $C(p)$ and its Cartier dual are given by
+	\[
+		C(p)\cong\mu_{p}^{\ot(3p-1)/4},\quad \Hom{}{}{(C(p),\mu_{p})}=\mu_{p}^{\ot(p+1)/4}.
+	\]
+\end{thm}
+
+\begin{thm}[{\cite[Section~14]{Gross1980}}]
+	For any descended curve $B=A(p)^{\psi}$, one can compute its local invariants(Page 42) and global torsion,
+	\begin{align*}
+	  	B(H\xP)_{\mathrm{tor}}&=\begin{cases}
+								 (\bZ/2\bZ) & \text{$2$ split in $K$}\\
+								 (1)    & \text{$2$ inert in $K$}
+							   \end{cases}, \\
+	  	B(H)_{\mathrm{tor}}&=\begin{cases}
+							  (\bZ/2\bZ)^{2} & \text{$2$ split in $K$}\\
+							  (1)  & \text{$2$ inert in $K$}
+							\end{cases}.
+	\end{align*}
+\end{thm}
+
+\begin{thm}[{\cite[Section~15]{Gross1980}}]
+	Let $A$ be a $\bQ$-curve over $H\xP$, then $B=\Res_{F\xP/\bQ}(A)$ is an abelian variety over $\bQ$ id dimension $h$, one has $B\cong\prod_{\sgm\in\Gal(H/K)}\sgm(A)$. $R=\End{K}{}{(B)}$ is an order in a CM-field $T$ of degree $h$ over $K$, $R$ ramifies over $\cO_{K}$ at precisely primes dividing $h$.
+\end{thm}
+
+\begin{thm}[{\cite[Section~16]{Gross1980}}]
+	Let $A$ be a descended curve over $H\xP$, then $\Rnk_{\bZ}A(H)=2\Rnk_{\bZ}A(H\xP)$, if further $A$ is a $\bQ$-curve, then $h\mid \Rnk_{\bZ}A(H\xP)$ and $2h\mid \Rnk_{\bZ}A(H)$, $r(A):=\Rnk_{\bZ}A(H\xP)/h=\Rnk_{\bZ}A(H)/2h$ is called the $\bQ$-rank of $A$.
+\end{thm}
+
+
+\begin{thm}[{\cite[Section~16]{Gross1980}}]
+	Let $G=\Gal(H/K)$, if $\pi=\sqrt{-p}\in R$, then
+	\begin{itm}
+		\item $R/\pi R\cong(\bZ/p\bZ)[G]$ is an isomorphism of algebras.
+		\item The $G$-module $A(H)/\pi A(H)$ is isomorphic to $r(A)$ copies of regular representations of $R/\pi R$.
+	\end{itm}
+	if $\pi=[2]\in R$ and $2$ splits in $K$, then
+	\begin{itm}
+		\item $R/\pi R\cong(\cO_{K}/2\cO_{K})[G]$ is an isomorphism of algebras.
+		\item The $G$-module $A(H)/\pi A(H)$ is isomorphic to direct sum of $A(H)[\pi]$ with $r(A)$ copies of regular representations of $R/2R$.
+	\end{itm}
+\end{thm}
+
+\begin{thm}[{\cite[Section~17]{Gross1980}}]
+	Let $A=A(p)^{d}$ over $H$ be a $\bQ$-curve, $\pi=\sqrt{-p}$, or $\pi=2$ and $2$ splits in $K$, then $A[\pi]$ is defined over $K$, and $A(H)/\pi A(H)\ar \mathrm{H}_{}^{1}(H,A[\pi])$ is $\Gal(H/K)$-invariant.
+\end{thm}
+
+\begin{thm}[{\cite[Section~18]{Gross1980}}]
+	Let $A$ be a $\bQ$-curve over $H\xP$, then $B=\Res_{F\xP/\bQ}A$ has complex multiplication by $T$, which defines a Hecke character $\chi_{B}:\bA_{K}\xT\ar T\xT$ and therefore $2h$ Hecke characters $\chi_{B}^{(i)}:\bA_{K}\xT\ar\bC\xT$, then $\chi_{B}^{(i)}/\chi_{B}^{(1)}$ gives $h$ ideal class characters of $K$, one has $L(s,B/K)=L(s,B/\bQ)^{2}$ and
+	\[
+		L(s,A/H\xP)=L(s,B/\bQ)=\prod_{i=1}^{h}L(s,\chi_{B}^{(i)}).
+	\]
+
+	(\cite[Section~19]{Gross1980}) Further assume $A=A(p)^{d}$ with $(p,d)=1$, then $\Lda^{(i)}(s)=(pd/2\pi)^{s}\Gma(s)L(s,\chi_{B}^{(i)})$ satisfies the functional equation
+	\[
+		\Lda^{(i)}(2-s)=(2/p)\Sgn(d)\Lda^{(i)}(s).
+	\]
+\end{thm}
+
+\begin{thm}[{\cite[Section~20]{Gross1980}}]
+	Let $A=A(p)^{d}$ with $(p,d)=1$ and $B=\Res_{H\xP/\bQ}A$, then there is a $\bQ$-morphism $J_{0}(p^{2}d^{2})\atr B$. Indeed, for $i=1,\ldots,h$ define
+	\[
+		f_{B}^{(i)}(q)=\sum_{n\gqs1}a_{n}^{(i)}q^{n},\quad a_{n}^{(i)}=\sum_{\Nrm_{K/\bQ}(\ka)=n}\chi_{B}^{(i)}(\ka),
+	\]
+	they are newforms of level $\Gma_{0}(p^{2}d^{2})$, they give a quotient $J_{0}(p^{2}d^{2})\atr B_{0}$, then $B_{0}\ar B$ is an isogeny over $\bQ$. Moreover, $\tta_{B}(q)=(1/h)\sum_{i=1}^{h}f_{B}^{(i)}(q)$ is a theta series generating $\mathrm{H}_{}^{0}(B_{0},\Oga^{1})$ as a module over the Hecke algebra $\End{\bQ}{}{(B_{0})}\ot\bQ\cong T\xP$.
+\end{thm}
+
+% \begin{thm}[{\cite[Section~22]{Gross1980}}]
+% 	Let $L=\bQ(\zta_{p})$, and $C^{(i)}=(\Cl(\cO_{L})/\Cl(\cO_{L})^{p})^{(i)}$, then
+% \end{thm}
+
+
+\begin{rcl}[{\cite[Section~17]{Gross1980}}]
+	Let $E$ be an elliptic curve over a number field $F$, $\pi$ a non-trivial $F$-endomorphism of $E$, then the Selmer group $\Sel_{\pi}(E/F)$ and the Tate--Shafarevich group $\Sha(E/F)$ fit into the following diagram of exact sequences,
+	\[
+		\begin{tikzcd}
+			0\ar[r] & E(F)/\pi E(F)\ar[r]\ar[d, equal] & \Sel_{\pi}(E/F)\ar[r]\ar[d, hook] & \Sha(E/F)[\pi]\ar[d, hook]\ar[r] & 0 \\
+			0\ar[r] & E(F)/\pi E(F)\ar[r]\ar[d, hook] & \mathrm{H}_{}^{1}(F,E[\pi])\ar[r]\ar[d] & \mathrm{H}_{}^{1}(F,E)[\pi]\ar[r]\ar[d] & 0 \\
+			0\ar[r] & \prod_{v}E(F_{v})/\pi E(F_{v})\ar[r] & \prod_{v}\mathrm{H}_{}^{1}(F_{v},E[\pi])\ar[r] & \prod_{v}\mathrm{H}_{}^{1}(F_{v},E)[\pi]\ar[r] & 0
+		\end{tikzcd}
+	\]
+\end{rcl}
+
+
+\red{Next: add Selmer and Shafarevich group computations(Section 22).}
+
+\red{Next: Study \cite{DG1995}}
+
+
+
+\printref
+\end{document}

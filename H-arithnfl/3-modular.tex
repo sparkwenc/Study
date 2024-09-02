@@ -1,0 +1,756 @@
+\documentclass[article, a4paper, twoside]{universal}
+
+\setshowlvl{1}
+\begin{document}
+\confighead{}{}{}
+\printhead{}{}{1}
+
+
+\sct{Modular parametrization}
+
+% \begin{thm}[{\cite[Theorem~A]{Carayol1986Representations}}]
+% 	Let $F$ be a totally real field of degree $d$, and $\pi=\ot_{v}\pi_{v}$ be a cuspidal automorphic representation of $\GL_{n}(\bA_{F})$.
+% \end{thm}
+
+\ssc{Leading conjecture}
+
+\spg{Ultimate Goal} Develope whatever is needed to understand the arithmetic of the optimal quotient morphism $\phi:J_{0}(N)\atr E$ of an elliptic curve over $\bQ$ of conductor $N$. In particular, study the following questions:
+\begin{itm}
+	\item[\TODO] Extend $\phi$ to morphism of N{\'e}ron models $\phi:\cJ_{0}(N)\ar\cE$, describe the reduction of $\cJ_{0}(N)$ and $\cE$ modulo every prime $p$, describe the reduction of $\phi$ modulo every prime $p$, investigate the discriminant locus of $\phi$, prove the degree conjecture.
+	\item[\TODO] Investigate the relation between Hodge bundles $\oga_{\cJ_{0}(N)}$ and $\oga_{\cE}$ under $\phi$, then investigate the change of Faltings height along $\phi$. To put in a more general framework, systematically study the effect on Hodge bundles along a morphism of abelian varieties $f:A\ar B$, including the case that $f$ is not an isogeny.
+	\item[\TODO] Take a set of Mordell-Weil generators $\{x_{1},\cdots,x_{r}\}$ of $E(\bQ)$, investigate the fibers $\cJ_{0}(N)_{x_{i}}$. In particular, if $r=1$, describe how Heegner points appear; if $r\gqs2$, investigate the field of definition of $\cJ_{0}(N)_{x_{i}}$.
+
+	Prior to any mathematical progress, try some computational experiments using computer algebra systems to see what may happen: E.g., 37.a1, 389.a1, 5077.a1 are rank 1,2,3 curves with trivial torsion and explicit Mordell-Weil generators. (Note that 5077.a1 verifies BSD as in \cite{BGZ1985})
+\end{itm}
+
+\begin{rmk}
+	The same topic over global function field case, for example, the degree conjecture has been extensively pursued by Papikian, suggested by Mazur, in his thesis\cite{Papikian2003} and some of his subsequent papers.
+
+	However the author wants to restrict attention only to $\bQ$ in this note before he can prove anything novel and non-trivial, since the arithmetic complexity of function fields and number fields are substantially different, any kind of generalization without direct application to the ultimate goal should be viewed as a distraction.
+\end{rmk}
+
+\begin{thm}
+	The following conjectures are equivalent.
+	\begin{enr}[label = (\arabic*)]
+		\item (ABC conjecture) For any $\eps>0$, there exists an effectively computable constant $C_{\eps}$ such that:
+
+		For any coprime integers $a,b,c$ satisfying $a+b+c=0$, one has
+		\[
+			\log\max\{\sP{a},\sP{b},\sP{c}\}\lqs(1+\eps)\sum_{p\mid abc}\log{p}+C_{\eps}.
+		\]
+		\item (Degree conjecture) For any $\eps>0$, there exists an effectively computable constant $C_{\eps}$ such that:
+
+		For any elliptic curve $E$ over $\bQ$ of conductor $N$ with modular parametrization $\phi:X_{0}(N)\ar E$, one has
+		\[
+			\log\Deg\phi\lqs (2+\eps)\log{N}+C_{\eps}.
+		\]
+		\item (Discriminant conjecture) For any $\eps>0$, there exists an effectively computable constant $C_{\eps}$ such that:
+
+		For any elliptic curve $E$ over $\bQ$ of conductor $N$, one has
+		\[
+			\log{\sP{\Dta_{E}}}\lqs (6+\eps)\log{N_{E}}+C_{\eps}.
+		\]
+		\item (Effective Mordell) There exists effectively computable constants $A,B$ such that:
+
+		For any smooth projective curve $X$ over $\bQ$ of genus $g\gqs2$, and $P\in X(K)$, one has
+		\[
+			h(P)\lqs A\frac{\log{\sP{\Dta_{K}}}}{[K:\bQ]}+B.
+		\]
+	\end{enr}
+\end{thm}
+
+
+
+\begin{prf}[Sketch of the proof]
+	\red{TODO: Write down the proof for the equivalences}
+
+	Consider using the following literatures:
+	\begin{itm}
+		\item Effective Mordell implies discriminant conjecture: read \cite[Page~55]{MB1990Hauteurs}. The key is to use the Belyi map from a modular curve of genus $g\gqs2$, $X_{0}(N)\ar X(1)=\bP^{1}$.
+		\item ABC conjecture implies effective Mordell: read \cite{Elkies1991ABC}, the key is also to use the Belyi map.
+		\item Degree conjecture = effective Mordell: read \cite{MM1994Modular}, the key is to use
+		\[
+			h_{\text{Fal}}(E)=\frac{1}{2}\log\Deg\phi-\log\sP{c_{\phi}}-\log(f,f),
+		\]
+		and give an estimate of $\log(f_{E},f_{E})=O(\log{N_{E}})$  via $L(2,\Sym^{2}f_{E})$.
+		\item ABC conjecture = discriminant conjecture: read \cite{Frey1989}, the key is to use $y^{2}=x(x-A)(x+B)$.
+	\end{itm}
+
+	Note that the inequality in ABC conjecture cannot be improved in the following sense: (\cite[Theorem~2]{ST1986})	There exists infinitely many coprime triples $a,b,c$ such that $N=\prod_{p\mid abc}p$.
+	\[
+		\log\max\{\sP{a},\sP{b},\sP{c}\}>\log{N}+\frac{\log^{1/2}{N}}{\log\log{N}}.
+	\]
+\end{prf}
+
+\begin{rmk}
+	More related conjectures:
+	\begin{itm}
+		\item BSD together with $\sP{\Sha}=O(N^{1/2+\eps})$, read Goldfeld--Szpiro\cite{GS1995Bounds}.
+		\item non-existence of Siegel zeros, read Granville-Stark \cite{GS2000abc}.
+	\end{itm}
+
+	Note that it is proved that the discriminant conjecture can be reduced to semistable case \cite[Proposition~8.2]{PS2000}. Then it seems suffice to prove that at multiplicative primes, the $I_{n}$-fibers has bounded number of geometrically irreducible components according to the formula of Ogg--Saito. However, locally $n$ is indeed unbounded, so it is impossible to approach it by solely analyzing the local behaviors, one must overcome some global difficulties to approach it. As an exercise, semi-stable elliptic curves with exactly one bad place should have bounded discriminant: Can I quickly prove this?
+
+	% The relation between $h(j(E))$ and $h_{\text{Fal}}(E)$ has been done in works of Silverman and Pazuki, alternatively one can also see this via the Belyi degree, by combining works of Javanpeykar and Khadjavi--Scharaschkin.
+\end{rmk}
+
+\ssc{Automorphic to Galois}
+The following is a theorem of 1970s.
+\begin{thm}
+	Let $f\in S_{k}(\Gma_{1}(N),\eps)$ be an eigenform, $K_{f}$ the number field generated by its eigenvalues. Let $\ell$ be a rational prime, $\lda\mid \ell$ a place of $K_{f}$. Then there exists a unique continuous irreducible representation $\rho_{f,\lda}:G_{\bQ}\ar\GL_{2}(K_{f,\lda})$ unramified outside $N\ell$ and
+	\[
+		\Det(1-\rho_{f,\lda}(\Frb_{p})x)=1-a_{p}(f)x+\eps(p)p^{k-1}x^{2},\quad \fal p\nmid N\ell.
+	\]
+\end{thm}
+
+\begin{prf}[Sketh of the proof]
+	We collect the arguments for the existence in cases $k\gqs2$, $k=1$, and irreducibility below:
+	\spg{Existence for $k\gqs2$:} This is due to Shimura\cite{Shimura1971AF} and Deligne\cite{Deligne1971Formes} (A to M to G).
+
+	Let $\pi:E\ar X(N)$ be the universal elliptic curve, consider the $\bQ$-vector space
+	\[
+		W^{k}=\mathrm{H}_{}^{1}(X(N),\Sym^{k-2}(R^{1}\pi\zS\uL{\bQ})).
+	\]
+	Then one has the Shimura isomorphism $W^{k}_{\ift}:=W^{k}\ot_{\bQ}\bC\cong S_{k}(\Gma(N))\op\oL{S_{k}(\Gma(N))}$ and $\ell$-adic comparison isomorphism $W^{k}_{\ell}:=W^{k}\ot_{\bQ}\bQ_{\ell}\cong\mathrm{H}_{\text{{\'e}t}}^{1}(X(N)_{\oL{\bQ}},\Sym^{k-2}(R^{1}\pi\zS\uL{\bQ_{\ell}}))$. $W^{k}_{\ell}$ is unramified outside $N\ell$ (\cite[4.2]{Deligne1971Formes}), and admits the Hecke action and Galois action, by Eichler-Shimura congruence (\cite[4.9]{Deligne1971Formes}),
+	\[
+		\Det(1-\Frb_{p}x\mid W^{k}_{\ell})=\Det(1-T_{p}x+p^{k-1}R_{p}x^{2}\mid S_{k}(N)),
+	\]
+	so $G_{\bQ}\Lac W^{k}_{\ell}\ot_{\bT\ot_{\bQ}\bQ_{\ell}}K_{f,\lda}$ is the desired representation. Note that if $k=2$, then
+	\[
+		W_{\ell}^{2}=\mathrm{H}_{\text{{\'e}t}}^{1}(X(N)_{\oL{\bQ}},\uL{\bQ_{\ell}}) = \bQ_{\ell}\ot_{\bZ_{\ell}}\plim_{n}\mathrm{H}_{\text{{\'e}t}}^{1}(X(N)_{\oL{\bQ}},\mu_{\ell^{n}})\xV \cong \bQ_{\ell}\ot_{\bZ_{\ell}}\plim_{n}\mathrm{H}_{\text{{\'e}t}}^{1}(X(N)_{\oL{\bQ}},\bG_{m})\xV[\ell^{n}] = V_{\ell}(\Jac(X(N))\xV)
+	\]
+	by taking cohomology of the Kummer sequence is the construction of Shimura\cite[7.23]{Shimura1971AF}.
+
+	\spg{Existence for $k=1$:} This is due to Deligne-Serre\cite{DS1974} (A to G).
+
+	For each $\ell$, take the normalized Eisenstein series $E_{\ell-1}$, then $E_{\ell-1}\eqv1\bmod{\lda}$ and $fE_{\ell-1}\in S_{\ell}(\Gma_{1}(N),\eps)$, by Deligne-Serre lifting lemma (\cite[6.11]{DS1974}), there exists an eigenform $g\in S_{\ell}(\Gma_{1}(N),\eps)$ such that $g\eqv fE_{\ell-1}\eqv f\bmod{\lda}$. Now $\ell\gqs2$, by the construction above for $k\gqs2$, there exists $\oL{\rho}_{g,\lda}:G_{\bQ}\ar\GL_{2}(\cO_{K_{g},\lda})\ar\GL_{2}(\kpa_{g,\lda})$ unramified outside $N\ell$ and
+	\[
+		\Det(1-\oL{\rho}_{g,\lda}(\Frb_{p})x)=1-a_{p}(g)x+\eps(p)p^{\ell-1}x^{2}=1-a_{p}(f)x+\eps(p)x^{2},\quad \fal p\nmid N\ell.
+	\]
+	Denote by $\vfi_{f,\lda}$ the semi-simplification of $\oL{\rho}_{g,\lda}$, by Chebotarev density theorem and the above congruence, $\Det(1-\vfi(s)x)\in\kpa_{f,\lda}[x],\fal s\in G_{\bQ}$, since Schur index of finite field is $1$, $\vfi_{f,\lda}$ descends to $\kpa_{f,\lda}$. If $\ell$ splits in $K_{f}$, then $\kpa_{f,\lda}=\bF_{\ell}$, combining the Rankin-Selberg method applied to $L(s,f\tms\oL{f})$ (\cite[5.5, 8.3]{DS1974}), and a classification result of semi-simple subgroups of $\GL_{2}(\bF_{\ell})$ (\cite[7.2]{DS1974}), one can show $\Img(\vfi_{f,\lda})<\GL_{2}(\bF_{\ell})$ has bounded size $A$ independent of $\ell$ (\cite[8.4]{DS1974}).
+
+	Now one has for each $\ell$, semi-simple mod-$\ell$ representation $\vfi_{f,\lda}$ with desired Hecke eigensystem attached to $f$ and with uniformly bounded image. To lift them to characteristic $0$, consider the set
+	\begin{itm}
+		\item $Y$ of polynomials of the form $(1-\afa x)(1-\bta x)$ with $\afa,\bta$ being roots of unity of order at most $A$. This set is finite.
+		\item $L$ of primes $\ell$ such that (1) $\ell$ splits in $K_{f}$, (2) $\ell>A$, (3) $R\eqv S\bmod{\lda}$ implies $R=S$ for all $R,S\in Y$. This set is infinite.
+	\end{itm}
+	Take any $\ell\in L$, the semi-simple representation $\vfi_{f,\lda}:G_{\bQ}\ar\GL_{2}(\bF_{\ell})$ constructed above has image bounded by $A$ and hence prime to $\ell$, so $\vfi_{f,\lda}$ lifts to $\oT{\vfi}_{f,\lda}:G_{\bQ}\ar\GL_{2}(\cO_{K_{f},\lda})$ (c.f. \cite[4.4]{Feit1967}) with
+	\[
+		\Det(1-\oT{\vfi}_{f,\lda}(\Frb_{p})x)\eqv1-a_{p}(f)x+\eps(p)x^{2}\eqv R_{\ell}(x)\bmod{\lda},\quad p\nmid N\ell,
+	\]
+	for some $R_{\ell}(x)\in Y$. The right congruence exists for all $\ell\in L$, but $Y$ is finite, so there exists some $R(x)\in Y$ such that the congruence holds for infinite many $\ell\in L$, so $1-a_{p}(f)x+\eps(p)x^{2}=R(x)\in Y$. Therefore the left congruence is also a strict equality, because the left hand side belongs to $Y$. Now for a different choice $\ell'\in L$,
+	\[
+		\Det(1-\oT{\vfi}_{f,\lda}(\Frb_{p})x)=1-a_{p}(f)x+\eps(p)x^{2}=\Det(1-\oT{\vfi}_{f,\lda'}(\Frb_{p})x),\quad \fal p\nmid N\ell\ell',
+	\]
+	so $\oT{\vfi}_{f,\lda}$ is indeed defined over $K_{f}\sbs K_{f,\lda}$ and is unramified outside $N$ with the desired Hecke eigensystem.
+
+
+	\spg{Irreducibility for $k\gqs1$:} This is due to Ribet\cite[2.3]{Ribet1977} by slightly modifying\cite[8.7]{DS1974}.
+
+	Suppose $\rho_{f,\lda}$ is reducible, then there exists characters $\vfi_{i}=\eps_{i}\chi_{\ell}^{n_{i}}:G_{\bQ}\ar K_{f,\lda}\xT, i=1,2$, where $\eps_{i}$ are of finite order, $\eps_{1}\eps_{2}=\eps, n_{1}+n_{2}=k-1$ and
+	\[
+		a_{p}=\eps_{1}(p)p^{n_{1}}+\eps_{2}(p)p^{n_{2}},\quad p\nmid N\ell.
+	\]
+	Then Rankin's estimate says that $\sP{a_{p}}\lqs2p^{k/2-1/5}$, hence $n_{1}=n_{2}=(k-1)/2$ and $k,\eps$ must be odd. Therefore $\eps_{1}\eps_{2}\xI$ is non-trivial and $\sum_{p\nmid N\ell}\sP{a_{p}}^{2}p^{-s}=-2\log(s-k)+O(1)$ as $s\ar k\xP$, which is not possible, because the Rankin-Selberg method applying to $L(s,f\tms\oL{f})$ will instead imply $\sum_{p\nmid N\ell}\sP{a_{p}}^{2}p^{-s}=-\log(s-k)+O(1)$ as $s\ar k\xP$ (\cite[5.1]{DS1974}).
+\end{prf}
+
+\begin{rmk}
+	To proceed further,
+	\begin{itm}
+		\item[\TODO] (1990s) Wiles, Taylor\cite{Wiles1988,Taylor1991}: $p$-adic interpolation.
+		\item[\TODO] (2010s) Harris-Lan-Taylor-Thorne, Scholze\cite{HLTT2016,Scholze2015}: Borel-Serre compactification, Hodge-Tate period map at infinite level.
+		\item[\TODO] Explore the work of Bruggeman--Lewis--Zaiger\cite{BLZ2015}, work out the same thing from Maass forms.
+	\end{itm}
+
+\end{rmk}
+
+
+\ssc{Modularity lifting}
+Ref:~\cite{Wiles1995,TW1995,BCDT2001}.
+
+\begin{thm}
+	Let $E$ be an elliptic curve over $\bQ$ of conductor $N$, and $\rho_{E,\ell}:G_{\bQ}\ar\GL_{2}(\bQ_{\ell})$ the associated Galois representation. Then the following are equivalent.
+	\[
+		\begin{tikzcd}
+			\emat{\text{$L(s,E)=L(s,f)$ for some}\ar[d, Rightarrow] \\ \text{cusp eigenform $f$}} & \emat{\text{$L(s,E)=L(s,f)$ for some}\ar[l, Rightarrow] \\ \text{eigenform $f\in S_{2}(\Gma_{0}(N))$}}\ar[r, Rightarrow, blue, "(3)"] & \emat{\text{There is a non-constant} \\ \text{morphism $\phi:X_{0}(N)\rightarrow E$}}\ar[d, Rightarrow] \\
+			\emat{\text{$\rho_{E,\ell}$ is modular for} \\ \text{all rational prime $\ell$}}\ar[r, Rightarrow] & \emat{\text{$\rho_{E,\ell}$ is modular for} \\ \text{one rational prime $\ell$}}\ar[u, Rightarrow, blue, "(2)"'] & \emat{\text{There is a non-constant} \\ \text{morphism $\phi:X_{0}(N)_{\bC}\rightarrow E_{\bC}$}}\ar[l, Rightarrow, blue, "(1)"']
+		\end{tikzcd}
+	\]
+	Any $E$ satisfying one of above is said to be modular.
+\end{thm}
+
+\begin{prf}[Sketch of the proof]
+	The non-obvious implications are blue arrows, we collect below:
+
+	\begin{enr}[label = (\arabic*)]
+		\item $E$ is of genus one, so $\Oga_{E}^{1}\cong\cO_{E}$. Take $\oga\in \mathrm{H}_{}^{0}(E,\Oga_{E}^{1})$, then $\pi\xS\oga=cf(q)\dif{q}/q$, and $f\in S_{2}(\Gma_{0}(N))$ is an eigenform with $a_{p}(f)=p+1-\#E(\bF_{p})$ for $p\nmid N$ by Eichler-Shimura congruence, so $\rho_{E,\ell}\cong\rho_{f,\ell}$ for all $\ell$.
+		\item If $\rho_{E,\ell}\cong\rho_{f,\ell}$ for some eigenform $f\in S_{2}(\Gma_{0}(M))$, then $K_{f}=\bQ$ and $L_{v}(s,E)=L_{v}(s,f)$ for almost all $v$. Shimura's construction\cite[7.14]{Shimura1971AF} gives a non-constant map $X_{0}(M)\ahr J_{0}(M)\atr A_{f}$ over $\bQ$, where $A_{f}$ is an abelian variety with $\Dim A_{f}=[K_{f}:\bQ]=1$ and $L_{v}(s,f)=L_{v}(s,A_{f})$ for all $v\nmid M\ell$. Carayol's local-global compatibility theorem\cite[0.8]{Carayol1986Representations} guarantees that indeed $L(s,f)=L(s,A_{f})$ and $A_{f}$ has conductor $M$. Faltings' isogeny theorem\cite[Page~361]{Faltings1983Mordell} implies that there is an isogeny $A_{f}\ar E$ over $\bQ$, so $M=N$.
+		\item $L(s,E)=L(s,f)$ so $K_{f}=\bQ$ and $L_{v}(s,E)=L_{v}(s,f)$ for almost all $v$. By the same argument as in (2), the composition $X_{0}(N)\ahr J_{0}(N)\atr A_{f}\ar E$ is the desired non-constant map.
+	\end{enr}
+\end{prf}
+
+\begin{thm}[{\cite[Theorem~A]{BCDT2001}}]
+	Let $E$ be an elliptic curve over $\bQ$, then $E$ is modular.
+\end{thm}
+
+\begin{prf}[Sketch of the proof]
+	We only collect here the proof of Wiles\cite[Theorem~5.2]{Wiles1995} in semistable case. It suffices to prove either $\rho_{E,3}$ or $\rho_{E,5}$ is modular.
+
+	\spg{Patching argument} One proves $R\cong\bT$ theorem by Taylor--Wiles patching to establish modularity lifting.
+
+	(\cite[Theorem~0.2]{Wiles1995}) Let $p$ be an odd prime, $\rho_{0}:G_{\bQ}\ar\GL_{2}(\oL{\bF}_{p})$ be an odd and irreducible representation, ordinary or flat at $p$. Suppose $\rho_{0}$ is modular, and (1) $\rho_{0}$ is absolutely irreducible restricted to $\bQ(\sqrt{(-1)^{(p-1)/2}p})$. (2) If $q\eqv-1\bmod{p}$ is ramified in $\rho_{0}$ then either $\rho_{0}$ is not absolutely irreducible restricted to $D_{q}$ or $\rho_{0}$ is absolutely irreducible restricted to $I_{q}$. Then any lifting of $\rho_{0}$ is modular, if $\rho_{0}$ is ordinary with $\Det\rho=\eps^{k-1}\chi$ then $\rho$ is of weight $k$, if $\rho_{0}$ is flat then $\rho$ is of weight $2$.
+
+
+	\spg{Modularity switch} One explores the deformation of elliptic curves to establish $3/5$ modularity switch.
+
+	If $\oL{\rho}_{E,3}$ is irreducible, to prove $\rho_{E,3}$ is modular, it suffices to prove (1) $\oL{\rho}_{E,3}$ is absolutely irreducible restricted to $\bQ(\sqrt{-3})$, because $\bQ(\sqrt{-3})$ has no non-trivial abelian extensions unramified outside $3$ and of degree prime to $3$, (2) $\oL{\rho}_{E,5}$ is modular, by Langlands--Tunnell.
+
+	(\cite[Theorem~5.2]{Wiles1995}) If $\oL{\rho}_{E,3}$ is reducible, then $\oL{\rho}_{E,5}$ is irreducible since $X_{0}(15)$ only has $4$ non-cuspidal $\bQ$-points. To prove $\rho_{E,5}$ is modular, it suffices to prove (1) $\oL{\rho}_{E,5}$ is absolutely irreducible, (2) $\oL{\rho}_{E,5}$ is modular. For (1), the only non-trivial abelian extension of $\bQ(\sqrt{5})$ unramified outside $5$ and of degree prime to $5$ is $\bQ(\zta_{5})$, $\oL{\rho}_{E,5}$ is not an induced representation from $\bQ(\sqrt{5})$ by checking in ordinary and supersingular case respectively. It remains to prove (2).
+
+	Denote by $L$ the splitting field of $\oL{\rho}_{E,5}$, then $\oL{\rho}_{E,5}$ defines a class $\rho\in \mathrm{H}_{}^{1}(\Gal(L/\bQ),\Aut_{L}(X(5)))$, and $E$ defines a $\bQ$-point on an irreducible component $C$ of the twist $X(5)^{\rho}$. $C$ has genus $0$ and function field $\bQ(t)$, whose $\bQ$-points parametrizes elliptic curves $E'$ with $\oL{\rho}_{E',5}\cong\oL{\rho}_{E,5}$, and $E$ is represented by some $t_{2}\in\bQ$. Now to prove $\oL{\rho}_{E,5}$ is modular it suffices to find a point $E'$ such that (1) $\oL{\rho}_{E',3}$ is irreducible and (2) $E'$ or a quadratic twist of which is semistable at $5$. To prove this, note that the moduli $C'$ of elliptic curves $E'$ such that $\oL{\rho}_{E',3}$ is reducible is a degree $4$ irreducible covering of $C$, this gives an irreducible polynomial $f(x,t)\in\bQ(t)[x]$. Hilbert's irreducibility guarantees the existence of $t_{1}\in\bQ$ such that $f(x,t_{1})$ is irreducible, by Chebotarev's density theorem one can choose $p_{1}\neq5$ such that $f(x,t_{1})\bmod{p_{1}}$ has no roots. By strong approximation one can choose $t_{0}\in\bQ$ such that $\dP{t_{0}-t_{1}}_{p_{1}}$ and $\dP{t_{0}-t_{2}}_{5}$ are both small, finally one verifies $\dP{t_{0}-t_{1}}_{p_{1}}$ being small implies (1), and $\dP{t_{0}-t_{2}}_{5}$ being small implies (2).
+\end{prf}
+
+
+
+\ssc{Gross-Zagier formula}
+
+Ref:~\cite{GZ1986}.
+
+\sss{Setup and the main identities}
+
+\begin{stp}
+	Let $N\gqs2$ be an integer, $K$ be an imaginary quadratic field with discriminant $D$ and Dirichlet character $\eps:(\bZ/D\bZ)\xT\ar\{\pm1\}$. Let $\cO_{K}$ be the ring of integers of $K$, with $u$ being half of its units and $E$ be an elliptic curve with complex multiplication by $\cO_{K}$. The Hilbert class field $H$ of $K$ is given by $H=K(j(E))$, one has isomorphisms of order $h$ groups by the Artin map
+	\[
+		G:=\Cl_{K}=\Pic(\cO_{K})\cong\Gal(H/K),
+	\]
+	ideal class $\cA\in\Cl_{K}$ and $\sgm\in\Gal(H/K)$ refer to the same element under this isomorphism. Let $X_{0}(N)$ be the modular curve $\Gma_{0}(N)\bs\bH\xS$, let $J=\Jac(X_{0}(N))$ be the Jacobian variety of $X_{0}(N)$. The two $\bC$-vector spaces below both admit Heck action by $\bT$ and Galois action by $G$, moreover,
+	\begin{itm}
+		\item $J(H)\ot\bC$ admits the N{\'e}ron-Tate height pairing $\sA{\cdot,\cdot}$
+		\item $S_{2}(\Gma_{0}(N))$ admits the Petersson inner product $\sR{\cdot,\cdot}$
+	\end{itm}
+
+	(Heegner condition) Assume $(D,N)=1$, $D\eqv1\pmod{4}$ and every prime $p_{i},1\lqs i\lqs s$ dividing $N$ splits in $K$. Then there are $2^{s}h$ Heegner points of discriminant $D$ in $X_{0}(N)$, all defined over $H$, they are simply-transitively permuted by $W\tms G$, where $W\cong(\bZ/2\bZ)^{s}$ is the Atkin-Lehner involutions, they can be represented by pairs $(\cA,\kn)$, where $\cA\in G$, $\kn$ a primitive ideal of norm $N$.
+
+	The main objects of study can be introduced:
+	\begin{enr}
+		\item take a newform $f\in S_{2}(\Gma_{0}(N))$ and extend to a Hecke-eigenbasis $\{f_{1}=f,f_{2},\ldots,f_{d}\}$,
+		\item take a character $\chi:G\ar\bC\xT$,
+		\item take a Heegner point $x\in X_{0}(N)(H)$ and $c=(x)-(\ift)\in J(H)$,
+	\end{enr}
+	the $\chi$-eigenvector $c_{\chi}=\sum_{\sgm\in G}\chi\xI(\sgm)c^{\sgm}\in J(H)\ot\bC$ under Galois action further decomposes $c_{\chi}=\sum_{j=1}^{d}c_{\chi}^{(j)}$ under Hecke action in the sense that $T_{m}c_{\chi}^{(j)}=a_{m}(f_{j})c_{\chi}^{(j)},1\lqs j\lqs d$.
+
+	Then the Rankin $L$-series $L_{\cA}(f,s), L(f,\chi,s)$ are defined by
+	\[
+		L_{\cA}(f,s):=\sR{\sum_{n\gqs1,(n,N)=1}\frac{\eps(n)}{n^{2s-1}}}\sR{\sum_{m\gqs1}\frac{a_{m}(f)r_{\cA}(m)}{m^{s}}},\quad L(f,\chi,s):=\sum_{\cA\in G}\chi(\cA)L_{\cA}(f,s).
+	\]
+\end{stp}
+
+\begin{thm}[{\cite[I.6.3]{GZ1986}}]\label{thm:GZmain}
+	With the notations above, one has
+	\[
+		L'(f,\chi,1)=\frac{8\pi^{2}(f,f)}{\sP{D}^{1/2}u^{2}h}\sA{c_{\chi}^{(1)},c_{\chi}^{(1)}}.
+	\]
+\end{thm}
+
+\begin{prf}[Sketch of the proof]
+	By \cref{thm:GZpart}, it suffices to show
+	\[
+		(f,h\sum_{\cA\in G}\chi(\cA)g_{\cA})=\sR{f,f}\sA{c_{\chi}^{(1)},c_{\chi}^{(1)}},
+	\]
+	note that one has two decompositions of $c_{\chi}=\sum_{\sgm\in G}\chi\xI(\sgm)c^{\sgm}=\sum_{j=1}^{d}c_{\chi}^{(j)}$, so for each $m\gqs1$,
+	\begin{align*}
+	  \sA{c_{\chi},T_{m}c_{\chi}} &= \sum_{\sgm,\tau}\chi(\tau\xI\sgm)\sA{c^{\tau},T_{m}c^{\sgm}} =h\sum_{\sgm}\chi(\sgm)\sA{c,T_{m}c^{\sgm}},\\
+	  \sA{c_{\chi},T_{m}c_{\chi}} &= \sum_{i,j}a_{m}(f_{j})\sA{c_{\chi}^{(i)},c_{\chi}^{(j)}}=\sum_{j}a_{m}(f_{j})\sA{c_{\chi}^{(j)},c_{\chi}^{(j)}},
+	\end{align*}
+	therefore,
+	\begin{align*}
+	  h\sum_{\cA\in G}\chi(\cA)g_{\cA} = h\sum_{\cA\in G}\sum_{m\gqs1}\chi(\cA)\sA{c,T_{m}c^{\sgm}}q^{m} = \sum_{j}\sum_{m\gqs1}a_{m}(f_{j})\sA{c_{\chi}^{(j)},c_{\chi}^{(j)}}q^{m} = \sum_{j}\sA{c_{\chi}^{(j)},c_{\chi}^{(j)}}f_{j},
+	\end{align*}
+	then pairing with $f$ gives exactly $(f,f)\sA{c_{\chi}^{(1)},c_{\chi}^{(1)}}$.
+\end{prf}
+
+\begin{thm}[{\cite[I.6.1]{GZ1986}}]\label{thm:GZpart}
+	$g_{\cA}(z)=\sum_{m\gqs1}\sA{c,T_{m}c^{\sgm}}q^{m}\in S_{2}(\Gma_{0}(N))$ satisfies
+	\[
+		L_{\cA}'(f,1)=\frac{8\pi^{2}}{\sP{D}^{1/2}u^{2}}(f,g_{\cA}).
+	\]
+\end{thm}
+
+\begin{prf}[Sketch of the proof]
+	First, for any $\bQ$-linear map $\afa:\bT\ar \bC$, $\sum_{m\gqs1}\afa(T_{m})q^{m}\in S_{2}(\Gma_{0}(N))$. Then the identity can be proved in two steps
+	\begin{enr}
+		\item (Analytic) The Rankin $L$-series $L_{\cA}'(f,1)$ can be computed by a cusp form $\phi_{\cA}=\sum_{m\gqs1}a_{m}q^{m}\in S_{2}(\Gma_{0}(N))$,
+		\[
+			L_{\cA}'(f,1)=\frac{8\pi^{2}}{\sP{D}^{1/2}}(f,\phi_{\cA}),
+		\]
+		there are closed formulae of $a_{m}$ for $(m,N)=1$ by \cref{thm:cform}.
+		\item (Geometric) The global height pairing $\sA{c,T_{m}c^{\sgm}}$ can be computed by summing local contributions,
+		\[
+			\sA{c,T_{m}c^{\sgm}}=\sA{c,T_{m}c^{\sgm}}_{\ift}+\sA{c,T_{m}c^{\sgm}}_{\text{fin}},
+		\]
+		there are closed formulae of them for $(m,N)=1$ by \cref{thm:htinf} and \cref{thm:htfin}.
+
+	\end{enr}
+	Now by comparing coefficients one finds $u^{2}a_{m}=\sA{c,T_{m}c^{\sgm}}$ for $(m,N)=1$, so $u^{2}\phi_{\cA}-g_{\cA}$ is an oldform and is orthogonal to $f$, the desired identity is proved.
+\end{prf}
+
+
+\sss{Derivative of Rankin $L$-series}
+
+\begin{rcl}
+Some properties of $L$-functions and arithmetic functions are collected here for convenience.
+
+The desired functional equation of $L_{\cA}(f,s)$ is
+\[
+	\sR{\frac{N\sP{D}}{4\pi^{2}}}^{s}\Gma(s)^{2}L_{\cA}(f,s)=-\eps(N)\sR{\frac{N\sP{D}}{4\pi^{2}}}^{2-s}\Gma(2-s)^{2}L_{\cA}(f,2-s).
+\]
+
+The functional equation $L(s,\eps)$ of $K$ is
+\[
+	\sR{\frac{\sP{D}}{\pi}}^{s/2}\Gma(\frac{1+s}{2})L(s,\eps)=\sR{\frac{\sP{D}}{\pi}}^{(1-s)/2}\Gma(\frac{2-s}{2})L(1-s,\eps).
+\]
+
+\end{rcl}
+
+\begin{thm}[{\cite[IV.6.9]{GZ1986}}]\label{thm:cform}
+	Assume $\eps(N)=1$, then there exists $\phi_{\cA}\in S_{2}(\Gma_{0}(N))$ such that
+	\[
+		L_{\cA}(f,1)=0,\quad L_{\cA}'(f,1)=\frac{8\pi^{2}}{\sP{D}^{1/2}}(f,\phi_{\cA}),\quad \fal f\in S_{2}^{\mathrm{new}}(\Gma_{0}(N)),
+	\]
+	where $a_{m}:=a_{m}(\phi_{\cA})$ for $(m,N)=1$ is given by
+	\begin{align*}
+	  a_{m} = &-\sum_{1\lqs n\lqs \frac{m\sP{D}}{N}}\sgm_{\cA}'(n)r_{\cA}(m\sP{D}-nN)+\frac{h}{u}r_{\cA}(m)\log\frac{N}{m} \\
+			  &+\frac{h\kpa}{u^{2}}\sS{\sgm_{1}(m)\sR{\log\frac{N}{\sP{D}}+2\sum_{p\mid N}\frac{\log p}{p^{2}-1}+2+2\frac{\zta'(2)}{\zta(2)}-2\frac{L'(1,\eps)}{L(1,\eps)}}+\sum_{d\mid m}d\log\frac{m}{d^{2}}} \\
+			  &+\frac{h}{u}r_{\cA}(m)\sS{2\frac{L'(1,\eps)}{L(1,\eps)}-2\gma+\log\frac{\sP{D}}{4\pi^{2}}}-\lim_{s\ar0}\sS{2\sum_{n=1}^{\ift}\sgm_{\cA}(n)r_{\cA}(m\sP{D}+nN)Q_{s}\sR{1+\frac{2nN}{m\sP{D}}}+\frac{h\kpa\sgm_{1}(m)}{u^{2}s}}
+	\end{align*}
+\end{thm}
+
+\begin{prf}[Sketch of the proof]
+	This is proved in three steps:
+	\begin{enr}
+		\item Rankin's method produces a function $\oT{\Phi}_{s}$ with the desired inner product property by \cref{thm:Rankin}.
+		\item The Fourier coefficients $\{a_{m}(\oT{\Phi})\}$ of $\oT{\Phi}=\sP{D}^{1/2}(2\pi)\xI\ptl_{s}\oT{\Phi}_{s}|_{s=0}$ can be computed by \cref{thm:coef}.
+		\item Holomorphic projection computes new Fourier coefficients $\{a_{m}(\Phi)\}$ from $\{a_{m}(\oT{\Phi})\}$ by \cref{thm:Sturm}.
+	\end{enr}
+	Then $\phi_{\cA}:=\Phi\in S_{2}(\Gma_{0}(N))$ is the desired cusp form.
+
+
+	Only a key part of the integration in the last step when applying \cref{thm:Sturm} is collected here, other parts are easy to write down by carefully tracing back the definitions. Brief the notation by
+	\[
+		C_{n}=\sgm_{\cA}(n)r_{\cA}(m\sP{D}+nN)\in O(n^{c}),\fal c>0,\quad E=-24\afa(1)\sgm_{1}(m)=\frac{h\kpa}{u^{2}}\sgm_{1}(m),
+	\]
+	also recall that the Legendre function of second kind $Q_{s-1}(t)$ satisfies
+	\begin{align*}
+	  Q_{s-1}(t)&=\int_{0}^{\ift}(t+\sqrt{t^{2}-1}\cosh u)^{-s}\dif{u},\\
+	  Q_{0}(1+2t)=\frac{1}{2}\log(1+\frac{1}{t})&, \quad Q_{s}(1+2t)=\frac{\Gma(s+1)^{2}}{2\Gma(2s+2)}[t^{-s-1}+O(t^{-s-2})]\text{ as $t\ar\ift$},
+	\end{align*}
+	then one has
+	\begin{align*}
+	  &\lim_{s\ar 0}\sS{4\pi m\sum_{n=1}^{\ift}C_{n}\int_{0}^{\ift}y^{s}\dif{y}\int_{1}^{\ift}\frac{\dif{x}}{x}e^{-4\pi my\sR{1+\frac{nN}{m\sP{D}}x}}+\frac{E}{s}} \\
+	  =&\lim_{s\ar0}\sS{\sum_{n=1}^{\ift}C_{n}\frac{\Gma(s+1)}{(4\pi m)^{s}}\int_{1}^{\ift}\frac{\dif{x}}{x}\sR{1+\frac{nN}{m\sP{D}}x}^{-s-1}+\frac{E}{s}}\\
+	  =&\lim_{s\ar 0}\sS{\sum_{n=1}^{\ift}C_{n}\frac{2\Gma(2s+2)}{(4\pi m)^{s}\Gma(s+2)}Q_{s}\sR{1+\frac{nN}{m\sP{D}}}+\frac{E}{s}} \\
+	  =&\lim_{s\ar0}\sS{2\sum_{n=1}^{\ift}C_{n}Q_{s}\sR{1+\frac{nN}{m\sP{D}}}+\frac{E}{s}}+E\lim_{s\ar0}\sS{\frac{(4\pi m)^{s}\Gma(s+2)}{\Gma(2s+2)}-\frac{1}{s}}\\
+	  =&\lim_{s\ar0}\sS{2\sum_{n=1}^{\ift}\sgm_{\cA}(n)r_{\cA}(m\sP{D}+nN)Q_{s}\sR{1+\frac{nN}{m\sP{D}}}+\frac{h\kpa\sgm_{1}(m)}{u^{2}s}}+\frac{h\kpa}{u^{2}}\sgm_{1}(m)\sR{\log{4\pi m}+\gma-1},\\
+	\end{align*}
+	as appeared in the last part of the expression of $a_{m}$ in the theorem statement.
+\end{prf}
+
+\begin{thm}[{\cite[IV.1.2]{GZ1986}}]\label{thm:Rankin}
+	There is a function $\oT{\Phi}_{s}=\Trc_{N}^{ND}(\tta_{\cA}(z)E_{s}^{(1)}(Nz))\in\oT{M}_{2}(\Gma_{0}(N))$ satisfying
+	\[
+		L_{\cA}(f,s+1)=\frac{(4\pi)^{s+1}}{\Gma(s+1)N^{s}}(f,\oT{\Phi}_{\oL{s}}),
+	\]
+	where the theta-series $\tta_{\cA}(z)\in M_{1}(\Gma_{0}(D),\eps)$ and the Eisenstein-series $E_{s}^{(1)}(z)\in \oT{M}_{1}(\Gma_{0}(D),\eps)$ are given by
+	\[
+		\tta_{\cA}(z)=\sum_{m\gqs0}r_{\cA}(m)q^{m},\quad E_{s}^{(1)}(z)=\frac{1}{2}\sum_{\sst{c,d\in\bZ,D\mid c,\\(d,D)=1}}\frac{\eps(d)}{(cz+d)}\frac{y^{s}}{\sP{cz+d}^{2s}}.
+	\]
+\end{thm}
+
+\begin{prf}[Sketch of the proof]
+	Let $M=n\sP{D}$, $\cF$ be a fundamental domain of $\Gma_{0}(M)\bs\bH$,
+	\begin{align*}
+	  \frac{\Gma(s+1)N^{s}}{(4\pi)^{s+1}}L_{\cA}(f,s+1)&=\sR{\sum_{n\gqs1,(n,N)=1}\frac{\eps(n)}{n^{2s-1}}}\frac{\Gma(s+1)N^{s}}{(4\pi)^{s+1}}\sum_{n=1}^{\ift}\frac{a_{n}(f)r_{\cA}(n)}{n^{s+1}}\\
+	  &=N^{s}\sR{\sum_{n\gqs1,(n,N)=1}\frac{\eps(n)}{n^{2s-1}}}\iint_{\Gma\zF\bs\bH}f(z)\oL{\tta_{\cA}(z)}y^{s}\dif{x}\dif{y}\\
+	&=N^{s}\sR{\sum_{n\gqs1,(n,N)=1}\frac{\eps(n)}{n^{2s-1}}}\sum_{\sst{c,d\in\bZ,M\mid c,\\ (d,c)=1}}\iint_{\cF}f(z)\oL{\tta_{\cA}(z)}\frac{\eps(d)}{(c\oL{z}+d)}\frac{y^{s}}{\sP{cz+d}^{2s}}\dif{x}\dif{y}\\
+	  &=(f,N^{\oL{s}}\Trc_{N}^{M}(\tta_{\cA}E_{\oL{s}})),
+	\end{align*}
+	where $E_{s}(z)$ is given by
+	\[
+	  E_{s}(z)=\frac{1}{2}\sum_{\sst{c,d\in\bZ,M\mid c,\\(d,M)=1}}\frac{\eps(d)}{(cz+d)}\frac{y^{s}}{\sP{cz+d}^{2s}}=\sum_{e\mid N}\frac{\mu(e)\eps(e)}{e^{2s+1}}\sR{\frac{N}{e}}^{-s}E_{s}^{(1)}\sR{\frac{N}{e}z},
+  	\]
+	now $E_{s}^{(1)}(Nz/e)\in\oT{M}_{1}(\Gma_{0}(M/e),\eps)$ will have level $N/e$ after taking trace $\Trc_{N}^{M}$, which is orthogonal to $f$, so only the term with $e=1$ contributes to the inner product and the desired identity is proved.
+\end{prf}
+
+\begin{thm}[{\cite[IV.4.5]{GZ1986}}]\label{thm:coef}
+	Suppose $\eps(N)=1$, then $L_{\cA}'(f,1)$ is given by
+	\[
+		L_{\cA}'(f,1)=\frac{8\pi^{2}}{\sP{D}^{1/2}}(f,\oT{\Phi}),
+	\]
+	where $\oT{\Phi}=\sP{D}^{1/2}(2\pi)\xI \ptl_{s}\oT{\Phi}_{s}|_{s=0}=\sum_{m\in\bZ}a_{m}(\oT{\Phi})q^{m}\in\oT{M}_{2}(\Gma_{0}(N))$ is given by
+	\begin{align*}
+	  a_{m}(\oT{\Phi})=&\sum_{1\lqs n\lqs \frac{m\sP{D}}{N}}\sgm_{\cA}'(n)r_{\cA}(m\sP{D}-nN)+\frac{h}{u}r_{\cA}(m)\sR{\log y+\gma+\log\frac{N\sP{D}}{\pi}+2\frac{L'(1,\eps)}{L(1,\eps)}}\\
+					  &-\sum_{n\gqs1}\sgm_{\cA}(n)r_{\cA}(m\sP{D}+nN)q_{0}(\frac{4\pi nNy}{\sP{D}}).
+	\end{align*}
+\end{thm}
+
+\begin{prf}[Sketch of the proof]
+	Only main ideas are collected here. Fourier coefficients under trace operator are hard to compute but under $U_{n}$ operators are easy to:
+	\[
+		\sR{\sum_{m\in\bZ}A_{m}(y)e^{2\pi imx}}|U_{n}=\sum_{m\in\bZ}A_{mn}(y/n)e^{2\pi imx}.
+	\]
+
+
+	(\cite[IV.2.4]{GZ1986}) $\oT{\Phi}_{s}(z)$ is also given by $\oT{\Phi}_{s}=(\tta_{\cA}(z)\rE_{s}(Nz))|U_{\sP{D}}$, where
+	\[
+		\rE_{s}(z)=\sum_{D=D_{1}D_{2}}\frac{\eps_{D_{1}}(N)\chi_{D_{1}\cdot D_{2}}(\cA)}{\kpa(D_{1})\sP{D_{1}}^{s+1/2}}E_{s}^{(D_{1})}(\sP{D_{2}}z),
+	\]
+	where $D_{1},D_{2}$ are fundamental discriminants, $\chi_{D_{1}\cdot D_{2}}$ the genus character, $\kpa(D_{1})=1$ if $D_{1}>0$ and $i$ if $D_{1}<0$.
+
+	Write $\rE_{s}(z)=\sum_{n}e_{s}(n,y)e^{2\pi inx}$, then $\oT{\Phi}_{s}$ can be given by
+	\[
+		\oT{\Phi}_{s}(z)=\sum_{\sst{n\in\bZ,l\gqs0,\\D\mid(Nn+l)}}e_{s}(n,Ny/\sP{D})r_{\cA}(l)e^{-2\pi ly/\sP{D}}e^{2\pi inx (Nn+l)/\sP{D}},
+	\]
+	these $e_{s}(n,y)$ and their derivatives can be computed, closed formulae are in \cite[IV.3.2, IV.3.3]{GZ1986}.
+\end{prf}
+
+\begin{thm}[{\cite[IV.6.2, IV.6.7, IV.6.8]{GZ1986}}]\label{thm:Sturm}
+	If $\oT{\Phi}\in\oT{M}_{2}(\Gma_{0}(N))$ satiesfies the following growth condition: For all cusps $\xi, \afa(\ift)=\xi, \afa\in\SL_{2}(\bZ)$, there exists $e>0$ such that
+	\[
+		(\oT{\Phi}|_{2}\afa)(z)=A_{\xi}\log y+B_{\xi}+O(y^{-e})\text{ as $y\ar\ift$}.
+	\]
+	Then there is a cusp form $\Phi\in S_{2}(\Gma_{0}(N))$ such that $(\Phi,f)=(\oT{\Phi},f)$ for all $f\in S_{2}(\Gma_{0}(N))$. If $(m,N)=1$, then
+	\begin{align*}
+	  a_{m}(\Phi)=&\lim_{s\ar 0}\sS{4\pi m\int_{0}^{\ift}a_{m}(\oT{\Phi})e^{-4\pi my}y^{s}\dif{y}-\frac{h\kpa\sgm_{1}(m)}{u^{2}s}}+\frac{h\kpa}{u^{2}}\sgm_{1}(m)\sR{\log{4\pi m}+\gma-1}\\
+			   &+\frac{h\kpa}{u^{2}}\sS{\sgm_{1}(m)\sR{\log\frac{N}{\sP{D}}+2\sum_{p\mid N}\frac{\log p}{p^{2}-1}+2+2\frac{\zta'(2)}{\zta(2)}-2\frac{L'(1,\eps)}{L(1,\eps)}}+\sum_{d\mid m}d\log\frac{m}{d^{2}}}. \\
+	\end{align*}
+\end{thm}
+
+\begin{rmk}
+	Used as a blackbox, proof can be found in \cite[Page~296-300]{GZ1986}.
+\end{rmk}
+
+
+\sss{Computation of local heights}
+
+\begin{stp}
+	Assume $(m,N)=1$, let $d=(x)-(0)\in J(H)$, the goal is to compute $\sA{c,T_{m}c^{\sgm}}=\sA{c,T_{m}d^{\sgm}}$, since $c-d$ is torsion by Manin-Drinfeld theorem. Note that the global N{\'e}ron-Tate height is uniquely determined by the theta divisor on $J$, but there is no canonical decomposition into local terms. At Archimedean places, this boils down determine explicitly the Green's function and evaluate at Heegner point; at non-Archimedean places, this boils down to counting in some endomorphism algebra of the reduction of Heegner points.
+
+	One key point of the whole computation is if $c$ and $T_{m}d^{\sgm}$ have distinct support, the local height is clear. Otherwise, Dedekind's eta function yields a differential form $\oga=2\pi i\eta(z)^{4}\dif{z}$ therefore a tangent vector $\ptl_{t}$ on $X_{0}(N)$ which allows the limit definition of local height.
+\end{stp}
+
+
+\spg{Archimedean places}
+\begin{rcl}
+	Heegner points of discriminants $D$ in $X_{0}(N)(\bC)$ can be represented by
+	\begin{enr}
+		\item Degree $N$ isogenies $E_{1}\ar E_{2}$ of elliptic curves, both admiting CM by $\cO_{K}$.
+		\item Pairs $(\cA,\kn)$, where $\cA=[\ka]\in G$ and $\kn$ a primitive ideal of norm $N$.
+		\item Points $\tau\in\bH$ satisfying a quadratic equation $A\tau^{2}+B\tau+C=0$, where
+		\[
+			A>0,\quad A\eqv0\pmod{N},\quad B^{2}-4AC=D,\quad B\eqv\bta\pmod{2N},\quad \bta^{2}\eqv D\pmod{4N}.
+		\]
+	\end{enr}
+\end{rcl}
+
+\begin{thm}[{\cite[II.4.2]{GZ1986}}]\label{thm:htinf}
+	The local height pairing at infinite places is
+	\begin{align*}
+			 &\sA{c,T_{m}d^{\sgm}}_{\ift}=h\kpa\sS{\sgm_{1}(m)\sR{\log\frac{N}{\sP{D}}+2\sum_{p\mid N}\frac{\log p}{p^{2}-1}+2+2\frac{\zta'(2)}{\zta(2)}-2\frac{L'(1,\eps)}{L(1,\eps)}}+\sum_{d\mid m}d\log\frac{m}{d^{2}}}\\
+		  &+uhr_{\cA}(m)\sS{2\frac{L'(1,\eps)}{L(1,\eps)}-2\gma+\log\frac{\sP{D}}{4\pi^{2}}}-u^{2}\lim_{s\ar0}\sS{2\sum_{n=1}^{\ift}\sgm_{\cA}(n)r_{\cA}(m\sP{D}+nN)Q_{s}\sR{1+\frac{2nN}{m\sP{D}}}+\frac{h\kpa\sgm_{1}(m)}{u^{2}s}}
+	\end{align*}
+\end{thm}
+
+\begin{prf}[Sketch of the proof]
+	By definition,
+	\[
+	  \sA{c,T_{m}d^{\sgm}}_{\ift}=\sum_{v\mid\ift}\sA{c,T_{m}d^{\sgm}}_{v}=\sum_{\sst{\cA_{1},\cA_{2}\in G,\\\cA_{1}\cA_{2}\xI=\cA}}\sA{(\tau_{\cA_{1},\kn})-(\ift),T_{m}((\tau_{\cA_{2},\kn})-(0))}_{\bC},
+	\]
+	by \cref{thm:overC}, one only needs the expression for
+	\begin{align*}
+	  \sum_{\sst{\cA_{1},\cA_{2}\in G,\\\cA_{1}\cA_{2}\xI=\cA}}G_{N,s}^{m}(\tau_{\cA_{1},\kn},\tau_{\cA_{2},\kn}) \text{ and } \sum_{\cA\in G}E_{N}(w_{N}\tau_{\cA,\kn},s).
+	\end{align*}
+
+	(\cite[II.5.8]{GZ1986}) The first can be calculated
+	\begin{align*}
+	  \sum_{\sst{\cA_{1},\cA_{2}\in G,\\\cA_{1}\cA_{2}\xI=\cA}}G_{N,s}^{m}(\tau_{\cA_{1},\kn},\tau_{\cA_{2},\kn})=&-2u^{2}\sum_{n=1}^{\ift}\sgm_{\cA}(n)r_{\cA}(m\sP{D}+nN)Q_{s-1}\sR{1+\frac{2nN}{m\sP{D}}}\\
+	  &+uhr_{\cA}(m)\sS{2\frac{L'(1,\eps)}{L(1,\eps)}+2\frac{\Gma'(s)}{\Gma(s)}+\log{\frac{\sP{D}}{4\pi^{2}}}}.
+	\end{align*}
+
+	(\cite[II.4.1]{GZ1986}) The second can be calculated
+	\begin{align*}
+	  \sum_{\cA\in G}E_{N}(w_{N}\tau_{\cA,\kn},s)&=\sum_{\cA\in G}E_{N}(\tau_{\cA,\kn},s)=N^{-s}\prod_{p\mid N}(1-p^{-2s})\xI\sum_{d\mid N}\frac{\mu(d)}{d^{s}}\sum_{\cA\in G}E(\frac{N}{d}\tau_{\cA,\kn},s) \\
+										 &=N^{-s}\prod_{p\mid N}(1-p^{-2s})\xI\sum_{d\mid N}\frac{\mu(d)}{d^{s}}\sum_{\cA\in G}E(\tau_{\cA,\kn},s)=\frac{2^{-s}\sP{D}^{s/2}u}{N^{s}\prod_{p\mid N}(1+p^{-s})}\frac{\zta(s)}{\zta(2s)}L(s,\eps).
+	\end{align*}
+
+	Then taking the limit $s\ar1$ one gets the desired identity.
+
+	\cwen{red}{I am actually concerned here because when I was following the calculation of \cite[Page~249]{GZ1986}, the desired term $\frac{\log p}{p^{2}-1}$ turns out to be $\frac{\log p}{(p^{2}-1)p}$ in my calculation, and I didn't find where goes wrong currently.}
+
+\end{prf}
+
+\begin{thm}[{\cite[II.2.23, II.5.7]{GZ1986}}]\label{thm:overC}
+	Let $x,x'\in X_{0}(N)(\bC)$ be non-cuspidal points, then
+	\begin{align*}
+		\sA{(x)-(\ift),T_{m}((x')-(0))}_{\bC}=&\lim_{s\ar 1}\sS{G_{N,s}^{m}(z,z')+4\pi\sgm_{1}(m)E_{N}(w_{N}z,s)+4\pi m^{s}\sgm_{1-2s}(m)E_{N}(z',s)+\frac{\kpa\sgm_{1}(m)}{s-1}}\\
+	  &-\kpa\sgm_{1}(m)\sS{\log N+2\log 2-2\gma+2\frac{\zta'(2)}{\zta(2)}-2\sum_{p\mid N}\frac{p\log p}{p^{2}-1}-2},
+	\end{align*}
+	where $E_{N}(z,s)$ is given by
+	\[
+		E_{N}(z,s) = \sum_{\gma\in S}\Img(\gma z)^{s},\quad S=\mat{*&*\\0&*}\bs\Gma_{0}(N),
+	\]
+	and $G_{N,s}^{m}(z,z')$ is given by
+	\begin{align*}
+	  G_{N,s}^{m}(z,z') = \sum\limits_{\gma\in R, \gma z'\neq z}g_{s}(z,\gma z') +\sum\limits_{\gma\in R, \gma z'=z}\lim\limits_{w\ar z}(g_{s}(z,w)-\log\sP{2\pi i\eta(z)^{4}(z-w)}^{2}),\\
+	  R=\{\gma\in R_{N}/\{\pm1\}\mid \Det\gma=m\},\quad g_{s}(z,z')=-2Q_{s-1}\sR{1+\frac{\sP{z-z'}^{2}}{yy'}}.
+	\end{align*}
+\end{thm}
+
+\begin{prf}[Sketch of the proof]
+	Only main ideas are collected here. The Green's function $G(x,y)=\sA{(x)-(\ift),(y)-(0)}_{\bC}$ on $X_{0}(N)$ can be written down explicitly as a function $G(z,z')$ on $\bH\tms\bH$, by requiring (\cite[II.2.3]{GZ1986}):
+	\begin{enr}
+		\item $G(\gma z,\gma'z')=G(z,z'), \fal z,z'\in\bH, \gma,\gma'\in\Gma_{0}(N)$.
+		\item $G(z,z')$ is continuous and harmonic for $z\nin\Gma_{0}(N)z'$.
+		\item $G(z,z')=(\#\Gma_{0}(N)_{z})\log\sP{z-z'}^{2}+O(1)$ as $z'\ar z$.
+		\item $G(z,z')=4\pi y'+O(1)$ as $z'=x'+iy'\ar\ift$; $G(z,z')=O(1)$ as $z'\ar$ other cusps.
+		\item $G(z,z')=4\pi\frac{y}{N\sP{z}^{2}}$ as $z=x+iy\ar0$; $G(z,z')=O(1)$ as $z\ar$ other cusps.
+	\end{enr}
+	As an upshot,
+	\[
+		G(z,z')=\lim_{s\ar1}\sS{\sum_{\gma\in\Gma_{0}(N)}g_{s}(z,\gma z')+4\pi E_{N}(w_{N}z,s)+4\pi E_{N}(z',s)+\frac{\kpa}{s-1}}+C
+	\]
+	is an acceptable candidate. The first summation is convergent, $\Gma_{0}(N)$-invariant, and satisfies the asymptotics as $z'\ar z$. The purpose of latter three terms is to make it harmonic with desired singularities at $z=0$ and $z'=\ift$. The asymptotics to cusps can be checked by bruteforce. The constant $C$ can be taken so that $G(z,z')\ar 0$ as $z\ar \ift$.
+
+
+	Now if $a,b$ has common support $x$, then one needs to choose a uniformizing parameter $g$ at $x$, and define
+	\[
+		\sA{a,b}_{v}=\lim_{y\ar x}\sS{\sA{a_{y},b}_{v}-\Ord_{x}(a)\Ord_{x}(b)\log\sP{g(y)}_{v}},
+	\]
+	then one can choose the $g$ associated with the reference differential
+	\[
+		\oga=2\pi i\eta(z)^{4}\dif{z}.
+	\]
+
+	Taking the Hecke operator then the desired identity is proved.
+\end{prf}
+
+\spg{Non-Archimedean places}
+
+
+\begin{stp}
+	$X_{0}(N)$ has an integral model $\cX=\cX_{0}(N)$ over $\bZ$ by taking the coarse moduli scheme associated with the moduli stack $\cM_{\Gma_{0}(N)}$ parametrizing cyclic degree $N$ isogenies between generalized elliptic curves. Then the special fibers $\cX_{p}$ for a rational prime $p$ satisfy
+	\begin{itm}
+		\item if $(p,N)=1$: $\cX_{p}$ is smooth.
+		\item if $N=p^{n}M, (p,M)=1$: $\cX_{p}$ is singular and reducible, with components $\cF_{i,n-i},0\lqs i\lqs n$ such that
+		\begin{enr}
+			\item $\cF_{i,j}\cong\cX_{0}(M)_{p}$ and they intersect at supersingular points of $\cX$.
+			\item non-supersingular points of $\cF_{i,j}$ parametrize $\phi:E\ar E'$ with $\Ker\phi\cong\mu_{p^{i}}\tms(\bZ/p^{j}\bZ)\tms(\bZ/M\bZ)$.
+		\end{enr}
+	\end{itm}
+
+	Consider a place $v\mid p$, take a uniformizer $\pi$ of $\cO_{H_{v}}$. Let $\oB{H}_{v}$ be the completion of the maximal unramified extension of $H_{v}$ and write $W_{n}=\cO_{\oB{H}_{v}}/\pi^{n}$. One has $\kpa_{v}=\cO_{H_{v}}/\pi, q=\#\kpa_{v}, \oB{H}_{v}=\Frc(W(\oL{\kpa_{v}})), \cO_{\oB{H}_{v}}=W(\oL{\kpa_{v}})$. Therefore the diagram of bases
+	\[
+		\Spc{W_{n}}\ar\Spc{\cO_{\oB{H}_{v}}}\ar\Spc{\cO_{H}}\ar\Spc{\bZ}
+	\]
+	allows one to pass a point $x:\Spc{H}\ar\cX$ to $x_{0}\in \cX(\cO_{\oB{H}_{v}})$, as well as its reductions $x_{n}\in\cX(W_{n}),n\gqs1$.
+\end{stp}
+
+\begin{rmk}
+	Passing to $\cO_{\oB{H}_{v}}$ instead of just $\cO_{H_{v}}$ before reduction is necessary because due to the algebraically closedness of its residue field $\oL{\kpa_{v}}$, the set $\Hom{}{}{(y_{0},x_{0})}$ given by the modular interpretation is well-defined and is a $\End{}{}{(x_{0})}$-module. \cref{thm:structure} contains full description of $\End{}{}{(x_{n})}$ and $\Hom{}{}{(x_{n}^{\sgm},x_{n})}$ for $n\gqs0$.
+\end{rmk}
+
+\begin{thm}[{\cite[III.7.1, III.7.3]{GZ1986}}]\label{thm:structure}
+	The structures of $\End{}{}{(x_{n})}$ and $\Hom{}{}{(x_{n}^{\sgm},x_{n})}$ for $n\gqs0$ are:
+	\begin{itm}
+		\item If $n=0$, or, $n\gqs1$ and $p$ is split. Then
+		\[
+			\End{}{}{(x_{n})}\cong\cO_{K},\quad \Hom{}{}{(x_{n}^{\sgm},x_{n})}\cong\cA.
+		\]
+		If isogeny $\phi\in\Hom{}{}{(x_{n}^{\sgm},x_{n})}$ corresponds to $a\in\cA$, then $\Deg\phi=\Nrm a$.
+		\item If $n\gqs1$ and $p$ is not split. Then $R:=\End{}{}{(x_{1})}$ is an order in a quaternion algebra $B$ over $\bQ$, $B=B\zP+B\zM$ is ramified at $p,\ift$ with reduced norm $\Nrd$ and reduced discriminant $Np$. $R\ot\bZ_{p}$ is maximal in $B\ot\bQ_{p}$, $R\ot\bZ_{\ell}$ is conjugate to $\Gma_{0}(N)\sbs B\ot\bQ_{\ell}\cong M_{2}(\bQ_{\ell}),\ell\neq p$.
+		\[
+			\End{}{}{(x_{n})}=\begin{cases}
+						\{b\in R:\Nrd(b\zM)\eqv0\pmod{p^{2n-1}}\} & \text{$p$ inert} \\
+						\{b\in R:D\Nrd(b\zM)\eqv0\pmod{p^{n}}\} & \text{$p$ ramified} \\
+						\end{cases},\quad \Hom{}{}{(x_{n}^{\sgm},x_{n})}\cong\End{}{}{(x_{n})}\ka,\quad [\ka]=\cA.
+		\]
+		If isogeny $\phi\in\Hom{}{}{(x_{n}^{\sgm},x_{n})}$ corresponds to $b\in R\ka$, then $\Deg\phi=\Nrd(b)/\Nrd(\ka)$.
+	\end{itm}
+
+	In the latter case, the structure of $B$ and $R\ka$ can be written as:
+	\begin{itm}
+		\item If $p$ is inert, there exists $q$ such that $(q/\ell)=(-p/\ell), \fal\ell \mid D$ and $\cB=[\kb]$,
+		\[
+			B=\sR{\frac{D,-pq}{\bQ}},\quad R\ka=\{\afa+\bta j\mid \afa\in\kd\xI\ka, \bta\in\kd\xI\kq\xI\kn\oL{\kb}\kb\xI\oL\ka, \afa=(-1)^{\Ord_{\kf}(\kb)}\bta\pmod{\cO_{\kf}},\fal\kf\mid \kd\}.
+		\]
+		\item If $p$ is ramified, there exists $q$ such that $(q/\ell)=(-1/\ell), \fal \ell\mid D,\ell\neq p$ and $(-q/p)=1$ and $\cB=[\kb]$,
+		\[
+			B=\sR{\frac{D,-q}{\bQ}},\quad R\ka=\{\afa+\bta j\mid \afa\in\kp\kd\xI\ka, \bta\in\kp\kd\xI\kq\xI\kn\oL{\kb}\kb\xI\oL{\ka}, \afa=(-1)^{\Ord_{\kf}(\kb)}\pmod{\cO_{\kf}},\fal\kf\mid \kd\}.
+		\]
+	\end{itm}
+	in each case, $q=\kq\oL{\kq}$ splits in $K$.
+\end{thm}
+\begin{prf}[Sketch of the proof]
+	The case $n=0$ is clear. If $n\gqs1$ and $p$ is split, these $x_{n}$ canonically lifts to $x_{0}$, therefore $\End{}{}{(x_{n})}\cong\End{}{}{(x_{0})},n\gqs1$ by Deuring's theory on complex multiplication.
+
+	If $n\gqs1$ and $p$ is not split, $x_{0}$ has supersingular reduction, then $\oH{x}$ is a morphism of $p$-divisible groups of dimension $1$ and height $2$. Gross's previous paper on canonical and quasicanonical liftings computes
+	\[
+		\End{W_{n}}{}{(\oH{x})}=\{b\in R\ot\bZ_{p}\mid D\Nrd(b\zM)=0\pmod{p\Nrd(\kp)^{n-1}}\},
+	\]
+	then a theorem of Serre-Tate states $\End{}{}{(x_{n})}=\End{}{}{(x_{1})}\cap\End{W_{n}}{}{(\oH{x})}$, which completes the proof.
+\end{prf}
+
+
+\begin{thm}[{\cite[III.9.2, III.9.7, III.9.11]{GZ1986}}]\label{thm:htfin}
+	The local height pairing at finite places is
+	\[
+		\sA{c,T_{m}d^{\sgm}}_{\mathrm{fin}}=-u^{2}\sum_{1\lqs n\lqs \frac{m\sP{D}}{N}}\sgm_{\cA}'(n)r_{\cA}(m\sP{D}-nN)+uhr_{\cA}(m)\log\frac{N}{m}.
+	\]
+	In particular, $\sA{c,T_{m}d^{\sgm}}_{p}:=\sum_{v\mid p}\sA{c,T_{m}d^{\sgm}}_{v}$ is equal to
+	\[
+		-uhr_{\cA}(m)\Ord_{p}(m/N)\log{p}-\begin{dcases}
+											u^{2}\log{p}\sum_{1\lqs n\lqs\frac{m\sP{D}}{N}, p\mid n}\Ord(pn)r_{\cA}(m\sP{D}-nN)\dta(n)R_{\{\cA\kq\kn\}}(n/p) & \text{$p$ inert} \\
+											u^{2}\log{p}\sum_{1\lqs n\lqs\frac{m\sP{D}}{N}, p\mid n}\Ord(n)r_{\cA}(m\sP{D}-nN)\dta(n)R_{\{\cA\kq\kp\kn\}}(n/p) & \text{$p$ ramified} \\
+											0 & \text{$p$ split} \\
+										 \end{dcases}.
+	\]
+\end{thm}
+
+\begin{prf}[Sketch of the proof]
+	It suffices to prove the second statement. By \cref{thm:reduction}, the local height pairing is given by arithmetic intersection on $\cX(\cO_{\oB{H}_{v}})$. By \cref{thm:intersection}, the case $p$ is split is clear, it suffices to express the counting in the quaternion algebra in terms of arithmetic functions in the case $p$ is inert and ramified.
+
+	If $p$ is inert, it suffices to show
+	\[
+		\sum_{v\mid p}\sum_{\sst{b\in R\ka/\pm1, b\zM\neq0\\\Nrd(b)=m\Nrd(\ka)}}(1+\Ord_{p}(\Nrd(b\zM)))=u^{2}\sum_{1\lqs n\lqs \frac{m\sP{D}}{N}, p\mid n}\Ord_{p}(pn)r_{\cA}(m\sP{D}-nN)\dta(n)R_{\{\cA\kq\kn\}}(n/p).
+	\]
+
+	If $p$ is ramified, it suffices to show
+	\[
+		\sum_{v\mid p}\sum_{\sst{b\in R\ka/\pm1, b\zM\neq0\\\Nrd(b)=m\Nrd(\ka)}}\Ord_{p}(D\Nrd(b\zM))=u^{2}\sum_{1\lqs n\lqs \frac{m\sP{D}}{N}, p\mid n}\Ord_{p}(n)r_{\cA}(m\sP{D}-nN)\dta(n)R_{\{\cA\kq\kp\kn\}}(n/p).
+	\]
+
+	The proofs are similar, since the structure of $R\ka$ is already given in \cref{thm:structure}, one only needs to notice
+	\begin{itm}
+		\item each $b=\afa+\bta j\in R\ka/\pm1$ corresponds to pair $(\kc,\kc')\in\cA\tms\cA\cB^{2}[\kq\kn\xI]$ up to unit action via
+		\[
+			\kc=(\afa)\kd\ka\xI,\quad \kc'=(\bta)\kd\kq\kn\xI\oL{\kb}\xI\kb\oL{\ka}\xI,
+		\]
+		\item the condition $\Nrd(b)=m\Nrd(\ka), \Nrd(b\zM)\neq0$ corresponds to
+		\begin{align*}
+			\Nrd(\kc)&=m\sP{D}-nN,\quad \Nrd(\kc')=n/p, \\
+			\Ord_{p}(n)&=\begin{cases}
+						  \Ord_{p}(\Nrd(b\zM)) & \text{$p$ inert} \\
+						  \Ord_{p}(D\Nrd(b\zM)) & \text{$p$ ramified} \\
+						\end{cases},
+		\end{align*}
+	\end{itm}
+	then the summation term on the right hand side of both identities gives exactly the counting of pairs $(\kc,\kc')$.
+\end{prf}
+
+\begin{thm}[{\cite[III.3.3, III.8.1]{GZ1986}}]\label{thm:reduction}
+	Take a basis $\afa\ptl_{t}$ of the free $\cO_{\oB{H}_{v}}$-module $T_{x_{0}}\cX$, where $\ptl_{t}$ is determined by $\oga=2\pi i\eta^{4}(z)\dif{z}$, adopt the convention that $(x\cdot x)=\Ord_{v}(\afa)$. Then the local height at $v$ is given by the arithmetic intersection number over $\cX(\cO_{\oB{H}_{v}})$.
+	\[
+		\sA{c,T_{m}d^{\sgm}}_{v}=-(x_{0}\cdot T_{m}x_{0})\log{q_{v}}.
+	\]
+
+\end{thm}
+
+\begin{thm}[{\cite[III.8.5, III.8.6]{GZ1986}}]\label{thm:intersection}
+	$(x_{0}\cdot T_{m}x_{0}^{\sgm})$ can be computed:
+	\begin{itm}
+		\item If $v\nmid N$ and $p$ is not split, then
+		\[
+			(x_{0}\cdot T_{m}x_{0}^{\sgm})=\begin{dcases}
+								  \sum_{\sst{b\in R\ka/\pm1, b\zM\neq0,\\\Nrd(b)=m\Nrd(\ka)}}\frac{1}{2}(1+\Ord_{p}(\Nrd(b\zM)))+\frac{1}{2}ur_{\cA}(m)\Ord_{p}(m) & \text{$p$ inert} \\
+								  \sum_{\sst{b\in R\ka/\pm1, b\zM\neq0\\\Nrd(b)=m\Nrd(\ka)}}\Ord_{p}(D\Nrd(b\zM))+ur_{\cA}(m)\Ord_{p}(m) & \text{$p$ ramified} \\
+								\end{dcases}.
+		\]
+		\item If $v\nmid N$ and $p$ is split, then
+		\[
+			(x_{0}\cdot T_{m}x_{0}^{\sgm})=\begin{cases}
+								  ur_{\cA}(m)k_{\kp} & v\mid\kp \\
+								  ur_{\cA}(m)k_{\oL{\kp}} & v\mid\oL{\kp} \\
+								\end{cases},\quad k_{\kp}+k_{\oL{\kp}}=\Ord_{p}(m).
+		\]
+		\item If $v\mid N$, then
+		\[
+			(x_{0}\cdot T_{m}x_{0}^{\sgm})=\begin{cases}
+							  0 & v\mid \kn \\
+							  -ur_{\cA}(m)\Ord_{p}(N) & v\mid \oL{\kn}\\
+									\end{cases}.
+		\]
+	\end{itm}
+\end{thm}
+\begin{prf}[Sketch of the proof]
+	If $v\nmid N$, there are three parts contributing to the sum
+	\begin{enr}
+		\item (\cite[III.4.4]{GZ1986}) If $r_{\cA}(m)=0$, then
+		\[
+			(x_{0}\cdot T_{m}x_{0}^{\sgm})=\frac{1}{2}\sum_{n\gqs1}\#\Hom{}{}{(x_{n}^{\sgm},x_{n})}_{\Deg m}.
+		\]
+		This comes from a general deformation theoretical argument.
+		\item (\cite[III.8.2]{GZ1986}) If $r_{\cA}(m)\neq0$, then
+		\begin{align*}
+		  (x_{0}\cdot x_{0})&=\Ord_{v}(\afa)=\frac{1}{2}\sum_{n\gqs1}\sR{\#\Aut(x_{n})-\#\Aut(x_{0})}.\\
+		  (x_{0}\cdot T_{m}x_{0}^{\sgm})&=\frac{1}{2}\sum_{n\gqs1}\sR{\#\Hom{}{}{(x_{n}^{\sgm},x_{n})}-\#\Hom{}{}{(x_{0}^{\sgm},x_{0})}}.
+		\end{align*}
+		This makes use of the reference differential $\oga=2\pi i\eta(z)^{4}\dif{z}$.
+		\item If $v\mid m$, then those $ur_{\cA}(m)$ elements of $\Hom{}{}{(x_{0}^{\sgm},x_{0})}_{\Deg m}/\pm1$ contributes back by the intersection with quasicanonical liftings of $x_{n}$.
+	\end{enr}
+	The first two parts together with \cref{thm:structure} accounts for the summation term, and the last part accounts for the remaining.
+
+	If $v\mid N$ and $v\mid \kn$, then $x_{0}$ reduces to the same component as $\ift_{0}$, therefore the intersection is $0$. Otherwise, the intersection is $-r_{\cA}(m)\Ord_{p}(N^{u})$ since $\ptl_{t}$ generates $(N^{u})T_{x_{0}}\cX$.
+\end{prf}
+
+\ssc{Serre's conjecture}
+This is done by Khare--Wintenberger\cite{KW2009-1,KW2009-2}.
+
+
+Use \cite{Ribet1992} for its consequence: If Serre's conjecture holds, then
+\begin{itm}
+	\item If $E$ is an elliptic curve over $\oL{\bQ}$ and a $\bQ$-curve, then $E$ is modular (Find a model for $E$ over a number field, then use Galois cohomology computation to cut out the factor of its Weil restriction to $\bQ$)
+	\item Every $\GL_{2}$-type abelian variety $A$ over $\bQ$ is modular (Construct an infinite set of primes in $K\sbs\End{\bQ}{}{(A)}$ to apply Faltings's isogeny theorem)
+\end{itm}
+
+
+
+\ssc{On Manin constant}
+\begin{cnj}
+	The Manin constant $c_{\phi}$ of any optimal modular parametrization has absolute value $1$.
+\end{cnj}
+\begin{rmk}
+	The current strongest result might be \cite[Theorem~2.13]{Cesnavicius2018} which settled Manin's conjecture in semistable case, whose key input is using a multiplicity one result \cite[Proposition~2.2]{Cesnavicius2018} motivated by integral $p$-adic Hodge theory to prove $(\Lie\cJ_{0}(N))_{\bZ_{p}}\ar(\Lie\cE)_{\bZ_{p}}$ is surjective for any $p$.
+	\begin{itm}
+		\item[\TODO] Learn in detail this method.
+		\item[\TODO] Can one extend his multiplicity one result to settle non-semistable case?
+	\end{itm}
+\end{rmk}
+
+\ssc{On modular degree}
+
+I've found two methods towards this among literatures:
+\begin{itm}
+	\item Algebraically, the modular degree is the cardinality of a torsion module,
+	\[
+		r_{E}=\#\frac{S_{2}(\bZ)}{S_{2}(\bZ)[f]+S_{2}(\bZ)[f]^{\perp}},\quad S_{2}(\bZ):=S_{2}(\Gma_{0}(N))\cap \bZ\dS{q}
+	\]
+	as proved in \cite{ARS2012}, $\Deg\phi=r_{E}$ in semistable case, and they only differ by a factor $N^{1/2}$ in general. Along this way one has to understand very deep ring-theoretic properties of the integral Hecke algebra.
+	\item Analytically, one can analyze $L(2,\Sym^{2}f)$, as in the work of Watkins\cite{Watkins2002}. One may assume elliptic curves of odd modular degree should have rank $0$, read \cite{CE2009Odd}. Work of Zagier\cite{Zagier1985Parametrization} is of the same flavor, he essentially estimate $(f,f)$ topologically at prime level.
+\end{itm}
+
+
+\begin{thm}[{\cite[1.1]{CE2009Odd}}]
+	If $E$ is an elliptic curve over $\bQ$ of odd modular degree, then
+	\begin{enr}
+		\item Its conductor $N$ is divisible by at most two odd primes.
+		\item $\Ord_{s=1}L(s,E/\bQ)$ is even.
+		\item One of the following is true
+		\begin{enr}
+			\item $E$ admits a rational $2$-isogeny.
+			\item $E$ has prime conductor, is supersingular at $2$, and $\bQ(E[2])$ is totally complex.
+			\item $E$ has CM, and $N=3^{3},2^{5},7^{2},3^{4}$.
+		\end{enr}
+	\end{enr}
+\end{thm}
+
+\printref
+\end{document}

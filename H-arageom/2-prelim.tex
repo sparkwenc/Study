@@ -1,0 +1,107 @@
+\documentclass[article, a4paper, twoside]{universal}
+
+\setshowlvl{1}
+\begin{document}
+\confighead{}{}{}
+\printhead{}{}{1}
+
+
+\sct{Preliminaries}
+
+\ssc{Arithmetic intersection}
+
+\begin{cmt}[0]
+In this part, we collect all important historical results,
+\begin{itm}
+	\item Arithmetic intersection~\cite{GS1990Arithmetic}, characteristic classes~\cite{GS1990-1,GS1990-2}.
+	\item Transgression forms of Bott-Chern~\cite{BC1965}, Chern-Simons~\cite{CS1974}.
+	\item Heat kernels~\cite{BGV2004} and analytic torsion~\cite{BGS1988-1,BGS1988-2,BGS1988-3}.
+	\item Quillen superconnections~\cite{Quillen1985,BF1986-1,BF1986-2}.
+\end{itm}
+\end{cmt}
+
+\begin{stp}
+	Let $K$ be a number field, $\cO_{K}$ its ring of integers.
+\end{stp}
+There is an exact sequence
+\[
+	\begin{tikzcd}
+		0\ar[r] & \mu(K)\ar[r] & \cO_{K}\xT\ar[r] & \bR^{r+s}\ar[r] & \aCH{}{1}{(\Spc{\cO_{K}})}\ar[r] & \Cl(\cO_{K})\ar[r] & 0
+	\end{tikzcd}
+\]
+
+\begin{thm}[{\cite[Proposition~2.5]{GS1990-1}}]
+	There is canonical exact sequences
+	\[
+		\begin{tikzcd}
+			\cO_{X}\xT\ar[r, "\rho"]\ar[d, equal] & A^{0,0}(X_{\bR})\ar[r, "a"]\ar[d, equal] & \aPic(X)\ar[r, "b"]\ar[d, "\ac_{1}", "\cong"'] & \Pic(X)\ar[r]\ar[d, "c_{1}"] & 0 \\
+			\CH{}{1,0}{(X)}\ar[r, "\rho"] & A^{0,0}(X_{\bR})\ar[r, "a"] & \aCH{}{1}{(X)}\ar[r, "z"] & \CH{}{1}{(X)}\ar[r] & 0
+		\end{tikzcd}
+	\]
+\end{thm}
+
+
+\ssc{Bott-Chern forms}
+
+Ref:~\cite{BC1965}.
+
+\begin{thm}[{\cite[Theorem~I]{BC1965}}]
+	Let $X$ be a complex manifold of dimension $n$, and $E$ a Hermitian vector bundle of rank $n$ over $X$, then there exists a real valued form $\rho$ on $B\xS(E)=\{e\in E:0< \sP{E}< 1\}$ of type $(n-1,n-1)$ such that $\pi\zS c_{n}(E)=dd^{c}\rho/4\pi$.
+\end{thm}
+
+
+
+\ssc{Curvature on graphs}
+
+Ref:~\cite{LLY2011}.
+
+\begin{stp}
+	Let $G=(V,E)$ be a simple graph.
+\end{stp}
+
+\begin{dfn}
+	For two probability measures $\mu_{1},\mu_{2}$ on $V$, the transportation distance is given by
+	\[
+		W(\mu_{1},\mu_{2}):=\inf_{\pi}\sum_{u,v\in V}\pi(u,v)d(u,v)=\sup_{f}\sum_{v\in V}f(v)(\mu_{1}(v)-\mu_{2}(v)),
+	\]
+	where one has $\pi:V\tms V\ar[0,1]$ satisfies $\sum_{v\in V}\pi(u,v)=\mu_{1}(u),\sum_{u\in V}\pi(u,v)=\mu_{2}(v)$, and $f:V\ar\bR$ satisfies $\sP{f(u)-f(v)}\lqs d(u,v)$ for any $u,v\in V$. The second equality is Kantorovich duality.
+\end{dfn}
+
+\begin{dfn}
+	For any $\afa\in[0,1]$, and vertex $v\in V$, define the probability measure $\mu_{v}^{\afa}$ by
+	\[
+		\mu_{v}^{\afa}(u)=\begin{cases}
+		  \afa & u=v \\
+		  (1-\afa)/d_{x} & uv\in E \\
+		  0 & $otherwise$
+		\end{cases}
+	\]
+	The Ricci curvature $\kpa(u,v)$ for two vertex $u,v\in V$ is given by
+	\[
+		\kpa(u,v):=\lim_{\afa\ar1}\frac{1}{1-\afa}\sR{1-\frac{W(\mu_{u}^{\afa}, \mu_{v}^{\afa})}{d(u,v)}}
+	\]
+\end{dfn}
+
+\begin{exg}
+	For some examples,
+	\begin{enr}[label=(\arabic*)]
+		\item The complete graph $G=K_{n}$ is of constant Ricci curvature $n/(n-1)$.
+		\item The cycle graph $G=C_{n}$ has constant curvature
+		\[
+			\kpa(C_{3})=3/2,\quad \kpa(C_{4})=1,\quad \kpa(C_{5})=1/2,\quad \kpa(C_{n})=0,n\gqs6.
+		\]
+		\item (\cite[Theorem~5.1]{LLY2011}) For random graph $G=G(n,p)$, the following asymptotics holds for $n\ar\ift$,
+		\[
+			\kpa(x,y)=\begin{cases}
+			  p+O(\sqrt{\ln{n}/np}) & p\gqs\sqrt[3]{\ln{n}/n} \\
+			  O(\ln{n}/np^{2}) & 2\sqrt{\ln{n}/n}\lqs p<\sqrt[3]{\ln{n}/n} \\
+			  -1+O(np^{2})+O(\ln{n}/n^{2}p^{3}) & \sqrt[3]{\ln{n}/n^{2}}\ll p\ll 1/\sqrt{n} \\
+			  -2+O(n^{2}p^{3})+O(\ln{n}/np) & \ln{n}/n\ll p\ll 1/\sqrt[3]{n^{2}}
+			\end{cases}
+		\]
+	\end{enr}
+\end{exg}
+
+
+\printref
+\end{document}

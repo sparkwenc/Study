@@ -1,0 +1,65 @@
+\documentclass[article, a4paper, twoside]{universal}
+
+\setshowlvl{1}
+\begin{document}
+\confighead{}{}{}
+\printhead{}{}{1}
+
+
+\sct{Outline}
+
+	% One key reason that problems in number theory eventually presents very different flavor from pure algebraic geometry is the existence of the infinite places, which are very different from finite places.
+
+	% In Arakelov geometry, one would like to introduce $\ift$ to compactify $\Spec\bZ$, define metric structure on vector bundles over arithmetic varieties and study their properties, for example, arithmetic degree (height), arithmetic intersection, etc. However, the foundation and a systematic study of arithmetic cohomology does not yet exist, thus transfering proofs and techniques from algebraic geometry into Arakelov geometry becomes extremely hard. Sometimes an exact analogue to algebraic geometry yields great consequences in number theory.
+
+	% For example, when Arakelov-Parshin tried to deal with Mordell's conjecture, he considered $f:X\ar B$ a smooth family of curves of genus $g\gqs2$, one would like to show $X\ar B$ admits infinitesimal deformations only if it is isotrivial. In algebraic geometry there is deformation theory, thus one only needs $\mathrm{H}_{}^{1}(X,\oga_{X/B}\xI)=0$; there is also Kodaira vanishing, so it suffice to prove $\oga_{X/B}$ is ample; there is also Nakai-Moishezon criterion, so it suffices to show $\oga_{X/B}^{2}>0$.
+
+	% Unfortunately up to now, there is no arithmetic deformation theory (Mochizuki's IUT\cite{Mochizuki2021IUT1,Mochizuki2021IUT2,Mochizuki2021IUT3,Mochizuki2021IUT4,Fesenko2015} seems to originate from trying to define arithmetic deformation), and there is no way to define higher cohomology, so there are no vanishing theorems, but there is indeed Nakai's criterion\cite{Zhang1992}.
+
+
+	% Moreover, the asymptotic invariants are also very hard to study. In algebraic geometry, for example, one has Siu's criterion of bigness: If $D,E$ are nef $\bQ$-divisors, then $D^{n}>nD^{n-1}E$ implies $D-E$ is big. However its original proof crucially used $\mathrm{H}^{1}$: there is an exact sequence of sheaves
+	% \[
+	% 	0\ar \cO_{X}(mD-mE))\ar \cO_{X}(mD))\ar \Op_{i=1}^{m}\cO_{X}(mD)|_{E}\ar0,
+	% \]
+	% which gives a long exact sequence of their cohomology groups, however, $\mathrm{H}_{}^{1}(X,\cO_{X}(mD-mE))$ may not be zero, thus one has
+	% \[
+	% 	h^{0}(X,mD-mE)\gqs h^{0}(X,mD)-mh^{0}(E,mD)=(D^{n}-nD^{n-1}E)\frac{m^{n}}{n!}+O(m^{n-1}),
+	% \]
+	% the equality comes from asymptotic Riemann--Roch and Siu's criterion follows. However, in the arithmetic setting this becomes very hard~\cite[Theorem~2.2]{Yuan2008Big}, note there is still asymptotic Riemann-Roch~\cite{AB1995}, note that all these essential progress in arithmetic setting require very hard analysis, thus if one can define an arithmetic version of $h^{1}$, things should simplify a lot.
+
+
+	% Moreover, one should also imagine an good arithmetic version of deformation theory and vanishing theorems to say more precisely about the consequence of the ampleness of $\oga_{X/B}$, there should be some statement that if $\mathrm{H}_{}^{1}(X,T_{X})$ vanishes, then the ``aritmetic infinitesimal deformation'' of $X$ does not exist, which should specialize to all currently known Bogomolov conjectures and equidistribution theorems and do more than that. If Mochizuki's theory were really originated from an attempt to define ``arithmetic deformation'' and were correct, then it should create much more correct statements than solely abc conjecture.
+
+
+
+	% In all, one should hope to define higher cohomology groups of metrized line bundles, in this era this should not be impossible - the extra metric structure remembered by $(L,\dP{\cdot})$ indeed imposed a ``topology'' on sections of $L$, thus in practice we really want to develop an algebraic theory of objects which are simutaneously equiped with analytic and algebraic structures - the condensed mathematics developed by Clausen-Scholze is exactly in this direction. However, I should expect that a reasonable ``arithmetic cohomology'' theory that is enough to apply to number theory may not need those generalities as posed by Clausen-Scholze, in some way that mathematicians who study arithmetic dynamics don't really need adic spaces to formulate their results which could have been done in Berkovich spaces.
+
+The origin of my idea is that all kinds of real-valued (although, there should be also $p$-adic versions of these) arithmetic functions should be realized as certain real-valued functions on metrized $\cO_{K}$-modules, especially height functions and effective size. In particular, I must find compatibility among
+\begin{enr}
+	\item Additive volumes in~\cite{AB1995}.
+	\item Euler-Minkowski characteristic in~\cite{Neukirch1999}.
+	\item arithmetic degree in~\cite{GS1990Arithmetic}.
+\end{enr}
+\spg{Effective sections} Neukirch's $\#\HH{}{0}{(\cO_{K})}$ is the same as Abbes-Bouche's $\#\HH{\mathrm{Ar}}{0}{(X,L)}$ if $X=\Spc{\cO_{K}}$.
+\spg{Arithmetic volume} The existing two definitions of arithmetic volume are actually not equivalent, according to~\cite[Page~368]{Chen2011} or~\cite[Page~613]{Yuan2008Big}. However the difference is slight, and one implies another, ``arithmetic bigness'' and ``arithmetic strongly bigness''. I'd like to conform to the one using $\oH{\chi}_{\mathrm{sup}}$.
+\spg{Arithmetic degree} I think $\oH{\chi}_{\mathrm{sup}}$ should really be thought of as arithmetic degree rather than the arithmetic Euler characteristic. I suspect it can be thought as the analogue of Euler characteristic because $\aHH{}{1}{}$ of number fields will actually vanish in my definition.
+
+\spg{Ideas from QFT} What is the relationship between Kim's use of Chern-Simons functional and the Bott-Chern form I'm trying to understand? In particular, in that model $\Spc{\cO_{K}}$ should be $3$-dimensional, but from Arakelov theoretic point of view, it should be $1$-dimensional, what's the problem here?
+
+\begin{rmk}
+	Some stuffs of the TODO list,
+	\begin{enr}
+		\item Prove base change theorems in terms of $X$, incorporate Grothendieck-Riemann-Roch.
+		\item Try to reinterpret $\aHH{}{1}{(X,T_{X})}$ in low dimensional case, find the pattern to develop arithmetic deformation theory. (E.g., can Hermite-Minkowski type theorems actually be reinterpreted as the non-existence of certain arithmetic deformation? I suspect yes)
+		\item There already has been ad hoc definition of $\HH{}{1}{}$ in the literatures, e.g., in~\cite{Yuan2008Big,GS1991Lattice}, find the compatibility.
+		\item Compute the above for (1) $\cO_{K}$, (2) $\oga_{K}$, (3) any fractional ideal, (4) any finitely generated module which are endowed with different metric.
+		\item Figure out according to my definition, how to give an $\cO_{K}$-module structure to $\aHom(\oL{M},\oL{N})$ and how to assign the canonical metric on it.
+	\end{enr}
+\end{rmk}
+
+
+
+
+
+\printref
+\end{document}

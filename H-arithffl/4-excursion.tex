@@ -1,0 +1,261 @@
+\documentclass[article, a4paper, twoside]{universal}
+
+\setshowlvl{1}
+\begin{document}
+\confighead{}{}{}
+\printhead{}{}{1}
+
+
+\sct{Global Langlands for reductive groups}
+Ref:~\cite{Lafforgue2018Chtoucas}.
+
+The innovation is the definition of the excursion algebra $\cB$ containing the Hecke algebra. Note that this containment is an equality in $\GL_{r}$ case, so the extra complexity overcome by the idea is group-theoretic.
+
+In this short note we attach all necessary subscripts and supscripts to emphasize the dependence of objects. The current version restricts to the split case, and omits incorporating the lattice $\Xi\sbs Z(\bA)/Z(F)$ for simplicity.
+
+\ssc{Moduli spaces and their intersection sheaves}
+
+\begin{stp}
+	Let $k=\bF_{q}$ be a finite field of characteristic $p$, $\ell\neq p$ a prime, $E$ a finite extension of $\bQ_{\ell}$ containing $q^{1/2}$; let $G$ be a split connected reductive group over $k$, $\mu,\uL{\oga}={(\oga_{i})}_{i\in I}$ dominant coweights of $G$; let $X$ be a smooth projective geometrically connected curve over $k$, $N$ a finite subscheme of $X$ as the level, $F$ the function field of $X$, $\bA$ its ring of ad{\`e}les; let $I$ be a finite set, $(I_{1},\lds,I_{k})$ a partition of $I$, for any map $\zta:I\ar J$ of finite sets, by abuse of notation denote by $\Dta_{\zta}$ the map $X^{J}\ar X^{I}$ and $\oH{G}^{J}\ar\oH{G}^{I}$ via ${(\blt_{j})}_{j\in J}\amt{(\blt_{\zta(i)})}_{i\in I}$, where $\blt\in X$ or $\oH{G}$.
+
+	Let $K_{N}:=\Ker(G(\cO)\ar G(\cO_{N}))$ be the open compact subgroup of $G(\bA)$, $\cH_{X,N,G,L}:=C_{c}(K_{N}\bs G(\bA)/K_{N},L)$ the Hecke algebra and $\cA_{X,N,G,L}:=C_{c}(G(F)\bs G(\bA)/K_{N},L)$ the automorphic functions valued in $L$. For any place $v$ of $X\ssm N$, the classical Satake isomorphism gives a basis $h_{V,v}\in\cH_{X,N,G,\cO_{E},v}$ where $V$ runs through irreducible representation $\oH{G}$.
+
+	Let $\Bun_{X,N,G}$ the moduli stack of $G$-torsors over $X$ with level $N$ structure, $\Bun_{X,N,G}^{\lqs\mu}$ its instability truncation; let $\Hck_{X,N,G,I,\uL{\oga}}^{(I_{1},\lds,I_{k})}$ be the Hecke stack; let $\Sht_{X,N,G,I,\uL{\oga}}^{(I_{1},\lds,I_{k})}$ the moduli stack of Shtukas with intersection sheaf $\cF_{X,N,G,I,\uL{\oga},E}^{(I_{1},\lds,I_{k})}$; let $\Gr_{X,G,I,\uL{\oga}}^{(I_{1},\lds,I_{k})}$ be the Beilinson-Drinfeld affine Grassmannian with $G_{\sum_{I}\ift x_{i}}$-action, which factors through $G_{\sum_{I}n_{i}x_{i}}$ for large enough $\uL{n}={(n_{i})}_{i\in I}$ depending on $\uL{\oga}$, denote by $\cG_{X,G,I,\uL{\oga},E}^{(I_{1},\lds,I_{k})}$ the intersection sheaf on $\Gr_{X,G,I,\uL{\oga}}^{(I_{1},\lds,I_{k})}/G_{\sum_{I}n_{i}x_{i}}$. For $W\in\Rep_{E}(\oH{G}^{I})$, its irreducible decomposition indexed by $\uL{\oga}$ is
+		\[
+			W=\op_{\uL{\oga}\in {(X_{*}^{+}(T))}^{I}}W_{\uL{\oga}},\quad W_{\uL{\oga}}=\sR{\bt_{I}V_{\oga_{i}}}\ot_{E}\kW_{\uL{\oga}},
+		\]
+	the corresponding Beilinson-Drinfeld affine Grassmannian $\Gr_{X,G,I,W}^{(I_{1},\lds,I_{k})}$ and moduli of Shtukas $\Sht_{X,N,G,I,W}^{(I_{1},\lds,I_{k})}$ is the union of $\Gr_{X,G,I,\uL{\oga}}^{(I_{1},\lds,I_{k})}$ and $\Sht_{X,N,G,I,\uL{\oga}}^{(I_{1},\lds,I_{k})}$ for those $\uL{\oga}$ with $\kW_{\uL{\oga}}\neq0$.
+\end{stp}
+
+\begin{thm}
+	These moduli spaces satisfy the following commutative diagram
+	\[
+		\begin{tikzcd}
+			\Sht_{X,N,G,I,\uL{\oga}}^{(I_{1}',\lds,I_{k'}'),} \ar[d, "\gma_{(I)}^{(I_{1}',\lds,I_{k}')}"] & \ar[l, "\pi_{(I_{1}',\lds,I_{k'}')}^{(I_{1},\lds,I_{k})}" description] \Sht_{X,N,G,I,\uL{\oga}}^{(I_{1},\lds,I_{k})} \ar[r, "\kp_{X,N,G,I,\uL{\oga}}^{(I_{1},\lds,I_{k})}" description] \ar[d, "\gma_{(I)}^{(I_{1},\lds,I_{k})}"] \ar[dr, "\gma_{(I_{1},\lds,I_{k})}^{(I_{1},\lds,I_{k})}" description] & {(X\ssm N)}^{I}\\
+			\Hck_{X,N,G,I,\uL{\oga}}^{(I_{1}',\lds,I_{k'}')} \ar[dd, "\dta_{(I),\uL{\oga}}^{(I_{1}',\lds,I_{k'}')}"] & \ar[l, "\pi_{(I_{1}',\lds,I_{k'}')}^{(I_{1},\lds,I_{k})}" description] \Hck_{X,N,G,I,\uL{\oga}}^{(I_{1},\lds,I_{k})} \ar[r] \ar[d, "\cong"', "\bta_{(I),\uL{\oga}}^{(I_{1},\lds,I_{k})}"] & \prod_{j=1}^{k}\Hck_{X,N,G,I_{j},\uL{\oga}_{j}}^{(I_{j})} \ar[dd, "\prod_{j=1}^{k}\dta_{(I_{j}),\uL{\oga}_{j}}^{(I_{j})}"] \\
+			& \sR{\Gr_{X,G,I,\uL{\oga}}^{(I_{1},\lds,I_{k})}\tms_{{(X\ssm N)}^{I}}\Bun_{G,\sum_{I}n_{i}x_{i}}}/G_{\sum_{I}n_{i}x_{i}} \ar[d, "\pr_{1}"] & \\
+			\Gr_{X,G,I,\uL{\oga}}^{(I_{1}',\lds,I_{k}')}/G_{\sum_{I}n_{i}x_{i}} & \ar[l, "\pi_{(I_{1}',\lds,I_{k'}')}^{(I_{1},\lds,I_{k})}" description] \Gr_{X,G,I,\uL{\oga}}^{(I_{1},\lds,I_{k})}/G_{\sum_{I}n_{i}x_{i}} & \prod_{j=1}^{k}\sR{\Gr_{X,G,I_{j},\uL{\oga}_{j}}^{(I_{j})}/G_{\sum_{I_{j}}n_{i}x_{i}}} \\
+			& \Gr_{X,G,I,\uL{\oga}}^{(I_{1},\lds,I_{k})} \ar[ru, "\kpa_{I,\uL{\oga}}^{(I_{1},\lds,I_{k})}" description]\ar[u]\ar[r] & \Gr_{X,G,I,\uL{\oga}}^{(I_{1},\lds,I_{k})}/G_{\sum_{I}m_{i}x_{i}}\ar[u, "\oT{\kpa}_{I,\uL{\oga}}^{(I_{1},\lds,I_{k})}"']
+		\end{tikzcd}
+	\]
+	which further satisfy that
+	\begin{itm}
+		\item (\cite[Lemma~1.14, Lemma~1.15, Lemma~1.16]{Lafforgue2018Chtoucas}) (1) $\dta_{(I),\uL{\oga}}^{(I_{1},\lds,I_{k})}:=\pr_{1}\cc\bta_{(I),\uL{\oga}}^{(I_{1},\lds,I_{k})}$ is smooth; (2) $\pi_{(I_{1}',\lds,I_{k'}')}^{(I_{1},\lds,I_{k})}$ is projective, surjective and small; (3) $\kpa_{I,\uL{\oga}}^{(I_{1},\lds,I_{k})}$ factors through $\oT{\kpa}_{I,\uL{\oga}}^{(I_{1},\lds,I_{k})}$ and are both smooth.
+		\item (\cite[Proposition~2.8, Proposition~2.9]{Lafforgue2018Chtoucas}) (1) $\eps_{(I),\uL{\oga}}^{(I_{1},\lds,I_{k})}:=\dta_{(I),\uL{\oga}}^{(I_{1},\lds,I_{k})}\cc\gma_{(I)}^{(I_{1},\lds,I_{k})}$ is smooth of dimension $\Dim G_{\sum n_{i}x_{i}}=(\sum n_{i})\Dim G$; (2) $\eps_{(I_{1},\lds,I_{k}),\uL{\oga}}^{(I_{1},\lds,I_{k})}:=\sR{\prod_{j=1}^{k}\dta_{(I_{j}),\uL{\oga}_{j}}^{(I_{j})}}\cc\gma_{(I_{1},\lds,I_{k})}^{(I_{1},\lds,I_{k})}$ is smooth.
+	\end{itm}
+\end{thm}
+
+\begin{thm}[{\cite[Proposition~2.6, Proposition~2.11]{Lafforgue2018Chtoucas}}]
+	The moduli of Shtukas satisfies the following
+	\begin{itm}
+		\item (Structure) $\Sht_{X,N,G,I,\uL{\oga}}^{(I_{1},\lds,I_{k})}\ar{(X\ssm N)}^{I}$ is a Deligne-Mumford stack locally of finite type, the connected components of $\Sht_{X,N,G,I,\uL{\oga}}^{(I_{1},\lds,I_{k}),\lqs\mu}$ are quotient of quasi-projective schemes over ${(X\ssm N)}^{I}$ by finite groups;
+		\item (Local model) $\Sht_{X,N,G,I,\uL{\oga}}^{(I_{1},\lds,I_{k})}$ is {\'e}tale locally isomorphic to $\prod_{j=1}^{k}\Gr_{X,G,I_{j},\uL{\oga}_{j}}^{(I_{j})}$, compatible with $\eps_{(I_{1},\lds,I_{k}),\uL{\oga}}^{(I_{1},\lds,I_{k})}$;
+		\item (Level change) $\Sht_{X,N,G,I,\uL{\oga}}^{(I_{1},\lds,I_{k})}\ar\Sht_{X,\ept,G,I,\uL{\oga}}^{(I_{1},\lds,I_{k})}|_{{(X\ssm N)}^{I}}$ is finite {\'e}tale with Galois group $G(\cO_{N})$;
+		\item (Induction) More specifically, one has
+		\[
+			\Sht_{X,N,G,I,\uL{\oga}}^{(I_{1},\lds,I_{k})}\cong\begin{dcases}
+			  \ept & $if $\sS{\sum_{I}\oga_{i}}\neq0\in\pi_{1}(G)$$ \\
+			  \Bun_{X,N,G} & $if $I=\ept$$ \\
+			  {(X\ssm N)}^{I\ssm J}\tms\Sht_{X,N,G,J,\uL{\oga}}^{(J_{1},\lds,J_{k})} & $if $\oga_{i}=0, i\in I\ssm J$ and $J_{j}=I_{j}\cap J$$
+			\end{dcases}
+		\]
+	\end{itm}
+\end{thm}
+
+\begin{thm}[{\cite[Theorem~1.17, Remark~5.4]{Lafforgue2018Chtoucas}}]
+	The geometric Satake equivalence gives a canonical functor
+	\[
+		\Sat:\Rep_{E}(\oH{G}^{I})\ar\Prv(\Gr_{X,G,I,W}^{(I_{1},\lds,I_{k})}/G_{\sum_{I}n_{i}x_{i}}),\quad W\amt\cS_{X,G,I,W,E}^{(I_{1},\lds,I_{k})},
+	\]
+	which is a categorical equivalence such that there are canonical isomorphisms
+	\[
+		\cS_{X,G,I,W,E}^{(I_{1},\lds,I_{k})}\cong\begin{dcases}
+		  \cG_{X,G,I,W,E}^{(I_{1},\lds,I_{k})} & $if $W=\bt_{I}V_{\oga_{i}}$ is irreducible$ \\
+		  \sR{\oT{\kpa}_{I,W}^{(I_{1},\lds,I_{k})}}\xS\sR{\bt_{j=1}^{k}\cS_{X,G,I_{j},W_{j},E}^{(I_{j})}} & $if $W=\bt_{j=1}^{k}W_{j}$$ \\
+		  \sR{\pi_{(I_{1},\lds,I_{k})}^{(I_{1}',\lds,I_{k'}')}}_{!}\cS_{X,G,I,W,E}^{(I_{1}',\lds,I_{k'}')} & $if $(I_{1}',\lds,I_{k'}')$ is a refining partition$ \\
+		  \Dta_{\zta}\xS\sR{\cS_{X,G,J,W,E}^{(J_{1},\lds,J_{k})}} & $if $\Dta_{\zta}:\Gr_{X,G,I,W}^{(I_{1},\lds,I_{k})}\ahr\Gr_{X,G,J,W}^{(J_{1},\lds,J_{k})}$ induced by $\zta:J\ar I$$
+		\end{dcases}
+	\]
+	moreover, denote by $\tta$ the Chevalley involution of $\oH{G}$, then the Verdier duality holds
+	\[
+		\Sht_{X,N,G,I,W}^{(I_{1},\lds,I_{k}),\lqs\mu}=\Sht_{X,N,G,I,W^{*,\tta}}^{(I_{1},\lds,I_{k}),\lqs\mu},\quad \bD(\cS_{X,G,I,W,E}^{(I_{1},\lds,I_{k})})\cong\cS_{X,G,I,W^{*,\tta},E}^{(I_{1},\lds,I_{k})},\quad \bD(\cF_{X,N,G,I,W,E}^{(I_{1},\lds,I_{k})})\cong\cF_{X,N,G,W^{*,\tta},E}^{(I_{1},\lds,I_{k})}.
+	\]
+\end{thm}
+
+\begin{thm}[{\cite[Corollary~2.15, Corollary~2.16, Corollary~2.18]{Lafforgue2018Chtoucas}}]
+	There are canonical isomorphisms
+	\[
+		\cF_{X,N,G,I,\uL{\oga},E}^{(I_{1},\lds,I_{k})}\cong\begin{dcases}
+		  \sR{\eps_{(I),\uL{\oga}}^{(I_{1},\lds,I_{k})}}\xS\sR{\cS_{X,N,G,I,\bt_{i\in I}V_{\oga_{i}},E}^{(I_{1},\lds,I_{k})}} \\
+		  \sR{\eps_{(I_{1},\lds,I_{k}),\uL{\oga}}^{(I_{1},\lds,I_{k})}}\xS\sR{\bt_{j=1}^{k}\cS_{X,N,G,I,\bt_{i\in I_{j}}V_{\oga_{i}},E}^{(I_{j})}} \\
+		  R\sR{\pi_{(I_{1},\lds,I_{k})}^{(I_{1}',\lds,I_{k'}')}}_{!}\cF_{X,N,G,I,\uL{\oga},E}^{(I_{1}',\lds,I_{k'}')}
+		\end{dcases}
+	\]
+\end{thm}
+
+\begin{thm}[{\cite[Lemma~3.1, Proposition~3.3, Proposition~3.4]{Lafforgue2018Chtoucas}}]
+	The partial Frobenius satisfies
+	\[
+		\begin{tikzcd}
+			\Sht_{X,N,G,I,\uL{\oga}}^{(I_{1},\lds,I_{k})}\ar[rr, "\Frb_{I_{1},I}^{(I_{1},\lds,I_{k})}"]\ar[d, "\eps_{(I_{1},\lds,I_{k}),\uL{\oga}}^{(I_{1},\lds,I_{k})}"] && \Sht_{X,N,G,I,\uL{\oga}}^{(I_{2},\lds,I_{k},I_{1})}\ar[d, "\eps_{(I_{2},\lds,I_{k},I_{1}),\uL{\oga}}^{(I_{2},\lds,I_{k},I_{1})}"] \\
+			\prod_{j=1}^{k}\Gr_{X,G,I_{j},\uL{\oga}_{j}}^{(I_{j})}/G_{\sum_{I_{j}}n_{i}x_{i}}\ar[rr, "\Frb_{1}\tms\Id"] && \prod_{j=1}^{k}\Gr_{X,G,I_{j},\uL{\oga}_{j}}^{(I_{j})}/G_{\sum_{I_{j}}x_{i}'}
+		\end{tikzcd}
+	\]
+	and is compatible with $F_{I_{1},I}^{(I_{1},\lds,I_{k})}:\sR{\Frb_{I_{1},I}^{(I_{1},\lds,I_{k})}}\xS\sR{\cF_{X,N,G,I,\uL{\oga},E}^{(I_{2},\lds,I_{k},I_{1})}}\cong\cF_{X,N,G,I,\uL{\oga},E}^{(I_{1},\lds,I_{k})}$, it shifts the truncation
+	\[
+		\Img\sR{\Frb_{I_{1},I}^{(I_{1},\lds,I_{k})}}\xI\sbs\Sht_{X,N,G,I,\uL{\oga}}^{(I_{1},\lds,I_{k}),\lqs\mu+\sum_{I_{1}}\oga_{i}},\quad \Img\sR{\Frb_{I_{1},I}^{(I_{1},\lds,I_{k})}}\sbs\Sht_{X,N,G,I,\uL{\oga}}^{(I_{1},\lds,I_{k}),\lqs\mu-\oga_{0}\sum_{I_{1}}\oga_{i}}.
+	\]
+\end{thm}
+
+\ssc{Cohomology and the excursion operators}
+
+\begin{stp}
+	The $\ell$-adic cohomology of Shtukas is given by $\cH_{I,W,E}^{\blt}:=\ilim_{\mu}\cH_{I,W,E}^{\blt,\lqs\mu}$,
+	\[
+		\cH_{I,W,E}^{\blt,\lqs\mu}:=R\sR{\kp_{X,N,G,I,W}^{(I_{1},\lds,I_{k}),\lqs\mu}}_{!}\sR{\cF_{X,N,G,I,W,E}^{(I_{1},\lds,I_{k})}|_{\Sht_{X,N,G,I,W}^{(I_{1},\lds,I_{k}),\lqs\mu}}}\in D_{c}^{b}({(X\ssm N)}^{I},E),
+	\]
+	which moreover satisfies
+	\begin{enr}[label=(\arabic*)]
+		\item functorial in $W$, denote by $\cH(u)$ the corresponding morphism of sheaves for $u:W\ar W'$,
+		\item independent of the partition, thus the partial Frobenius is denoted $\Frb_{J,I}$ for $J\sbs I$,
+		\item decomposes into $\cH_{I,W,E}^{\blt,\lqs\mu}=\op_{\uL{\oga}\in\sR{X_{*}^{+}(T)}^{I}}\cH_{I,\uL{\oga},E}^{\blt,\lqs\mu}\ot_{E}\kM_{\uL{\oga}}$.
+	\end{enr}
+\end{stp}
+
+\spg{Coalescence, creation and annihilation}
+
+\begin{thm}[{\cite[Proposition~4.12, Proposition~4.14]{Lafforgue2018Chtoucas}}]
+	Any map $\zta:I\ar J$ induces canonical coalescence isomorphisms in $D_{c}^{b}({(X\ssm N)}^{J},E)$,
+	\[
+		\chi_{\zta}:\Dta_{\zta}^{*}(\cH_{I,W,E}^{\blt,\lqs\mu})\cong\cH_{J,\Dta_{\zta}^{*}(W),E}^{\blt,\lqs\mu},
+	\]
+	which is functorial in $W$ and compatible with composition of $\zta$. Moreover, the actions on cohomology given by (1) coalescence isomorphism, (2) partial Frobenii, (3) Satake equivalence, are all compatible.
+\end{thm}
+
+\begin{thm}[{\cite[Lemma~5.3, Remark~5.4]{Lafforgue2018Chtoucas}}]
+	Consider the map $\zta_{J}^{I}:I\scup J\ar I\scup\{0\}$. Take $W\in\Rep_{E}(\oH{G}^{I})$ and $U\in\Rep_{E}(\oH{G}^{J})$, denote by $U':=\Dta_{\zta_{J}^{\ept}}\xS U$, choose $x:\mbm{1}\ar U'$ and $\xi:U'\ar\mbm{1}$, the creation and annihilation morphisms are defined to be morphisms in $D_{c}^{b}(\sR{X\ssm N}^{I}\tms\sR{X\ssm N}, E)$,
+	\begin{align*}
+	  \cC_{x}\xR:& \cH_{I,W,E}^{\blt,\lqs\mu}\bt E_{(X\ssm N)}\axr[\sim]{\chi_{\zta_{\ept}^{I}}} \cH_{I\scup\{0\},W\bt\mbm{1},E}^{\blt,\lqs\mu}\axr{\cH(\Id_{W}\bt x)}\cH_{I\scup\{0\},W\bt U',E}^{\blt,\lqs\mu}\axr[\sim]{\chi_{\zta_{J}^{I}}\xI}\cH_{I\scup J,W\bt U,E}^{\blt,\lqs\mu}|_{{(X\ssm N)}^{I}\tms\Dta(X\ssm N)},\\
+	  \cC_{\xi}\xL:& \cH_{I\scup J,W\bt U,E}^{\blt,\lqs\mu}|_{{(X\ssm N)}^{I}\tms\Dta(X\ssm N)}\axr[\sim]{\chi_{\zta_{J}^{I}}}\cH_{I\scup\{0\},W\bt U',E}^{\blt,\lqs\mu}\axr{\cH(\Id_{W}\bt \xi)}\cH_{I\scup\{0\},W\bt\mbm{1},E}^{\blt,\lqs\mu}\axr[\sim]{\chi_{\zta_{\ept}^{I}}\xI} \cH_{I,W,E}^{\blt,\lqs\mu}\bt E_{(X\ssm N)},
+	\end{align*}
+	moreover, these morphisms satisfy
+	\begin{align*}
+	  &\cC_{x_{2}}\xR\cc\cC_{\xi_{1}}\xL=\cC_{\xi_{1}}\xL\cc\cC_{x_{2}}\xR:\cH_{I\scup J_{1},W\bt U_{1},E}^{\blt,\lqs\mu}|_{\sR{X\ssm N}^{I}\tms\Dta\sR{X\ssm N}}\bt E_{(X\ssm N)}\ar\cH_{I\scup J_{2},W\bt U_{2},E}^{\blt,\lqs\mu}|_{\sR{X\ssm N}^{I}\tms\Dta\sR{X\ssm N}}\bt E_{(X\ssm N)}, \\
+	  &\cC_{x_{1}}\xR\cc\cC_{x_{2}}\xR=\cC_{x_{2}}\xR\cc\cC_{x_{1}}\xR=\cC_{x_{1}\bt x_{2}}\xR:\cH_{I,W,E}^{\blt,\lqs\mu}\bt E_{\sR{X\ssm N}^{2}}\ar\cH_{I\scup J_{1}\scup J_{2},W\bt U_{1}\bt U_{2},E}^{\blt,\lqs\mu}|_{\sR{X\ssm N}^{I}\tms{(\Dta\sR{X\ssm N})}^{2}}, \\
+	  &\cC_{\xi_{1}}\xL\cc\cC_{\xi_{2}}\xL=\cC_{\xi_{2}}\xL\cc\cC_{\xi_{1}}\xL=\cC_{\xi_{1}\bt\xi_{2}}\xL:\cH_{I\scup J_{1}\scup J_{2},W\bt U_{1}\bt U_{2},E}^{\blt,\lqs\mu}|_{\sR{X\ssm N}^{I}\tms{(\Dta\sR{X\ssm N})}^{2}}\ar\cH_{I,W,E}^{\blt,\lqs\mu}\bt E_{\sR{X\ssm N}^{2}},
+	\end{align*}
+	moreover, there is a pairing of sheaves over $\sR{X\ssm N}^{I}$,
+	\[
+		\kB_{I,W,E}^{\lqs\mu}:\cH_{I,W^{*,\tta},E}^{0,\lqs\mu}\ot\cH_{I,W,E}^{0,\lqs\mu}\ar E_{{(X\ssm N)}^{I}},
+	\]
+	with respect to which $\cC_{x}\xR$ and $\cC_{x}\xL$ are adjoint to each other.
+\end{thm}
+
+\spg{Hecke action}
+\begin{stp}
+	Take $W\in\Rep_{E}(\oH{G}^{I})$ and $V\in\Rep_{E}(\oH{G})$, take any place $v$ of $X\ssm N$, for $\kpa$ large enough depending on $\Deg{v}$ and $V$, denote the natural morphisms $\dta_{V}:\mbm{1}\ar V\bt V\xS$ and $e_{V}:V\bt V\xS\ar \mbm{1}$,
+\end{stp}
+
+\begin{thm}[$S=T$, {\cite[Proposition~6.2]{Lafforgue2018Chtoucas}}]
+	Define $S_{V,v}$ as the composition
+	\[
+		S_{V,v}:\cH_{I,W,E}^{\blt,\lqs\mu}\bt E_{v}\axr{\cC_{\dta_{V}}\xR}\cH_{I\scup\{1,2\},W\bt V\bt V\xS,E}^{\blt,\lqs\mu}\axr{\Frb_{\{1\},I\scup\{1,2\}}^{\Deg{v}}}\cH_{I\scup\{1,2\},W\bt V\bt V\xS,E}^{\blt,\lqs\mu+\kpa}\axr{\cC_{e_{V}}\xL}\cH_{I,W,E}^{\blt,\lqs\mu+\kpa}\bt E_{v},
+	\]
+	$S_{V,v}$ descends to $\cH_{I,W,E}^{\blt,\lqs\mu}\ar\cH_{I,W,E}^{\blt,\lqs\mu+\kpa}$ in $D_{c}^{b}({(X\ssm N)}^{I},E)$. One has $S_{V,v}=T(h_{V,v})$ restricting to ${(X\ssm(N\cup v))}^{I}$.
+\end{thm}
+
+\begin{rmk}
+	The proof is very hard, one compares the two cohomological correspondences $\cC\zL\cc\cC_{F}\cc\cC\zR$ and $\cC_{h_{V,v}}$ by proving the existence of a desired test function (\cite[Lemma~6.12, Lemma~6.13]{Lafforgue2018Chtoucas}).
+\end{rmk}
+
+\begin{thm}[{\cite[Proposition~7.1]{Lafforgue2018Chtoucas}}]
+	The morphism $\Frb_{\{0\},I\scup\{0\}}^{\Deg{v}}$ satisfies the Eichler-Shimura relation
+	\[
+		0=\sum_{i=0}^{\Dim{V}}{(-1)}^{i}\Frb_{\{0\},I\scup\{0\}}^{i\Deg{v}}\cc S_{\Lda^{\Dim{V}-i}V,v}|_{{(X\ssm N)}^{I}\tms v}:\cH_{I\scup\{0\},W\bt V,E}^{\blt,\lqs\mu}|_{\sR{X\ssm N}^{I}\tms v}\ar\cH_{I\scup\{0\},W\bt V,E}^{\blt,\lqs\mu+\kpa}|_{\sR{X\ssm N}^{I}\tms v}.
+	\]
+\end{thm}
+
+\begin{rmk}
+	The proof is not hard, one uses the functoriality provided by geometric Satake equivalence together with the tensor-algebraic proof of the Cayley-Hamilton theorem.
+\end{rmk}
+
+\spg{Galois action}
+
+\begin{stp}
+	Define the $F$-Weil group $\FWl(\eta^{I},\oL{\eta^{I}}):=\{g\in\Aut_{\oL{k}}(\oL{F^{I}}):\xis(n_{i})\in\bZ^{I}, g|_{\sR{F^{I}}^{\text{perf}}}=\prod_{i\in I}\Frb_{\{i\}}^{n_{i}}\}$, there is a categorical equivalence between
+	\begin{itm}
+		\item constructible sub-$\cO_{E}$-sheaves of $\cH_{I,W,E}^{\blt}|_{\eta^{I}}$ stable under partial Frobenii.
+		\item finite type sub-$\cO_{E}$-modules of $\cH_{I,W,E}^{\blt}|_{\oL{\eta^{I}}}$ stable under $\FWl(\eta^{I},\oL{\eta^{I}})$.
+	\end{itm}
+\end{stp}
+
+\begin{thm}[Drinfeld's lemma, {\cite[Lemma~8.2, Definition~8.19]{Lafforgue2018Chtoucas}}]
+	Let $U\sbs X$ be open dense, there is an categorical equivalence between
+	\begin{itm}
+		\item constructible $\cO_{E}$-sheaves $\kC$ over $U^{I}$ equiped with partial Frobenii.
+		\item continuous representations of $\pi_{1}\sR{U,\oL{\eta}}^{I}$ over finite type $\cO_{E}$-modules.
+	\end{itm}
+	Thus the action of $\FWl(\eta^{I},\oL{\eta^{I}})$ over $\cH_{I,W,E}^{\blt}|_{\oL{\eta^{I}}}$ factors through $\pi_{1}\sR{\eta,\oL{\eta}}^{I}$, for any geometric point $\oL{x}$ of $\sR{X\ssm N}^{I}$, the Hecke-finite part $\cH_{I,W,E}^{\blt}|_{\oL{x}}^{\text{Hf}}$ is automatically stable under $\pi_{1}(x,\oL{x})$.
+\end{thm}
+
+\begin{thm}[{\cite[Proposition~8.23, Proposition~8.31, Proposition~8.32, Corollary~8.34]{Lafforgue2018Chtoucas}}]
+	It holds that
+	\[
+		\cA_{X,N,G,E}=\cH_{\ept,\mbm{1},E}^{0}|_{\oL{k}},\quad \cA_{X,N,G,E}^{\text{cusp}}=\cH_{\ept,\mbm{1},E}^{0}|_{\oL{k}}^{\text{Hf}}.
+	\]
+	For any specialization morphism $\Spe:\oL{\eta^{I}}\ar\Dta(\oL{\eta})$ the induced morphisms
+	\[
+		\Spe\xS:\cH_{I,W,E}^{0}|_{\Dta(\oL{\eta})}\ar\cH_{I,W,E}^{0}|_{\oL{\eta^{I}}},\quad \Spe_{\text{Hf}}\xS:\cH_{I,W,E}^{0}|_{\Dta(\oL{\eta})}^{\text{Hf}}\ar \cH_{I,W,E}^{0}|_{\oL{\eta^{I}}}^{\text{Hf}},
+	\]
+	satisfy: (1) $\Spe\xS$ is injective, $\Img(\Spe\xS)\sps\cH_{I,W,E}^{0}|_{\oL{\eta^{I}}}^{\text{Hf}}$; (2) $\Spe_{\text{Hf}}\xS$ is bijective.
+\end{thm}
+
+\spg{Excursion algebra}
+
+\begin{stp}
+	Take $W\in\Rep_{E}(\oH{G}^{I})$, take $x\in W$ and $\xi\in W\xS$ which are invariant under the diagonal action of $\oH{G}$, take $(\gma_{i})\in\pi_{1}\sR{\eta,\oL{\eta}}^{I}$, then the function $f:(g_{i})\amt\sA{\xi,(g_{i})\cdot x}$ is in $\cO(\oH{G}\bs\oH{G}^{I}/\oH{G})$.
+\end{stp}
+
+\begin{thm}[{\cite[Proposition~9.1, Lemma~10.6]{Lafforgue2018Chtoucas}}]
+	Define the excursion operators $S_{I,W,x,\xi,(\gma_{i})}$ via
+	\[
+		S_{I,W,x,\xi,(\gma_{i})}:\cH_{\ept,\mbm{1},E}^{0}|_{\oL{k}}^{\text{Hf}}\axr{\cC_{x}\xR}\cH_{I,W,E}^{0}|_{\Dta(\oL{\eta})}^{\text{Hf}}\axr{\Spe_{\text{Hf}}\xS}\cH_{I,W,E}^{0}|_{\oL{\eta^{I}}}^{\text{Hf}}\axr{(\gma_{i})}\cH_{I,W,E}^{0}|_{\oL{\eta^{I}}}^{\text{Hf}}\axr{(\Spe_{\text{Hf}}\xS)\xI}\cH_{I,W,E}^{0}|_{\Dta(\oL{\eta})}^{\text{Hf}}\axr{\cC_{\xi}\xL}\cH_{\ept,\mbm{1},E}^{0},
+	\]
+	these operators only depend on $I,f,(\gma_{i})$. Define the excursion algebra $\cB\sbs\End{\cH_{X,N,G,E}}{}{(\cA_{X,N,G,E}^{\text{cusp}})}$ to be the $E$-algebra generated by these excursion operators, it is commutative.
+\end{thm}
+
+\begin{rmk}
+	Whether $\cB$ is reduced is a very hard problem (\cite[Conjecture~12.12]{Lafforgue2018Chtoucas}).
+\end{rmk}
+
+\begin{thm}[{\cite[Proposition~10.8, Proposition~10.10]{Lafforgue2018Chtoucas}}]
+	The excursion operators $S_{I,f,(\gma_{i})}$ satisfy
+	\begin{itm}
+		\item For fixed $I$ and $(\gma_{i})$, the map $\cO(\oH{G}\bs\oH{G}^{I}/\oH{G})\ar\cB,f\amt S_{I,f,(\gma_{i})}$ is a morphism of commutative $E$-algebras.
+		\item For fixed $f$ and $(\gma_{i})$, one has $S_{J,\Dta_{\zta}\xS f,(\gma_{j})}=S_{I,f,(\gma_{\zta(i)})}$ for any map $\zta:I\ar J$.
+		\item For fixed $I$ and $f$, $S_{I,f,(\gma_{i})}$ only depends on the image of $(\gma_{i})$ in $\pi_{1}{(X\ssm N,\oL{\eta})}^{I}$, the map $\pi_{1}\sR{X\ssm N, \oL{\eta}}^{I}\ar\cB$ is continuous. Moreover, consider $(\gma_{i}^{1}),(\gma_{i}^{2}),(\gma_{i}^{3})\in\pi_{1}\sR{X\ssm N,\oL{\eta}}^{I}$, one has
+			\[
+				S_{I\scup I\scup I,\oT{f},(\gma_{i}^{1})\tms(\gma_{i}^{2})\tms(\gma_{i}^{3})}=S_{I,f,(\gma_{i}^{1}(\gma_{i}^{2})^{-1}\gma_{i}^{3})},\quad \oT{f}((\gma_{i}^{1})\tms(\gma_{i}^{2})\tms(\gma_{i}^{3}))=f((\gma_{i}^{1}(\gma_{i}^{2})^{-1}\gma_{i}^{3})).
+			\]
+		\item For any irreducible representation $V$ of $\oH{G}$, $I=\{1,2\}$ and $f$ given by $(g_{1},g_{2})\amt\chi_{V}(g_{1}g_{2}\xI)$, take $\gma\in\Gal(\oL{F_{v}}/F_{v})\ahr\pi_{1}(\eta,\oL{\eta})$ with $\Deg{\gma}=d$, then $S_{I,f,\{\gma,1\}}$ only depends on $d$ and is equal to $T(h_{V,v})$ if $d=1$.
+	\end{itm}
+\end{thm}
+
+
+\ssc{Spectral decomposition and global Langlands}
+
+\begin{thm}[{\cite[Proposition~11.7, Theorem~11.11]{Lafforgue2018Chtoucas}}]
+	There is a decomposition of $\cH_{X,N,G,\oL{\bQ_{\ell}}}$-modules
+	\[
+		\cA_{X,N,G,\oL{\bQ_{\ell}}}^{\text{cusp}}=\op_{\nu}\kH_{\nu}=\op_{\sgm}\kH_{\sgm},
+	\]
+	in which $\nu$ runs through characters of $\cB^{\text{red}}$; and $\sgm$ runs through conjugacy classes of $\sgm:\pi_{1}(X\ssm N,\oL{\eta})\ar\oH{G}(\oL{\bQ_{\ell}})$ such that $\Img{\sgm}$ lies $\oH{G}(E')$ for some finite extension $E'$ of $E$, and $\oL{\Img{\sgm}}$ is reductive. The decompositions are matched via $\nu(S_{I,f,(\gma_{i})})=f((\sgm(\gma_{i})))$ and is compatible with the geometric Satake equivalence, for any $\sgm$ with $\kH_{\sgm}\neq0$, $V$ irreducible representation of $\oH{G}$ and $v$ a place of $X\ssm N$, $T(h_{V,v})$ acts on $\kH_{\sgm}$ by $\chi_{V}(\sgm(\Frb_{v}))$.
+\end{thm}
+
+\begin{rmk}
+	The proof is very hard, the existence of $\sgm$ to make $\nu(S_{I,f,(\gma_{i})})=f((\sgm(\gma_{i})))$ relies on a deep representation-theoretic result of Richardson\cite{Richardson1988}.
+\end{rmk}
+
+
+\printref
+\end{document}

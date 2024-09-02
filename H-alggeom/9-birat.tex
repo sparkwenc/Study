@@ -1,0 +1,38 @@
+\documentclass[article, a4paper, twoside]{universal}
+
+\setshowlvl{1}
+\begin{document}
+\confighead{}{}{}
+\printhead{}{}{1}
+
+
+\sct{Birational geometry}
+
+\ssc{Finite generation of canonical ring}
+Ref:~\cite{BCHM2010}
+
+\begin{thm}[{\cite[Theorem~1.2]{BCHM2010}}]
+	Let $(X,\Dta)$ be a klt pair, where $K_{X}+\Dta$ is Cartier. Let $\pi:X\ar U$ be a morphism of quasi-projective varieties. If either (1) $\Dta$ is $\pi$-big and $K_{X}+\Dta$ is $\pi$-pseudo-effective or (2) $K_{X}+\Dta$ is $\pi$-big, then
+	\begin{itm}
+		\item $K_{X}+\Dta$ has a log terminal model over $U$,
+		\item if $K_{X}+\Dta$ is $\pi$-big then $K_{X}+\Dta$ has a log canonical model over $U$,
+		\item if $K_{X}+\Dta$ is $\bQ$-Cartier, then the following $\cO_{U}$-algebra is finitely generated,
+		\[
+			\kR(\pi,K_{X}+\Dta)=\Op_{m\in\bN}\pi\zS\cO_{X}(\sFl{m(K_{X}+\Dta)}).
+		\]
+	\end{itm}
+\end{thm}
+
+
+\begin{thm}[$A_{n}$]
+	Let $f:X\ar Z$ be a pl-flipping contraction for an $n$-dimensional purely log terminal pair $(X,\Dta)$, then the flip $f\xP:X\xP\ar Z$ exists.
+\end{thm}
+
+\begin{thm}[$B_{n}$]
+	Let $\pi:X\ar U$ be a projective morphism of normal quasi-projective varieties, where $X$ is $\bQ$-factorial of dimension $n$. Let $V$ be a finite dimensional affien subspace of $\mathrm{WDiv}_{\bR}(X)$ defined over $\bQ$, $S$ the sum of finitely many prime divisors and $A$ a general ample $\bQ$-divisor over $U$. Let $(X,\Dta_{0})$ be a divisorially log terminal pair such that $S\lqs\Dta_{0}$. Fix a finite set $\kC$ of prime divisors on $X$.
+
+	Then there are finitely many $1\lqs i\lqs k$ many birational maps $\phi_{i}:X\adr Y_{i}$ over $U$ such that if $\phi:X\adr Y$ is any $\bQ$-factorial weak log canonical model over $U$ of $K_{X}+\Dta$, where $\Dta\in\cL_{S+A}(V)$, which only contracts elements of $\kC$ and which does not contract every component of $S$, then there is an index $1\lqs i\lqs k$ such that the induced birational map $\xi:Y_{i}\adr Y$ is an isomorphism in a neighborhood of the strict transforms of $S$.
+\end{thm}
+
+\printref
+\end{document}

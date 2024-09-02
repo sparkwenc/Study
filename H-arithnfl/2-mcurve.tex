@@ -1,0 +1,100 @@
+\documentclass[article, a4paper, twoside]{universal}
+
+\setshowlvl{1}
+\begin{document}
+\confighead{}{}{}
+\printhead{}{}{1}
+
+\sct{On modular curves}
+It seems standard in every landmark paper settling important results which involves the arithmetic of modular curves would contain a lot addressing fundamental facts about them, a few is collected below.
+\begin{itm}
+	\item \cite{Mazur1977Eisenstein}: torsion conjecture.
+	\item \cite{Deligne1971Formes,DS1974,Scholze2015}: global Langlands.
+	\item \cite{DR1973,KM1985,Conrad2007}: arithmetic moduli.
+	\item \cite{Tian2014,TYZ2017,BT2020Horizontal}: congruent number problem.
+	\item \cite{Ribet1990}: epsilon conjecture.
+	\item \cite{Scholze2011,Scholze2013LLC,Lurie2023}: local Langlands.
+\end{itm}
+
+\begin{cmt}
+\begin{itm}
+	\item Iwasawa: Ideal A = Ideal B
+	\item Modularity: Ring R = Ring T
+	\item Gross-Zagier: height = L'
+	\item Waldspurger: integral = L
+\end{itm}
+\end{cmt}
+
+
+
+\ssc{On Heegner points}
+
+Read \cite{CW1977,Gross1984,GZ1986,Kolyvagin1990}.
+
+Use also \cite{CW2008}.
+
+\begin{rmk}
+	There is detailed treatment of the map $X_{0}(32)\ar E$, where $E$ is given by $y^{2}=x^{3}-x$ in \cite{Tian2014,TYZ2017}. This is in fact a degree $2$ isogeny rather than the optimal quotient map, one still should learn the argument to prove $(X_{0}(32),[\ift])$ is given by $y^{2}=x^{3}+4x$.
+\end{rmk}
+
+
+\ssc{Density conjecture}
+
+\red{TODO:} Do some Andr{\'e}-Oort
+
+\ssc{The basis problem}
+\begin{qst}
+	Given a normalized eigenform $f\in S_{2}(\Gma_{0}(N))$, what's the strongest known effective estimate of the asymptotics of $(f,f)$ in terms of the level $N$?
+
+	Does writting down an explicit basis as in \cite{HPS1989Basis} help? What is the consequence if one assumes GRH?
+\end{qst}
+
+\begin{rmk}
+	Some historical attempts we found.
+	\begin{itm}
+		\item In \cite[(12)]{Zagier1985Parametrization}, they used explicit integration on the fundamental domain to get, when $N$ is prime,
+		\[
+			(f,f)\lqs\frac{1}{8\pi^{3}\sqrt{3}}N\log^{3}{N}+O(N\log^{2}{N}).
+		\]
+		\item In \cite{MM1994Modular}, they used an analytic result of Phragm{\'e}n-Lindel{\" o}f to get, unconditionally on $N$,
+		\[
+			(f,f)=O(N\log^{3}{N}).
+		\]
+		(\red{Are constant here effective?})
+	\end{itm}
+\end{rmk}
+
+\ssc{Semistable model}
+Follow Edixhoven--Parent \cite{EP2021}. See also unfinished manuscript of \href{https://websites.math.leidenuniv.nl/edixhoven/publications/2001/modular_parametrisations.pdf}{Edixhoven} to see his attempt to understand the modular parametrization.
+
+
+\ssc{Level lowering}
+
+Do level changing theorems, and the geometric Jacquet--Langlands correspondence
+\begin{thm}[{\cite[Theorem~8.2]{Ribet1990}}]
+	Let $\rho:G_{\bQ}\ar\GL_{2}(\bF)$ be an irreducible mod $\ell\gqs3$ modular representation of level $Mp$ with $p\nmid M$ and $\rho$ is finite at $p$.
+
+	Then $\rho$ is modular of level $M$ if either (1) $p\not\eqv1\bmod{\ell}$ or (2) $\ell\nmid M$.
+\end{thm}
+\begin{prf}[Sketch of the proof]
+	The idea is to first prove (1) directly, to deal with (2) one choose an auxiliary prime $q$ satisfying (1) to pass the level via $Mp\ar Mpq\ar Mq\ar M$. Both arguments are geometric:
+
+	\spg{For (1)} Let $X$ be the first homology group of the dual graph of the reduction of $X_{0}(Mp)$ modulo $p$.
+
+
+	\spg{For (2)}
+
+	Assume $\rho\cong\rho_{\km_{p}}$ for some maximal ideal $\km_{p}$ of $\bT_{Mp}$.
+\end{prf}
+
+
+
+
+\ssc{Rational Singularities}
+
+Mimic and push the proof as in Section 6 of Cesnavicius-Neurura-Saha and \cite{Raynaud1991}.
+
+
+
+\printref
+\end{document}

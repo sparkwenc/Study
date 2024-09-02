@@ -1,0 +1,93 @@
+\documentclass[article, a4paper, twoside]{universal}
+
+\setshowlvl{1}
+\begin{document}
+\confighead{}{}{}
+\printhead{}{}{1}
+
+
+\sct{Cotangent complexes}
+Ref:~\cite{Illusie1971,Illusie1972}.
+
+\begin{stp}
+	To any morphism $R\ar S$ of rings, one has the cotangent complex $\bL_{S/R}\in D^{\lqs0}(S)$.
+\end{stp}
+
+\begin{thm}[{\cite[III.2.1.2.3, III.2.2.2]{Illusie1971}}]
+	Let $R$ be a ring, $I\sbs R$ an ideal such that $I^{2}=0$ and $R_{0}=R/I$.
+
+	To deform a flat $R_{0}$-algebra $S_{0}$ to a flat $R$-algebra $S$, there is an obstruction class in $\Ext{}{2}{(\bL_{S_{0}/R_{0}},S_{0}\ot_{R_{0}}I)}$ which vanishes precisely when such a deformation exists. If it exists, then the set of all isomorphism classes of such deformations forms a torson under $\Ext{}{1}{(\bL_{S_{0}/R_{0}},S_{0}\ot_{R_{0}}I)}$, and every such deformation has automorphism group $\Hom{}{}{(\bL_{S_{0}/R_{0}},S_{0}\ot_{R_{0}}I)}$.
+
+	For two flat $R_{0}$-algebras $S_{0},S_{0}'$ and their deformation $S,S'$, to lift a morphism $f_{0}:S_{0}\ar S_{0}'$ to $f:S\ar S'$, there is an obstruction class in $\Ext{}{1}{(\bL_{S_{0}/R_{0}},S_{0}'\ot_{R_{0}}I)}$ which vanishes precisely when such a lift exists. If it exists, then the set of all such lifts forms a torsor under $\Hom{}{}{(\bL_{S_{0}/R_{0}},S_{0}\ot_{R_{0}}I)}$.
+\end{thm}
+
+
+
+\sct{Deformation theory}
+Ref:~\cite{Hartshorne2010}.
+
+One considers the deformation problem of the following,
+\begin{enr}[label=(\Alph*)]
+	\item subschemes of a fixed scheme $X$.
+	\item line bundles of a fixed scheme $X$.
+	\item coherent sheaves of a fixed scheme $X$.
+	\item deformation of abstract schemes.
+\end{enr}
+
+\ssc{First-order deformations}
+\begin{stp}
+	Let $k$ be an algebraically closed field.
+\end{stp}
+
+\begin{thm}[{\cite[Theorem~1.1]{Hartshorne2010}}]
+	Let $Y$ be a closed subscheme of $\bP_{k}^{n}$ with Hilbert polynomial $P$ and normal sheaf $\cN_{Y}$, then
+	\begin{itm}
+		\item The Hilbert scheme $H=\Hilb(n,P)$ and its universal family $\cH\sbs H\tms X$ exist.
+		\item If $Y$ corresponds to $y\in H$, then $T_{y}H\cong\HH{}{0}{(Y,\cN_{Y})}$.
+		\item If $Y$ is a locally complete intersection, then $\Dim_{y}H\gqs h^{0}(Y,\cN_{Y})-h^{1}(Y,\cN_{Y})$.
+	\end{itm}
+\end{thm}
+
+\begin{thm}
+	Let $X$ be a scheme over $k$, consider the deformations over $D=\Spc{k[\eps]/(\eps^{2})}$,
+	\begin{enr}[label=(\Alph*)]
+		\item {\cite[Theorem~2.4]{Hartshorne2010}} Let $Y$ be a closed subscheme of $X$, then deformations is given by $\HH{}{0}{(Y,\cN_{Y/X})}$.
+		\item {\cite[Proposition~2.6]{Hartshorne2010}} Let $\cL$ be an invertible sheaf on $X$, then deformations is given by $\HH{}{1}{(X,\cO_{X})}$.
+		\item {\cite[Theorem~2.7]{Hartshorne2010}} Let $\cF$ be a coherent sheaf on $X$, then deformations is given by $\Ext{\cO_{X}}{1}{(\cF,\cF)}$.
+		\item {\cite[Theorem~5.3]{Hartshorne2010}} If $X$ is nonsingular, then the deformation of $X$ is given by $\HH{}{1}{(X,\cT_{X})}$.
+	\end{enr}
+\end{thm}
+
+\begin{thm}[{\cite[Theorem~4.11]{Hartshorne2010}}]
+	A morphism of finite type $f:X\ar Y$ of Noetherian schemes is smooth if and only if it is flat and $\cT^{1}(X/Y,\cF)=0$ for all coherent sheaves $\cF$ on $X$. Furthermore if $f$ is smooth, then $\cT^{2}(X/Y,\cF)=0$ for all $\cF$.
+\end{thm}
+
+\begin{rmk}
+	I should learn the Andre-Quillen cohomology and Illusie's contangent complexes.
+\end{rmk}
+
+\ssc{Higher-order deformations}
+\begin{stp}
+	Let $k$ be a field, $C,C'$ local Artin rings with residue field $k$, $J$ ideal of $C'$ such that $\km_{C'}J=0,C'/J\cong C$.
+\end{stp}
+
+\begin{thm}[{\cite[Theorem~10.2]{Hartshorne2010}}]
+	Let $X_{0}$ be a scheme over $k$ and $X$ its deformation over $C$, recall the Lichtenbaum-Schlessinger functors $\cT_{X_{0}}^{i}=\cT^{i}(X_{0}/k,\cO_{X_{0}})$, consider extend to $X'$ over $C'$,
+	\begin{itm}
+		\item There are three obstructions lying in $\HH{}{0}{(X_{0},\cT_{X_{0}}^{2}\ot J)},\HH{}{1}{(X_{0},\cT_{X_{0}}^{1}\ot J)},\HH{}{2}{(X_{0},\cT_{X_{0}}^{0}\ot J)}$.
+		\item Denote by $\mathrm{Def}(X/C,C')$ all such extensions, there is an exact sequence
+		\[
+			0\ar\HH{}{1}{(X_{0},\cT_{X_{0}}^{0}\ot J)}\ar \mathrm{Def}(X/C,C')\ar \HH{}{0}{(X_{0},\cT_{X_{0}}^{1}\ot J)}\ar\HH{}{2}{(X_{0},\cT_{X_{0}}^{0}\ot J)}.
+		\]
+	\end{itm}
+
+	If $X_{0}$ is nonsingular, then
+	\begin{itm}
+		\item There is only one obstruction in $\HH{}{2}{(X_{0},\cT_{X_{0}}\ot J)}$,
+		\item $\mathrm{Def}(X/C,C')$ is a torsor under $\HH{}{1}{(X_{0},\cT_{X_{0}}\ot J)}$.
+	\end{itm}
+\end{thm}
+
+
+\printref
+\end{document}

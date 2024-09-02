@@ -1,0 +1,59 @@
+\documentclass[article, a4paper, twoside]{universal}
+
+\setshowlvl{1}
+\begin{document}
+\confighead{}{}{}
+\printhead{}{}{1}
+
+\sct{Resolution of singularities}
+Ref:~\cite{Hironaka1964,deJong1996}.
+
+
+\begin{stp}
+	A variety $X$ over a field $k$ is an integral separated scheme of finite type over $\Spc k$.
+\end{stp}
+
+\begin{dfn}
+	Let $X$ be an Noetherian integral scheme, $Y$ an integral scheme, a morphism $\vfi:Y\ar X$ is called a
+	\begin{enr}
+		\item \cite[2.17]{deJong1996} \tbf{modification} if it is proper and birational.
+		\item \cite[2.20]{deJong1996} \tbf{alteration} if it is proper, dominant and generically finite.
+	\end{enr}
+\end{dfn}
+
+
+\begin{thm}[{\cite[Main Theorem~\Rnum{1}]{Hironaka1964}}]
+	Let $X$ be a variety over a field $k$ of characteristic $0$. Then there is a finite sequence of modifications
+	\[
+		X_{n}\ar X_{n-1}\ar\cdots\ar X_{1}\ar X_{0}=X,
+	\]
+	where each $X_{i+1}\ar X_{i}, 0\leq i\leq n-1$ is a blow-up along a nonsingular center $D_{i}\sbs\Sng(X)$.
+\end{thm}
+
+
+\begin{thm}[{\cite[4.1]{deJong1996}}]
+	Let $X$ be a variety over a field $k$, $Z\sbs X$ a proper closed subset. There exists an alteration $\vfi$ and an open immersion $j$ such that
+	\[
+		\begin{tikzcd}
+			\oL{Y} & Y\ar[l, hook', "j"']\ar[r, "\vfi"] & X,
+		\end{tikzcd}
+	\]
+	\begin{enr}
+		\item $\oL{Y}$ is a regular projective variety,
+		\item $j(\vfi\xI(Z))\cup(\oL{Y}\ssm Y)\sbs \oL{Y}$ is a strict normal crossings divisor.
+	\end{enr}
+\end{thm}
+
+
+\begin{rmk}
+	For the relations between modification and alteration, one has
+	\begin{itm}
+		\item Every modification is an alteration.
+		\item Every alteration is a post-composition of a modification and a finite morphism by Stein factorization. It is a modification if and only if the finite morphism is identity (Counterexample: quotient by a finite group).
+	\end{itm}
+\end{rmk}
+
+
+
+\printref
+\end{document}

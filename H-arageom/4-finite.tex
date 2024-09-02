@@ -1,0 +1,405 @@
+\documentclass[article, a4paper, twoside]{universal}
+
+\setshowlvl{1}
+\begin{document}
+\confighead{}{}{}
+\printhead{}{}{1}
+
+
+\sct{Arithmetic bigness and uniform Bogomolov}
+Ref:~\cite{Yuan2021Bigness,Zhang1993}.
+
+The Bogomolov conjecture is one precise incarnation to express the idea of the non-existence of ``constant surfaces'' over $\bZ$. The complexity of curve reduction becomes graph-theoretic via Zhang's construction of adelic metrics. This can be extended to a family version to give a uniform finiteness result.
+
+\ssc{Canonical admissible metrics and the Deligne pairing}
+
+
+\spg{The Zhang metrics}
+\begin{thm}[{\cite[Theorem~A.1]{Yuan2021Bigness}}]
+	If $C$ is a smooth projective curve of genus $g>0$ over a non-archimedean field $K$, then there is a unique pair of metrics $(\dP{\cdot}_{a},\dP{\cdot}_{\Dta,a})$, where
+	\begin{itm}
+		\item $\dP{\cdot}_{a}$ is an integrable metric of $\oga_{C/K}$ over $C^{\mathrm{an}}$.
+		\item $\dP{\cdot}_{\Dta,a}$ is a symmetric integrable metric of $\cO_{C^{2}}(\Dta)$ over $(C^{2})^{\mathrm{an}}$.
+	\end{itm}
+	Moreover, one has for any finite extensions $K'/K$ and points $x,y\in C(K')$
+	\begin{itm}
+		\item the equality of Chambert-Loir measures over $C_{K'}^{\mathrm{an}}$
+		\[
+			c_{1}(\cO(x),\dP{\cdot}_{x})=c_{1}(\cO(y),\dP{\cdot}_{y})=\frac{1}{2g-2}c_{1}(\oga_{C_{K'}/K'},\dP{\cdot}_{a}).
+		\]
+		\item the equality of an integration
+		\[
+			\int_{(C_{K'})^{\mathrm{an}}}g_{\Dta,a}(x,\cdot)c_{1}(\cO(x),\dP{\cdot}_{x})=0.
+		\]
+		\item the residue map $(\oga_{C/K}\ot_{\cO_{C}}\cO(x))|_{x}\ar K'$ is an isometry.
+	\end{itm}
+\end{thm}
+
+
+This can be upgraded to a family version over a quasi-projective base
+\begin{thm}[{\cite[Theorem~2.3]{Yuan2021Bigness}}]
+	Let $k$ be $\bZ$ or a field, $S$ quasi-projective flat normal integral scheme over $k$, for a smooth relative curve $\pi:X\ar S$ of genus $g>0$, and diagonal morphism $\Dta:X\ar X\tms_{S}X$, then
+	\begin{enr}
+		\item There is an adelic line bundle $\oL{\oga}_{X/S,a}\in\acPic(X/k)$, with underlying bundle $\oga_{X/S}$, such that for any $v\in S^{\mathrm{an}}$, the metric of $\oga_{X_{H_{v}}/H_{v}}$ over $X_{H_{v}}^{\mathrm{an}}$ induced by $\oL{\oga}_{X/S,a}$ is equal to the canonical admissible metric $\dP{\cdot}_{a}$. $\oL{\oga}_{X/S,a}$ is nef and unique up to isomorphism.
+		\item There is an adelic line bundle $\oL{\cO}(\Dta)_{a}\in\acPic(X\tms_{S}X/k)$, with underlying bundle $\cO(\Dta)$, such that for any $v\in S^{\mathrm{an}}$, the metric of $\cO(\Dta_{H_{v}})$ over $(X_{H_{v}}^{2})^{\mathrm{an}}$ is equal to the canonical admissible metric $\dP{\cdot}_{\Dta,a}$. $\oL{\cO}(\Dta)_{a}$ is integrable and unique up to isomorphism.
+		\item The canonical isomorphisms $\oga_{X/S}\ar\Dta\xS\cO(-\Dta),\quad \pr_{1*}\sA{\cO(\Dta),\pr_{2}\xS\oga_{X/S}}\ar\oga_{X/S}$ induces isomorphisms
+		\[
+			\oL{\oga}_{X/S}\ar\Dta\xS\oL{\cO}(-\Dta)_{a},\quad \pr_{1*}\sA{\oL{\cO}(\Dta)_{a},\pr_{2}\xS\oL{\oga}_{X/S,a}}\ar\oL{\oga}_{X/S,a}.
+		\]
+	\end{enr}
+\end{thm}
+
+\spg{The Deligne pairing}
+The Deligne pairing for any projective flat morphism $f:X\ar Y$ of noetherian schemes of pure relative dimension $n$ is a multi-linear functor
+\[
+	\cPic(X)^{n+1}\ar\cPic(Y), (L_{1},\ldots,L_{n+1})\amt\sA{L_{1},\ldots,L_{n+1}}.
+\]
+
+
+This can be upgraded to adelic line bundles
+\begin{thm}[{\cite[Theorem~4.1.2]{YZ2021}}]
+	Let $k$ be $\bZ$ or a field, let $Y$ be a flat and essentially quasi-projective integral scheme over $k$, $f:X\ar Y$ a projective flat morphism of relative dimension $n$. Assume that $X$ is integral and $Y$ is normal, then the original Deligne pairing induces a symetric and multilinear functor
+	\[
+		\acPic(X/k)_{\mathrm{int}}^{n+1}\ar\acPic(Y/k)_{\mathrm{int}},
+	\]
+	which restricts well to strongly nef and nef adelic line bundles.
+
+	Moreover the functors are compatible for base changes $Y'\ar Y$ where $Y'$ is a normal integral scheme, and flat essentially quasi-projective over $k$ such that $X'=X\tms_{Y}Y'$ is integral.
+\end{thm}
+
+
+
+\ssc{Invariants of reduction graphs and the bigness result}
+
+The reduction graph of an algebraic curve is a polarized metrized graph, and three invariants $\eps, \vfi, \dta$ can be defined. Their family versions are defined in \cite{Yuan2021Bigness} and packed as adelic divisors $\oL{E},\oL{\Phi},\Dta_{\oL{S}}\in\oH{\Div}(S)$ over the base $S$. $\dta$-invariant is the length of the reduction graph, while $\eps,\vfi$-invariants are harder, they measure the degree of degeneracy of a curve at some place, introduced in \cite{Zhang1993,Zhang2010GrossSchoen}.
+
+
+\spg{Graph invariants and Cinkir's bound}
+We recall the definitions of some graph invariants respectively and collect a small part of the computation of Cinkir's bound\cite{Cinkir2011}.
+
+\begin{dfn}[{\cite[Section~3]{Zhang1993}, \cite[Section~4]{Zhang2010GrossSchoen}, \cite[Section~4]{Cinkir2011}, Appendix~A.5}]
+	The reduction graph $\Gma$ of any semistable curve $X$ of genus $g$ over a discrete valuation ring is a polarized metrized graph(pm-graph) of genus $g$. For such, one has a measure $\mu$ on $\Gma$ of volume $1$, then there is a continuous symmetric Green's function $g_{\mu}$ defined on $\Gma\tms\Gma$ with respect to $\mu$, one can define $K=\sum_{p\in\Gma}(v(p)+2q(p)-2)p$,
+	\begin{align*}
+	  \tau(\Gma)&=\int_{\Gma}g_{\mu}(x,x)\mu,\\
+	  \eps(\Gma)&=\int_{\Gma}g_{\mu}(x,x)((2g-2)\mu+\dta_{K}),\\
+	  % \vfi(\Gma)&=3g\tau(\Gma)-\frac{1}{4}(\eps(\Gma)+\dta(\Gma))\\
+	  \vfi(\Gma)&=-\frac{1}{4}\dta(\Gma)-\frac{1}{4}\int_{\Gma}g_{\mu}(x,x)(\dta_{K}-(10g+2)\mu).\\
+	\end{align*}
+\end{dfn}
+
+
+\begin{thm}[{\cite[Theorem~5.10]{Cinkir2011}}]
+	Let $\Gma$ be a bridgeless simple pm-graph of genus $g$ and $\#V(\Gma)=v\gqs3$, suppose each vertex has valence $v(p)\gqs3$, then
+	\[
+		\vfi(\Gma)\gqs\frac{g^{2}(v+14)-2g(3v+2)-7v-10}{2g(7g+5)(v+6)}\dta(\Gma),
+	\]
+	moreover $v\lqs2(g-1)$ implies
+	\[
+		\vfi(\Gma)\gqs\frac{(g-1)^{2}}{2g(7g+5)}\dta(\Gma).
+	\]
+\end{thm}
+
+\begin{rmk}
+	For $g=3$ this gives $39\vfi(\Gma)\gqs\dta(\Gma)$. This comes from the following two theorems and an elementary calculus of a minimization problem, in which the definitions of $x(\Gma),y(\Gma)$ are not included in this note.
+\end{rmk}
+
+\begin{thm}[{\cite[Theorem~5.7]{Cinkir2011}}]
+	Let $\Gma$ be a bridgeless simple pm-graph with $\#V(\Gma)=v$, then
+	\[
+		y(\Gma)\dta(\Gma)\gqs\frac{v+6}{4v}(x(\Gma)+y(\Gma))^{2}, \dta(\Gma)>x(\Gma)+y(\Gma).
+	\]
+\end{thm}
+
+\begin{thm}[{\cite[Proposition~5.8]{Cinkir2011}}]
+	Let $\Gma$ be a bridgeless simple pm-graph with genus $g$ and $\#V(\Gma)=v\gqs3$, suppose each vertex has valence $v(p)\gqs3$, then
+	\[
+		\vfi(\Gma)\gqs\frac{g-1}{6g}\dta(\Gma)-\frac{g+2}{3g}x(\Gma)+\frac{5g+1}{6g}y(\Gma).
+	\]
+\end{thm}
+
+% \begin{rmk}
+% 	This in turn follows from
+% 	\[
+% 		\tau(\Gma)=\frac{1}{12}(\dta(\Gma)-x(\Gma)+y(\Gma))
+% 	\]
+% 	together with the following.
+% \end{rmk}
+
+% \begin{thm}[{\cite[Proposition~5.5, 5.6]{Cinkir2011}}]
+% 	Let $\Gma$ be a bridgeless simple pm-graph with genus $g$ and $\#V(\Gma)=v\gqs3$, suppose each vertex has valence $v(p)\gqs3$, then
+% 	\begin{align*}
+% 	  \vfi(\Gma)&\gqs\frac{7g+5}{2g}\tau(\Gma)-\frac{g+3}{8g}\dta(\Gma)+\frac{g-1}{4g}(x(\Gma)+y(\Gma))\\
+% 	  \tta(\Gma)&\gqs\frac{g-3}{2}\dta(\Gma)-6(g-3)\tau(\Gma)+(g-1)(x(\Gma)+y(\Gma)).
+% 	\end{align*}
+% \end{thm}
+
+% \begin{thm}[{\cite[Proposition~4.6, 4.6, Theorem~4.8]{Cinkir2011}}]
+% 	Let $\Gma$ be a pm-graph, then
+% 	\begin{align*}
+% 		Z(\Gma)&=\frac{2g-1}{g^{2}}\tau(\Gma)+\frac{1}{8g^{2}}\tta(\Gma),\\
+% 	  	\eps(\Gma)&=\frac{4g-4}{g}\tau(\Gma)+\frac{1}{2g}\tta(\Gma),
+% 	\end{align*}
+% 	hence
+% 	\[
+% 		\vfi(\Gma)=\frac{5g-2}{g}\tau(\Gma)+\frac{1}{4g}\tta(\Gma)-\frac{1}{4}\dta(\Gma),
+% 	\]
+% \end{thm}
+
+
+\spg{Bigness result}
+\begin{stp}
+	Let $k$ be either $\bZ$ or a field and $g\gqs2$ an integer, $\cM_{g}$ the moduli stack of smooth curves of genus $g$ over $k$, $\oL{\cM}_{g}$ the moduli stack of stable curves of genus $g$ over $k$, $\cC_{g}$ and $\oL{\cC}_{g}$ the universal curve correspondingly.
+
+	Let $S$ be a \tbf{quasi-projective} flat normal integral scheme over $k$, $\pi:X\ar S$ a smooth relative curve over $S$ of genus $g\gqs2$ with stable compactification $\oL{\pi}:\oL{X}\ar\oL{S}$ over $k$. Let $J=\Pic_{X/S}^{0}$ be the Jacobian scheme, which admits a symmetric and relatively ample line bundle $\Tta$, it can be extended to $\oL{\Tta}\in\aPic(J)$.
+\end{stp}
+
+The bigness result is the following
+\begin{thm}[{\cite[Theorem~3.1, Theorem~3.2]{Yuan2021Bigness}}]
+	Assume that $\pi:X\ar S$ is of maximal variation, then
+	\begin{enr}
+		\item $\oL{\oga}_{X/S,a}$ is nef and big over $X$,
+		\item $\pi\zS\sA{\oL{\oga}_{X/S,a},\oL{\oga}_{X/S,a}}$ is nef and big over $S$,
+	\end{enr}
+\end{thm}
+
+
+To prove this, one has to compute $\pi\zS\sA{\oL{\oga}_{X/S,a},\oL{\oga}_{X/S,a}}$ and show it's a combination of positive parts.
+
+\begin{enr}
+	\item \tbf{Key 1}
+	\begin{thm}[{\cite[Theorem~3.3]{Yuan2021Bigness}}]
+		In $\Pic(\oL{\cM}_{g})$, one has
+		\[
+			12\lda=\pi\zS\sA{\oga_{\oL{\cC}_{g}/\oL{\cM}_{g}},\oga_{\oL{\cC}_{g}/\oL{\cM}_{g}}}+\cO_{\oL{\cM}_{g}}(\Dta),
+		\]
+		where $\Dta=\Dta_{0}\cup\Dta_{1}\cup\cdots\cup\Dta_{[g/2]}$ is the boundary divisor of $\cM_{g}$.
+	\end{thm}
+	\item \tbf{Key 2}
+	\begin{thm}
+		$\oga_{\oL{X}/\oL{S}}$ can be passed to $\acPic(X/k)$ via the functor $\cPic(\oL{X})\ar\acPic(X/k)$, then in $\aPic(S)$, one has
+		\[
+			\oL{\pi}\zS\sA{\oga_{\oL{X}/\oL{S}},\oga_{\oL{X}/\oL{S}}}-\pi\zS\sA{\oL{\oga}_{X/S,a},\oL{\oga}_{X/S,a}}\cong\cO(\oL{E}),
+		\]
+	\end{thm}
+	\item \tbf{Key 3}
+	\begin{lem}
+		The following adelic divisors in $\aDiv(S)$ are effective,
+		\begin{enr}
+			\item (Bound of $\eps$-invariant) $(2g-2)\Dta_{\oL{S}}-\oL{E}$,
+			\item (Bound of $\vfi$-invariant, Cinkir) $39\oL{\Phi}-\Dta_{\oL{S}}$.
+		\end{enr}
+	\end{lem}
+
+	\begin{rmk}
+		The proof is graph theoretical, many invariants involved can be heuristically understood via Kirchhoff's circuit laws in electrical network as in \cite{BF2006Graph}.
+
+		The bound of $\eps$-invariant is in \cite{BF2006Graph}, the bound of $\vfi$-invariant is in \cite[Theorem~2.11]{Cinkir2011}.
+	\end{rmk}
+	\item \tbf{Key 4}
+	\begin{thm}[{\cite[Theorem~3.5]{Yuan2021Bigness}}]
+		In $\aPic(S)_{\bQ}$, one has
+		\[
+			(\pi,\pi)\zS\sA{j\xS\oL{\Tta},j\xS\oL{\Tta},j\xS\oL{\Tta}}=(12g-4)\pi\zS\sA{\oL{\oga}_{X/S,a},\oL{\oga}_{X/S,a}}-8\cO(\oL{\Phi}).
+		\]
+	\end{thm}
+	\begin{rmk}
+		This globalizes the argument of \cite[Theorem~8.1]{deJong2018}.
+	\end{rmk}
+\end{enr}
+
+
+Combining these, one is able to achieve the bigness in geometric case via the following computation,
+\begin{thm}[{\cite[Theorem~3.8]{Yuan2021Bigness}}]
+	In the case $k$ is a field, in $\aPic(S)_{\bQ}$, one has
+	\[
+		\pi\zS\sA{\oL{\oga}_{X/S,a},\oL{\oga}_{X/S,a}}=\frac{3}{5(2g-1)(3g-1)}\lda_{\oL{S}}+\oL{A}+\cO(\oL{B}),
+	\]
+	where $\oL{A}\in\aPic(S)_{\bQ}$ is nef and $\oL{B}\in\aDiv(S)$ is effective with underlying divisor $0$.
+\end{thm}
+
+\begin{prf}[Sketch of the proof]
+	Combine all identities above, one can compute $\pi\zS\sA{\oL{\oga}_{X/S,a},\oL{\oga}_{X/S,a}}$ in two ways,
+	\begin{enr}
+		\item By Noether's formula and the bound of $\eps$-invariant,
+		\[
+			\pi\zS\sA{\oL{\oga}_{X/S,a},\oL{\oga}_{X/S,a}}=12\lda_{\oL{S}}-(2g-1)\cO(\Dta_{\oL{S}})+ \mathrm{eff}
+		\]
+		\item By the computation of Deligne pairing of theta divisors and the bound of $\vfi$-invariant,
+		\[
+			\pi\zS\sA{\oL{\oga}_{X/S,a},\oL{\oga}_{X/S,a}}=\frac{2}{3g-1}\cO(\oL{\Phi})+ \mathrm{nef}=\frac{2}{39(3g-1)}\cO(\Dta_{\oL{S}})+ \mathrm{nef} + \mathrm{eff}
+		\]
+	\end{enr}
+	Now one can take a linear combination to cancel the involved boundary terms, and get the desired result.
+\end{prf}
+
+\begin{rmk}
+	Throughout the proof, the key point is the \tbf{positivity of the Hodge bundle and the theta divisor}, the former is nef and big, and the latter is nef.
+\end{rmk}
+
+Combining the bigness in geometric case, together with the following Yuan's result on the bound of $\vfi$-invariant, one is able to achieve the bigness in arithmetic case
+
+\begin{thm}[{\cite[Theorem~3.9]{Yuan2021Bigness}}]
+	For any integer $g\gqs2$, there is a constant $c>0$ such that $\vfi(C)>c$ for any compact Riemann surface $C$ of genus $g$.
+\end{thm}
+
+To see this, one can take such a bound $c>0$, then continue the computation in the above second step,
+\[
+	\oL{L}=\pi\zS\sA{\oL{\oga}_{X/S,a},\oL{\oga}_{X/S,a}}=\frac{2}{3g-1}\cO(\oL{\Phi})+ \mathrm{nef}=\frac{2}{3g-1}\cO(c)+ \mathrm{nef}+ \mathrm{eff}.
+\]
+pass $\oL{L}$ to $\oT{L}\in\aPic(S_{\bQ}/\bQ)$, one has
+\[
+	\oL{L}^{d}\gqs\oL{L}^{d-1}\frac{2}{3g-1}\cO(c)=\frac{2c}{3g-1}\oT{L}^{d-1}>0,
+\]
+hence the result, (recall that an adelic line bundle $\oL{L}$ over $Y$ is big if and only if $\aVol{}{}{(\oL{L})}=\oL{L}^{\Dim Y}>0$ by the adelic Hilbert-Samuel formula).
+
+
+\begin{prf}[Sketch of the proof of Theorem~3.9]
+	Use the composition $\aDiv(\cM/\bZ)\ar\aDiv(\cM/\bQ)\ar\aDiv(\cM_{\bC}/\bC)$, denote its image by $(\oT{\Phi},\vfi)$, write the boundary divisor $\oL{D}_{0}=(D_{0},g_{0}), D_{0}=\Dta_{\oL{\cM}_{\bC}}$, where $g_{0}$ is a strictly positive Green's function of $\Dta_{\oL{\cM}_{\bC}}$ over $\oL{\cM}_{\bC}$, now there is a sequence $\{(E_{i},g_{i})\}_{i\gqs1}$ satisfying
+	\[
+		-a_{i}(D_{0},g_{0})\leq(\oT{\Phi},\vfi)-(E_{i},g_{i})\leq a_{i}(D_{0},g_{0}),
+	\]
+	where $a_{i}$ is a sequence of rational numbers converging to $0$, $(E_{i},g_{i})$ are the pair of divisor and Green's function of a system of projective models of $\cM_{\bC}$ over $\bC$.
+
+	For small enough $a_{i}<1/78$, both $E_{i}$ and $E_{i}-a_{i}D_{0}$ are effective, hence $\vfi\gqs g_{i}-a_{i}g_{0}$ goes to infinity around $D_{0}$.
+\end{prf}
+
+
+The direct consequence of the bigness of $\oL{\oga}_{X/S,a}$ is the bigness of other various bundles:
+
+\begin{thm}[{\cite[Theorem~4.4]{Yuan2021Bigness}}]
+	Let $\pi:X\ar S$ be as the same as above, there are morphisms defined via
+	\begin{enr}
+		\item $i_{\afa}:X\ar J, x\amt dx-\afa$ for each $\afa\in\Pic^{d}(X)$,
+		\item $i_{\Dta}:X\tms_{S}X\ar X\tms_{S}J, (x,y)\amt (x,y-x)$,
+		\item $\tau:J\tms_{S}X\ar J\tms_{S}J, (y,x)\amt(y,y+(2g-2)x-\oga_{X/S})$,
+	\end{enr}
+	then the following adelic line bundles are nef and big
+	\begin{enr}
+		\item $\pi\zS\sA{i_{\afa}\xS\oL{\Tta},i_{\afa}\xS\oL{\Tta}}$ over $S$,
+		\item $p_{1*}\sA{i_{\Dta}\xS\oL{\Tta}_{X},i_{\Dta}\xS\oL{\Tta}_{X}}$ over $X$,
+		\item $q_{1*}\sA{\tau\xS\oL{\Tta}_{J},\tau\xS\oL{\Tta}_{J}}$ over $J$,
+	\end{enr}
+	Moreover a base change result:
+
+	If $Y$ is quasi-projective over $k$ with a generically finite morphism $Y\ar J$, $T$ the image of $Y\ar S$, $T\ar S\ar M_{g,k}$ generically finite, then $q_{1*}\sA{\tau\xS\oL{\Tta}_{J},\tau\xS\oL{\Tta}_{J}}|_{Y}$ is nef and big over $Y$.
+\end{thm}
+\begin{rmk}
+	The proof goes via direct computation in terms of $\oL{\oga}_{X/S,a}$.
+\end{rmk}
+
+
+\ssc{Height inequality and uniform Bogomolov conjecture}
+Since the bound of large points is already known, the uniform version of Bogomolov conjecture is achieved by the following statement.
+\begin{thm}[{\cite[Theorem~4.6]{Yuan2021Bigness}}]
+	Let $g\gqs2$ be an integer, there exists constants $c_{1},c_{2}>0$ depending only on $g$ satisfying the following. Let $K$ be either a number field or a function field of one variabel over a field $k$, then for any geometrically integral smooth projective curve $C$ of genus $g$ over $K$ and any line bundle $\afa\in\Pic^{1}(C_{\oL{K}})$, if $(C_{\oL{K}},\afa)$ is non-isotrivial over $\oL{k}$ in case $K$ is a function field over $k$, then
+	\[
+		\#\{x\in C(\oL{K}):\oH{h}(x-\afa)\leq c_{1}(\max\{h_{\mathrm{Fal}}(C),1\}+\oH{h}((2g-2)\afa-\oga_{C/\oL{K}}))\}\leq c_{2}.
+	\]
+\end{thm}
+
+
+The key parts to prove the above theorem are the following height inequalities in general setting together with the base change theorem of potential bigness, heuristically the positivity of an adelic line bundle forces a lower bound of the height it induced:
+\begin{thm}[{\cite[Theorem~5.3.5]{YZ2021}}]
+	Let $k$ be either $\bZ$ or a field, and $K$ be a number field or a function field of one variable over $k$ correspondingly. Let $\pi:X\ar S$ be a morphism of quasi-projective varieties over $K$, $\oL{L}\in\aPic(X/k),\oL{M}\in\aPic(S/k)$ adelic line bundles, then
+	\begin{enr}
+		\item If $\oL{L}$ is big over $X$, there exists $\eps>0$ and a Zariski open and dense subvariety $U$ of $X$ such that
+		\[
+			h_{\oL{L}}\gqs\eps h_{\oL{M}}(\pi(x)), \fal x\in U(\oL{K}),
+		\]
+		\item If $\oL{L}$ ie nef over $X/k$, then the image $\oT{L}$ of $\oL{L}$ via $\aPic(X/k)\ar\aPic(X/K)$ is big over $X/K$, then for any $c>0$, there exists $\eps>0$ and a Zariski open and dense subvariety $U$ of $X$ such that
+		\[
+			h_{\oL{L}}\gqs\eps h_{\oL{M}}(\pi(x))-c, \fal x\in U(\oL{K}).
+		\]
+	\end{enr}
+\end{thm}
+
+\begin{thm}[{\cite[Theorem~4.2]{Yuan2021Bigness}}]
+	Let $k$ be either $\bZ$ or a field, $K$ a global field over $k$, $S$ a quasi-projective variety over $K$. $\pi:X\ar S$ a smooth relative curve of genus $g\gqs2$ over $S$, $\oL{L}$ a nef adelic line bundle over $X/k$, $\oL{M}$ an adelic line bundle over $S/k$, if $\oL{L}$ is potentially big over $X/S$, then there exist a Zariski open $U\sbs S$, $c_{1},c_{2}>0$ such that for any $y\in U(\oL{K})$,
+	\[
+		\#\{x\in X(\oL{K}):\pi(x)=y, h_{\oL{L}}(x)\leq c_{1}h_{\oL{M}}(y)\}\leq c_{2}.
+	\]
+\end{thm}
+
+\begin{prf}[Sketch of the proof]
+	One can prove in two steps:
+	\spg{Part 1, estimate number of points:} Let $C$ be a smooth projective curve over an algebraically closed field $K$, $Z\sbs C^{m}$ a proper Zariski closed subset of codimension $d>0$, $\Sgm\sbs C(K)$ a finite subset such that $\Sgm^{m}\sbs Z(K)$, then $(\#\Sgm)^{d}\leq\Deg_{m\bt N}(Z)$, where $N$ is a line bundle of degree $1$ over $C$.
+
+	To see this, let $M=m\bt N, n=\#\Sgm$, can assume $Z$ is irreducible, then
+	\[
+		\Deg_{nM}(Z)=(nM)^{\Dim Z}Z\gqs(nM)^{\Dim Z-1}(np_{i}\xS N)Z\geq\Deg_{nM}(Z\cap p_{i}\xI\Sgm),
+	\]
+	hence $n^{m-d}\Deg_{M}(Z)\geq\Deg_{nM}(Z)\geq n^{m}$ and one has the desired result.
+
+	\spg{Part 2, height bound from bigness:} for some $m\geq1$, $m\bt\oL{L}$ is big over $X_{m}=X_{/S}^{m}$, hence there is a closed subset $Z$ of codimension $1$ in $X_{m}$ such that
+	\[
+		\{x\in X_{m}(\oL{K}):h_{\oL{L}_{m}}(x)\leq\eps h_{\oL{M}}(\pi_{m}(x))\}\sbs Z(\oL{K}).
+	\]
+	For any $y\in S(\oL{K})$, write
+	\[
+		\Sgm(y)=\{x\in X(\oL{K}):\pi(x)=y,h_{\oL{L}}(x)\leq\frac{\eps}{m}h_{\oL{M}}(y)\},
+	\]
+	then $\Sgm(y)^{m}\sbs Z_{y}(\oL{K})$, let $U$ be an open subscheme of $S$ such that $Z$ is flat over $U$, then $\#\Sgm(y)\leq\Deg_{m\bt N}(Z_{\eta}),\fal y\in U(\oL{K})$, where $Z_{\eta}$ is the generic fiber of $Z\ar S$ and $N$ a line bundle of degree $1$ over the generic fiber $X_{\eta}$ of $X\ar S$.
+\end{prf}
+
+
+\spg{The number field case $K=\bQ$:}
+Take $S=M_{g,N,\bQ}$, $N\gqs3$, and $\pi:X\ar S$ the universal curve over $\bQ$, consider the morphism $\tau:X_{J}\ar J_{J}$, take $\oL{L}=\tau\xS\oL{\Tta}_{J}\in\aPic(X_{J}/\bQ)$, then there exists $c_{1},c_{2}>0$ such that for any $y\in J(\oL{K})$,
+\[
+	\#\{z\in X_{J}(\oL{K}):q_{1}(z)=y, h_{\oL{L}}(z)\leq c_{1}h_{\oL{M}}(y)\}\leq c_{2},
+\]
+to prove it suffices to combine
+\begin{enr}
+	\item the above height inequality theorem on open sets of the base
+	\item induction by the base change theorem of potential bigness
+\end{enr}
+Then the desired result is obtained by choosing
+\begin{enr}
+	\item $\oL{M}=\oL{\Tta}+\pi\xS\oL{\lda}_{S}+\cO(c)$, (recall that $h_{\mathrm{Fal}}(X_{s})=h_{\oL{\lda}_{S}}(s)$)
+	\item Bost's lower bound of Faltings height $c=g\log(\pi\sqrt{2})+1$,
+	\item $y=\oga_{X_{s}}-(2g-2)\afa$,
+\end{enr}
+
+
+
+\spg{The function field case $K=k(t)$:}
+Take $S=M_{g,N,k}$, $N\gqs3$ invertible in $k$, and $\pi:X\ar S$ the universal curve over $k$, consider the morphism $\tau:X_{J}\ar J_{J}$, take $\oL{L}=\tau\xS\oL{\Tta}_{J}\in\aPic(X_{J}/k)$, then there exists $c_{1},c_{2}>0$ such that for any $y\in J(\oL{K})$,
+\[
+	\#\{x\in X_{s}(\oL{K}):h_{\oL{L}}(x)\leq c_{1}h_{\oL{M}}(y)\}\leq c_{2},
+\]
+it is similar that it suffices to combine
+\begin{enr}
+	\item the above height inequality theorem on open sets of the base
+	\item induction by the base change theorem of potential bigness
+\end{enr}
+but the difference is that in function field case varieties are over $k$ but the points in question are over $\oL{K}$, hence one needs additional argument to pass varieties to $K$ in the induction step:
+
+By Noether's normalization, consider $\psi_{i}:Y\ar\bA_{k}^{d}\ar\bA_{k}^{1}$ and its generic fiber $Y_{i}\ar\Spc K$, then non-isotriviality of $y:\Spc{\oL{K}}\ar Y$ guarantees that there exists some $i$ such that the image of $y$ under $\psi_{i}$ is non-closed, hence $y\in Y_{i}(\oL{K})$, now the base change can be applied to $Y_{i}$, the desired result is obtained by choosing
+\begin{enr}
+	\item $\oL{M}=\oL{\Tta}+\pi\xS\oL{\lda}_{S}+\cO(1)$,
+	\item $y=\oga_{X_{s}}-(2g-2)\afa$,
+\end{enr}
+note that in the geometric case $\oL{\lda}_{S}$ is already nef so the constants to choose in $\oL{M}$ is not necessary.
+
+
+
+\spg{The uniformity of constants}
+The constants $c_{1},c_{2}$ depend on $(g,k(t))$ a priori, in fact, they only depend on $(g,\Chr(k))$ by base change of the prime field, to prove the independence of $\Chr(k)$, one needs the upgraded version of the height inequality:
+
+\begin{thm}[{\cite[Theorem~4.8]{Yuan2021Bigness}}]
+	Let $S$ be a flat quasi-projective integral scheme over $\bZ$, $\psi:S\ar\bA_{\bZ}^{1}$ a flat morphism of finite type. Let $\pi:X\ar S$ be a smooth relative curve of genus $g\gqs2$, $\oL{L}$ a nef adelic line bundle over $X/\bZ$, $\oL{M}$ an adelic line bundle over $S/\bZ$, if $\oL{L}$ is potentially big over $X/S$, then there is an open subscheme $U$ of $S$, a integer $N'$, and constants $c_{1},c_{2}>0$, such that for any $K=k(t), \Chr(k)\nmid N', y\in U_{k}(\oL{K})$,
+	\[
+		\#\{x\in X_{k}(\oL{K}):\pi(x)=y, h_{\oL{L}}(x)\leq c_{1}h_{\oL{M}}(y)\}\leq c_{2}.
+	\]
+\end{thm}
+
+Assuming this, to check uniformity, one has to check for all but finitely many $\Chr(k)$, fix $N\gqs3$, and $S=M_{g,N}$ the moduli space of smooth curves of genus $g$ over $\bZ[1/N]$ with full level-$N$ structure, $\pi:X\ar S$ the universal curve, similar to above, one only has to deal with the induction step: for any closed integral subscheme $Y$ of $J$ which is flat over $\bZ[1/N]$, there is an open subscheme $U$ of $Y$, a multiple $N'$ of $N$, and constants $c_{1},c_{2}>0$ such that for any $K=k(t)$ with $\Chr(k)\nmid N'$, and non-isotrivial $y\in U_{k}(\oL{K})$ with $s=\pi_{J}(y)\in S_{k}(\oL{K})$,
+\[
+	\#\{x\in X_{s}(\oL{K}):h_{\oL{L}}(x)\leq c_{1}(\max(h_{\mathrm{Fal}}(C),1)+\oH{h}(y))\}\leq c_{2}.
+\]
+proof is similar to the function field case, use Noether's normalization together with the upgraded version of height inequality, one has the desired result of uniformity.
+
+
+
+
+\printref
+\end{document}

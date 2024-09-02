@@ -1,0 +1,120 @@
+\documentclass[article, a4paper, twoside]{universal}
+
+\setshowlvl{1}
+\begin{document}
+\confighead{}{}{}
+\printhead{}{}{1}
+
+
+
+\sct{Higher algebra}
+Ref: Lurie-HigherAlgebra
+
+% \ssc{Fonudations}
+
+\begin{dfn}
+    A simplicial set $\cC$ is a presheaf of sets on the simplex category $\Dta$.
+\end{dfn}
+
+\begin{dfn}[0.0.0.1]
+    An $\ift$-category is a simplicial set $\cC$ such that any map of simplicial sets $f_{0}:\Lda_{i}^{n}\ar\cC$ can be extended to $f:\Dta^{n}\ar\cC$ for $0<i<n$. (Aka, weak Kan complex: all the inner horns have a filler)
+\end{dfn}
+
+\begin{dfn}[1.1.1.1]
+    Let $\cC$ be an $\ift$-category, a zero object $0$ is an object which is both initial and final. Say $\cC$ is pointed if it contains a zero object.
+\end{dfn}
+
+\begin{dfn}[1.1.1.4]
+    Let $\cC$ be a pointed $\ift$-category, a triangle in $\cC$ is a diagram
+    \[
+        \begin{tikzcd}
+            X\ar[r, "f"]\ar[d] & Y\ar[d, "g"] \\
+            0 \ar[r] & Z
+        \end{tikzcd}
+    \]
+    \begin{itm}
+        \item it is a fiber sequence if it is a pullback square, write $X=\mrm{fib}(Y\axr{g}Z)$.
+        \item it is a cofiber sequence if it is a pushout square, write $Z=\mrm{cofib}(X\axr{f}Y)$.
+    \end{itm}
+\end{dfn}
+
+\begin{dfn}[1.1.1.9]
+    An $\ift$-category $\cC$ is stable if the following holds
+    \begin{enr}[label=(\arabic*)]
+        \item There exists a zero object $0\in\cC$.
+        \item Every morphism in $\cC$ admits a fiber and a cofiber.
+        \item A triangle in $\cC$ is a fiber sequence if and only if it is a cofiber sequence.
+    \end{enr}
+
+    \red{Moreover, 1.1.3.4}
+\end{dfn}
+
+
+\begin{dfn}[1.1.2.7]
+    Let $\cC$ be a stable $\ift$-category, denote by $\Sgm:\cC\ar\cC$ the suspension functor and $\Oga:\cC\ar\cC$ the loop functor. For $n\in\bZ$, define $X\amt X[n]$ as
+        \[
+            X[n]=\begin{cases}
+              \Sgm^{n}(X) & n\gqs0 \\
+              \Oga^{-n}(X) & n\lqs0
+            \end{cases}
+        \]
+\end{dfn}
+
+\begin{thm}[1.1.2.14]
+    \red{To define a distinguished triangle, consider (1.1.2.11)}
+
+    Let $\cC$ be a stable $\ift$-category, then the homotopy category $h\cC$ is triangulated.
+
+\end{thm}
+
+\begin{thm}[1.1.4.1]
+    Let $F:\cC\ar\cD$ be a functor between stable $\ift$-categories, the the following are equivalent,
+    \begin{enr}[label=(\arabic*)]
+        \item $F$ is left exact.
+        \item $F$ is right exact.
+        \item $F$ is exact.
+    \end{enr}
+\end{thm}
+
+
+
+\begin{dfn}[1.2.1.4, 1.2.1.11]
+    Let $\cC$ be a stable $\ift$-category, a $t$-structure on $\cC$ is a $t$-structure on $h\cC$.
+
+    The heart $\cC^{\hrts}$ is the full subcategory $\cC_{\lqs0}\cap\cC_{\gqs0}\sbs\cC$, denote by $\pi_{0}:\cC\ar\cC^{\hrts}$ the functor $\tau_{\lqs0}\cc\tau_{\gqs0}\cong\tau_{\gqs0}\cc\tau_{\lqs0}$, and $\pi_{n}=[-n]\cc\pi_{0}:\cC\ar\cC^{\hrts}$.
+\end{dfn}
+
+
+
+
+\begin{dfn}[1.4.2.1]
+    Let $F:\cC\ar\cD$ be a functor between $\ift$-categories,
+    \begin{enr}[label=(\arabic*)]
+        \item if $\cC$ admits pushouts, then say $F$ is excisive if $F$ preserves pushout squares.
+        \item if $\cC$ admits a final object $*$, then say $F$ is reduced if $F(*)$ is a final object.
+    \end{enr}
+\end{dfn}
+
+
+\begin{dfn}[1.4.3.1]
+    A spectrum is a spectrum object of the $\ift$-category $\cS$ of spaces. Denote by $\mrm{Sp}$ the $\ift$-category of spectra.
+\end{dfn}
+
+
+
+Segal's category $\cF in_{*}$ of pointed finite sets. (2.0.0.2)
+
+The $\ift$-operad of little cubes (5.1.0.4)
+
+
+% \ssc{Algebras}
+
+\begin{dfn}[7.1.0.1]
+    Let $0\lqs k\lqs \ift$, $\mrm{Sp}$ the $\ift$-category of spectra, and $\bE_{k}^{\ot}$ the $\ift$-operad of little $k$-cubes. An $\bE_{k}$-ring spectrum is an $\bE_{k}$-algebra object of $\mrm{Sp}$, denote by $\mrm{Alg}^{(k)}$ the $\ift$-category of $\bE_{k}$-ring spectra.
+\end{dfn}
+
+
+
+\printref
+\end{document}
+

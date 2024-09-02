@@ -1,0 +1,47 @@
+\documentclass[article, a4paper, twoside]{universal}
+
+\setshowlvl{1}
+\begin{document}
+\confighead{}{}{}
+\printhead{}{}{1}
+
+\sct{Preliminaries}
+
+\begin{stp}
+	Let $k=\bF_{q}$ be a finite field of characteristic $p$, $\ell\neq p$ a prime, $X$ a smooth projective geometrically connected curve over $k$, $F$ the function field of $X$, $\bA$ its ring of ad{\`e}les.
+\end{stp}
+
+
+\spg{Weil, geometric interpretation of ad{\`e}les}
+$\GL_{n}(F)\bs\GL_{n}(\bA)/\GL_{n}(\cO)$ is in bijection with the isomorphism classes of rank $n$ vector bundles $\cL$ over $X$, while $\GL_{n}(\bA)$ is in bijection with the triples
+\[
+	(\cL, \cL_{F}\cong F^{n}, (\cL_{\cO_{x}}\cong\cO_{x}^{n})_{x\in\sP{X}}).
+\]
+
+\spg{Grothendieck, sheaf-to-function correspondence}
+Let $Z$ be an algebraic stack locally of finite type over $k$, then for any $\cK\in D_{c}^{b}(Z,\oL{\bQ}_{\ell})$, one has a function $f_{\cK}:Z(k)\ar\oL{\bQ}_{\ell}$ given by
+\[
+	f_{\cK}(z):=\sum_{i\in\bZ}(-1)^{i}\Trc(\Frb_{z},\HH{}{i}{\cK})
+\]
+
+\begin{rmk}
+	(\cite[2.5]{Yun2014Rigidity}) This correspondence is functorial in $Z$, one recovers Lefschetz trace formula using functoriality on $Z\ar\Spc{k}$. But usually there is no canonical way to go from functions back to sheaves.
+\end{rmk}
+
+\spg{Brylinski, geometric Radon transformation}
+Let $S$ be a smooth variety over $k$ and $\pi:P\ar S$ and $\oC{\pi}:\oC{P}\ar S$ two projective morphisms purely of relative dimension $r\gqs1$ which are perfectly dual, denote by $Z:=P\tms_{S}\oC{P}$ their incidence variety with $\rho:Z\ar P$ and $\oC{\rho}:Z\ar\oC{P}$. The geometric Radon transformation is
+\[
+	\rR(-):=R\oC{\rho}\zS\rho\xS(-)[r-1]:D_{c}^{b}(P,\oL{\bQ}_{\ell})\ar D_{c}^{b}(\oC{P},\oL{\bQ}_{\ell}),
+\]
+satisfying that $K$ is a geometrically irreducible $\oL{\bQ}_{\ell}$-perverse sheaf on $P$ with $R\pi\zS K=0$ if and only if $\oC{K}:=\rR(K)$ is a geometrically irreducible $\oL{\bQ}_{\ell}$-perverse sheaf on $\oC{P}$ with $R\oC{\pi}\zS K=0$, moreover $K=\oC{\rR}(\oC{K})[r-1]$.
+
+\ssc{Drinfeld modules}
+Ref:~\cite{Papikian2023}.
+
+
+\ssc{Automorphic representations}
+Ref:~\cite{LaumonDrinfeld1,LaumonDrinfeld2}.
+
+
+\printref
+\end{document}

@@ -1,0 +1,62 @@
+\documentclass[article, a4paper, twoside]{universal}
+
+\setshowlvl{1}
+\begin{document}
+\confighead{}{}{}
+\printhead{}{}{1}
+
+\sct{Characteristic classes}
+
+% Ref:~\cite{Zhang2001ChernWeil} and~\cite[Chapter~8]{Nicolaescu2021}.
+
+\begin{thm}
+	Let $E\ar M$ be a complex vector bundle over a smooth compact manifold $M$. Take a connection form $\nbl\in\Oga^{1}(M;\End{}{}{(E)})$, denote by $R\in\Oga^{2}(M;\End{}{}{(E)})$ its curvature form. Then for any $f(z)\in\bC\dS{z}$,
+	\begin{itm}
+		\item $\Trc(f(R))\in\Oga\xB(M;\bC)$ is closed, denote by $f(E,\nbl):=\Trc(f(\frac{i}{2\pi}R))$ the \tbf{characteristic form}.
+		\item Given connections $\nbl_{t},0\lqs t\lqs 1$, one has the transgression formula
+		\[
+			\Trc(f(R_{0}))-\Trc(f(R_{1}))=\dif\oga_{f},\quad \oga_{f}=\int_{0}^{1}\Trc\sR{-\frac{\dif\nbl_{t}}{\dif{t}}(Df)(R_{t})}\dif{t},
+		\]
+        denote by $f(E):=[\Trc(f(\frac{i}{2\pi}R))]\in\HH{\T{dR}}{\blt}(M;\bC)$ the \tbf{characteristic class}.
+	\end{itm}
+\end{thm}
+
+\begin{exg}
+    The following characteristic forms are well-known.
+    \begin{itm}
+        \item The Chern character $\ch(E,\nbl)$ given by $\ch(z)=\exp(z)$.
+        \item The Chern form $c(E,\nbl)=\exp(f(E,\nbl))$, where $f(z)=\log(1+z)$.
+        \item The Todd form $\td(E,\nbl)=\exp(f(E,\nbl))$, where $f(z)=\log(z/(1-\exp(-z)))$.
+        \item The Pontryagin form $p(E,\nbl)=\exp(f(E,\nbl))$, where $f(z)=\frac{1}{2}\log(1+z^{2})$.
+        \item The Hirzebruch $L$-form $L(TM,\nbl)=\exp(f(TM,\nbl))$, where $f(z)=\frac{1}{2}\log{(z/\tanh(z))}$.
+        \item The Hirzebruch $\oH{A}$-form $\oH{A}(TM,\nbl)=\exp(f(TM,\nbl))$, where $f(z)=\frac{1}{2}\log{((z/2)/\sinh(z/2))}$.
+        \item (Chern-Simons) The $(2k-1)$-form $\oga_{f}$ determined by $E=TM$, $f(z)=z^{k}$ and $A=\nbl_{1}-\nbl_{0}$. If $k=2$,
+        \[
+            \oga_{f}=\Trc\sR{A\wge\dif{A}+\frac{2}{3}A\wge A\wge A}.
+        \]
+        \item (Hirzebruch-Riemann-Roch) one has
+        \[
+            \int_{M}\ch(E)\wge\td(TM)=\sum_{k=0}^{d}(-1)^{k}\Dim_{\bC}\HH{\T{dR}}{k}{(M;\bC)}.
+        \]
+    \end{itm}
+    % (Lagrange Inversion)
+    % Recall that for any $f(z)\in\bC\dS{z}$, $c_{n-1}(f^{n})=nh_{n}$ determines $f(x)$ uniquely via
+	% \[
+	% 	f(x)=\frac{x}{h^{-1}(x)},\quad h(x)=\sum_{i\gqs1}h_{i}x^{i}.
+	% \]
+	% If $h_{n}=1/n$, then $f(x)=x/(1-e^{-x})$. If $h_{n}=(-1)^{n-1}/n$, then $f(x)=x/(e^{x}-1)$.
+\end{exg}
+
+
+% \sct{Bott-Chern forms}
+% Ref:~\cite{BC1965,Donaldson1985}.
+
+
+% \sct{Analytic torsion}
+
+% Ref:~\cite{BGS1988-1,BGS1988-2,BGS1988-3}.\cite{BF1986-1,BF1986-2}.
+
+
+
+\printref
+\end{document}

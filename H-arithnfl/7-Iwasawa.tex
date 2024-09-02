@@ -1,0 +1,215 @@
+\documentclass[article, a4paper, twoside]{universal}
+
+\setshowlvl{1}
+\begin{document}
+\confighead{}{}{}
+\printhead{}{}{1}
+
+
+\sct{Cyclotomic Iwasawa theory}
+
+\begin{cmt}[0]
+
+Ref:~\cite{Ribet1976Modular,Wiles1980,MW1984}, \cite{Wiles1990Iwasawa}.
+
+Ref:~\cite{Washington1997}, \cite{Rubin1991}.
+
+
+\begin{thm}[Herbrand--Ribet, {\cite[1.1]{Ribet1976Modular}}]
+	Take a rational prime $p\gqs5$ and $K=\bQ(\zta_{p})$, let $2\lqs k\lqs p-3$ be even.
+	Then $C=\Cl(\cO_{K})/\Cl(\cO_{K})^{p}$ admits an action of cyclotomic character $\chi$, one has $C=\op_{i}C^{(i)}$, and
+	\[
+		p\mid B_{k}\aolR C^{(1-k)}\neq0.
+	\]
+\end{thm}
+
+\begin{prf}[Sketch of the proof]
+	We only collect the idea of Ribet in the direction $\aoR$.
+
+	By class field theory it suffices to prove the existence of a finite field $\bF\sps\bF_{p}$ and a Galois representation $\oL{\rho}:G_{\bQ}\ar\GL_{2}(\bF)$ such that (1) $\oL{\rho}$ is unramified away from $p$. (2) $\oL{\rho}$ is reducible with diagonal $1$ and $\chi^{k-1}$. (3) $\oL{\rho}$ is not diagonalizable. (4) $\oL{\rho}|_{G_{\bQ_{p}}}$ is diagonalizable. One prove this in two steps,
+
+	\spg{Step 1} There is an explicit decomposition $M_{2}(\Gma_{0}(p),\eps)=S_{2}(\Gma_{0}(p),\eps)\op\bC s_{2,\eps}\op\bC G_{2,\eps}$, they are given by
+	\[
+		G_{2,\eps}=L(-1,\eps)/2+\sum_{n\gqs1}\sum_{d\mid n}\eps(d)dq^{n},\quad s_{2,\eps}=\sum_{n\gqs1}\sum_{d\mid n}\eps(n/d)dq^{n},
+	\]
+	the condition $p\mid B_{k}$ will result in a congruence between $G_{2,\eps}$ and a cuspform $f$ (\cite[3.4, 3.5]{Ribet1976Modular}).
+
+	\spg{Step 2}
+	There exists a normalized eigenform $f\in S_{2}(\Gma_{0}(p),\eps)$, where $\eps=\oga^{k-1}$, satisfying $a_{\ell}\eqv1+\ell^{k-1}\eqv1+\eps(\ell)\ell\bmod{\kp}$ for all $\ell\neq p$ and some $\kp\mid p$ in $K_{f}$ (\cite[3.7]{Ribet1976Modular}). One can prove the mod $\kp$ Galois representation attached to this $f$ is the desired representation (\cite[4.2, 4.3, 4.4]{Ribet1976Modular}).
+\end{prf}
+
+
+\end{cmt}
+
+Ref:~\cite{MW1984}
+
+One can extract information of certain metabelian extensions of $\bQ$ via their representations appearing in the cohomology of modular curves $X_{1}(ap^{n})$.
+
+\hrule
+
+\begin{stp}
+    Let $p$ be an odd prime, $\bQ\zF$ the unique $\bZ_{p}$-extension of $\bQ$ and $\bQ_{n}$ the subfield of $\bQ\zF$ of degree $p^{n}$.
+
+	Let $\chi:\Gal(\oL{\bQ}/\bQ)\atr\Gal(F/\bQ)\ar\cO_{\chi}\xT$ be a primitive $p$-adic Dirichlet character of field of definition $F$ such that $F\cap\bQ\zF=\bQ$, denote $F_{n}=F\bQ_{n}$ and $F\zF=F\bQ\zF$; let $L_{n}$ be the $p$-Hilber class field of $F_{n}$ and $M_{n}$ be the maximal $p$-extension of $F_{n}$ unramified outside $p$. One has the field tower
+	\[
+		\begin{tikzcd}
+			\bQ_{n}\ar[d, hook]\ar[r, hook] & F_{n}\ar[d, hook]\ar[r, hook] & L_{n}\ar[d, hook]\ar[r, hook] & M_{n}\ar[d, hook] \\
+			\bQ\zF\ar[r, hook] & F\zF\ar[r, hook] & L\zF\ar[r, hook] & M\zF
+		\end{tikzcd}
+	\]
+
+	Let $\Gal(F\zF/\bQ)\cong\Gal(F/\bQ)\tms\Gma$ be the natural decomposition, denote $\Lda:=\bZ_{p}\dS{\Gma}$. For any topological generator $\gma\in\Gma$, there is an isomorphism $\sgm_{\gma}:\Lda\ar\bZ_{p}\dS{T}$ given by $\gma\amt1+T$. For any $\Lda$-module $U$ with a commuting action by $\Gal(F/\bQ)$, denote by $U_{\chi}$ the $\Lda_{\chi}$-module twisted by $\chi$.
+
+	\begin{cmt}
+		\begin{dfn}
+			Let $A,B$ be $\Lda$-modules of finite type. Say $A$ and $B$ are \tbf{pseudo-isomorphic} if there is a $\Lda$-homomorphism $f:A\ar B$ with finite kernel and cokernel.
+		\end{dfn}
+	\end{cmt}
+
+	The reciprocity isomorphisms $A_{n}:=\Cl(F_{n})\cong H_{n}:=\Gal(L_{n}/F_{n})$ are compatible with the action by $\Gal(F/\bQ)$. Both $A\zF:=\ilim_{n}A_{n}$ and $H\zF:=\plim_{n}H_{n}$ are $\Lda$-modules with a commuting action by $\Gal(F/\bQ)$.
+
+	$H_{\ift,\chi}$ is pseudo-isomorphic to $\Op_{i=1}^{r}\Lda_{\chi}/(h_{i})$, the ideal $(h_{1},\lds,h_{r})\sbs\Lda_{\chi}$ admits a unique generator $h_{p}(\chi,T)=\pi_{\chi}^{\mu_{\chi}}h_{\chi}(T)$. The Iwasawa polynomial of $\Hom{}{}{(A\zF,\bQ_{p}/\bZ_{p})}_{\chi}$ is $h_{p}(\chi\xI,(1+T)\xI-1)$.
+\end{stp}
+
+\hrule
+
+
+\begin{stp}
+	Let $a$ be an integer prime to $p$. Denote $\bZ_{p,a}:=\plim_{n}\bZ/p^{n}a\bZ$ as a compact topological group, then $\bZ_{p,a}\xT\cong\sR{\bZ/pa\bZ}\xT\tms\Oga$. Denote by $R^{(\ift)}=\plim_{n}R^{(n)}$ where $R^{(n)}:=\bZ_{p}[\sR{\bZ/ap^{n}\bZ}\xT]$, then $R^{(\ift)}\cong R^{(1)}\dS{\Oga}$.
+\begin{cmt}
+	\begin{thm}[{\cite[Page~195]{MW1984}}]
+		Let $p$ be a prime, $G=G_{p}\tms G^{p}$ be a finite abelian group of order $n$. Then $R=\bZ_{p}[G]$ is a complete semi-local ring, one has $R=\prod_{\km\in\Pi}R_{\km}$, where $\Pi$ is the \tbf{components} of $R$,
+		\begin{itm}
+			\item connected components of $\Spc{R}$.
+			\item $\bQ_{p}$-conjugacy classes of $\oL{\bQ}_{p}\xT$-valued characters of $G^{p}$.
+		\end{itm}
+		Let $\oT{R}$ be the normalization of $R$, one has $\oT{R}=\prod_{\sgm\in\Sgm}R_{\sgm}$, where $\Sgm$ is the \tbf{sheets} of $R$,
+		\begin{itm}
+			\item irreducible components of $\Spc{R}$.
+			\item $\bQ_{p}$-conjugacy classes of $\oL{\bQ}_{p}\xT$-valued characters of $G$.
+		\end{itm}
+		The surjection $\Sgm\atr\Pi$ gives an isomorphism $R_{\km}\ot\bQ_{p}\cong\prod_{\sgm\in\km}R_{\sgm}\ot\bQ_{p}$, each $R_{\sgm}\ot\bQ_{p}$ is a field.
+	\end{thm}
+\end{cmt}
+
+\end{stp}
+
+\begin{cmt}
+	\begin{dfn}
+		For a component $\km$ of $R^{(1)}$, say it is \tbf{$a$-primitive} if its reduced conductor is $a$ or $ap$; say it is \tbf{pseudo-primitive} if there is a character belonging to $\km$ with conductor $a$ or $ap$.
+
+		If $\km$ is pseudo-primitive of reduced conductor $ap/r$, then (1) $r$ is square-free, (2) every prime $q|r$ is either $p$ or congruent to $1$ mod $p$, (3) $(r,ap/r)=1$.
+	\end{dfn}
+
+\end{cmt}
+
+\begin{cmt}
+	Let $\rho:\bZ_{p}\dS{\Gal(\oL{\bQ}/\bQ)}\ar R^{(\ift)}$ be the unique continuous ring homomorphism extending the cyclotomic character $\Gal(\oL{\bQ}/\bQ)\ar\bZ_{p,a}\xT$, $\oL{\rho}$ its conjugate, and $\rho(k)$ the Tate twists by $\Gal(\oL{\bQ}/\bQ)\ar\bZ_{p}\xT$.
+
+	\begin{dfn}
+		Let $\km$ be a component of $R^{(1)}$, and $\eta:\bZ_{p}\dS{\Gal(\oL{\bQ}/\bQ)}\ar R_{\km}^{(\ift)}$ a continuous morphism.
+
+		Say a $R_{\km}^{(\ift)}$-module $M$ is \tbf{$\eta$-yoked} if it admits a commuting $\Gal(\oL{\bQ}/\bQ)$ action compatible with $\eta$.
+	\end{dfn}
+
+	\begin{dfn}
+		Let $K/\bQ$ be an abelian Galois extension, $L/K$ a $p$-abelian Galois extension such that $L/\bQ$ is Galois. Say $L/K$ is \tbf{of type $\km$} if $\Gal(L/K)$ is $\oL{\rho}(-1)$-yoked, and is \tbf{virtually unramified of type $\km$} if it is moreover unramified outside primes dividing $a$.
+	\end{dfn}
+\end{cmt}
+
+\hrule
+
+
+\begin{cmt}
+	\begin{dfn}
+		Given $k\gqs1,N\gqs0,b$ integers, consider the Stickelberger elements
+		\[
+			\vtt_{k}(b;N):=(N^{k-1}/k)\sum_{t=1,(t,N)=1}^{N}B_{k}(\sA{bt/N})[t]^{-1}\in\bQ[\sR{\bZ/N\bZ}\xT].
+		\]
+
+		The Stickelberger ideal is given by
+		\[
+			S_{k}(N):=\bZ[\sR{\bZ/N\bZ}\xT]\cap\sum_{b\in\bZ}\vtt_{k}(b;N)\bZ[\sR{\bZ/N\bZ}\xT].
+		\]
+
+		Stickelberger theorem states that $2S_{1}(N)$ annihilates $\Cl(\bQ(\zta_{N}))$.
+
+		Let $c$ be an integer prime to $2kN$ and the denominator of $k$-th Bernoulli polynomial, define
+		\[
+			\vtt_{k,c}(b; N)=(1-c^{k}[c]^{-1})\vtt_{k}(b;N),\quad \vtt_{k,c}(b;ap\xF)=\plim_{n}\vtt_{k,c}(b;ap^{n})\in R^{(\ift)}.
+		\]
+
+		Consider the homomorphism $\afa_{\chi}:R^{(\ift)}\ar\cO_{\chi}\dS{\Oga}\ar\cO_{\chi}\dS{T}$
+
+			(\red{Under certain conditions} the element $\afa_{\chi}(\vtt_{k,c}(1;N))/\afa_{\chi}(1-c^{k}[c]\xI)\in\cO_{\chi}\dS{T}$ is well defined, denote it by $G_{p,k}(\chi,T)$), then one has
+			\[
+				G_{p}(\chi,T):=-G_{p,1}(\chi\xI\oga,T)=-G_{p,k}(\chi\xI\oga^{k},u^{k-1}(1+T)-1).
+			\]
+	\end{dfn}
+
+	\begin{dfn}
+		The $p$-adic $L$-function $L_{p}(s,\chi)$ attached to a non-trivial even primitive $p$-adic Dirichlet character $\chi$ is the unique continuous function on $\bZ_{p}$ which interpolates $k\gqs1$,
+		\[
+			L_{p}(\chi,1-k)=-(1-\chi\oga^{-k}(p)p^{k-1})B_{k}(\chi\oga^{-k})/k.
+		\]
+
+		If $\chi$ has conductor not divisible by $p^{2}$, there is a unique power series $G_{p}(\chi,T)\in\cO_{\chi}\dS{T}$ such that $G_{p}(\chi,u^{s}-1)=L_{p}(\chi,s)$.
+	\end{dfn}
+
+
+	\begin{cnj}
+		Let $\chi$ be an even primitive Dirichlet character of conductor not divisible by $p^{2}$, then as ideals of $\cO_{\chi}\dS{T}$,
+		\[
+			(h_{p}(\oH{\chi},T))=(G_{p}(\chi,T)).
+		\]
+	\end{cnj}
+\end{cmt}
+
+\begin{dfn}
+	Let $\km$ be a component, $F_{\km}\xP$ the finite abelian extension of $\bQ$ cut out by the Dirichlet characters in $\km$ of conductor dividing $ap$, and let $F_{\km}=F_{\km}\xP(\zta_{p})$. Denote by following the field tower
+	\[
+		\begin{tikzcd}
+			& \bQ\zF\ar[rd, hook] && \\
+			\bQ\ar[ru, "\bZ_{p}", hook]\ar[rd, hook] && K_{\km}\ar[r, "H_{\km}", hook] & L_{\km}\ar[r, "I_{\km}", hook] & L_{\km}\xR \\
+			& F_{\km}\ar[ru, hook] &&
+		\end{tikzcd}
+	\]
+	where
+	\begin{itm}
+		\item $L_{\km}$ is the maximal unramified abelian extension of $K_{\km}$ of type $\km$,
+		\item $L_{\km}\xR$ is the maximal virtually unramified extension of $L_{\km}$ of type $\km$.
+	\end{itm}
+\end{dfn}
+
+\begin{stp}
+	Let $\kX$ be the set of pseudo-primitive components of the following type
+	\begin{enr}
+		\item of level $N=p^{n}$ and basic character $\oga^{-2}$.
+		\item of level $N=p^{n}$ and basic character $\chi_{0}$.
+		\item of level $N=ap^{n}$ and $\oH{S}_{m}'(ap)$ the unit ideal in $R_{\km}^{(1)}$.
+	\end{enr}
+
+	For any pseudo-primitive component $\km\nin\kX$, let $\psi=\psi^{p}\psi_{p}$ be its basic character, where $\psi_{p}=\oga^{k}, 0\lqs k<p-1$, say $\km$ is \tbf{in case (1)} if either $\psi^{p}(p)\neq1$ or $k\neq-1$, and is \tbf{in case (2)} otherwise.
+
+
+	For any pseudo-primitive component $\km$, there are an ideal $\kb_{\km}^{(n)}\sbs R_{\km}^{(n)}$ and an extension $L_{\km}^{(n)}/K_{\km}$ virtually unramified of type $\km$ such that
+	\begin{enr}
+		\item if $n_{q_{i}}\eqv1\bmod{q_{i}}$ and $n_{q_{i}}\eqv q_{i}\bmod{N/q_{i}}$, then
+		\[
+			(1-l[l])^{\kpa}\prod_{q_{i}\neq p, q_{i}\mid r}(q_{i}[n_{q_{i}}]-1)\kb_{\km}^{(n)}\sbs\oH{S}_{\km}'(N).
+		\]
+		\item let $\Phi_{\km}^{(n)}$ be the $R_{\km}^{(\ift)}$-fitting ideal of $\Gal(L_{\km}^{(n)}/K_{\km})$, there exists an ideal $\kA_{\km}\sbs R_{\km}^{(\ift)}$ of finite index such that $\kA_{\km}\Phi_{\km}^{(n)}\sbs\kb_{\km}^{(n)}$ in $R_{\km}^{(\ift)}$ for all $n\gqs1$.
+	\end{enr}
+
+\end{stp}
+
+
+\begin{thm}
+	For each even primitive character $\chi$ of conductor not divisible by $p^{2}$, $(h_{p}(\oH{\chi},T))=(G_{p}(\chi,T))$.
+\end{thm}
+
+
+
+\printref
+\end{document}
+

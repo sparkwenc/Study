@@ -1,0 +1,195 @@
+\documentclass[article, a4paper, twoside]{universal}
+
+\setshowlvl{1}
+\begin{document}
+\confighead{}{}{}
+\printhead{}{}{1}
+
+\sct{Laumon's construction}
+
+\ssc{Arithmetic setting}
+
+\sss{Langlands conjecture}
+\begin{cnj}[{\cite[1.1.1]{Laumon1987Correspondance}}]
+	Every geometrically irreducible unramified representation $\sgm:\Gal(\oL{F}/F)\ar\GL_{n}(\oL{\bQ}_{\ell})$
+	corresponds to a unique cuspidal Hecke-eigen function $f_{\sgm}:\GL_{n}(F)\bs\GL_{n}(\bA)/\GL_{n}(\cO)\ar\oL{\bQ}_{\ell}$ such that for all $x\in\sP{X}$ and $1\lqs i\lqs n$,
+	\[
+		T_{x}^{i}f_{\sgm}=q_{x}^{-i(i-1)/2}\Trc(\Lda^{i}\sgm(\Frb_{x}))f_{\sgm},\quad \fal x\in\sP{X}, 1\lqs i\lqs n.
+	\]
+\end{cnj}
+
+\sss{Whittaker function}
+\begin{thm}[{\cite[1.2.3]{Laumon1987Correspondance}}]
+	Fix a non-zero $\dta\in\Oga_{X/k}^{1}$ and an additive character $\psi:k\ar\oL{\bQ}_{\ell}\xT$. One can define
+	\[
+		\Psi:F\bs\bA\ar\oL{\bQ}_{\ell}\xT,\quad \afa\amt\psi\sR{\sum_{x\in\sP{X}}\Trc_{k_{x}/k}(\Res_{x}(\afa_{x}\dta))}.\quad \Tta:U_{n}(F)\bs U_{n}(\bA)\ar\oL{\bQ}_{\ell}\xT,\quad u\amt \Psi\sR{\sum_{i=1}^{n-1}u_{i,i+1}}.
+	\]
+
+	There is a unique Whittaker function $W_{\sgm}:Z_{n}(F)U_{n}(F)\bs\GL_{n}(\bA)/\GL_{n}(\cO)\ar\oL{\bQ}_{\ell}$ satisfying
+	\begin{itm}
+		\item $W_{\sgm}(ug)=\Tta(u)W_{\sgm}(g)$ for all $u\in U_{n}(\bA),g\in\GL_{n}(\bA)$.
+		\item $W_{\sgm}(g)=\prod_{x\in\sP{X}}W_{\sgm,x}(g_{x})$, where $W_{\sgm,x}=W_{\sgm}|_{\GL_{n}(F_{x})}$.
+		\item For all $x\in\sP{X},(a_{1},\ldots,a_{n})\in\bZ^{n}$, denote $d_{i}=a_{i}-a_{i+1}+\Ord_{x}(\dta), 1\lqs i\lqs n-1$.
+
+		If $d_{i}$ are all non-negative,
+		\[
+			W_{\sgm,x}(\Dia(\pi_{x}^{a_{1}},\ldots,\pi_{x}^{a_{n}}))=q_{x}^{\sum_{i=1}^{n-1}(i(i+1-2n)/2)d_{i}-(n(n-1)/2)a_{n}}\Trc(R^{(d_{1},\ldots,d_{n-1};a_{n})}\sgm(\Frb_{x}))
+		\]
+		where $R^{(d_{1},\ldots,d_{n-1};a_{n})}$ is the algebraic representation of $\GL_{n}$ of highest weight $\sum_{i=1}^{n-1}d_{i}\oga_{i}+a_{n}\oga_{n}$.
+
+		Otherwise $W_{\sgm,x}(\Dia(\pi_{x}^{a_{1}},\ldots,\pi_{x}^{a_{n}}))=0$.
+	\end{itm}
+\end{thm}
+
+\sss{Automorphic function}
+\begin{thm}[{\cite[5.9]{Shalika1974}}]
+	The functions $V_{\sgm,i}:Q_{i}^{1}(F)\bs\GL_{n}(\bA)/\GL_{n}(\cO)\ar\oL{\bQ}_{\ell},1\lqs i\lqs n$ below satisfy
+	\begin{itm}
+		\item $V_{\sgm,i}(ug)=\Tta(u)V_{\sgm,i}(g)$ for all $u\in U_{(i,1,\lds,1)}(\bA),g\in\GL_{n}(\bA)$ and $1\lqs i\lqs n$.
+		\item The following recurrence relation holds for all $2\lqs i\lqs n$,
+		\[
+			V_{\sgm,i}(g)=\sum_{\gma\in Q_{i-1}^{1}(F)\bs\GL_{i-1}(\bA)}V_{\sgm,i-1}(\Dia(\gma,1_{n-i+1})g).
+		\]
+		\item $V_{\sgm,1}=W_{\sgm}$ and $V_{\sgm,n}=\oT{f}_{\sgm}$ satisfies for all $x\in\sP{X}$ and $1\lqs i\lqs n$,
+		\[
+			T_{x}^{i}\oT{f}_{\sgm}=q_{x}^{-i(i-1)/2}\Trc(\Lda^{i}\sgm(\Frb_{x}))\oT{f}_{\sgm}.
+		\]
+	\end{itm}
+\end{thm}
+
+\begin{rmk}
+	Langlands' conjecture reduces to prove this candidate $\oT{f}_{\sgm}$ is left $\GL_{n}(F)$-invariant.
+\end{rmk}
+
+\ssc{Geometric setting}
+
+\sss{Langlands conjecture}
+\begin{cnj}[{\cite[2.1.1]{Laumon1987Correspondance}}]
+	Every geometrically irreducible lisse $\oL{\bQ}_{\ell}$-sheaf $E$ over $X$ corresponds to a natural geometrically irreducible cuspidal Hecke-eigen perverse $\oL{\bQ}_{\ell}$-sheaf $\cK_{E}$ over $\Fib_{X,n}$ such that
+	\[
+		T^{i}(\cK_{E})=(\Lda^{i}E)\bt_{k}\cK_{E}[i(i-1)](i(i-1)/2),\quad \fal 1\lqs i\lqs n.
+	\]
+	Moreover $\cK_{E}$ is unique up to twisting by a geometrically constant $\oL{\bQ}_{\ell}$-sheaf of rank $1$, and it can be choosen such that the correspondence is functorial in $k$.
+\end{cnj}
+
+\sss{The Whittaker sheaf}
+\begin{stp}
+	Let $\Coh_{X,0}^{m}$ be the smooth algebraic stack of coherent $\cO_{X}$-modules $\cM$ of length $m$, and $\oT{\Coh}{}_{X,0}^{m}$ the smooth algebraic stack of flags of coherent $\cO_{X}$-modules $\cM\zB=(\cM_{m}\atr\cdots\atr\cM_{0})$, where $\cM_{i}$ is of length $i$.
+
+	For any partition $\uL{m}=(m_{1},\ldots,m_{s})$ with $m_{1}\gqs\cdots\gqs m_{s}>0, d_{i}=m_{i}-m_{i+1}$. Take $D_{i}\in X^{(d_{i})}$ with $D_{i}=\sum_{x\in X}d_{i,x}[x]$ and $m_{x}=\sum_{k=1}^{s}kd_{s,x}$, the following diagram commutes
+	\[
+		\begin{tikzcd}
+			& {(\rho\cc i_{\uL{m}})}\xI(x_{1},\ldots,x_{m})\ar[d, hook]\ar[rr] && (x_{1},\ldots,x_{m})\ar[d, hook] \\
+			\prod_{x\in X}{(\oT{\Coh}{}_{X,0}^{m_{x}})}_{d_{1,x}[x],\ldots,d_{s,x}[x]}& {(\oT{\Coh}{}_{X,0}^{m})}_{(D_{1},\ldots,D_{s})}\ar[r, hook, "i_{\uL{m}}"]\ar[d, "\pi"]\ar[l, "\vfi"']& \oT{\Coh}{}_{X,0}^{m}\ar[r, "\rho", "\cong"']\ar[d, "\pi"] & X^{m}\ar[d, "r"] \\
+			& \{(D_{1},\ldots,D_{s})\}\ar[r, hook, "i_{\uL{m}}"] & \Coh_{X,0}^{m} & X^{(m)}\ar[l, hook', "i_{(m)}"']
+		\end{tikzcd}
+	\]
+	where $i_{(m)}$ admits a retraction $\rN_{X,k}:\Coh_{X,0}^{m}\ar X^{(m)}$; $\Img{(\rho\cc i_{\uL{m}})}=\{(x_{1},\ldots,x_{m}):\sum_{i=1}^{m}x_{i}=\sum_{i=1}^{s}iD_{i}\}$ is in bijection with $\kS_{m}/\prod_{x\in X}\kS_{m_{x}}$; $\vfi|_{{(\rho\cc i_{\uL{m}})}\xI(x_{1},\ldots,x_{m})}$ is an isomorphism.
+\end{stp}
+
+\begin{thm}[{\cite[Section~3]{Laumon1987Correspondance}}]
+	If $E$ is lisse $\oL{\bQ}_{\ell}$-sheaf on $X$, define the Whittaker sheaf $\cW_{E}$ to be a perverse $\oL{\bQ}_{\ell}$-sheaf on $\Coh_{X,0}$ such that
+	\[
+		\cW_{E}|_{\Coh_{X,0}^{m}}:=i_{(m)!*}({(r\zS(E^{\bt m}))}^{\kS_{m}}[m])=\sR{R\pi\zS\rho\xS(E^{\bt m})}^{\kS_{m}},\quad \fal m\in\bZ.
+	\]
+
+	One has the following results
+	\begin{enr}[label=(\arabic*)]
+		\item $\sgm\xB:\kS_{m}\Lac\HH{\text{{\'e}t}}{\blt}{({(\oT{\Coh}{}_{X,0}^{m})}_{(D_{1},\ldots,D_{s})},\oL{\bQ}_{\ell})}$ and $\sgm_{x}\xB:\kS_{m_{x}}\Lac\HH{\text{{\'e}t}}{\blt}{({(\oT{\Coh}{}_{X,0}^{m_{x}})}_{(d_{1,x}[x],\ldots,d_{s,x}[x])},\oL{\bQ}_{\ell})}$ satisfy
+		\[
+			\sgm\xB=\Ind_{\prod_{x\in X}\kS_{m_{x}}}^{\kS_{m}}(\bt_{x\in X}\sgm_{x}\xB).
+		\]
+		\item The Whittaker sheaf satisfies $\HH{}{\blt}{(i_{\uL{m}}\xS\cW_{E})}=\ot_{x\in X}{(E_{x}^{\ot m_{x}}\ot\sgm_{x}\xB)}^{\kS_{m_{x}}}$. If $D_{i}=d_{i}[x]$, then $i_{\uL{m}}\xS\cW_{E}$ only has cohomology in even degree, with an isomorphism of $\oL{\bQ}_{\ell}[\kS_{m}]$-modules, compatible with $\Gal(\oL{k}/k)$-action.
+		\[
+			\HH{}{2k}{(i_{\uL{m}}\xS\cW_{E})}(k)\cong\Op_{\uL{n}\gqs\uL{m}}{(R^{(n_{1},\ldots,n_{r})}E_{x})}^{K_{\uL{n},\uL{m},k}},\quad 0\lqs k\lqs d,
+		\]
+		where $d=\sum_{i=1}^{s}d_{i}i(i-1)/2$ is the top cohomological degree of $i_{\uL{m}}\xS\cW_{E}$.
+		\item If $E$ is geometrically irreducible, then $\cW_{E}|_{\Coh_{X,0}^{m}}$ is geometrically irreducible.
+	\end{enr}
+\end{thm}
+
+\sss{The automorphic sheaf}
+
+\begin{stp}
+	Denote by $D_{i}$ effective divisors of degree $d_{i}$, and $A_{i}:=(i-1)K_{X}+D_{i}+\cdots+D_{n}$ divisors of degree $a_{i}=(i-1)(2g-2)+d_{i}+\cdots+d_{n}$, and $\cL_{i}\in\Fib_{X,i}$. Consider the following moduli spaces
+	\begin{align*}
+		\rI_{i}:=\{(\cL_{i};D_{i+1},\ldots,D_{n})\},\quad 0\lqs i \lqs n-1;\quad \rP_{i}:=\{(0\ar\cA_{i}\ar\cL_{i}\ar\cL_{i-1}\ar 0;D_{i},\ldots,D_{n})\},\quad 1\lqs i\lqs n; \\
+		\rQ_{i}:=\rP_{i+1}\tms_{\rI_{i}}\rP_{i}=\{(0\ar\cA_{i+1}\ar\cL_{i+1}\ar\cL_{i}\ar0\ar\cA_{i}\ar\cL_{i}\ar\cL_{i-1}\ar0;D_{i+1},\ldots,D_{n})\},\quad 1\lqs i\lqs n-1;
+	\end{align*}
+	where $\cA_{i}=\cO_{X}(A_{i})$ and $\cL_{0}=0$, one has the following commutative diagram
+	\[
+		\begin{tikzcd}
+			& \rQ_{n-1}\ar[rd, "\rho_{n-1}"]\ar[ld, "\oC{\rho}_{n-1}"] & & \rQ_{n-2}\ar[ld, "\oC{\rho}_{n-2}"] & \cdots & \rQ_{2}\ar[rd, "\rho_{2}"] & & \rQ_{1}\ar[rd, "\rho_{1}"]\ar[ld, "\oC{\rho}_{1}"] & \\
+			\rP_{n}\ar[rd, "\oC{\pi}_{n-1}"] & & \rP_{n-1}\ar[ld, "\pi_{n-1}"]\ar[rd, "\oC{\pi}_{n-2}"] & & \cdots & & \rP_{2}\ar[rd, "\oC{\pi}_{1}"]\ar[ld, "\pi_{2}"] & & \rP_{1}\ar[ld, "\pi_{1}"]\ar[rd, "\oC{\pi}_{0}"] \\
+			& \rI_{n-1} & & \rI_{n-2} & \cdots & \rI_{2} & & \rI_{1} & & \rI_{0}
+		\end{tikzcd}
+	\]
+	The fibers of $\pi_{i}$ and $\oC{\pi}_{i}$ are
+	\[
+		\pi_{i}\xI(\cL_{i};D_{i+1},\lds,D_{n})=\bP_{k}\Hom{\cO_{X}}{}{(\cO_{X}(A_{i+1}-K_{X}),\cL_{i})},\quad \oC{\pi}_{i}\xI(\cL_{i};D_{i+1},\lds,D_{n})=\bP_{k}\Ext{\cO_{X}}{1}{(\cL_{i},\cA_{i+1})}.
+	\]
+\end{stp}
+
+\begin{thm}[{\cite[4.1.4]{Laumon1987Correspondance}}]
+	Let $E$ be a geometrically irreducible lisse $\oL{\bQ}_{\ell}$-sheaf of rank $n$, one can define $V_{E,i}:\rP_{i}\ar\oL{\bQ}_{\ell}$ for $1\lqs i\lqs n$ inductively. Using the divisor tuple $D=(D_{1},\ldots,D_{n-1},A_{n})$, then
+	\[
+		m=\sum_{i=1}^{n-1}id_{i}+n(d_{n}+(n-1)(2g-2)),\quad d=\sum_{i=1}^{n-1}d_{i}i(i-1)/2+(d_{n}+(n-1)(2g-2))n(n-1)/2.
+	\]
+	By sheaf-to-function correspondence one has $f_{\cW_{E}}:\Coh_{X,0}^{m}\ar\oL{\bQ}_{\ell}$, define functions $V_{E,i}$ on $\rP_{i}$
+	\begin{align*}
+	  V_{E,1}&:=f_{\cW_{E}}(i_{\uL{m}}(D))=q^{d-(n-1)m}\prod_{x\in\sP{X}}\Trc(\Frb_{x},R^{(d_{1,x},\ldots,d_{n-1,x},a_{n,x})}E_{x}), \\
+	  V_{E,i}&:=q(\oC{\rho}_{i-1*}\rho_{i-1}\xS V_{E,i-1})-(\oC{\pi}_{i-1*}\pi_{i-1}\xS V_{E,i-1}),\quad 2\lqs i\lqs n.
+	\end{align*}
+	By Weil's interpretation of ad{\`e}les one has $\rP_{n}\ahr\mathrm{Drap}_{X,(n-1,1)}(k)=Q_{n-1}(F)\bs\GL_{n}(\bA)/\GL_{n}(\cO)$. Consider $\sgm:\Gal(\oL{F}/F)\ar\GL_{n}(\oL{\bQ}_{\ell})$ determined by $E$, then $V_{E,n}=\oT{f}_{\sgm}|_{\rP_{n}}=V_{\sgm,n}$.
+\end{thm}
+
+\begin{stp}
+	Fix $\ell_{1}\gqs n(n+1)(2g-2)/2+n$ and $\ell_{i}=\ell_{1}+i(i-1)(2g-2)/2$, consider the following moduli spaces
+	\begin{align*}
+	  \rI_{i}^{0}&:=\{\cL_{i}\in\Fib_{X,i}^{\ell_{i}}:\Hom{\cO_{X}}{(\cL_{i},\cO_{X}(iK_{X}+x))}=0, \fal x\in X\},\quad 1\lqs i\lqs n;\\
+	  \rP_{i}^{0}&:=\{0\ar\cO_{X}((i-1)K_{X})\ar\cL_{i}\ar\cL_{i-1}\ar0: \cL_{i}\in \rI_{i}^{0}\},\quad 1\lqs i\lqs n;\\
+	  \oC{\rP}_{i}^{0}&:=\{0\ar\cO_{X}((i-1)K_{X})\ar\cL_{i}\ar\cL_{i-1}\ar0: \cL_{i-1}\in\rI_{i-1}^{0}\},\quad 1\lqs i\lqs n;\\
+	  \rU_{i}&:=\{0\ar\cO_{X}((i-1)K_{X})\ar\cL_{i}\ar\cL_{i-1}\ar0:\cL_{i}\in\rI_{i}^{0},\cL_{i-1}\in\rI_{i-1}^{0}\},\quad 2\lqs i\lqs n.
+	\end{align*}
+	One has the following diagram
+	\[
+		\begin{tikzcd}
+			\rP_{n}^{0}\ar[d, two heads, "\pi_{n}"] && \rP_{n-1}^{0}\ar[d, two heads, "\pi_{n-1}"] && \cds && \rP_{2} ^{0}\ar[d, two heads, "\pi_{2}"] && \rP_{1}^{0}\ar[d, two heads, "\pi_{1}"] \\
+			\rI_{n}^{0} & \rU_{n}^{0}\ar[rd, hook, "j_{n-1}'"']\ar[ul, hook, "j_{n}"'] & \rI_{n-1}^{0} & \rU_{n-1}^{0}\ar[ul, hook, "j_{n-1}"'] & \cds & \rU_{3}^{0}\ar[rd, hook, "j_{2}'"'] & \rI_{2}^{0} & \rU_{2}^{0}\ar[rd, hook, "j_{1}'"']\ar[lu, hook, "j_{2}"'] & \rI_{1}^{0} \\
+			\oC{\rP}_{n}^{0}\ar[u, two heads, "\oC{\pi}_{n}"'] && \oC{\rP}_{n-1}^{0}\ar[u, two heads, "\oC{\pi}_{n-1}"'] && \cds && \oC{\rP}_{2}^{0}\ar[u, two heads, "\oC{\pi}_{2}"'] && \oC{\rP}_{1}^{0}\ar[u, two heads, "\oC{\pi}_{1}"']
+		\end{tikzcd}
+	\]
+	The morphism $j_{i}$ and $j_{i}'$ are open and dense immersions, while the fibers of $\pi_{i}$ and $\oC{\pi}_{i}$ are
+	\[
+		\pi_{i}\xI(\cL_{i})=\bP_{k}\Hom{\cO_{X}}{(\cO_{X}((i-1)K_{X}),\cL_{i})},\quad \oC{\pi}_{i}\xI(\cL_{i})=\bP_{k}\Ext{\cO_{X}}{1}{(\cL_{i},\cO_{X}(iK_{X}))}
+	\]
+\end{stp}
+
+
+\begin{cnj}
+	The geometric automorphic sheaves exist:
+
+	(\cite[4.3.3]{Laumon1987Correspondance}) There exist geometrically irreducible perverse $\oL{\bQ}_{\ell}$-sheaves $\cV_{E,i}^{\ell_{i}}$ over $\rP_{i}^{0}$ such that
+	\begin{itm}
+		\item Let $\cK_{\Lda^{n}E}$ be the lisse $\oL{\bQ}_{\ell}$-sheaf over $\Fib_{X,1}$ by geometric class field theory, then
+		\[
+			\cV_{E,1}^{\ell_{1}}:=\cK_{\Lda^{n}E,(n-1)K_{X}}((n-1)\ell_{1}+n{(n-1)}^{2}(g-1))\ot_{\oL{\bQ}_{\ell}}E^{(\ell_{1})}[\ell_{1}-1].
+		\]
+		\item Using geometric Radon transformation, one has for $1\lqs i\lqs n-1$,
+		\[
+			R\pi_{i*}\cV_{E,i}^{\ell_{i}}=0,\quad \cV_{E,i+1}^{\ell_{i+1}}=j_{(i+1)*}j_{i}^{\prime*}\rR_{i}(\cV_{E,i}^{\ell_{i}})(-1).
+		\]
+		\item By sheaf-to-function correspondence $f_{\cV_{E,i}}$ coincides with $V_{E,i}$ above.
+	\end{itm}
+
+	(\cite[5.3.1]{Laumon1987Correspondance}) There exist unique geometrically irreducible perverse $\oL{\bQ}_{\ell}$-sheaves $\cK_{E}$ over $\Fib_{X,n}$ such that
+	\begin{align*}
+	  \cK_{E}^{\ell_{n}} &= (\cK_{E}|_{\Fib_{X,n}^{\ell_{n}}})[-(n-1)\ell_{n}+n(4n^{2}-6n+5)(g-1)/6],\\
+	  \cV_{E,n}^{\ell_{n}} &= \pi_{n}\xS(\cK_{E}^{\ell_{n}}|_{\rI_{n}^{0}})[\ell_{n}-1-n(2n-1)(g-1)], \\
+	  T^{n}(\cK_{E})&=(\Lda^{n}E)\bt_{k}\cK_{E}[n(n-1)](n(n-1)/2).
+	\end{align*}
+\end{cnj}
+
+
+\printref
+\end{document}

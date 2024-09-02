@@ -1,0 +1,168 @@
+\documentclass[article, a4paper, twoside]{universal}
+
+\setshowlvl{1}
+\begin{document}
+\confighead{}{}{}
+\printhead{}{}{1}
+
+\sct{Arithmetic cohomology theory}
+It is very desirable to have a good global cohomology theory that is naturally compatible with height theory for arithmetic varieties, this note\footnote{Last updated on 03/2024} records some experimental thoughts.
+
+\begin{stp}
+	Let $K$ be a number field, $\cO_{K}$ its ring of integers, and $X$ an arithmetic variety over $\cO_{K}$ of dimension $d$.
+\end{stp}
+
+\begin{dfn}
+	We define a category of \tbf{arithmetic coherent sheaves} $\aCoh(X)$ on $X$, with the data of
+	\begin{itm}
+		\item Objects: $\oL{\cF}=(\cF,h_{\cF})$, a coherent sheaf $\cF$ over $X$ with $F_{\ift}$-invariant Hermitian metrics $(h_{x})$ at $\cF_{x}$.
+		\item Morphisms: Define $\aHom(\oL{\cF},\oL{\cG})$ to be those $f\in\Hom{}{}{(\cF,\cG)}$ such that the following holds
+		\[
+			\ach(\oL{\cF})-\ach(\Ker(f),h_{\cF})=\ach(\Img(f),h_{\cF})=\ach(\Img(f),h_{\cG})=\ach(\oL{\cG})-\ach(\Cok(f),h_{\cG})\in\aCH{}{\blt}{(X)}_{\bQ}.
+		\]
+	\end{itm}
+\end{dfn}
+
+\begin{rmk}
+	The idea of this definition, is simply to make the Bott-Chern forms \cite{BC1965} vanish for every exact sequence of Hermitian vector bundles over $X$. This category should contain the information of equidistribution of holomorphic sections as the Bott-Chern form does.
+
+	\red{TODO: Figure out the properties of this category. What are the projective and injective objects in $\aCoh(X)$? Note that the arithmetic Chern character $\ach$ is only defined for vector bundles (\cite{GS1990-1,GS1990-2}) but $\Img(f)$ could be torsion, how to fix this?}
+\end{rmk}
+
+% \begin{exg}
+% 	If $X=\Spc{\cO_{K}}$, then $\aCoh(X)$ consists of metrized finitely generated $\cO_{K}$-modules.
+% \end{exg}
+
+
+\begin{thm}
+	The above definition makes $\aCoh(X)$ into an abelian category.
+\end{thm}
+
+\begin{prf}
+
+	To verify that $\aHom(\oL{\cF},\oL{\cG})$ is an abelian group, it suffices to show that if $f,g\in\aHom(\oL{\cF},\oL{\cG})$, then
+	\[
+		\ach(\oL{\cF})-\ach(\Ker(f+g),h_{\cF})=\ach(\Img(f+g),h_{\cF})=\ach(\Img(f+g),h_{\cG})=\ach(\oL{\cG})-\ach(\Cok(f+g),h_{\cG}).
+	\]
+	\red{TODO}
+\end{prf}
+
+\begin{dfn}
+	An arithmetic coherent sheaf $\oL{\cF}\in\aCoh(X)$ is said to be
+	\begin{itm}
+		\item \tbf{arithmetic projective} if $\aHom(\oL{\cF},-)$ is exact.
+		\item \tbf{arithmetic injective} if $\aHom(-,\oL{\cF})$ is exact.
+		\item \tbf{arithmetic flat} if $-\ot\oL{\cF}$ is exact.
+	\end{itm}
+	The \tbf{arithmetic dual} of $\oL{\cF}$ is defined to be $\oL{\cF}\xV:=\aHom(\oL{\cF},\oL{\cO}_{X})$.
+\end{dfn}
+\begin{rmk}
+	Note that arithmetic projectivity/injectivity and the usual projectivity/injectivity does not imply each other, one expects that the derived category thus defined is truly different. For example, as for (arithmetic) projectivity of $\oL{\cF}$, it is apparant that the surjectivity of the second horizontal arrows in the following diagram does not imply each other, similar reasons hold for (arithmetic) injectivity and (arithmetic) flatness.
+	\[
+		\begin{tikzcd}
+			0\ar[r] & \aHom(\oL{\cF},\oL{\cA})\ar[r]\ar[d, hook] & \aHom(\oL{\cF},\oL{\cB})\ar[r]\ar[d, hook] & \aHom(\oL{\cF},\oL{\cC})\ar[r]\ar[d, hook] & 0 \\
+			0\ar[r] & \Hom{}{}{(\cF,\cA)}\ar[r] & \Hom{}{}{(\cF,\cB)}\ar[r] & \Hom{}{}{(\cF,\cC)}\ar[r] & 0
+		\end{tikzcd}
+	\]
+\end{rmk}
+
+\begin{dfn}
+	Define the \tbf{arithmetic degree} $\aDeg_{\bR}$ by
+	\[
+	  \aDeg_{\bR}:=\aDeg\cc\Det:\aCoh(\Spc{\cO_{K}})\ar\aCH{}{1}{(\Spc{\cO_{K}})}\ar\bR.
+  	\]
+
+	\red{TODO: there should be a $p$-adic version $\aDeg_{p}:\aCoh(\Spc{\cO_{K}})\ar\bQ_{p}$ compatible with recent developments.}
+\end{dfn}
+
+\begin{dfn}
+	There are several natural functors from $\aCoh(X)$ to $\aCoh(\Spc{\cO_{K}})$ and then to $\bR$,
+	\begin{itm}
+		\item For any $\cO_{K}$-point $x:\Spc{\cO_{K}}\ar X$. Define the \tbf{arithmetic stalks} and \tbf{height function} of $\oL{\cF}$ by
+		\[
+			\oL{\cF}_{x}:=(\cF_{x},h_{x}),\quad h_{\oL{\cF}}(x):=\aDeg_{\bR}(\oL{\cF}_{x}).
+		\]
+		\item For structure morphism $X\ar\Spc{\cO_{K}}$. Define the \tbf{arithmetic sections} and \tbf{effective size} of $\oL{\cF}$ by
+		\[
+			\aHH{}{0}{(X,\oL{\cF})}:=(\HH{}{0}{(X,\cF)},\sup_{x\in X}h_{x}),\quad\ahh{\bR}{0}{(X,\oL{\cF})}:=\aDeg_{\bR}(\aHH{}{0}{(X,\oL{\cF})}).
+		\]
+		\item For $k\in\bZ_{\gqs1}$, define the \tbf{$k$-th arithmetic cohomology} and the \tbf{$k$-th effective size} of $\oL{\cF}$ by
+		\[
+			\aHH{}{k}{(X,\oL{\cF})}:=R^{k}\aHH{}{0}{(X,\oL{\cF})},\quad \ahh{\bR}{k}{(X,\oL{\cF})}:=\aDeg_{\bR}(\aHH{}{k}{(X,\oL{\cF})}).
+		\]
+		\item For $k\in\bZ_{\gqs0}$, define the \tbf{$k$-th arithmetic asymptotic function} of $\oL{\cF}$ by
+		\[
+			\aVol{\bR}{k}{(X,\oL{\cF})}:=\limsup_{m\ar+\ift}\frac{\ahh{\bR}{k}{(X,m\oL{\cF})}}{m^{d}/d!}.
+		\]
+	\end{itm}
+
+	\red{TODO: again there should be $p$-adic versions of these. The sup norm may not be a good canonical choice.}
+\end{dfn}
+
+\begin{rmk}
+	Note that $\aVol{\bR}{0}{(X,\oL{\cF})}$ is the classical arithmetic volume of $\oL{\cF}$, the existing two definitions of arithmetic volume are not equivalent, according to~\cite[Page~368]{Chen2011} or~\cite[Page~613]{Yuan2008Big}. However the difference is slight regarding positivity, the one we adapted corresponds to arithmetic strongly bigness and implies arithmetic bigness corresponding to the other one, moreover if $\oL{\cF}$ is nef, the two notions are equivalent.
+\end{rmk}
+
+\begin{thm}
+	The arithmetic Chern character $\ach:\aCoh(X)\ar\aCH{}{\blt}{(X)}_{\bQ}$, the arithmetic degree, arithmetic cohomology and arithmetic size $\aDeg_{\bR}(-),\aHH{}{k}{(X,-)},\ahh{\bR}{k}{(X,-)}:\aCoh(X)\ar\bR$ are all additive.
+\end{thm}
+
+\begin{prf}
+	\red{TODO}
+\end{prf}
+
+\ssc{Dimension one}
+
+
+In this section we work out the dimension one case, namely when $X=\Spc{\cO_{K}}$. Consider $\oL{\cO}_{K}$ and $\oL{\oga}_{K}$ endowed with their canonical metric, the final goal of this subsection is to (1) prove the arithmetic Serre duality,
+\[
+	\aHH{}{0}{(\Spc{\cO_{K}},\oL{\cO}_{K})}\cong\aHH{}{1}{(\Spc{\cO_{K}},\oL{\oga}_{K})}\xV=\aHom{(\aHH{}{1}{(\Spc{\cO_{K}},\oL{\oga}_{K})},\oL{\cO}_{K})},
+\]
+and (2) compute all arithmetic cohomology groups of $\Spc{\cO_{K}}$. As a first step we establish the following
+\begin{thm}
+	Assume $X=\Spc{\cO_{K}}$, then
+	\begin{itm}
+		\item $\ach{(\cF,h_{1})}=\ach{(\cF,h_{2})}$ if and only if $h_{1}$ and $h_{2}$ differs by a constant scalar $a_{\sgm}\in K\xT$ at each place $\sgm$.
+		\item The arithmetic Chern character is additive on a short exact sequence if and only if the sequence is orthogonal in the middle.
+		\item $\aHom(\oL{\cF},\oL{\cG})$ is a natural $\cO_{K}$-submodule of $\Hom{}{}{(\cF,\cG)}$, for the metric at a place $\sgm$, let $\dP{f}_{\sgm}=\dP{a}_{\sgm}\xI$ if $af$ is an isometry onto its image.
+	\end{itm}
+\end{thm}
+
+\begin{prf}
+	\red{TODO}
+\end{prf}
+
+\begin{thm}
+	The arithmetic Serre duality holds in general.
+\end{thm}
+
+
+\ssc{Height theory}
+
+\begin{prp}
+	To connect to the classical height theory, note that
+	\begin{enr}
+		\item $i:X\ahr\bP^{n}$ and $\oL{\cF}=(i\xS\cO_{\bP^{n}}(1),\int_{X}i\xS h_{\mathrm{FS}})$, then $h_{\oL{\cF}}$ is the Arakelov height.
+		\item $i:X\ahr\bP^{n}$ and $\oL{\cF}=(i\xS\cO_{\bP^{n}}(1),\int_{X}i\xS h_{\mathrm{sup}})$, then $h_{\oL{\cF}}$ is the Weil height.
+		\item $X=\cA_{g}$ and $\oL{\cF}=(\Det\pi\zS\Oga_{A_{g}/\cA_{g}},\int_{X}\int_{A_{x}})$, then $h_{\oL{\cF}}$ is the Faltings height.
+		\item $X=A$ is an abelian variety and $\oL{\cF}=(\Tta,-)$, then $h_{\oL{\cF}}$ is the N{\'e}ron-Tate height.
+	\end{enr}
+\end{prp}
+
+\begin{prf}
+	\red{TODO: make precise these heuristics, provide their decompositions into local heights and compare with recent developments in Arakelov and height theory for line bundles \cite{YZ2021}.}
+\end{prf}
+
+% \sct{Memorandum of Neukirch}
+
+% Everything above should be compatible with things here.
+
+% Let $\oL{M}$ be a metrized $\cO_{K}$-module, including $\oL{\cO}_{K}$.
+
+% If $\oL{M}$ is invertible, one has Euler-Minkowski characteristic (Definition~3.1) $\chi(\oL{M}):=-\log\Vol{\oL{M}}$, and degree (Proposition~3.3) $\Deg(\oL{M})$.
+
+% $\bY:=\chi(X,\cO_{X})$.
+
+
+\printref
+\end{document}

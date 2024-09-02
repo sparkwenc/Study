@@ -1,0 +1,49 @@
+\documentclass[article, a4paper, twoside]{universal}
+
+\setshowlvl{1}
+\begin{document}
+\confighead{}{}{}
+\printhead{}{}{1}
+
+\sct{Reductive groups}
+
+Ref:~\cite{BT1965}.
+
+
+\begin{stp}
+    Let $k$ be a field.
+\end{stp}
+
+\begin{dfn}[0.7, 0.8]
+    Let $H$ be a connected $k$-algebraic group, its \tbf{radical} $R(H)$ is its maximal closed connected solvable subgroup, its \tbf{unipotent radical} $R_{u}(H)$ is its maximal closed unipotent subgroup.
+
+    A $k$-algebraic group $G$ is \tbf{semisimple} if $R(G^{0})$ is trivial, and \tbf{reductive} if $R_{u}(G^{0})$ is trivial.
+
+    A connected $k$-algebraic group $G$ is \tbf{simple} if all its closed proper normal subgroups are trivial, and \tbf{almost simple} if all its closed proper normal subgroups are finite.
+
+
+    A \tbf{Levi subgroup} of a $k$-algebraic group $G$ is a closed reductive subgroup $H$ such that $G=R_{u}(G)\rtm H$.
+\end{dfn}
+
+\begin{dfn}
+    An algebraic group $T$ is a \tbf{torus} if it is connected, and the following equivalent condition holds, (1) $T$ consists of semisimple elements, (2) $T$ is diagonalizable, (3) $T$ is isomorphic to $\bG_{m}^{n}$, where $n=\Dim T$.
+
+    A torus $T$ is \tbf{$K$-anisotropic} if it is defined over $K$ and $\bX^{*}(T)_{K}=1$, it is \tbf{$K$-split} if it is defined over $K$ and $K$-isomorphic to $\bG_{m}^{n}$.
+\end{dfn}
+
+\begin{thm}[1.3, 1.5]
+    Let $T$ be a $k$-torus, then the following are equivalent, (1) for any $k$-morphism $f:T\ar\GL_{m}$, $\Img(f)$ is diagonizable over $k$, (2) $T$ is diagonizable over $k$, (3) $T$ is split over $k$, (4) $\bX^{*}(T)=\bX^{*}(T)_{k}$, (5) $\bX_{*}(T)=\bX_{*}(T)_{k}$. There always exists a finite Galois extension $K/k$ such that $T$ is $K$-split.
+\end{thm}
+
+
+\begin{thm}[2.2]
+    Let $G$ be a $k$-connected algebraic group, the following are equivalent, (1) $G$ is reductive, (2) $G$ is an almost direct product of a torus and its derived group $G'$, (3) $G$ admits a completely reducible linear representation with finite kernel.
+\end{thm}
+
+% \begin{thm}[2.14]
+    % Let $G$ be a connected algebraic group, then (1) $G$ admits a maximal torus over $k$, (2) if $G$ is reductive, then $G_{k}$ is split over a finite separable extension of $k$, (3) if $G$ is reductive and $k$ is infinite, then $G_{k}$ is Zariski-dense in $G$.
+% \end{thm}
+
+
+\printref
+\end{document}

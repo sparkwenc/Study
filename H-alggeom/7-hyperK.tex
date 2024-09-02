@@ -1,0 +1,90 @@
+\documentclass[article, a4paper, twoside]{universal}
+
+\setshowlvl{1}
+\begin{document}
+\confighead{}{}{}
+\printhead{}{}{1}
+
+
+\sct{Hyper-K{\"a}hler geometry}
+
+\ssc{Beauville-Bogomolov decomposition}
+Ref:~\href{https://math.unice.fr/~beauvill/conf/decomp.pdf}{Beauville's slides}.
+
+Beauville-Bogomolov decomposition~\cite{Bogomolov1974,Beauville1983Kahler} is the structure theorem for complex compact K{\"a}hler manifolds with torsion first Chern class.
+
+\begin{thm}
+	Let $M$ be a complex compact K{\"a}hler manifold with $c_{1}(M)=0\in \mathrm{H}_{}^{2}(M;\bR)$, then there exists a finite {\'e}tale $\oT{M}\ar M$ such that
+	\[
+		\oT{M}=T\tms\prod_{i}X_{i}\tms\prod_{j} Y_{j},
+	\]
+	where $T$ is a \tbf{complex torus}, $X_{i}$ are \tbf{Calabi-Yau} manifolds, $Y_{j}$ are \tbf{hyper-K{\"a}hler} manifolds.
+\end{thm}
+
+
+The decomposition theorem is a direct consequence of Yau's theorem\cite{Yau1978}, the proof of the decomposition can be stated in two main lemmas.
+
+
+\begin{lem}
+	Let $M$ be a complex compact K{\"a}hler manifold with $c_{1}(M)=0\in \mathrm{H}_{}^{2}(M;\bR)$, then there exists a finite {\'e}tale $T\tms N\ar M$, where $T$ is a complex torus, $N$ a compact K{\"a}hler manifold with $\pi_{1}(N)=0, K_{N}\cong\cO_{N}$.
+\end{lem}
+
+\begin{prf}[Sketch of the proof]
+	Yau's theorem says $M$ is Ricci-flat. Cheeger-Gromoll's splitting says $M\cong(\bC^{k}\tms N)/\Gma$, with $\pi_{1}(N)=0, K_{N}\cong\cO_{N}$ and $\Gma\sbs\Aut(\bC^{k})\tms\Aut(N)$. Bieberbach's theorem says there exists a finite index subgroup $U<\Gma$, acting trivially on $N$ and by translations on $\bC^{k}$.
+
+	Therefore, $(\bC^{k}\tms N)/U\cong T\tms N\ar M$ is finite {\'e}tale.
+\end{prf}
+
+\begin{lem}
+	Let $N$ be a compact K{\"a}hler manifold with $\pi_{1}(N)=0, K_{N}\cong\cO_{N}$, then
+	\[
+		N\cong\prod_{i}X_{i}\tms\prod_{j}Y_{j},
+	\]
+	where $X_{i}$ are Calabi-Yau, $Y_{j}$ are irreducible symplectic.
+\end{lem}
+
+\begin{prf}[Sketch of the proof]
+	Yau's theorem says the holonomy group of $N$ is contained in $\SU$. de Rham's decomposition together with Berger's classification says
+	\[
+		N\cong\prod_{i}X_{i}\tms\prod_{j}Y_{j},
+	\]
+	where the holonomy groups of $X_{i}$ and $Y_{j}$ are $\SU$ and $\Sp$ respectively. Bochner's principle computes
+	\[
+		\mathrm{H}_{}^{0}(X,\Oga_{X}\xB)=\bC\op\bC\oga, \mathrm{H}_{}^{0}(Y,\Oga_{Y}\xB)=\bC[\sgm],
+	\]
+	where the former is Calabi-Yau, the latter is hyper-K{\"a}hler.
+\end{prf}
+
+
+\ssc{Miscellany}
+
+Ref:~\cite{Huybrechts1999}, \href{https://people.bath.ac.uk/masgks/Papers/kinosaki19.pdf}{Sankaran's notes}, \href{https://www.math.ens.psl.eu/~debarre/HKmanifolds.pdf}{Debarre's notes}.
+
+
+Any K3 surface admits an interesting $0$-cycle $c_{X}\in\CH{0}{}{(X)}$:
+\begin{thm}[{\cite[Theorem~1]{BV2004}}]
+	Let $X$ be a K3 surface, then there exists $c_{X}\in\CH{0}{}{(X)}$ such that
+	\begin{enr}
+		\item Any point on a (possibly singular) rational curve in $X$ has class $c_{X}\in\CH{0}{}{(X)}$.
+		\item The image of the intersection product $\Pic(X)\ot\Pic(X)\ar\CH{0}{}{(X)}$ is contained in $\bZ c_{X}$.
+		\item $c_{2}(X)=24c_{X}\in\CH{0}{}{(X)}$.
+	\end{enr}
+\end{thm}
+
+
+
+Ref:~\cite{DHMV2024}
+
+Certain hyper-K{\"a}hler fourfold is proved to be of K3\ts{[2]} deformation type by proving the hyper-K{\"a}hler SYZ conjecture conditionally.
+
+\begin{cnj}
+	Any hyper-K{\"a}hler manifold can be deformed into one with a Lagrangian fibration.
+\end{cnj}
+
+\begin{cnj}
+	Let $X$ be a hyper-K{\"a}hler manifold of dimension $2n$, then any non-trivial nef line bundle $L$ on $X$ satisfying $\int_{X}c_{1}(L)^{2n}=0$ is semi-ample.
+\end{cnj}
+
+
+\printref
+\end{document}
