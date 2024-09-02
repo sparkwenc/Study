@@ -1,0 +1,280 @@
+% Last Updated: March 1, 2024
+\documentclass[0-main]{subfiles}
+
+\begin{document}
+\ifSubfilesClassLoaded{
+	% \title{\tbf{Untitled}}
+	% \author{Cong Wen, xx/20xx}
+	% \maketitle
+	\tableofcontents
+}{}
+% ----------------------------------------------------------------------------------------------------
+
+\ssc{Modular parametrization}
+
+% \begin{thm}[{\cite[Theorem~A]{Carayol1986Representations}}]
+% 	Let $F$ be a totally real field of degree $d$, and $\pi=\ot_{v}\pi_{v}$ be a cuspidal automorphic representation of $\GL_{n}(\bA_{F})$.
+% \end{thm}
+
+\sss{Leading conjecture}
+
+\spg{Ultimate Goal} Develope whatever is needed to understand the arithmetic of the optimal quotient morphism $\phi:J_{0}(N)\atr E$ of an elliptic curve over $\bQ$ of conductor $N$. In particular, study the following questions:
+\begin{itm}
+	\item[\TODO] Extend $\phi$ to morphism of N{\'e}ron models $\phi:\cJ_{0}(N)\ar\cE$, describe the reduction of $\cJ_{0}(N)$ and $\cE$ modulo every prime $p$, describe the reduction of $\phi$ modulo every prime $p$, investigate the discriminant locus of $\phi$, prove the degree conjecture.
+	\item[\TODO] Investigate the relation between Hodge bundles $\oga_{\cJ_{0}(N)}$ and $\oga_{\cE}$ under $\phi$, then investigate the change of Faltings height along $\phi$. To put in a more general framework, systematically study the effect on Hodge bundles along a morphism of abelian varieties $f:A\ar B$, including the case that $f$ is not an isogeny.
+	\item[\TODO] Take a set of Mordell-Weil generators $\{x_{1},\cdots,x_{r}\}$ of $E(\bQ)$, investigate the fibers $\cJ_{0}(N)_{x_{i}}$. In particular, if $r=1$, describe how Heegner points appear; if $r\gqs2$, investigate the field of definition of $\cJ_{0}(N)_{x_{i}}$.
+
+	Prior to any mathematical progress, try some computational experiments using computer algebra systems to see what may happen: E.g., 37.a1, 389.a1, 5077.a1 are rank 1,2,3 curves with trivial torsion and explicit Mordell-Weil generators. (Note that 5077.a1 verifies BSD as in \cite{BGZ1985})
+\end{itm}
+
+\begin{rmk}
+	The same topic over global function field case, for example, the degree conjecture has been extensively pursued by Papikian, suggested by Mazur, in his thesis\cite{Papikian2003} and some of his subsequent papers.
+
+	However the author wants to restrict attention only to $\bQ$ in this note before he can prove anything novel and non-trivial, since the arithmetic complexity of function fields and number fields are substantially different, any kind of generalization without direct application to the ultimate goal should be viewed as a distraction.
+\end{rmk}
+
+\begin{thm}
+	The following conjectures are equivalent.
+	\begin{enr}[label = (\arabic*)]
+		\item (ABC conjecture) For any $\eps>0$, there exists an effectively computable constant $C_{\eps}$ such that:
+
+		For any coprime integers $a,b,c$ satisfying $a+b+c=0$, one has
+		\[
+			\log\max\{\sP{a},\sP{b},\sP{c}\}\lqs(1+\eps)\sum_{p\mid abc}\log{p}+C_{\eps}.
+		\]
+		\item (Degree conjecture) For any $\eps>0$, there exists an effectively computable constant $C_{\eps}$ such that:
+
+		For any elliptic curve $E$ over $\bQ$ of conductor $N$ with modular parametrization $\phi:X_{0}(N)\ar E$, one has
+		\[
+			\log\Deg\phi\lqs (2+\eps)\log{N}+C_{\eps}.
+		\]
+		\item (Discriminant conjecture) For any $\eps>0$, there exists an effectively computable constant $C_{\eps}$ such that:
+
+		For any elliptic curve $E$ over $\bQ$ of conductor $N$, one has
+		\[
+			\log{\sP{\Dta_{E}}}\lqs (6+\eps)\log{N_{E}}+C_{\eps}.
+		\]
+		\item (Effective Mordell) There exists effectively computable constants $A,B$ such that:
+
+		For any smooth projective curve $X$ over $\bQ$ of genus $g\gqs2$, and $P\in X(K)$, one has
+		\[
+			h(P)\lqs A\frac{\log{\sP{\Dta_{K}}}}{[K:\bQ]}+B.
+		\]
+	\end{enr}
+\end{thm}
+
+
+
+\begin{prf}[Sketch of the proof]
+	\red{TODO: Write down the proof for the equivalences}
+
+	Consider using the following literatures:
+	\begin{itm}
+		\item Effective Mordell implies discriminant conjecture: read \cite[Page~55]{MB1990Hauteurs}. The key is to use the Belyi map from a modular curve of genus $g\gqs2$, $X_{0}(N)\ar X(1)=\bP^{1}$.
+		\item ABC conjecture implies effective Mordell: read \cite{Elkies1991ABC}, the key is also to use the Belyi map.
+		\item Degree conjecture = effective Mordell: read \cite{MM1994Modular}, the key is to use
+		\[
+			h_{\text{Fal}}(E)=\frac{1}{2}\log\Deg\phi-\log\sP{c_{\phi}}-\log(f,f),
+		\]
+		and give an estimate of $\log(f_{E},f_{E})=O(\log{N_{E}})$  via $L(2,\Sym^{2}f_{E})$.
+		\item ABC conjecture = discriminant conjecture: read \cite{Frey1989}, the key is to use $y^{2}=x(x-A)(x+B)$.
+	\end{itm}
+
+	Note that the inequality in ABC conjecture cannot be improved in the following sense: (\cite[Theorem~2]{ST1986})	There exists infinitely many coprime triples $a,b,c$ such that $N=\prod_{p\mid abc}p$.
+	\[
+		\log\max\{\sP{a},\sP{b},\sP{c}\}>\log{N}+\frac{\log^{1/2}{N}}{\log\log{N}}.
+	\]
+\end{prf}
+
+\begin{rmk}
+	More related conjectures:
+	\begin{itm}
+		\item BSD together with $\sP{\Sha}=O(N^{1/2+\eps})$, read Goldfeld--Szpiro\cite{GS1995Bounds}.
+		\item non-existence of Siegel zeros, read Granville-Stark \cite{GS2000abc}.
+	\end{itm}
+
+	Note that it is proved that the discriminant conjecture can be reduced to semistable case \cite[Proposition~8.2]{PS2000}. Then it seems suffice to prove that at multiplicative primes, the $I_{n}$-fibers has bounded number of geometrically irreducible components according to the formula of Ogg--Saito. However, locally $n$ is indeed unbounded, so it is impossible to approach it by solely analyzing the local behaviors, one must overcome some global difficulties to approach it. As an exercise, semi-stable elliptic curves with exactly one bad place should have bounded discriminant: Can I quickly prove this?
+
+	% The relation between $h(j(E))$ and $h_{\text{Fal}}(E)$ has been done in works of Silverman and Pazuki, alternatively one can also see this via the Belyi degree, by combining works of Javanpeykar and Khadjavi--Scharaschkin.
+\end{rmk}
+
+\sss{Automorphic to Galois}
+The following is a theorem of 1970s.
+\begin{thm}
+	Let $f\in S_{k}(\Gma_{1}(N),\eps)$ be an eigenform, $K_{f}$ the number field generated by its eigenvalues. Let $\ell$ be a rational prime, $\lda\mid \ell$ a place of $K_{f}$. Then there exists a unique continuous irreducible representation $\rho_{f,\lda}:G_{\bQ}\ar\GL_{2}(K_{f,\lda})$ unramified outside $N\ell$ and
+	\[
+		\Det(1-\rho_{f,\lda}(\Frb_{p})x)=1-a_{p}(f)x+\eps(p)p^{k-1}x^{2},\quad \fal p\nmid N\ell.
+	\]
+\end{thm}
+
+\begin{prf}[Sketh of the proof]
+	We collect the arguments for the existence in cases $k\gqs2$, $k=1$, and irreducibility below:
+	\spg{Existence for $k\gqs2$:} This is due to Shimura\cite{Shimura1971AF} and Deligne\cite{Deligne1971Formes} (A to M to G).
+
+	Let $\pi:E\ar X(N)$ be the universal elliptic curve, consider the $\bQ$-vector space
+	\[
+		W^{k}=\mathrm{H}_{}^{1}(X(N),\Sym^{k-2}(R^{1}\pi\zS\uL{\bQ})).
+	\]
+	Then one has the Shimura isomorphism $W^{k}_{\ift}:=W^{k}\ot_{\bQ}\bC\cong S_{k}(\Gma(N))\op\oL{S_{k}(\Gma(N))}$ and $\ell$-adic comparison isomorphism $W^{k}_{\ell}:=W^{k}\ot_{\bQ}\bQ_{\ell}\cong\mathrm{H}_{\text{{\'e}t}}^{1}(X(N)_{\oL{\bQ}},\Sym^{k-2}(R^{1}\pi\zS\uL{\bQ_{\ell}}))$. $W^{k}_{\ell}$ is unramified outside $N\ell$ (\cite[4.2]{Deligne1971Formes}), and admits the Hecke action and Galois action, by Eichler-Shimura congruence (\cite[4.9]{Deligne1971Formes}),
+	\[
+		\Det(1-\Frb_{p}x\mid W^{k}_{\ell})=\Det(1-T_{p}x+p^{k-1}R_{p}x^{2}\mid S_{k}(N)),
+	\]
+	so $G_{\bQ}\Lac W^{k}_{\ell}\ot_{\bT\ot_{\bQ}\bQ_{\ell}}K_{f,\lda}$ is the desired representation. Note that if $k=2$, then
+	\[
+		W_{\ell}^{2}=\mathrm{H}_{\text{{\'e}t}}^{1}(X(N)_{\oL{\bQ}},\uL{\bQ_{\ell}}) = \bQ_{\ell}\ot_{\bZ_{\ell}}\plim_{n}\mathrm{H}_{\text{{\'e}t}}^{1}(X(N)_{\oL{\bQ}},\mu_{\ell^{n}})\xV \cong \bQ_{\ell}\ot_{\bZ_{\ell}}\plim_{n}\mathrm{H}_{\text{{\'e}t}}^{1}(X(N)_{\oL{\bQ}},\bG_{m})\xV[\ell^{n}] = V_{\ell}(\Jac(X(N))\xV)
+	\]
+	by taking cohomology of the Kummer sequence is the construction of Shimura\cite[7.23]{Shimura1971AF}.
+
+	\spg{Existence for $k=1$:} This is due to Deligne-Serre\cite{DS1974} (A to G).
+
+	For each $\ell$, take the normalized Eisenstein series $E_{\ell-1}$, then $E_{\ell-1}\eqv1\bmod{\lda}$ and $fE_{\ell-1}\in S_{\ell}(\Gma_{1}(N),\eps)$, by Deligne-Serre lifting lemma (\cite[6.11]{DS1974}), there exists an eigenform $g\in S_{\ell}(\Gma_{1}(N),\eps)$ such that $g\eqv fE_{\ell-1}\eqv f\bmod{\lda}$. Now $\ell\gqs2$, by the construction above for $k\gqs2$, there exists $\oL{\rho}_{g,\lda}:G_{\bQ}\ar\GL_{2}(\cO_{K_{g},\lda})\ar\GL_{2}(\kpa_{g,\lda})$ unramified outside $N\ell$ and
+	\[
+		\Det(1-\oL{\rho}_{g,\lda}(\Frb_{p})x)=1-a_{p}(g)x+\eps(p)p^{\ell-1}x^{2}=1-a_{p}(f)x+\eps(p)x^{2},\quad \fal p\nmid N\ell.
+	\]
+	Denote by $\vfi_{f,\lda}$ the semi-simplification of $\oL{\rho}_{g,\lda}$, by Chebotarev density theorem and the above congruence, $\Det(1-\vfi(s)x)\in\kpa_{f,\lda}[x],\fal s\in G_{\bQ}$, since Schur index of finite field is $1$, $\vfi_{f,\lda}$ descends to $\kpa_{f,\lda}$. If $\ell$ splits in $K_{f}$, then $\kpa_{f,\lda}=\bF_{\ell}$, combining the Rankin-Selberg method applied to $L(s,f\tms\oL{f})$ (\cite[5.5, 8.3]{DS1974}), and a classification result of semi-simple subgroups of $\GL_{2}(\bF_{\ell})$ (\cite[7.2]{DS1974}), one can show $\Img(\vfi_{f,\lda})<\GL_{2}(\bF_{\ell})$ has bounded size $A$ independent of $\ell$ (\cite[8.4]{DS1974}).
+
+	Now one has for each $\ell$, semi-simple mod-$\ell$ representation $\vfi_{f,\lda}$ with desired Hecke eigensystem attached to $f$ and with uniformly bounded image. To lift them to characteristic $0$, consider the set
+	\begin{itm}
+		\item $Y$ of polynomials of the form $(1-\afa x)(1-\bta x)$ with $\afa,\bta$ being roots of unity of order at most $A$. This set is finite.
+		\item $L$ of primes $\ell$ such that (1) $\ell$ splits in $K_{f}$, (2) $\ell>A$, (3) $R\eqv S\bmod{\lda}$ implies $R=S$ for all $R,S\in Y$. This set is infinite.
+	\end{itm}
+	Take any $\ell\in L$, the semi-simple representation $\vfi_{f,\lda}:G_{\bQ}\ar\GL_{2}(\bF_{\ell})$ constructed above has image bounded by $A$ and hence prime to $\ell$, so $\vfi_{f,\lda}$ lifts to $\oT{\vfi}_{f,\lda}:G_{\bQ}\ar\GL_{2}(\cO_{K_{f},\lda})$ (c.f. \cite[4.4]{Feit1967}) with
+	\[
+		\Det(1-\oT{\vfi}_{f,\lda}(\Frb_{p})x)\eqv1-a_{p}(f)x+\eps(p)x^{2}\eqv R_{\ell}(x)\bmod{\lda},\quad p\nmid N\ell,
+	\]
+	for some $R_{\ell}(x)\in Y$. The right congruence exists for all $\ell\in L$, but $Y$ is finite, so there exists some $R(x)\in Y$ such that the congruence holds for infinite many $\ell\in L$, so $1-a_{p}(f)x+\eps(p)x^{2}=R(x)\in Y$. Therefore the left congruence is also a strict equality, because the left hand side belongs to $Y$. Now for a different choice $\ell'\in L$,
+	\[
+		\Det(1-\oT{\vfi}_{f,\lda}(\Frb_{p})x)=1-a_{p}(f)x+\eps(p)x^{2}=\Det(1-\oT{\vfi}_{f,\lda'}(\Frb_{p})x),\quad \fal p\nmid N\ell\ell',
+	\]
+	so $\oT{\vfi}_{f,\lda}$ is indeed defined over $K_{f}\sbs K_{f,\lda}$ and is unramified outside $N$ with the desired Hecke eigensystem.
+
+
+	\spg{Irreducibility for $k\gqs1$:} This is due to Ribet\cite[2.3]{Ribet1977} by slightly modifying\cite[8.7]{DS1974}.
+
+	Suppose $\rho_{f,\lda}$ is reducible, then there exists characters $\vfi_{i}=\eps_{i}\chi_{\ell}^{n_{i}}:G_{\bQ}\ar K_{f,\lda}\xT, i=1,2$, where $\eps_{i}$ are of finite order, $\eps_{1}\eps_{2}=\eps, n_{1}+n_{2}=k-1$ and
+	\[
+		a_{p}=\eps_{1}(p)p^{n_{1}}+\eps_{2}(p)p^{n_{2}},\quad p\nmid N\ell.
+	\]
+	Then Rankin's estimate says that $\sP{a_{p}}\lqs2p^{k/2-1/5}$, hence $n_{1}=n_{2}=(k-1)/2$ and $k,\eps$ must be odd. Therefore $\eps_{1}\eps_{2}\xI$ is non-trivial and $\sum_{p\nmid N\ell}\sP{a_{p}}^{2}p^{-s}=-2\log(s-k)+O(1)$ as $s\ar k\xP$, which is not possible, because the Rankin-Selberg method applying to $L(s,f\tms\oL{f})$ will instead imply $\sum_{p\nmid N\ell}\sP{a_{p}}^{2}p^{-s}=-\log(s-k)+O(1)$ as $s\ar k\xP$ (\cite[5.1]{DS1974}).
+\end{prf}
+
+\begin{rmk}
+	To proceed further,
+	\begin{itm}
+		\item[\TODO] (1990s) Wiles, Taylor\cite{Wiles1988,Taylor1991}: $p$-adic interpolation.
+		\item[\TODO] (2010s) Harris-Lan-Taylor-Thorne, Scholze\cite{HLTT2016,Scholze2015}: Borel-Serre compactification, Hodge-Tate period map at infinite level.
+		\item[\TODO] Explore the work of Bruggeman--Lewis--Zaiger\cite{BLZ2015}, work out the same thing from Maass forms.
+	\end{itm}
+
+\end{rmk}
+
+
+\sss{Modularity lifting}
+Ref:~\cite{Wiles1995,TW1995,BCDT2001}.
+
+\begin{thm}
+	Let $E$ be an elliptic curve over $\bQ$ of conductor $N$, and $\rho_{E,\ell}:G_{\bQ}\ar\GL_{2}(\bQ_{\ell})$ the associated Galois representation. Then the following are equivalent.
+	\[
+		\begin{tikzcd}
+			\emat{\text{$L(s,E)=L(s,f)$ for some}\ar[d, Rightarrow] \\ \text{cusp eigenform $f$}} & \emat{\text{$L(s,E)=L(s,f)$ for some}\ar[l, Rightarrow] \\ \text{eigenform $f\in S_{2}(\Gma_{0}(N))$}}\ar[r, Rightarrow, blue, "(3)"] & \emat{\text{There is a non-constant} \\ \text{morphism $\phi:X_{0}(N)\rightarrow E$}}\ar[d, Rightarrow] \\
+			\emat{\text{$\rho_{E,\ell}$ is modular for} \\ \text{all rational prime $\ell$}}\ar[r, Rightarrow] & \emat{\text{$\rho_{E,\ell}$ is modular for} \\ \text{one rational prime $\ell$}}\ar[u, Rightarrow, blue, "(2)"'] & \emat{\text{There is a non-constant} \\ \text{morphism $\phi:X_{0}(N)_{\bC}\rightarrow E_{\bC}$}}\ar[l, Rightarrow, blue, "(1)"']
+		\end{tikzcd}
+	\]
+	Any $E$ satisfying one of above is said to be modular.
+\end{thm}
+
+\begin{prf}[Sketch of the proof]
+	The non-obvious implications are blue arrows, we collect below:
+
+	\begin{enr}[label = (\arabic*)]
+		\item $E$ is of genus one, so $\Oga_{E}^{1}\cong\cO_{E}$. Take $\oga\in \mathrm{H}_{}^{0}(E,\Oga_{E}^{1})$, then $\pi\xS\oga=cf(q)\dif{q}/q$, and $f\in S_{2}(\Gma_{0}(N))$ is an eigenform with $a_{p}(f)=p+1-\#E(\bF_{p})$ for $p\nmid N$ by Eichler-Shimura congruence, so $\rho_{E,\ell}\cong\rho_{f,\ell}$ for all $\ell$.
+		\item If $\rho_{E,\ell}\cong\rho_{f,\ell}$ for some eigenform $f\in S_{2}(\Gma_{0}(M))$, then $K_{f}=\bQ$ and $L_{v}(s,E)=L_{v}(s,f)$ for almost all $v$. Shimura's construction\cite[7.14]{Shimura1971AF} gives a non-constant map $X_{0}(M)\ahr J_{0}(M)\atr A_{f}$ over $\bQ$, where $A_{f}$ is an abelian variety with $\Dim A_{f}=[K_{f}:\bQ]=1$ and $L_{v}(s,f)=L_{v}(s,A_{f})$ for all $v\nmid M\ell$. Carayol's local-global compatibility theorem\cite[0.8]{Carayol1986Representations} guarantees that indeed $L(s,f)=L(s,A_{f})$ and $A_{f}$ has conductor $M$. Faltings' isogeny theorem\cite[Page~361]{Faltings1983Mordell} implies that there is an isogeny $A_{f}\ar E$ over $\bQ$, so $M=N$.
+		\item $L(s,E)=L(s,f)$ so $K_{f}=\bQ$ and $L_{v}(s,E)=L_{v}(s,f)$ for almost all $v$. By the same argument as in (2), the composition $X_{0}(N)\ahr J_{0}(N)\atr A_{f}\ar E$ is the desired non-constant map.
+	\end{enr}
+\end{prf}
+
+\begin{thm}[{\cite[Theorem~A]{BCDT2001}}]
+	Let $E$ be an elliptic curve over $\bQ$, then $E$ is modular.
+\end{thm}
+
+\begin{prf}[Sketch of the proof]
+	We only collect here the proof of Wiles\cite[Theorem~5.2]{Wiles1995} in semistable case. It suffices to prove either $\rho_{E,3}$ or $\rho_{E,5}$ is modular.
+
+	\spg{Patching argument} One proves $R\cong\bT$ theorem by Taylor--Wiles patching to establish modularity lifting.
+
+	(\cite[Theorem~0.2]{Wiles1995}) Let $p$ be an odd prime, $\rho_{0}:G_{\bQ}\ar\GL_{2}(\oL{\bF}_{p})$ be an odd and irreducible representation, ordinary or flat at $p$. Suppose $\rho_{0}$ is modular, and (1) $\rho_{0}$ is absolutely irreducible restricted to $\bQ(\sqrt{(-1)^{(p-1)/2}p})$. (2) If $q\eqv-1\bmod{p}$ is ramified in $\rho_{0}$ then either $\rho_{0}$ is not absolutely irreducible restricted to $D_{q}$ or $\rho_{0}$ is absolutely irreducible restricted to $I_{q}$. Then any lifting of $\rho_{0}$ is modular, if $\rho_{0}$ is ordinary with $\Det\rho=\eps^{k-1}\chi$ then $\rho$ is of weight $k$, if $\rho_{0}$ is flat then $\rho$ is of weight $2$.
+
+
+	\spg{Modularity switch} One explores the deformation of elliptic curves to establish $3/5$ modularity switch.
+
+	If $\oL{\rho}_{E,3}$ is irreducible, to prove $\rho_{E,3}$ is modular, it suffices to prove (1) $\oL{\rho}_{E,3}$ is absolutely irreducible restricted to $\bQ(\sqrt{-3})$, because $\bQ(\sqrt{-3})$ has no non-trivial abelian extensions unramified outside $3$ and of degree prime to $3$, (2) $\oL{\rho}_{E,5}$ is modular, by Langlands--Tunnell.
+
+	(\cite[Theorem~5.2]{Wiles1995}) If $\oL{\rho}_{E,3}$ is reducible, then $\oL{\rho}_{E,5}$ is irreducible since $X_{0}(15)$ only has $4$ non-cuspidal $\bQ$-points. To prove $\rho_{E,5}$ is modular, it suffices to prove (1) $\oL{\rho}_{E,5}$ is absolutely irreducible, (2) $\oL{\rho}_{E,5}$ is modular. For (1), the only non-trivial abelian extension of $\bQ(\sqrt{5})$ unramified outside $5$ and of degree prime to $5$ is $\bQ(\zta_{5})$, $\oL{\rho}_{E,5}$ is not an induced representation from $\bQ(\sqrt{5})$ by checking in ordinary and supersingular case respectively. It remains to prove (2).
+
+	Denote by $L$ the splitting field of $\oL{\rho}_{E,5}$, then $\oL{\rho}_{E,5}$ defines a class $\rho\in \mathrm{H}_{}^{1}(\Gal(L/\bQ),\Aut_{L}(X(5)))$, and $E$ defines a $\bQ$-point on an irreducible component $C$ of the twist $X(5)^{\rho}$. $C$ has genus $0$ and function field $\bQ(t)$, whose $\bQ$-points parametrizes elliptic curves $E'$ with $\oL{\rho}_{E',5}\cong\oL{\rho}_{E,5}$, and $E$ is represented by some $t_{2}\in\bQ$. Now to prove $\oL{\rho}_{E,5}$ is modular it suffices to find a point $E'$ such that (1) $\oL{\rho}_{E',3}$ is irreducible and (2) $E'$ or a quadratic twist of which is semistable at $5$. To prove this, note that the moduli $C'$ of elliptic curves $E'$ such that $\oL{\rho}_{E',3}$ is reducible is a degree $4$ irreducible covering of $C$, this gives an irreducible polynomial $f(x,t)\in\bQ(t)[x]$. Hilbert's irreducibility guarantees the existence of $t_{1}\in\bQ$ such that $f(x,t_{1})$ is irreducible, by Chebotarev's density theorem one can choose $p_{1}\neq5$ such that $f(x,t_{1})\bmod{p_{1}}$ has no roots. By strong approximation one can choose $t_{0}\in\bQ$ such that $\dP{t_{0}-t_{1}}_{p_{1}}$ and $\dP{t_{0}-t_{2}}_{5}$ are both small, finally one verifies $\dP{t_{0}-t_{1}}_{p_{1}}$ being small implies (1), and $\dP{t_{0}-t_{2}}_{5}$ being small implies (2).
+\end{prf}
+
+\sss{Serre's conjecture}
+This is done by Khare--Wintenberger\cite{KW2009-1,KW2009-2}.
+
+
+Use \cite{Ribet1992} for its consequence: If Serre's conjecture holds, then
+\begin{itm}
+	\item If $E$ is an elliptic curve over $\oL{\bQ}$ and a $\bQ$-curve, then $E$ is modular (Find a model for $E$ over a number field, then use Galois cohomology computation to cut out the factor of its Weil restriction to $\bQ$)
+	\item Every $\GL_{2}$-type abelian variety $A$ over $\bQ$ is modular (Construct an infinite set of primes in $K\sbs\End{\bQ}{}{(A)}$ to apply Faltings's isogeny theorem)
+\end{itm}
+
+
+
+\sss{On Manin constant}
+\begin{cnj}
+	The Manin constant $c_{\phi}$ of any optimal modular parametrization has absolute value $1$.
+\end{cnj}
+\begin{rmk}
+	The current strongest result might be \cite[Theorem~2.13]{Cesnavicius2018} which settled Manin's conjecture in semistable case, whose key input is using a multiplicity one result \cite[Proposition~2.2]{Cesnavicius2018} motivated by integral $p$-adic Hodge theory to prove $(\Lie\cJ_{0}(N))_{\bZ_{p}}\ar(\Lie\cE)_{\bZ_{p}}$ is surjective for any $p$.
+	\begin{itm}
+		\item[\TODO] Learn in detail this method.
+		\item[\TODO] Can one extend his multiplicity one result to settle non-semistable case?
+	\end{itm}
+\end{rmk}
+
+\sss{On modular degree}
+
+I've found two methods towards this among literatures:
+\begin{itm}
+	\item Algebraically, the modular degree is the cardinality of a torsion module,
+	\[
+		r_{E}=\#\frac{S_{2}(\bZ)}{S_{2}(\bZ)[f]+S_{2}(\bZ)[f]^{\perp}},\quad S_{2}(\bZ):=S_{2}(\Gma_{0}(N))\cap \bZ\dS{q}
+	\]
+	as proved in \cite{ARS2012}, $\Deg\phi=r_{E}$ in semistable case, and they only differ by a factor $N^{1/2}$ in general. Along this way one has to understand very deep ring-theoretic properties of the integral Hecke algebra.
+	\item Analytically, one can analyze $L(2,\Sym^{2}f)$, as in the work of Watkins\cite{Watkins2002}. One may assume elliptic curves of odd modular degree should have rank $0$, read \cite{CE2009Odd}. Work of Zagier\cite{Zagier1985Parametrization} is of the same flavor, he essentially estimate $(f,f)$ topologically at prime level.
+\end{itm}
+
+
+\begin{thm}[{\cite[1.1]{CE2009Odd}}]
+	If $E$ is an elliptic curve over $\bQ$ of odd modular degree, then
+	\begin{enr}
+		\item Its conductor $N$ is divisible by at most two odd primes.
+		\item $\Ord_{s=1}L(s,E/\bQ)$ is even.
+		\item One of the following is true
+		\begin{enr}
+			\item $E$ admits a rational $2$-isogeny.
+			\item $E$ has prime conductor, is supersingular at $2$, and $\bQ(E[2])$ is totally complex.
+			\item $E$ has CM, and $N=3^{3},2^{5},7^{2},3^{4}$.
+		\end{enr}
+	\end{enr}
+\end{thm}
+
+\sss{Arithmetic Moduli}
+
+
+
+
+
+
+% ----------------------------------------------------------------------------------------------------
+\ifSubfilesClassLoaded{
+	\bibliographystyle{amsalpha}
+	\bibliography{/Users/wenc/Documents/Math/universal-ref}
+}{}
+\end{document}
