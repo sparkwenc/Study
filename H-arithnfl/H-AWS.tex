@@ -1,0 +1,88 @@
+% Last Updated: March 28, 2023
+	\documentclass[a4paper, twoside]{article}
+	% Margins
+	\usepackage{geometry}
+		\geometry{
+			% showframe,
+			left   = 20mm,
+			right  = 20mm,
+			top    = 20mm,
+			bottom = 20mm
+		}
+
+	% Headers and footers
+	\usepackage{fancyhdr}
+		\pagestyle{fancy}
+		\fancyhf{}
+		\fancyhead[LE, RO]{\thepage}
+		\fancyhead[CE]{\textsc{Cong Wen}}
+		\fancyhead[CO]{\textsc\rightmark}
+
+		\setlength{\headheight}{15pt}
+		\renewcommand\headrulewidth{0pt}
+
+
+
+
+
+
+
+
+\input{../universal-pre}
+
+\title{\tbf{Learning note of AWS}}
+\author{\tbf{Notes} by Cong Wen, 07/2023}
+\date{}
+% Last Updated: March 28, 2023
+
+
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+\begin{abstract}
+	This is my self-use notes\footnote{Last updated on July 24, 2023} when reading materials of \tbf{Arizona Winter School}. Please reach out if you find anything incorrect.
+
+\end{abstract}
+\tableofcontents
+% ----------------------------------------------------------------------------------------------------
+
+
+\sct{2021-Chan-Quadratic forms}
+
+
+\ssc{Results}
+
+The content covered classification theorems of quadratic forms over $K$ with $\Char{K}\neq2$ and applications.
+
+
+Case $K=\bF_{q}$, they are determined: dimension, discriminant.
+
+Case $K=\bQ_{p}$, they are determined: dimension, discriminant, Hasse invariant.
+
+Case $K=\bR$, they are determined: signature.
+
+Case $K=\bQ$, they are determined: restrictions to $\bQ_{p}$ for $p\lqs\ift$ (Hasse principle holds).
+
+
+\ssc{Applications}
+
+\begin{thm}
+	Let $n\in\bZ_{>0}$, then
+	\begin{itm}
+		\item (Gau{\ss}) $n$ is a sum of three squares if and only if $n\neq4^{a}(8b-1),\fal a,b\in\bZ$.
+		\item (Gau{\ss}) $n$ is a sum of three triangular numbers.
+		\item (Lagrange) $n$ is a sum of four squares.
+	\end{itm}
+\end{thm}
+
+
+$\Box, \km_{\Sgm}^{\Box,2}$ is good.
+
+nice nice
+
+% ----------------------------------------------------------------------------------------------------
+\bibliographystyle{amsalpha}
+\bibliography{../universal-ref}
+\end{document}
+

@@ -1,0 +1,54 @@
+% Last Updated: March 1, 2024
+\documentclass[a4paper, twoside]{article}
+	
+% Margins
+\usepackage{geometry}
+	\geometry{
+		% showframe,
+		left   = 20mm,
+		right  = 20mm,
+		top    = 20mm,
+		bottom = 20mm
+	}
+
+% Headers and footers
+\usepackage{fancyhdr}
+	\pagestyle{fancy}
+	\fancyhf{}
+	\fancyhead[LE, RO]{\thepage}
+	\fancyhead[CE]{\textsc{Cong Wen}}
+	\fancyhead[CO]{\textsc\rightmark}
+
+	\setlength{\headheight}{15pt}
+	\renewcommand\headrulewidth{0pt}
+
+% universal preamble
+\input{/Users/wenc/Documents/Math/universal-pre}
+
+
+
+
+\begin{document}
+\title{\tbf{Untitled}}
+\author{Cong Wen, xx/20xx}
+\date{}
+\maketitle
+\thispagestyle{empty}
+% ----------------------------------------------------------------------------------------------------
+
+\begin{abstract}
+	This is my self-use notes\footnote{Last updated on August 03, 2024} on algebraic geometry.
+\end{abstract}
+\tableofcontents
+
+
+\subfile{3-bchm}
+
+
+
+
+% ----------------------------------------------------------------------------------------------------
+\bibliographystyle{amsalpha}
+\bibliography{/Users/wenc/Documents/Math/universal-ref}
+\end{document}
+

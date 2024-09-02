@@ -1,0 +1,80 @@
+% Last Updated: March 1, 2024
+\documentclass[0-main]{subfiles}
+
+\begin{document}
+\ifSubfilesClassLoaded{
+	% \title{\tbf{Untitled}}
+	% \author{Cong Wen, xx/20xx}
+	% \maketitle
+	\tableofcontents
+}{}
+% ----------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+\sct{Arithmetic deformation from IUT}
+
+\cite{Mochizuki2021IUT1,Mochizuki2021IUT2,Mochizuki2021IUT3,Mochizuki2021IUT4}
+
+
+
+\ssc{Preliminaries}
+
+\sss{Anabelian geometry}
+
+A global field is completely determined by its Galois group in the following sense.
+
+\begin{thm}[{Neukirch-Uchida, \cite[Theorem~12.2.1]{NSW2008}}]
+	Let $E,F$ be finite extensions of $\bQ$. Let $\mathrm{Iso}_{\bQ}(E,F)$ be the set of $\bQ$-isomorphisms from $E$ to $F$, $\mathrm{OutIso}(G_{E},G_{F})$ be the set of outer isomorphisms, then the natural map $\mathrm{Iso}(E,F)\ar \mathrm{OutIso}(G_{E},G_{F})$ is a bijection.
+\end{thm}
+
+A local field is completely determined by its Galois group with ramification filtration in the following sense.
+
+\begin{thm}[{Mochizuki, \cite[Theorem~12.2.7]{NSW2008}}]
+	Let $E,F$ be finite extensions of $\bQ_{p}$. Let $\mathrm{Iso}_{\bQ_{p}}(E,F)$ be the set of $\bQ_{p}$-isomorphisms from $E$ to $F$, and $\mathrm{OutIso}_{\text{Fil}}(G_{E},G_{F})$ be the set of outer isomorphisms preserving upper-numbering ramification filtrations, then the natural map $\mathrm{Iso}_{\bQ_{p}}(E,F)\ar \mathrm{OutIso}_{\text{Fil}}(G_{E},G_{F})$ is a bijection.
+\end{thm}
+
+\hrule
+
+\ssc{Geometry of Frobenioids}
+
+Ref:~\cite{Mochizuki2008Frob1,Mochizuki2008Frob2}
+
+\begin{dfn}
+	Let $M$ be a commutative monoid, attached to it there are: the group of invertible elements $M^{\pm}$, the characteristic $M^{\mathrm{char}}:=M/M^{\pm}$, the groupification $M^{\mathrm{gp}}$, the perfection $M^{\mathrm{pf}}$.
+
+	Say that $M$ is
+	\begin{itm}
+		\item sharp if $M^{\pm}=0$
+		\item integral if $M\ar M^{\mathrm{gp}}$ is injective
+		\item saturated if every $a\in M^{\mathrm{gp}}$ such that $na\in M$ for some $n\in\bZ_{\gqs1}$ lies in $M$, equivalently $M^{\mathrm{char}}$ is saturated
+		\item perfect if multiplication by $n\in\bZ_{\gqs1}$ is bijective, equivalently, $M\ar M^{\mathrm{pf}}$ is an isomorphism
+		\item characteristic type if $M\ar M^{\mathrm{char}}$ are torsors over $M^{\pm}$
+\end{itm}
+
+
+\end{dfn}
+
+\begin{dfn}
+	Let $\cD$ be a category, say a contravariant functor $\Phi:\cD\ar \mathrm{Mon}$ is a monoid on $\cD$ if (1) every $\Phi(\afa):\Phi(B)\ar\Phi(A)$ is characteristically injective, (2) if $\afa$ is FSM, then $\Phi(\afa)$ is an isomorphism.
+
+	Denote by $\bF_{\Phi}$ the elementary Frobenioid associated to $\Phi$, let $\cC$ be a category, a pre-Frobenioid structure on $\cC$ is a covariant functor $\cC\ar\bF_{\Phi}$, it is said to be Frobenioid if \cite[Definition~1.3]{Mochizuki2008Frob1}.
+\end{dfn}
+
+
+
+The Cox ring is given by
+\[
+	\kR(X,D\xB):= \Op_{m\in\bN^{k}}\pi\zS\cO_{X}(\lfloor\sum_{i}m_{i}D_{i}\rfloor).
+\]
+
+
+% ----------------------------------------------------------------------------------------------------
+\ifSubfilesClassLoaded{
+	\bibliographystyle{amsalpha}
+	\bibliography{/Users/wenc/Documents/Math/universal-ref}
+}{}
+\end{document}

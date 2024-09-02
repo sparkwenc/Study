@@ -1,0 +1,68 @@
+% Last Updated: March 1, 2024
+\documentclass[0-main]{subfiles}
+
+\begin{document}
+\ifSubfilesClassLoaded{
+	% \title{\tbf{Untitled}}
+	% \author{Cong Wen, xx/20xx}
+	% \maketitle
+	\tableofcontents
+}{}
+% ----------------------------------------------------------------------------------------------------
+
+\sct{Characteristic Classes}
+
+Follow~\cite{Zhang2001ChernWeil} and~\cite[Chapter~8]{Nicolaescu2021}.
+
+\begin{thm}
+	Let $E\ar M$ be a complex vector bundle over a smooth compact manifold $M$, take a connection form $\nbl\in\Oga^{1}(M;\End(E))$ and its curvature form $R\in\Oga^{2}(M;\End(E))$. Then for any $f(x)\in\bC\dS{x}$,
+	\begin{itm}
+		\item For two connections $R_{0},R_{1}$, one has the transgression formula
+		\[
+			\Trc(f(R_{0}))-\Trc(f(R_{1}))=-d\int_{0}^{1}\Trc(\nbl_{t}'f'(R_{t}))\dif{t}.
+		\]
+		\item $\Trc(f(R))\in\Oga\xB(M;\bC)$ is closed, thus $[\Trc(f(R))]\in\HH{\mathrm{dR}}{\blt}(M;\bC)$.
+	\end{itm}
+\end{thm}
+
+\begin{thm}
+	The Chern form is given by $c(E,\nbl):=\Det(1+(i/2\pi)R)$
+\end{thm}
+
+Transgression form of Bott-Chern and Chern-Simons, find out how Chern-Simons functionals are defined. Use~\cite{BC1965,Donaldson1985} and figure out the connection to K-stability according to Tian's talk.
+
+
+The Todd class is given by the polynomial $z/(1-e^{-z})$.
+
+\begin{thm}[Lagrange inversion]
+	Given $f(x)\in\bQ\dS{x}$, then $c_{n-1}(f^{n})=nh_{n}$ determines $f(x)$ uniquely via
+	\[
+		f(x)=\frac{x}{h^{-1}(x)}\quad h(x)=\sum_{i\gqs1}h_{i}x^{i}.
+	\]
+\end{thm}
+\begin{exg}
+	If $h_{n}=1$, then $f(x)=x/(1-e^{-x})$. If $h_{n}=(-1)^{n-1}$, then $f(x)=x/(e^{x}-1)$.
+\end{exg}
+
+
+
+\sct{Heat kernels and Dirac operators}
+
+Follow~\cite{BGV2004,LW1989}.
+
+1-5: background and index theory
+
+6-8: heat equation approach to equivariant index theory
+
+9-10: Bismut's index theorem for families
+
+
+
+
+
+% ----------------------------------------------------------------------------------------------------
+\ifSubfilesClassLoaded{
+	\bibliographystyle{amsalpha}
+	\bibliography{/Users/wenc/Documents/Math/universal-ref}
+}{}
+\end{document}

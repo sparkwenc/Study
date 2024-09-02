@@ -1,0 +1,61 @@
+% Documentclass Settings
+	\documentclass[a4paper, twoside]{article}
+	% Margins
+	\usepackage{geometry}
+		\geometry{
+			% showframe,
+			left   = 20mm,
+			right  = 20mm,
+			top    = 20mm,
+			bottom = 20mm
+		}
+
+	% Headers and footers
+	\usepackage{fancyhdr}
+		\pagestyle{fancy}
+		\fancyhf{}
+		\fancyhead[LE, RO]{\thepage}
+		\fancyhead[CE]{\textsc{Cong Wen}}
+		\fancyhead[CO]{\textsc\rightmark}
+
+		\setlength{\headheight}{15pt}
+		\renewcommand\headrulewidth{0pt}
+
+
+
+
+
+
+
+
+\input{../universal-pre}
+
+\title{\tbf{Viehweg-Zuo sheaves}}
+\author{\tbf{Notes} by Cong Wen, 02/2023}
+\date{}
+% Last Updated: July 11, 2022
+
+
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+\begin{abstract}
+	This is my self-use notes\footnote{Last updated on February 11, 2023} on \tbf{Viehweg-Zuo sheaves} with main referecens\cite{VZ2001,VZ2002,VZ2003}. All possible faults and immature writting are on my own. Please reach out if you find anything incorrect.
+
+\end{abstract}
+\tableofcontents
+% ----------------------------------------------------------------------------------------------------
+
+Viehweg-Zuo sheaves have proven to be very useful in proving the hyperbolicity of moduli spaces of polarized varieties, the purpose of the note is to learn and collect statements from them, as well as many of its further development, for example, \cite{CP2015} and \cite{PS2017}.
+
+
+
+
+
+
+% ----------------------------------------------------------------------------------------------------
+\bibliographystyle{alpha}
+\bibliography{../universal-ref}
+\end{document}
+

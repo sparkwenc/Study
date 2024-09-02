@@ -1,0 +1,179 @@
+\documentclass[12pt]{article}
+
+\include{pre}
+
+\title{\tbf{Basic Affine Algebraic Geometry}}
+\author{\tit{Cong Wen, 2019.07}}
+\date{}
+
+\begin{document}
+\maketitle
+\abstract{
+This note aims at giving a basic idea of algebraic geometry, especially the algebra-geometry duality. The proof of Nullstellensatz is first introduced, then discuss about the algebraic incarnation of points, then the algebra-geometry duality and the idea of affine scheme, together with Zariski topology defined on both side and how affine schemes make sense and contain more information than classical varieties.
+}
+\tableofcontents
+\section{Preliminaries}
+
+In this note we denote by $\mbb{A}_{\mbb{F}}^n=\mbb{F}^n$ the affine $n$-space, in which $\mbb{F}$ is an algebraic closed field. Algebraic closed is required in an important lemma which plays a crucial role in both proof of \textit{Hilbert's Nullstellensatz} in Appendix. and the second incarnation of points in the next section.
+
+\begin{lem}
+	Field $L$ is an extension of field $K$, and $L$ is finitely generated as a $K$-algebra, then $L$ is algebraic over $K$.
+\end{lem}
+
+Further, if $J\vartriangleleft\mbb{F}[x_1,\cdots,x_n]$ is an ideal, we define
+$$
+Z(J)=\{x\in\mbb{A}_{\mbb{F}}^n:f(x)=0, \forall f\in J\},
+$$
+and call any subset of $\mbb{F}^n$ which can be expressed as $Z(J)$ for some ideal $J$ an algebraic variety.\footnote{We do not use word "algebraic set" and "algebraic varieties" to distinguish between reducible algebraic varieties and irreducible algebraic varieties.} And of course $\mbb{A}^n_{\mbb{F}}=Z(\{0\})$ is itself an algebraic variety.
+
+Conversely for some algebraic variety $V$ we define its ideal as
+$$
+I(V)=\{f\in\mbb{F}[x_1,\cdots,x_n]:f(x)=0, \forall x\in V\},
+$$
+
+To make varieties and ideals corresponds clearly, we need make use of \textit{Hilbert's Nullstellensatz}, namely we have a bijection
+$$
+\{\mfk{r}\vartriangleleft\mbb{F}:\mfk{r}~\text{radical}\}\xrightleftharpoons[I]{Z}\{V\subset\mbb{A}^n_{\mbb{F}}\},
+$$
+
+In addition, we can define the coordinate ring $R(J)$ on algebraic variety $Z(J)$ by module $I(Z(J))$, which is $\sqrt{J}$ by \textit{Hilbert's Nullstellensatz},
+
+$$
+R(J)=\mbb{F}[x_1,\cdots,x_n]/\sqrt{J},
+$$
+then $R(J)$ forms a  $\mbb{F}$-vector space of polynomial functions on $Z(J)$ ($\mbb{F}[x_1,\cdots,x_n]$ is not a vector space on $Z(J)$ since zero element is not unique), such rings are also called an affine $\mbb{F}$-algebra. As for a variety $X$, we denote by $\mbb{F}[X]=R(I(X))$ the coordinate ring of $X$.
+
+
+Next we can define the Zariski topology in $\mbb{A}_{\mbb{F}}^n$, whose closed sets are given by algebraic varieties. It is easy to check they indeed satisfies axioms of a topological space. And the Zariski topology on a algebraic variety is then the subspace topology of that on $\mbb{A}_{\mbb{F}}^n$.
+
+\section{Algebraic Incarnation of Points}
+
+In the following chapter we assume $I$ to be radical to avoid complexity.
+
+
+The first incarnation of point is given by the evaluation map, and we have the bijection
+\begin{align*}
+	\pi_1:V(I)&\xrightarrow{\sim}\on{Hom}_{\mbb{F}}(R(I),\mbb{F})\\
+	a&\mapsto\varphi_a
+\end{align*}
+in which $\varphi_a$ is the evaluation map at $a$. The inverse map of $\pi_1$ can be written as $\lambda_1(\varphi)=(\varphi(x_1),\cdots,\varphi(x_n))$.
+
+The second incarnation of points requires $\mbb{F}$ being algebraically closed, for any maximal ideal $\mfk{m}\vartriangleleft R(I)$, $R(I)/\mfk{m}$ is a field and is precisely $\mbb{F}$. We have  the isomorphism
+$$
+\mbb{F}\xrightarrow{i}R(I)\xrightarrow{\phi}R(I)/\mfk{m}
+$$
+
+The maps involved above are natural inclusion $i$ and quotient map $\phi$. To see $R(I)/\mfk{m}\cong\mbb{F}$, note that $R(I)$ is quotient of $\mbb{F}[x_1,\cdots,x_n]$ hence $R(I)/\mfk{m}$ is finitely generated as a $\mbb{F}$-algebra and also an extension of $\mbb{F}$, by Lemma 1, $R(I)/\mfk{m}$ is algebraic over $\mbb{F}$, also $\mbb{F}$ is algebraically closed, so $R(I)/\mfk{m}=\mbb{F}$.
+
+Since the quotient map $\phi$ is surjective, we have $R(I)/\on{Ker}\phi\cong R(I)/\mfk{m}$, so the second incarnation can be seen as
+\begin{align*}
+	\pi_2:\on{Hom}_{\mbb{F}}(R(I),\mbb{F})&\xrightarrow{\sim}\{\mfk{m}\vartriangleleft R(I):\mfk{m}~\text{maximal}\}\\
+	\phi&\mapsto\on{Ker}\phi
+\end{align*}
+the inverse of $\pi_2$ is given by the canonical quotient map.
+
+Combining the two incarnation,
+\begin{align*}
+Z(I)&\leftrightarrow\{\mfk{m}\vartriangleleft R(I):\mfk{m}~\text{maximal}\}\\
+&\leftrightarrow\{I\subset\mfk{m}\vartriangleleft\mbb{F}[x_1,\cdots,x_n]:\mfk{m}~\text{maximal}\}
+\end{align*}
+we see a correspondence between points inside a variety and maximal ideals in its coordinate ring.
+
+Further, a variety $Z(I)$ is irreducible if and only if its ideal is prime\footnote{Easy to check}. Now we see three correspondences between algebra and geometry, radical ideals and affine varieties, prime ideals and irreducible varieties, points and maximal ideals. This is exactly the idea how Grothendieck introduced the concept of scheme.
+
+\section{Affine Schemes}\label{affinescheme}
+The section above gives several correspondences. And Grothendieck gave meaning to his belief.
+
+\bigskip
+\textit{Any commutative ring $R$ is the coordinate ring of a geometric object.}
+\bigskip
+
+Recall that points and irreducible varieties in $\mbb{A}_{\mbb{F}}^n$ corresponds to maximal ideals and prime ideals in $\mbb{F}[x_1,\cdots,x_n]$ respectively, Grothendieck defined the affine scheme
+$$
+\on{Spec}R=\{\mfk{p}\vartriangleleft R:\mfk{p}~\text{prime}\}.
+$$
+
+And the Zariski topology (algebraic varieties geometrically) on $R$ is defined by letting the closed sets be of the form $Z(I)=\{\mfk{p}\in\on{Spec}R:\mfk{p}\supset I\}$. Be careful! Here the ideal $I$ is not assumed to be radical, so scheme is not a direct generalization of varieties and the coordinate ring in his idea is not the rigorous one in previous definition.
+
+We take an example to illustrate, in affine space $\mbb{A}_{\mbb{F}}^1$, $I_1=\lr{x}$ and $I_2=\lr{x^2}$ defines the same point $(0)$, if we do not require $I$ being radical as in the classical sense, they corresponds to different "coordinate ring", namely, $\mbb{F}[x]/\lr{x}$ and $\mbb{F}[x]/\lr{x^2}$. Topologically they both contain one single point since $\on{Spec}\mbb{F}[x]/\langle x\rangle=\{\lr{0}\}$, and $\on{Spec}\mbb{F}[x]/\lr{x^2}=\{\lr{\lr{x^2}},\lr{x+\lr{x^2}}\}$\footnote{The ideal $\lr{0}$ is not a maximal ideal}, but they are surely different, this can be seen by looking at their tangent spaces.
+ 
+\section{Algebra-Geometry Duality}
+
+
+Now we can summarize the duality between duality and algebra, in fact Sophie Germain remarked that algebra is written geometry and geometry is drawn algebra, geometric objects are associated with functions on it, by classifying different functions analytically we get different geometric categories: $C^0$ corresponds to topological spaces, $C^{\infty}$ to smooth manifolds, $C^{w}$ to real analytic geometry, holomorphic functions to complex geometry, polynomial functions over algebraically closed field to algebraic geometry and polynomial functions over non-algebraically closed field to arithmetic geometry.
+ 
+So now we consider $X,Y$ be two geometric category, and $\on{Fun}(X)$ be all the $\mbb{F}$-valued functions on $X$, then a morphism $\varphi:X\rightarrow Y$ induces a ring homomorphism, called the pullback map. $\on{Fun}$ can also be seen as a contravariant functor.
+\begin{align*}
+\varphi^*:\on{Fun}(Y)&\rightarrow\on{Fun}(X)\\
+f&\mapsto f\circ\varphi
+\end{align*}
+
+Restricting to algebraic geometry, we illustrate the duality further, a regular morphism $\varphi:\mbb{A}_{\mbb{F}}^m\rightarrow\mbb{A}_{\mbb{F}}^n$ is of the form $\varphi(x)=(\varphi_1(x),\cdots,\varphi_n(x))$ in which $\varphi_{i}(x)\in\mbb{F}[x_1,\cdots,x_n]$.
+ 
+So regular morphisms of varieties can be defined extrinsically by restricting if assume $X,Y$ are in some ambient space. Intrinsically, we can use isomorphism classes of affine $\mbb{F}$-algebras to depict a variety and morphisms between them. If $\varphi^*:\mbb{F}[Y]\rightarrow\mbb{F}[X]$ is a ring homomorphism, then $\varphi$ is a morphism between $X$ and $Y$ by mapping $\alpha\in\on{Hom}_{\mbb{F}}(\mbb{F}[X],\mbb{F})$ to $\alpha\circ\varphi^*\in\on{Hom}_{\mbb{F}}(\mbb{F}[Y],\mbb{F})$. Note that if $\varphi^*$ is an isomorphism, so is $\varphi$.
+ 
+In addition, the extrinsic description indeed makes sense. To see this, by considering if $R$ is an affine $\mbb{F}$-algebra, then there exist a surjective $\mbb{F}$-linear ring homomorphism $\varphi^*:\mbb{F}[x_1,\cdots,x_n]\rightarrow R$. Then $R$ is exactly the coordinate ring of $V=Z(\on{Ker}\varphi^*)\subset\mbb{A}_{\mbb{F}}^n$. Hence $\varphi^*$ induces an embedding from variety $V$ to $\mbb{A}_{\mbb{F}}^n$. The embedding corresponds to choosing generators $\varphi^*(x_1),\cdots,\varphi^*(x_n)$ for $R$.
+
+It is important that the surjective map $\varphi^*$ is not unique, and the dimension of the ambient space $n$ is not unique as well. This means a variety can be seen very differently extrinsically. For example, $R=\mbb{F}[z]$, then $V$ is a line in $\mbb{A}_{\mbb{F}}^1$ naturally. But we can take
+\begin{align*}
+\varphi^*:\mbb{F}[x,y]&\rightarrow\mbb{F}[z]\\
+x&\mapsto z\\
+y&\mapsto z^2
+\end{align*}
+This gives an isomorphism $\mbb{F}[x,y]/\lr{y-x^2}\cong\mbb{F}[z]$ and an embedding of the line in $\mbb{A}_{\mbb{F}}^1$ to $\mbb{A}_{\mbb{F}}^2$.
+
+In general, the duality can be seen as follows.
+\begin{align*}
+	\{\text{Varieties}\}&\leftrightarrow\{\text{Affine $\mbb{F}$-algebras}\}\\
+	\{\varphi\in\on{Hom}(X,Y)\}&\leftrightarrow\{\varphi^*\in\on{Hom}_{\mbb{F}}(\mbb{F}[Y],\mbb{F}[X])\}
+\end{align*} 
+  
+\section{Tangent Space and Scheme Interpretation}
+From the pure geometric view of point, we can sure define the tangent space and cotangent space, but what are their counterparts from the algebraic view of point?
+
+Recall that in differential geometry, a $C^{\infty}$-germ $\mcr{F}_p$ at point $p$ of a smooth manifold $M$ is $C_p^{\infty}/\sim$, in which the equivalence relation is defined by identifying two function if they are identical in a neighborhood of $p$. Then by taking $\mcr{H}_p$ to be all the functions in $\mcr{F}_p$ whose first order partial derivative in terms of local coordinates vanishes, we get the cotangent space at $p$ to be $T_p^*M=\mcr{F}_p/\mcr{H}_p$.
+
+In algebraic geometry, the formal derivative of polynomials always exists by decreasing the degree by one. The counterpart of $\mcr{F}_p$ and $\mcr{H}_p$ are then $\mbb{F}\oplus\mfk{m}$ and $\mbb{F}\oplus\mfk{m}^2$. In fact in differential geometry, $\mfk{m}'=\{f\in\mcr{F}_p:f(p)=0\}$ is also a maximal ideal, and $\mcr{F}_p=\mbb{F}\oplus\mfk{m}'$, but the subspace whose first order partial derivatives are zero can not be expressed by $\mfk{m}'^2$, not even in any terms of $\mfk{m}'$. In fact, $\mfk{m}'^2=\mfk{m}'$, we can see from this how the vector space $\mbb{F}[x_1,\cdots,x_n]$ is better than $C^{\infty}(\mbb{R}^n)$ and helps to express geometric terms in pure algebraic way.
+
+The cotangent space at $p$ is then naturally $T_p^*V=\mbb{F}\oplus\mfk{m}/\mbb{F}\oplus\mfk{m}^2=\mfk{m}/\mfk{m}^2$, this is equivalent to move away those non linear terms. If $f\in\mfk{m}$, denote by $df$ the equivalent class in $T_p^*V$. For example in $\mbb{A}_{\mbb{F}}^2$, coordinate ring $\mbb{F}[\mbb{A}_{\mbb{F}}^2]=\mbb{F}[x,y]$ and $p=(0,0)\leftrightarrow\mfk{m}=\lr{x,y}$, then $T_p^*\mbb{A}_{\mbb{F}}^2=\mbb{F}dx\oplus\mbb{F}dy$ and
+$$
+df=f+\mfk{m}^2=\frac{\partial f}{\partial x}|_px+\frac{\partial f}{\partial y}|_py+\mfk{m}^2=\frac{\partial f}{\partial x}|_pdx+\frac{\partial f}{\partial y}|_pdy.
+$$
+
+Similarly, the tangent space is then $T_pV=(\mfk{m}/\mfk{m}^2)^*$. In the previous example, to identify a classical vector $v$ with its counterpart in $T_p\mbb{A}_{\mbb{F}}^2$, take a curve $\alpha(t)=(x(t),y(t))$, $x$ and $y$ are polynomial functions of $t$ such that $\alpha'(0)=v$ and $\alpha(0)=0$, then it is identified with directional derivative as follows.
+\begin{align*}
+D_v:T_p^*\mbb{A}_{\mbb{F}}^2&\rightarrow\mbb{F}\\
+df&\mapsto\frac{d}{dt}f(x(t))|_{t=0}
+\end{align*}
+
+Now we get back to see how affine schemes differs from varieties. The objects we are looking at are still $\on{Spec}\mbb{F}[x]/\lr{x}$ and $\on{Spec}\mbb{F}[x]/\lr{x^2}$, which are both topologically a point.
+
+To see the difference, a morphism $\varphi$ from $\on{Spec}\mbb{F}[x]/\lr{x}$ to some variety $C\subset\mbb{A}_{\mbb{F}}^n$ which is defined by $f(x)=0$ is clearly an inclusion\footnote{assume $\lr{f}$ is radical, then the coordinate ring on $C$ is $R(\lr{f})=\mbb{F}[x_1,\cdots,x_n]/\lr{f}$}, but what is a map $\varphi:\on{Spec}\mbb{F}[x]/\lr{x^2}\rightarrow C$? This is in fact a tangent vector. To see this, making use of algebra-geometry duality, we have the commutative diagram as follows.
+$$
+\begin{tikzcd}
+&\on{Spec}\mbb{F}[x]/\lr{x^2}\ar[ld, "\varphi"']\ar[from=dd, "j"']\ar[rr, leftrightarrow, bend left=10, dashed, ]&&\mbb{F}[x]/\lr{x^2}\ar[dd, "j^*"]\\
+C\ar[rr, leftrightarrow, crossing over, bend left=10, dashed]&&R(\lr{f})\ar[ur, "\varphi^*"]\ar[dr, "i^*"]&\\
+&\on{Spec}\mbb{F}\ar[ul, "i"']\ar[rr, leftrightarrow, bend left=10, dashed]&&\mbb{F}\\
+\end{tikzcd}
+$$
+it's then important to see what are representation of points in these objects.
+
+First we look at a point in $C$, which is also a point in $\mbb{A}_{\mbb{F}}^n$. Without generosity, assume it to be $(0,\cdots,0)$, then its counterpart on the algebra side is a maximal ideal $\mfk{m}\vartriangleleft R(\lr{f})$. Then the point in $\on{Spec}\mbb{F}[x]/\lr{x^2}$ is $\lr{\tilde{x}}=\lr{x+\lr{x^2}}$ as mentioned in Section \ref{affinescheme}, so is its counterpart in $\mbb{F}[x]/\lr{x^2}$. And the point in $\on{Spec}\mbb{F}$ is $\lr{0}$ as well as from the algebraic view of point.
+
+The left diagram commutes naturally yields that
+$$
+j(\lr{0})=\lr{x+\lr{x^2}}, i(\lr{0})=(0,\cdots,0),
+$$
+and naturally in the geometric side,
+$$
+j^*(\lr{x+\lr{x^2}})=\lr{0}, i^*(\mfk{m})=\lr{0}.
+$$
+
+Since the diagram commutes, we have $i^*(\mfk{m})=(\varphi^*\circ j^*)(\mfk{m})=0$, so $\varphi^*(\mfk{m})\in\on{Ker}j^*=\mbb{F}\tilde{x}\cong\mbb{F}$, in which $\tilde{x}=x+\lr{x^2}$. Since $\varphi^*$ is a ring homomorphism, $\varphi^*(\mfk{m}^2)=\tilde{0}$, so $\tilde{\varphi}:\mfk{m}/\mfk{m}^2\rightarrow\mbb{F}$ can be well defined. This is indeed a tangent vector of $C$.
+
+A natural question is what about $\on{Spec}\mbb{F}[x]/\lr{x^3}=\{\lr{\lr{x^3}},\lr{x+\lr{x^3}}\}$? Topologically this is a point, but surely $\on{Spec}\mbb{F}[x]/\lr{x^3}$ contain more information than $\on{Spec}\mbb{F}[x]/\lr{x^2}$ (one more dimension). From the previous construction of $\tilde{\varphi}$ we can reasonably infer that $\varphi^*(\mfk{m}^3)=0$, so a morphism from $\on{Spec}\mbb{F}[x]/\lr{x^3}$ to $C$ should contain more than tangent vectors. We can still see that the concept of affine scheme introduces more tools to investigate on the infinitesimal structure of algebraic varieties.
+
+%\bibliographystyle{alpha}
+%\bibliography{ref}
+\end{document}
+

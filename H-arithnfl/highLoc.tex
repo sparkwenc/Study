@@ -1,0 +1,73 @@
+% Last Updated: March 1, 2024
+\documentclass[0-main]{subfiles}
+
+\begin{document}
+\ifSubfilesClassLoaded{
+	% \title{\tbf{Untitled}}
+	% \author{Cong Wen, xx/20xx}
+	% \maketitle
+	\tableofcontents
+}{}
+% ----------------------------------------------------------------------------------------------------
+
+
+\ssc{Higher local fields}
+
+Ref:~\href{https://www.imo.universite-paris-saclay.fr/~matthew.morrow/Morrow,%20M.,%20Introduction%20to%20HLF.pdf}{Matthew Morrow's note}
+
+\begin{dfn}[Definition~2.1]
+	Define the \tbf{complete discrete valuation dimension} of a field $F$ to be $\cdvDim{F}:=0$ if $F$ is not a complete discrete valuation field and $\cdvDim{F}:=\cdvDim{\kpa_{F}}+1$ where $\kpa_{F}$ is the residue field of $F$. Denote the residue field chain by $F=F^{(0)}- F^{(1)}- \cds - F^{(n)}$.
+
+\end{dfn}
+
+\begin{thm}[Definition~2.23, Proposition~2.28]
+	Let $E,F$ be fields of $\cdvDim\gqs n$, then $i:F\ar E$ is said to be $n$-continuous if $i$ is a morphism of discrete valuation fields and $\kpa_{i}:\kpa_{F}\ar\kpa_{E}$ is $(n-1)$-continuous.
+
+	If $F\ar E$ is an $n$-continuous, then $E/F$ is finite if and only if $E^{(n)}/F^{(n)}$ is a finite extension. In this case, all the residue field extensions $E^{(i)}/F^{(i)}$ are finite and
+	\[
+		[E:F]=\prod_{i=0}^{n-1}e(E^{(i)}/F^{(i)})\sS{E^{(n)}:F^{(n)}}.
+	\]
+\end{thm}
+
+\begin{dfn}[Definition~2.12]
+	$F$ is an \tbf{$n$-dimensional local field} if $\cdvDim{F}=n$ and $F^{(n)}$ is finite.
+
+\end{dfn}
+
+\begin{thm}[Classification, Theorem~2.18]
+	Let $F$ be an $n$-dimensional local field, denote by $0\lqs r\lqs n$ the unique integer such that $F^{(n-r)}$ is either of mixed characteristic or finite, then $F\cong F^{(n-r)}\dR{t_{1},\lds,t_{n}}$. If $r\gqs1$, then $F^{(n-r)}$ is a finite extension of $K\dC{t_{1},\lds,t_{r-1}}$ where $K$ is an unramified extension of $W(F^{(n)})[1/\pi]$.
+\end{thm}
+
+
+\begin{dfn}[Definition~3.3]
+	Let $F$ be a field of $\cdvDim\gqs n$, define the rank $n$ ring of integers $\cO_{F}^{(n)}$ inductively to be $\cO_{F}^{(0)}=F$ if $n=0$ and $\cO_{F}^{(n)}=\{x\in\cO_{F}:\kpa_{x}\in\cO_{\kpa_{F}}^{(n-1)}\}$ otherwise.
+\end{dfn}
+
+\begin{thm}[Proposition~3.7, Proposition~3.8]
+	Let $F$ be a field of $\cdvDim\gqs n$ with rank $n$ ring of integers $\cO_{F}=\cO_{F}^{(n)}$, then $F\xT/\cO_{F}\xT$ is order isomorphism to $\bZ^{n}$ equipped with the lexicographic ordering. Moreover if $t_{1},\lds,t_{n}$ is a sequence of $n$ local parameters, then
+	\[
+		F\cong\cO_{F}[t_{1}\xI,\lds,t_{n}\xI],\quad F\xT\cong\cO_{F}\xT\tms t_{1}^{\bZ}\tms\cds\tms t_{n}^{\bZ}.
+	\]
+\end{thm}
+
+\begin{thm}[Proposition~3.12, Proposition~3.13]
+	Let $i:F\ar E$ be a morphism of fields of $\cdvDim\gqs n$, then the following are equivalent,
+	\begin{itm}
+			\item $i$ is $n$-continuous.
+			\item $i\xI(\cO_{E}^{(r)})=\cO_{F}^{(r)}$ for $r=0,\lds,n$.
+			\item $i\xI(\kp_{E}^{(r)})=\cO_{F}^{(r)}$ for $r=0,\lds,n$.
+	\end{itm}
+
+	Moreover if $E/F$ is a finite extension, then $\cO_{E}^{(n)}$ is the integral closure of $\cO_{F}^{(n)}$ in $E$.
+\end{thm}
+
+(up to Chapter 3)
+
+\hrule
+
+% ----------------------------------------------------------------------------------------------------
+\ifSubfilesClassLoaded{
+	\bibliographystyle{amsalpha}
+	\bibliography{/Users/wenc/Documents/Math/universal-ref}
+}{}
+\end{document}

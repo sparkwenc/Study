@@ -1,0 +1,150 @@
+% Documentclass Settings
+	\documentclass[a4paper, twoside]{article}
+	% Margins
+	\usepackage{geometry}
+		\geometry{
+			% showframe,
+			left   = 20mm,
+			right  = 20mm,
+			top    = 20mm,
+			bottom = 20mm
+		}
+
+	% Headers and footers
+	\usepackage{fancyhdr}
+		\pagestyle{fancy}
+		\fancyhf{}
+		\fancyhead[LE, RO]{\thepage}
+		\fancyhead[CE]{\textsc{Cong Wen}}
+		\fancyhead[CO]{\textsc\rightmark}
+
+		\setlength{\headheight}{15pt}
+		\renewcommand\headrulewidth{0pt}
+
+
+
+
+
+
+
+
+\input{../universal-pre}
+
+\title{\tbf{Farb2021}}
+\author{\tbf{Notes} by Cong Wen, 12/2022}
+\date{}
+% Last Updated: July 11, 2022
+
+
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+\begin{abstract}
+	This is my self-use notes\footnote{Last updated on December 11, 2022} on \tbf{global rigidity of the period mapping}\cite{Farb2021}. All possible faults are on my own for sure. Please reach out if you find anything incorrect.
+
+\end{abstract}
+\tableofcontents
+% ----------------------------------------------------------------------------------------------------
+
+The paper proved the Torelli map is the unique non-trivial holomorphic map $F:\cM_{g,n}\ar\cA_{h}$ under certain conditions, combining results from topology, analysis, and algebraic geometry. Throughout, moduli spaces are treated as orbifolds, i.e., the related Teichm{\"u}ller space modulo its mapping class group.
+
+% \sct{The original one}
+
+\begin{thm}[Theorem~1.1]
+	Assume $g\gqs3, n\gqs0, 1\lqs h\lqs g$, then any non-constant holomorphic map of complex orbifolds $F:\cM_{g,n}\ar\cA_{h}$ satisfies $F=J, h=g$.
+\end{thm}
+
+\prg{Rough line of the proof:}
+\begin{enr}
+	\item Reduce to the case $h=g, n=0$ and $F$ homotopic to $J$ via $G_{t}$,
+	\item A classical criterion says then $F=J$ if and only if $F,J$ agrees on one point, to produce such a point, a curve $C\sbs\cM_{g}$ restrictied to which $F,J$ are equal is proved to exist:
+	\begin{enr}
+		\item Show the homotopy $G_{t}$ restricted to any curve can be replaced by an algebraic one $H_{t}$.
+		\item Produce a curve of generic complete intersection $C\sbs\cM_{g}\ar\cA_{g}$, then show its corresponding family $E\ar C$ of abelian varieties is rigid. Hence the algebraic homotopies $H_{t}$ are constant, which is desired.
+	\end{enr}
+\end{enr}
+
+
+We collect precise statements of them:
+
+
+\begin{thm}[Proposition~2.2, Lemma~2.3]
+	Assume $g\gqs3, n\gqs0, 1\lqs h\lqs g$, then any continuous map $F:\cM_{g,n}\ar\cA_{h}$ is either homotopically trivial or $h=g$ and $F$ is homotopic to $J$ (hence $F$ factors through $\cM_{g,n}\ar\cM_{g}$). Moreover, if $F$ is holomorphic and homotopically trivial then $F$ is constant.
+\end{thm}
+
+\begin{prf}[Sketch]
+	Denote by $\rho:\Mod(S_{g,n})\ar\Sp_{2g}(\bZ)$ the standard symplectic representation.
+
+	$F$ induces $F\zS:\Mod(S_{g,n})\ar\Sp_{2h}(\bZ)$, \cite{Korkmaz2011} says either $F\zS=0$ or $h=g$ and $F\zS$ is conjugate to $\rho$ via $A\in\GL_{2g}(\bC)$, and in fact $A\in\Sp_{2g}(\bZ)$ by congruence subgroup property of $\Sp_{2g}(\bZ)$.
+
+	Moreover, if $F\zS=0$, then $F$ lifts to $\oT{F}:\cM_{g,n}\ar\kh_{h}$, which is holomorphic by assumption and bounded since the codomain is so, hence $\oT{F}$ must be constant and so is $F$.
+\end{prf}
+
+
+\begin{thm}[Theorem~2.5]
+	Let $X$ be a connected complex manifold that admits no non-constant plurisubharmonic function that is bounded above, take $a\in X$. Let $Y$ be a complex manifold covered by a bounded domain $\Oga\sbe\bC^{N}$.
+
+	If $u,v:X\ar Y$ are two holomorphic maps such that $u(a)=v(a)$ and that $u\zS=v\zS:\pi_{1}(X,a)\ar\pi_{1}(Y,u(a))$, then $u=v$.
+\end{thm}
+
+\begin{rmk}
+	This is a classical result back to \cite[Theorem~3.6]{BN1967}.
+\end{rmk}
+
+
+\begin{thm}[Lemma~2.7, Lemma~2.9]
+	Let $C\sbs\cM_{g}$ be any smooth algebraic curve, then there exists a homotopy $H:[0,1]\tms C\ar \cA_{g}$ with $H_{0}=J|_{C}$ and $H_{1}=F|_{C}$ such that $H_{t}$ is holomorphic for all $0\leq t\leq 1$, and moreover, they are algebraic.
+\end{thm}
+
+\begin{prf}[Sketch]
+	\tbf{Produce such $H_{t}$:} Let $G:[0,1]\tms C\ar\cA_{g}$ be the original homotopy, fix any $x\in C$, lift $G(t,x)$ to $\oT{\gma}_{x}:[0,1]\ar\kh_{g}$, there exists a unique homotopy from $\oT{\gma}_{x}$ to a geodesic $\bta_{x}:[0,1]\ar\kh_{g}$ with the same endpoints, then $H$ is obtained by composing with $\kh_{g}\ar\cA_{g}$.
+
+	\tbf{For holomorphicity:} To prove holomorphicity, use \cite{ES1964}: if $f:X\ar Y$ is a smooth map, $X$ a finite area K{\"a}hler $1$-manifold, $Y$ a complete K{\"a}hler manifold, $E(f)<+\ift$, then $f\xS\oga_{Y}(x)\leq E_{x}(f)\oga_{X}(x)$, and $f$ is holomorphic at $x$ if and only if then equality holds. Then by \cite{AAS2018}, $E(H_{t})<+\ift$, and
+	\[
+		\int_{C}H_{s}\xS\oga_{\cA_{g}}=\int_{C}H_{t}\xS\oga_{\cA_{g}}, \fal s,t\in[0,1].
+	\]
+	Now $H_{0}=F$ and $H_{1}=J$ are holomorphic, $t\amt E(H_{t})$ is convex since lift of $H_{t}$ is geodesic, hence $H_{t}$ are holomorphic for all $t\in[0,1]$ by the criterion above.
+
+	\tbf{For algebraicity:} To prove algebraicity, by \cite{KO1971}, $H_{t}$ can be holomorphically extended to $\oL{H}_{t}:\oL{C}\ar\oL{\cA}_{g}^{S}$, in which $\oL{\cA}_{g}^{S}$ is its Satake compactification, then Chow's theorem says each $H_{t}$ is algebraic.
+\end{prf}
+
+
+\begin{thm}[Proposition~2.12]
+	For all $g\gqs3$, there exists an $i:C\ahr\cM_{g}$, such that the family of abelian varieties $E\ar C$ attached to $J\cc i:C\ar \cA_{g}$ by pulling back the universal family $\oT{\cA_{g}}$ is rigid.
+	\[
+		\begin{tikzcd}
+			E\ar[rr]\ar[drr, "\wsq", phantom]\ar[d, "f"] && \oT{\cA_{g}}\ar[d]\\
+			C\ar[r, hook, "i"] & \cM_{g}\ar[r, "J"] & \cA_{g}
+		\end{tikzcd}
+	\]
+\end{thm}
+
+\begin{prf}[Sketch]
+	\tbf{For $g\gqs4$}, use \cite[Theorem~8.6]{Saito1993}: If $f:X\ar S$ is an abelian scheme such that $R_{1}f\zS\uL{\bQ}_{X}$ is primary, $S$ is non-compact, with local monodromies at boundary points are of infinite order, then $f:X\ar S$ is rigid.
+
+
+	To apply, let $\cO\sbs\cM_{g}$ be the locus representing genus $g$ curves with non-trivial automorphic group. Now $\Codim\cO=(3g-3)-(2g-1)\gqs2$ by Riemann-Hurwitz, hence $\pi_{1}(\mathrm{Teich}(S_{g})-\oT{\cO})=\pi_{1}(\mathrm{Teich}(S_{g}))=0$ and $\pi_{1}(\cM_{g}-\cO)\cong\Mod(S_{g})$. Then, take genric hyperplanes $P_{i}, 1\leq i\leq 3g-4$ in the ambient space $\bP^{N}$ of $\oL{\cM}_{g}^{\mathrm{DM}}$, then the intersecion
+	\[
+		i:C=(\cM_{g}-\cO)\cap P_{1}\cap\cdots\cap P_{3g-4}\ahr \cM_{g}-\cO\sbs \bP^{N}
+	\]
+	is the desired curve.
+
+
+	To show this, note that $C$ is smooth by Bertini's theorem, then the Lefschetz hyperplane theorem for quasi-projective varieties says
+	\[
+		i\zS:\pi_{1}(C)\ar\pi_{1}(\cM_{g}-\cO)\cong\Mod(S_{g})
+	\]
+	is surjective, hence the monodromy $\mu:\pi_{1}(C)\ar\Sp_{2g}(\bZ)$ of $f:E\ar C$ is irreducible. And if $[\gma]$ is a loop around a boundary point of $C$, $i\zS([\gma])$ is a Dehn twist of $[\gma]$ and hence $\mu([\gma])$ is a symplectic transvection hence is of infinite order. Now conditions of Saito's theorem are satisfied.
+
+
+	\tbf{For $g=3$}, use \cite[Corollary~8.4]{Saito1993} together with the fact that curves $i:C\ahr\cM_{g}, g\gqs1$ with property that there exists $c\in C$ such that $J\cc i(c)$ is a simple abelian variety exist, such a fact can be found either in \cite{Koizumi1976} or in \cite{Zarhin2000}. (Thanks to Ariyan Javanpeykar for telling me).
+\end{prf}
+
+
+
+% ----------------------------------------------------------------------------------------------------
+\bibliographystyle{alpha}
+\bibliography{../universal-ref}
+\end{document}
+

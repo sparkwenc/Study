@@ -1,0 +1,553 @@
+\input{../universal-pre}
+\newcommand{\mcal}[1]{\mathcal{#1}}
+\title{\tbf{Quillen-Suslin Theorem}}
+\author{\tbf{Notes} by Cong Wen, 06/2020}
+\date{}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+\begin{abstract}
+  This is my self-use notes\footnote{Last updated on June 27, 2020} on \tbf{Quillen-Suslin theorem}\cite{Quillen1976}, i.e., all the finite projective modules over polynomial rings are free. The proof is divided into two parts, the Hilbert-Serre theorem, which states that all the finite projective modules over polynomial rings are stably free, and the Quillen-Suslin theorem, all the stably free modules over polynomial rings are actually free.
+\end{abstract}
+\tableofcontents
+
+
+% ----------------------------------------------------------------------------------------------------
+
+\section{Algebraic Preliminaries}
+
+This part collects some useful results in homological algebra and commutative algebra, and all the rings occurred below are commutative rings with unity.
+
+\subsection{Easy Examples}
+Surely every free module is projective, the Quillen-Suslin theorem states that if $R$ is a polynomial ring over field, then finite projective modules are also free. There are two easy examples of this. When $R$ is a PID or a local ring, any projective module is free. We presented here the proof of these two theorems.
+
+\begin{lem}\label{lem:localfree}
+	$(R,\mfk{m})$ is a local ring, $M$ is a finite $R$-Mod, then the size of any minimal generating set of $M$ is equal to $\on{dim}M\otimes_R\kappa(\mfk{m})$, in which $\kappa(\mfk{m})=R/\mfk{m}$.
+\end{lem}
+\begin{proof}
+	If $\{m_1,\cdots, m_n\}$ is a minimal generating set of $M$, we only need to show $\{\oL{m}_1,\cdots,\oL{m}_n\}$ are linearly independent in $M/\mfk{m}M$ as a $\kappa(\mfk{m})$-Mod. To do this, suppose they are linearly dependent, WLOG, suppose $\{\oL{m}_2,\cdots,\oL{m}_n\}$ generates $M/\mfk{m}M$, then $\sum_{k=2}^nRm_k+\mfk{m}M=M$, by Nakayama's lemma, $M=\sum_{k=2}^nRm_k$, contradicting the choice of $\{m_k\}$. So $\{\oL{m}_1,\cdots,\oL{m}_n\}$ is a basis of the $\kappa(\mfk{m})$-vector space $M/\mfk{m}=M\otimes\kappa(\mfk{m})$, hence $n=\on{dim}M\otimes_R\kappa(\mfk{m})$.
+\end{proof}
+
+\begin{thm}\label{thm:freenessOnLocal}
+	If $(R,\mfk{m})$ is a local ring and $M$ is a finite projective $R$-Mod, then $M$ is free.
+\end{thm}
+\begin{proof}
+	Since $M$ is finite, take a minimal generating set $\{m_1,\cdots,m_n\}$, then the homomorphism $f:R^n\rightarrow M$ is surjective, and $R^n=M\oplus\on{ker}f$, by tensoring $\kappa(\mfk{m})$ on both side, we get a $\kappa(\mfk{m})$-vector space isomorphisms $\kappa(\mfk{m})^n=M\otimes_R\kappa(\mfk{m}) \oplus \on{ker}f\otimes_R\kappa(\mfk{m})$, but the dimension of $M\otimes_R\kappa(\mfk{m})$ is already $n$, so $\on{ker}f\otimes_R\kappa(\mfk{m})=0$, by Nakayama's lemma, $\on{ker}f=0$. Hence $M$ is free.
+\end{proof}
+\begin{rmk}
+	Actually, Kaplansky proved the theorem also holds when $M$ is not finitely generated.
+\end{rmk}
+
+\begin{lem}\label{lem:subPIDfree}
+	If $R$ is a principal ideal domain and $M$ is a free module, then every submodule of $M$ is free.
+\end{lem}
+\begin{rmk}
+	We omit the proof here, in the case when $M$ is of finite rank, it is a typical linear algebra proof, in the case when $M$ is of infinite rank, Zorn's lemma has come into play. See details in \cite{Lang2002}.
+\end{rmk}
+
+\begin{thm}\label{thm:freenessonPID}
+	If $R$ is a principal ideal domain and $M$ is a finite projective $R$-Mod, then $M$ is free.
+\end{thm}
+\begin{proof}
+	Since $M$ is finite generated and projective, there is a split short exact sequence,
+	$$
+	0\rightarrow K\rightarrow R^n\rightarrow M\rightarrow 0.
+	$$
+	So $R^n = M\oplus K$, by Lem. \ref{lem:subPIDfree}, $M$ is free.
+	
+	In fact we can see that when $M$ is not finitely generated, the statement still holds.
+\end{proof}
+\begin{rmk}
+	This is the trivial case of Quillen-Suslin theorem when the polynomial ring has only one variable. In the general proof below, we will show this fact in another manner, see Lem. \ref{PID}.
+\end{rmk}
+
+\subsection{Commutative Algebra}
+\begin{lem}\label{lem:lift}
+	Let $f:R\rightarrow S$ be a surjective ring homomorphism, $\mfk{p}\in\on{Spec}S$, denote by $\mfk{p}^c\equiv f^{-1}(\mfk{p})\in\on{Spec}R$. If $N\subset M$ are two $S$-Mod, and $M/N\cong S/\mfk{p}$, then $_{R}M/_{R}N = R/\mfk{p}^c$ in which $_{R}M$ is the lift of $M$ via map $f$.
+\end{lem}
+\begin{proof}
+	Note that the lift of $_{S}M/_{S}N$ is clearly $_{R}M/_{R}N$, so it suffices to show the lift of $S/\mfk{p}$ is $R/\mfk{p}^c$. Define a map
+	\begin{equation*}
+		\begin{split}
+			\varphi:R/\mfk{p}^c&\rightarrow S/\mfk{p}\\
+			r+\mfk{p}^c&\mapsto f(r)+\mfk{p},
+		\end{split}
+	\end{equation*}
+	then $\varphi$ is clearly well-defined, injective and surjective.
+\end{proof}
+
+\begin{thm}\label{proj&lf}
+	$M$ is a finite $R$-Mod. $M$ is projective iff $M$ is locally free.
+\end{thm}
+\begin{proof}
+	$\Rightarrow$: If $M$ is finite projective, then there exist $N$ such that $M\oplus N=R^n$, if $\mfk{p}$ is any prime ideal, then $M_\mfk{p}\oplus N_\mfk{p}=R_\mfk{p}^n$, so now $M_\mfk{p}$ is a finite projective $R_\mfk{p}$-Mod, by Lem. \ref{lem:localfree}, $M_\mfk{p}$ is a free $R_\mfk{p}$-Mod.
+	
+	$\Leftarrow$: To show $M$ is projective, it suffices to prove $\on{Hom}_R(M,-)$ is an exact functor. Let $0\rightarrow N'\rightarrow N\rightarrow N''$ be a short exact sequence of $R$-Mod. To show
+	$$
+	0\rightarrow\on{Hom}_R(M,N')\rightarrow\on{Hom}_R(M,N)\rightarrow\on{Hom}_R(M,N'')\rightarrow 0
+	$$
+	is exact, it suffices to prove for any prime $\mfk{p}$ the following is exact,
+	$$
+	0\rightarrow\on{Hom}_R(M,N')_\mfk{p}\rightarrow\on{Hom}_R(M,N)_\mfk{p}\rightarrow\on{Hom}_R(M,N'')_\mfk{p}\rightarrow 0,
+	$$
+	since $M$ is finite, it is equivalent to prove the following is exact,
+	$$
+	0\rightarrow\on{Hom}_{R_\mfk{p}}(M_\mfk{p},N'_\mfk{p})\rightarrow\on{Hom}_{R_\mfk{p}}(M_\mfk{p},N_\mfk{p})\rightarrow\on{Hom}_{R_\mfk{p}}(M_\mfk{p},N''_\mfk{p})\rightarrow 0.
+	$$
+	This sequence is exact because $0\rightarrow N'_\mfk{p}\rightarrow N_\mfk{p}\rightarrow N''_\mfk{p}$ is exact, and $M_\mfk{p}$ is finite free, hence $\on{Hom}_{R_\mfk{p}}(M_\mfk{p},-)$ is an exact functor.
+	
+	So $\on{Hom}_R(M,-)$ is an exact functor and $M$ is projective.	
+\end{proof}
+
+\begin{thm}
+	$M$ is a finite $R$-Mod, then $\on{Supp}(M)=V(\on{ann}(M))$.
+\end{thm}
+\begin{proof}
+	$\subset$: If $\mfk{p}\not\supset\on{ann}(M)$, then $A\backslash\mfk{p}\cap\on{ann}(M)\neq\emptyset$, hence $M_\mfk{p}=0$.
+	
+	$\supset$: If $\mfk{p}\supset\on{ann}(M)$, then $\on{ann}(M_\mfk{p})=\on{ann}(M)_\mfk{p}\subset\mfk{p}R_\mfk{p}\neq R_\mfk{p}$, hence $M_\mfk{p}\neq 0$ (Note the first equality holds only when $M$ is finite, otherwise, it only holds that $\on{ann}(M_\mfk{p})\supset\on{ann}(M)_\mfk{p}$).
+\end{proof}
+
+\begin{thm}\label{minimal}
+	Let $R$ be a Noetherian ring, and $M$ be a $R$-module, then the following sets are the same:
+	\begin{enumerate}
+		\item Any filtration of $M=M_0\supsetneqq\cdots\supsetneqq M_n=0$ with $M_{i-1}/M_{i}\cong R/\mfk{p}_i$, the minimal elements of $\{\mfk{p}_i\}, 1\leq i\leq n$,
+		\item Minimal elements of $\on{Supp}(M)$,
+		\item Minimal elements of $\on{Ass}(M)$.
+	\end{enumerate}
+\end{thm}
+\begin{proof}
+	1. and 2. are the same:	use the finite filtration, we know $\on{Supp}(M)=\bigcup\on{Supp}(R/\mfk{p}_i)=\bigcup V(\mfk{p}_i)$, so 1. and 2. are the same.
+	
+	2. and 3. are the same: first we have $\on{Ass}(M)\subset\on{Supp}(M)$, to see this, for any $\mfk{p}=\on{ann}(m)$, $m/1$ is a non zero element in $M_\mfk{p}$, so $\mfk{p}\in\on{Supp}(M)$.
+	
+	Then it suffices to prove any minimal prime in $\on{Supp}(M)$ is an associated prime: any minimal prime in $\on{Supp}(M)$ is now also minimal in $\on{Ass}(M)$, for any minimal prime $\mfk{p}\in\on{Ass}(M)$, there exist a minimal prime $\mfk{q}\in\on{Supp}(M)$ such that $\mfk{q}\subset\mfk{p}$, but $\mfk{q}$ is also an associated prime, hence $\mfk{p}=\mfk{q}$.
+	
+	Next we prove any minimal prime in $\on{Supp}(M)$ is an associated prime, take a minimal prime $\mfk{p}\in\on{Supp}(M)$, since 1. and 2. are the same, denote $k$ the maximal index such that $\mfk{p}_k=\mfk{p}$, take $m\in M_{k-1}, m\notin M_k$, consider $\mfk{q}=\on{ann}(m)$, any element which annihilates $m$ also annihilates $\bar{m}\in M_{k-1}/M_k$, and any element of $\mfk{p}_{k}\cdots \mfk{p}_n$ annihilates $m$ because $m\mfk{p}_{k}\cdots \mfk{p}_n\subset M_k\mfk{p}_{k+1}\cdots \mfk{p}_n\subset \cdots\subset M_{n-1}\mfk{p}_n=\{0\}$. So we have
+	$$
+	\mfk{p}_{k}\cdots \mfk{p}_n\subset\mfk{q}\subset\mfk{p}_k.
+	$$
+	By the choice of $\mfk{p}$, we know $\mfk{p}_i\not\subset\mfk{p}, k+1\leq i\leq n$, so $\mfk{p}_{k+1}\cdots \mfk{p}_n\not\subset\mfk{p}$, take $f\in\mfk{p}_{k+1}\cdots \mfk{p}_n\backslash\mfk{p}$, we claim $\on{ann}(fm)=\mfk{p}$: If $afm=0$, then $af\in\mfk{q}\subset\mfk{p}_k$, hence $a\in\mfk{p}$, and any $a\in\mfk{p}$, $af\in\mfk{p}_{k}\cdots \mfk{p}_n\subset\mfk{q}$. So $\mfk{p}$ is an associated prime.
+\end{proof}
+
+\subsection{Homological Algebra}
+\begin{dfn}
+	$M$ is a finite $R$-Mod, then it is called stably free of type $m$ if there exists a free $R$-Mod $F$ of rank $m<\infty$ such that $M\oplus F$ is free.
+\end{dfn}
+\begin{rmk}\label{rem:SFMod}
+	It is required $m=\on{rk}F<\infty$ since any projective module would be stably free if $m=\infty$ (By Eilenberg). It is also required in the definition that $M$ is finitely generated, this is because if $M$ is not finitely generated, $M$ will actually be free (by Gabel).
+\end{rmk}
+\begin{proof}[proof of Rem. \ref{rem:SFMod}]
+	If $m=\infty$, for any projective module $P$, it is a summand of a free module $F$, write $Q\oplus P = F$, then $P\oplus F^{\mbb{N}} = P\oplus Q\oplus P\oplus\cdots = F^{\mbb{N}}$.
+	
+	If $M$ is not finitely generated, then let $M\oplus R^m=F=R^I$ in which $I$ is an infinite index set (otherwise $M$ will be finitely generated), and write $M=\on{ker}(F\xrightarrow{f} R^m)$. Since $R^m$ is finitely generated, there exists a finite subset $I_0\subset I$ such that $f(F_0)=R^m$, in which $F_0=R^{I_0}$. So $F_0+M=F$. Let $N=F_0\cap M=\on{ker}f|_{F_0}$, so there are exact sequences:
+	\begin{align*}
+		0\rightarrow N\rightarrow &F_0\rightarrow R^m\rightarrow 0\\
+		0\rightarrow N\rightarrow &M\rightarrow M/N\rightarrow 0.
+	\end{align*}
+	Now $M/N=M/(F_0\cap M) = (F_0+M)/F_0 = F/F_0=R^{I\backslash I_0}$, so the sequences above split. Since $I\backslash I_0$ is still infinite, we can write $R^{I\backslash I_0}=R^m\oplus F'$.
+	
+	So $M=N\oplus M/N=N\oplus R^m\oplus F'=F_0\oplus F'$ is free.
+\end{proof}
+
+\begin{prp}
+	Every stably free module $M$ determines a right invertible $m\times n, n>m$ matrix $A$ such that $M$ is the solution space of $A$ and vice versa (the solution space of every right invertible $m\times n$ matrix is stably free).
+\end{prp}
+\begin{proof}
+	On the one hand, if $M$ is a stably free module, by definition and the remark, we got a split short exact sequence,
+	$$
+	0\rightarrow R^m\xrightarrow{f} R^n\rightarrow M\rightarrow 0.
+	$$
+	Since the sequence splits, there exist $g:R^n\rightarrow R^m$ such that $gf=\on{id}_{R^m}$ and $M=\on{ker}g$. The matrix of $g$ is then $A$. Note that $A$ is right invertible is equivalent to $g$ is surjective.
+	
+	On the other hand, given a right invertible $m\times n$ matrix $A$, denote by $M$ the solution space of $A$, the sequence below splits hence $M$ is stably free.
+	$$
+	0\rightarrow M\rightarrow R^n\xrightarrow{A} R^m\rightarrow 0.
+	$$
+\end{proof}
+
+\begin{prp}
+	$M=\on{ker}(R^n\xrightarrow{g} R^m), n>m$, in which $g$ is surjective, is free iff $g$ can be lifted to an isomorphism $\tilde{g}:R^n\rightarrow R^r\oplus R^m$ for some $r$ such that $\pi_2\tilde{g}=g$, in which $\pi_2:R^r\oplus R^m\rightarrow R^m$ is the projection map on the second factor.
+\end{prp}
+\begin{proof}
+	The sequence
+	$$
+	0\rightarrow M\xrightarrow{i} R^n\xrightarrow{g} R^m\rightarrow 0.
+	$$
+	splits and is exact, let $j:R^n\rightarrow M$ be the homomorphism such that $ji=\on{id}_M$, then
+	$$
+	R^n\xrightarrow{\mat{j\\ g}}M\oplus R^m
+	$$
+	is an isomorphism.
+	
+	On the one hand if $v:M\cong R^r$, then $\tilde{g}=\mat{vj\\ g}$ is the lift of $g$. On the other hand if the lift of $g$ exists, then $M=\on{ker}g\cong\on{ker}\pi_2=R^r$
+\end{proof}
+
+\begin{lem}
+	$R$ a non zero commutative ring, then $R$ has invariant base number (IBN) property. To be precise, if $R^m\cong R^n$ as $R$ modules, then $m=n$.
+\end{lem}
+\begin{rmk}
+	So the $r$ occurred in the previous proposition must be $n-m$.
+\end{rmk}
+\begin{proof}
+	Take any maximal ideal $\mfk{m}$ of $R$. Tensoring with $k=R/\mfk{m}$ gives a $k$-Mod isomorphism $k^m\cong k^n$. Isomorphism vector bases has the same dimension hence $m=n$.
+\end{proof}
+
+\begin{cor}\label{cor:matrix}
+	$R$ a commutative ring, $A$ a right invertible $m\times n$ matrix, and $M$ is the solution space of $A$ (hence $M$ is stably free). $M$ is free iff $A$ can be extended to a $n\times n$ invertible matrix by adding $n-m$ rows.
+\end{cor}
+
+\begin{thm}\label{thm:sf2cplt}
+	Let $R$ be any ring, then the following are equivalent,
+	\begin{enumerate}
+		\item Any stably free $R$-Mod is free,
+		\item Any stably free $R$-Mod of type $1$ is free,
+		\item Any unimodular row $f=(f_1,\cdots,f_n)$ in $R^n$ can be extended to an invertible matrix in $\on{GL}_n(R)$ by adding $n-1$ rows. (Such a row is called completable). Unimodular means $\sum_iRf_i=R$.
+	\end{enumerate}
+\end{thm}
+\begin{proof}
+	$1.\Rightarrow 2.$: trivial.
+	
+	$2.\Rightarrow 1.$: use induction, suppose any stably free $R$-Mod of type $r$, $r<n$ is free. $M$ a stably free $R$-Mod of type $n$, then $M\oplus R^n$ is free, so $M\oplus R$ is a stably free module of type $n-1$, hence free. So $M$ is stably free of type $1$ and hence free.
+	
+	$2.\Leftrightarrow 3.$: by Cor. \ref{cor:matrix}.
+\end{proof}
+
+\begin{thm}\label{thm:sf&fr}
+	If $P$ is a projective $R$-Mod. $P$ is stably free iff $P$ admits a finite free resolution.
+\end{thm}
+\begin{proof}
+	One direction is trivial, for the other direction, we use induction on the length of finite free resolution of $P$. Take the the finite free resolution as below
+	$$
+	0\rightarrow F_n\rightarrow\cdots\rightarrow F_0\rightarrow M\rightarrow 0.
+	$$
+	
+	If $n\leq 1$, $P$ is surely stably free.
+	
+	Suppose the theorem holds for $n<k$, we prove for k:
+	$$
+	0\rightarrow F_k\rightarrow\cdots\rightarrow F_0\rightarrow M\rightarrow 0.
+	$$
+	Let $M_1=\on{ker}(F_0\rightarrow M)$, then split the long sequence into two:
+	\begin{align*}
+		0\rightarrow F_k\rightarrow\cdots&\rightarrow F_0\rightarrow M_1\rightarrow 0\\
+		0\rightarrow M_1\rightarrow&F_0\rightarrow M\rightarrow 0
+	\end{align*}
+	By the induction hypothesis, $M_1$ is stably free, hence $M_1\oplus F$ is free for some free module $F$. Then $F_0\oplus F=M\oplus M_1\oplus F$ is free, hence $M$ is stably free.
+\end{proof}
+
+\begin{thm}
+	$R$ is a Noetherian, then for a short exact sequence of $R$-Mod,
+	$$
+	0\rightarrow M'\rightarrow M\rightarrow M''\rightarrow0,
+	$$
+	then that any two of $M',M,M''$ admits a finite resolution implies the other also does.
+\end{thm}
+\begin{rmk}
+	The proof of this theorem is omitted for three reasons: The theorem is itself easy to intuitively make sense, and the proof is rather typical in homological algebra, and it takes a few pages.
+\end{rmk}
+
+\section{Motivation}
+\subsection{Serre-Swan Theorem}
+In this part to demonstrate the motivation for this theorem, we states a bunch of theorems in geometry without proof and preliminaries. The readers are assumed to be familiar with knowledge in topology, differentiable manifold and algebraic geometry.
+
+The basic intuition is that finite projective module corresponds to a finite rank vector bundles. On a topological space $M$, and a real topological vector bundle $E\rightarrow M$, the global sections $\Gamma(E)$ can surely be viewed as a $C(M)$-Mod, in which $C(M)$ is the ring of continuous function on $M$. Of course on a trivial bundle $F$, $\Gamma(F)$ is a free $C(M)$-Mod. Since every projective module is a direct summand of a free module, we can see the analogy from the following theorem:
+\begin{thm}
+	For each vector bundle $E\rightarrow B$, with $B$ a compact Hausdorff space, then there exists a vector bundle $E'$ such that $E\oplus E'$ is a trivial bundle.
+\end{thm}
+So every vector bundle can give rise to a finite projective $C(M)$-Mod, the other direction also holds, this is proved in 1962\cite{Swan1962}, Swan established the one-one correspondence in general case.
+\begin{thm}
+	Let $X$ be compact Hausdorff, then a $C(X)$-module $P$ is isomorphic to a module of the form $\Gamma(E)$ iff $P$ is finitely generated and projective.
+\end{thm}
+
+In fact, it is Serre's work which motivated the proof of Swan, and gave a one-one correspondence between algebraic vector bundles on affine scheme and finite projective modules. This can be found in Serre's famous paper \textit{Faisceaux Algebriques Coherents}\cite{Serre1955}, also in which he proposed the Serre's conjecture, i.e. the main theorem we are going to show in this note.
+
+\begin{thm}
+	If $\mcal{F}$ is a coherent sheaf on a connected affine scheme $X=\on{Spec}A$, then the following are equivalent:
+	\begin{enumerate}
+		\item $\mcal{F}(X)$ is a finite projective $A$-Mod,
+		\item $\mcal{F}(X)$ is isomorphic to the sheaf of germs of sections of an algebraic vector bundle of base $X$.
+	\end{enumerate}
+\end{thm}
+
+This theorem is a direct implication from Thm. \ref{proj&lf} below after getting familiar with the language of scheme theory.
+
+
+In fact the philosophy can be further generalized and expressed in locally ringed space, and was proved by Morye\cite{Morye2013}. Let $(X,\mcal{O}_X)$ be any ringed space, and $\on{Lfb}(X)$ denote the full subcategory of $\mcal{O}_X$-Mod consisting of locally free $\mcal{O}_X$-modules of bounded rank. And $\on{Fgp}(A)$ denote the category of finite projective $A$-modules in which $A=\Gamma(X,\mcal{O}_X)$, then the Serre-Swan theorem can be stated in terms of ringed space:
+\begin{dfn}
+	Serre-Swan theorem holds for $(X,\mcal{O}_X)$ if the functor 
+	
+	$$
+	\Gamma(X,-):\on{Lfb}(X)\rightarrow\on{Fgp}(\Gamma(X,\mcal{O}_X))
+	$$
+	
+	is well-defined and an equivalence of categories.
+\end{dfn}
+Then it is proved that
+\begin{thm}
+	Let $(X,\mcal{O}_X)$ be a locally ringed space such that each $\mcal{F}$ in $\on{Lfb}(X)$ is acyclic and generated by finite many global sections, then the Serre-Swan theorem holds for $(X,\mcal{O}_X)$.
+\end{thm}
+
+We restate some of the examples in which Serre-Swan's theorem holds:
+\begin{enumerate}
+	\item (Serre's theorem) $(X,\mcal{O}_X)$ is an affine scheme.
+	\item $(X,\mcal{O}_X)$ a ringed space, $X$ is paracompact of bounded topological dimension, and $\mcal{O}_X$ is a fine sheaf.
+		\begin{itemize}
+			\item (Swan's theorem) $(X,\mcal{C}_X)$ in which $X$ is a paracompact topological space with bounded topological dimension, and $\mcal{C}_X$ the sheaf of continuous real-valued functions.
+			\item $(X,\mcal{C}^\infty(\mbb{R}))$ in which $X$ is a real smooth manifold of bounded dimension, $\mcal{C}^\infty(\mbb{R})$ the sheaf of smooth real-valued functions on $X$.
+		\end{itemize}
+	\item $(X,\mcal{O}_X)$ a locally ringed space, in which $X$ is compact.
+	\item $(X,\mcal{O}_X)$ a Stein space.
+\end{enumerate}
+
+
+\subsection{Serre's Conjecture}
+After the correspondence it is natural to think of the most common example $\mbb{A}^r_k=\on{Spec}k[x_1,\cdots,x_r]$. A classical result in topological vector bundles is that every vector bundle on a contractible base space is trivial, hence $k^r$ has no non-trivial bundles, and it is expected $\mbb{A}^r_k$ has the same property. Serre wrote that
+
+\textit{On ignore s'il existe des $A$-moduls projectif de type fini qui ne soient pas libres, ou, ce qui revient au même, s'il existe des espaces fibrés algébraiques à fibres vectorielles, de base $K^r$, et non triviaux.}
+
+This is known as Serre's conjecture, and was proved by Quillen and Suslin in 1976, later Leonid Vaseršteĭn later gave a simpler and much shorter proof of the theorem which is collected in this note.
+
+\section{Proof}
+\subsection{Hilbert-Serre Theorem}
+\begin{thm}[Hilbert-Serre]
+	$k$ is a field and $M$ is a finite projective module over $k[x_1,\cdots,x_n]$, then $M$ is stably free.
+\end{thm}
+This theorem is by Serre\cite{Serre1958} shortly after his conjecture in 1958. To prove this, we need another lemma.
+\begin{lem}\label{lem:PreHSthm}
+	$R$ is Noetherian, that every finite $R$-Mod admits a finite free resolution implies that every finite $R[x]$-Mod admits a finite free resolution.
+\end{lem}
+To see how this lemma implies Hilbert-Serre theorem, it suffices to notice every finite $k$-Mod is free, hence admits a finite free resolution, then every finite $k[x_1,\cdots,x_n]$-Mod admits a finite free resolution by the lemma. In particular, every projective finite $k[x_1,\cdots,x_n]$-Mod admits finite free resolution and is stably free by Thm. \ref{thm:sf&fr}.
+
+\begin{proof}[Proof of Lem. \ref{lem:PreHSthm}]
+	Let $M$ be a finite $R[x]$-Mod, then $R[x]$ is Noetherian and $M$ has a finite filtration
+	$$
+	M=M_0\supsetneqq M_1\supsetneqq\cdots\supsetneqq M_n=0,
+	$$
+	in which $M_{k-1}/M_k\cong R[x]/P_k$ and $P_k\in\on{Spec}R[x]$, now we have $n$ short exact sequences of $R[x]$-Mod,
+	\begin{equation*}
+		\begin{split}
+			0\rightarrow M_n\rightarrow &M_{n-1}\rightarrow R[x]/P_n\rightarrow 0\\
+			&\vdots\\
+			0\rightarrow M_1\rightarrow &M_{0}\rightarrow R[x]/P_1\rightarrow 0
+		\end{split}
+	\end{equation*}
+	
+	To show $M_0=M$ admits a finite resolution, it suffices to show every $R[x]/P_k$ admits a finite free resolution, notice that the following short exact sequence as $R[x]$-Mod,
+	$$
+	0\rightarrow P_k\rightarrow R[x]\rightarrow R[x]/P_k\rightarrow0
+	$$
+	it then suffices to show every $P\in\on{Spec}R[x]$ admits a finite resolution, suppose not, we proceed by contradiction:
+	
+	Let $\mcal{S}$ be all prime ideals which does not admit a finite resolution, if $\mcal{S}$ is not empty, we can take $P\in\mcal{S}$ such that $\mfk{p}=P\cap R$ is a maximal element in $\{P\cap R:P\in\mcal{S}\}$. Let $P'=P/\mfk{p}[x], R'=R/\mfk{p}$, then $P'$ is a $R'[x]$-Mod. Since $P\subset R[x]$, $R[x]$ is Noetherian, $P$ is a finite $R[x]$-Mod, hence $P'$ is finite $R'[x]$-Mod.
+	
+	Take $f_1,\cdots f_n\in R'[x]$ as the generators of $P'$, and also take $f$ to be the polynomial of minimal degree in $P'$, and do factorization in $\on{Frac}(R')[x]$:
+	$$
+	f_i=q_if+r_i, r_i,q_i\in \on{Frac}(R')[x]
+	$$
+	take the common denominator of all $r_i$ and $q_i$ to be $d'\in R'$, since $R'$ is an integral domain ($\mfk{p}$ is prime), we know $d'\neq 0$. Back to $R'[x]$, we thus have $d'f_i=d'q_if+d'r_i, \on{deg}{d'r_i}<\on{deg}{f}$, since the degree of $f$ is minimal, we have $d'f_i=d'q_if$, which means $d'P'\subset fR'[x]\equiv (f)$.
+	
+	Let $N'=P'/(f)$, this is a finite $R'[x]$-Mod, also it can be lifted to a $R[x]$-Mod, denote it by $N$. Now we have a finite filtration $\{N_k'\}$ of $N'$, lift each one to $R[x]$-Mod, we get a finite filtration $\{N_k\}$ of $N$.
+	\begin{equation*}
+		\begin{split}
+			N'=N_0'\supsetneqq N_1'\supsetneqq\cdots\supsetneqq N_r'=0,\\
+			N=N_0\supsetneqq N_1\supsetneqq\cdots\supsetneqq N_r=0,
+		\end{split}
+	\end{equation*}
+	such that $N_{k-1}'/N_k'=R'[x]/Q_k', N_{k-1}/N_k=R[x]/Q_k, Q_k=Q_k'^c$, this can be done because of Lem. \ref{lem:lift}. So $Q_k = Q_k'^c$ shows that $Q_k\supset\mfk{p}[x]$, hence $Q_k\cap R\supset\mfk{p}$. In addition, $d'$ annihilates $N'$, so the representative $d$ of $d'$ in $R$ annihilates $N$. So $d\in\cap\on{Ass}_{R[x]}(N)=\cap Q_k$, the last equality holds by Thm. \ref{minimal}. Also $d'\neq 0$ implies $d\notin\mfk{p}$, so for all $k$, $Q_k\cap R\supsetneqq\mfk{p}$. By the choice of $\mfk{p}$, we know every $Q_k$ admits a finite free resolution, hence $N_{k-1}/N_k\cong R[x]/Q_k$ also does.
+	
+	Notice that these short exact sequences for $N$
+	\begin{equation*}
+		\begin{split}
+			0\rightarrow N_r\rightarrow &N_{r-1}\rightarrow R[x]/Q_r\rightarrow 0\\
+			&\cdots\\
+			0\rightarrow N_1\rightarrow &N_{0}\rightarrow R[x]/Q_1\rightarrow 0
+		\end{split}
+	\end{equation*}
+	so $N=N_0$ admits a finite free resolution.
+	
+	Further, since $\mfk{p}$ is finite $R$-Mod, it admits a finite free resolution by condition:
+	$$
+	0\rightarrow R^{k_m}\rightarrow\cdots\rightarrow R^{k_0}\rightarrow\mfk{p}\rightarrow 0
+	$$
+	Now $R[x]$ is a free $R$-Mod, hence flat, so by tensoring with $R[x]$, we know that $\mfk{p}\otimes R[x]$ admits a finite resolution. But $\mfk{p}\otimes R[x]\cong\mfk{p}[x]$, this is because
+	\begin{equation*}
+		\begin{split}
+			0\rightarrow\mfk{p}\rightarrow &R\rightarrow R/\mfk{p}\rightarrow0\\
+			0\rightarrow\mfk{p}\otimes R[x]\rightarrow &R\otimes R[x]\rightarrow R/\mfk{p}\otimes R[x]\rightarrow0\\
+		\end{split}
+	\end{equation*}
+	is exact, hence $\mfk{p}[x]$ admits a finite free resolution.
+	
+	In addition
+	$$
+	0\rightarrow\mfk{p}[x]\rightarrow R[x]\rightarrow R'[x]\rightarrow0
+	$$
+	is exact as $R[x]$-Mod, so $R'[x]$ as well as $(f)\equiv fR'[x]\cong R'[x]$ admits a finite free resolution. The isomorphism holds because $R'[x]$ is an integral domain.
+	
+	At last, by definition of $N$ and $P$, the sequences
+	\begin{equation*}
+		\begin{split}
+			0\rightarrow(f)\rightarrow P'\rightarrow N\rightarrow0\\
+			0\rightarrow\mfk{p}[x]\rightarrow P\rightarrow P'\rightarrow0\\
+		\end{split}
+	\end{equation*}	
+	are exact, $(f)$ and $N$ admits finite free resolution, so $P'$ does, hence $P$ does, a contradiction!
+	
+	Overall, every $P\in\on{Spec}R[x]$ admits a finite free resolution, hence $M$ does.
+\end{proof}
+	
+\subsection{Quillen-Suslin Theorem}
+Based on the Hilbert-Serre theorem, we only need to prove every stably free module over a polynomial ring is free. Further by Thm. \ref{thm:sf2cplt}, this is equivalent to prove every unimodular row $f=(f_1,\cdots,f_n)$ in $k[x_1,\cdots,x_r]^n$ is completable.
+
+By the definition of completable row, it is easy to see $f$ is completable if and only if there exists $M\in\on{GL}_n(k[x_1,\cdots,x_r])$ such that $fM = (1,0,\cdots,0)$. For two rows $u,v\in R^n$, we write $u\sim v$ if there exists $G\in\on{GL}_n(R)$ such that $v=uG$.
+
+We proceed in four steps:
+\begin{lem}\label{PID}
+	$k$ is a field, $f=(f_1,\cdots,f_n)\in k[x]^n$ is unimodular, then $f$ is completable.
+\end{lem}
+\begin{proof}
+	 To show $f(x)\sim (1,0,\cdots,0)$, we give a constructive proof:
+	 
+	 First, multiplying an invertible matrix of $\on{GL}_n(k[x])$ on a matrix is equivalent to do elementary column transformations on this matrix (this is true in $\on{GL}_n(R)$ when $R$ is an Euclidean domain, but not true in PID).
+	 
+	 In particular, swapping two component of $f$, adding a multiple of a component of $f$ to another component, and multiplying a component by a constant in $k$ these three operations can all be written in the form of multiplying by a invertible matrix on the right and vice versa.
+	 
+	Now if $f(x)$ is unimodular, we have $\on{gcd}(f_1(x),\cdots,f_n(x))=1$, so this guarantees that we can do Euclidean algorithm repeatedly to reduce $f$ to $(1,0,\cdots,0)$.
+	
+	To illustrate the process, take $n=2$, and let $f_1 = qf_2+r$, then
+	$$
+	\mat{f_1 & f_2}\mat{1&0\\-q&1} = \mat{r & f_2}
+	$$
+	now $\on{deg}r<\on{deg}f_1$, repeating the process, $r$ finally becomes $1$ (because $f_1$ and $f_2$ coprime), then
+	$$
+	\mat{1,f_2'}\mat{1&-f_2'\\0&1} = \mat{1 & 0}.
+	$$
+	So we can see that $f=(f_1,f_2)\sim (1,0)$, to be precise, $fM=(1,0)$, in which
+	$$
+	M=\mat{1&0\\-q&1}\mat{1&-f_2'\\0&1}
+	$$
+	
+	As for $n>=2$, the process is similar.
+\end{proof}
+\begin{rmk}
+	In the following, to prove a row is completable, we only need to construct a sequence of row operations to make it into $(1,0,\cdots,0)$.
+\end{rmk}
+
+\begin{thm}[Horrock]\label{thm:local}
+	$(R,\mfk{m})$ is a local ring, $f=(f_1,\cdots,f_n)\in R[x]^n$ is unimodular and has a component with leading coefficient $1$, then $f$ is completable.
+\end{thm}
+\begin{proof}
+	For convenience, denote by $\on{lc}(h)$ the leading coefficient of a polynomial $h$.
+
+	When $n=1$, the only component is invertible and has leading coefficient $1$, hence is $1$.
+	
+	When $n=2$, write $f=(f_1,f_2)$, assume $uf_1+vf_2=1$, then
+	$$
+	(f_1,f_2)\mat{u & -f_2\\v & f_1} = (1,0).
+	$$
+	
+	Assume now $n\geq 3$, we proceed by induction, define
+	$$
+	d=\on{min}\{\on{deg}f_i\mid \on{lc}(f_i)=1, 1\leq i\leq n\},
+	$$
+	and suppose the theorem holds for $d<d_0$, we prove for $d_0$ below:
+	
+	WLOG we assume $\on{deg}f_1=d, \on{lc}(f_1)=1$, using Euclidean algorithm. Now that $f_1$ can be used as a divider in the Euclidean algorithm, we can assume $\on{deg}f_i\leq d_0-1, i\geq 2$ (otherwise write $f_i = q_if_1+r_i$, then subtract $q_if_1$ from $f_i$).
+	
+	Claim: $f_i, i\geq 2$ cannot have all their coefficients in $\mfk{m}$. Suppose not, since $f$ is unimodular, there exists $g_i$, $\sum_{i=1}^nf_ig_i=1$. Passing into $R/\mfk{m}[x]$, we have $\oL{f}_1\oL{g}_1=\oL{1}$, since $f_1$ has leading coefficient $1$, then all the coefficient except the constant term of $g_1$ must be in $\mfk{m}$ and hence $\oL{g}_1=\oL{c}$, contradicting $\oL{f}_1\oL{g}_1=\oL{1}$.
+	
+	So WLOG assume $f_2$ has at least one coefficient $b_i$ not in $\mfk{m}$, hence invertible, write
+	\begin{align*}
+		&f_1=x^{d_0}+a_1x^{d_0-1}+\cdots +a_{d_0},\\
+		&f_2=b_0x^s+\cdots+b_s, b_i\notin\mfk{m}, s\leq d_0-1.
+	\end{align*}
+	
+	The goal now is to find a combination of $f_1,f_2$ with leading coefficient $1$ and degree less than $d_0$. To do this, define an ideal
+	$$
+	\mfk{a}=\{\on{lc}(h)\mid h=g_1f_1+g_2f_2, \on{deg}h<d_0, g_1,g_2\in R[x]\},
+	$$
+	to show $\mfk{a}$ is the whole ring, only need to show $\mfk{a}$ contains all the coefficients of $f_2$. This is achievable by simply playing with the two polynomials, for example $\on{lc}\left(0f_1+x^{d_0-s-1}f_2\right)=b_0$. In fact, let $a_0=1$, in general if we define
+	$$
+	h=-(b_0x^{r-1}+\cdots+b_{r-1})f_1+(a_0x^r+\cdots+a_r)x^{d_0-s-1}f_2, r\leq s,
+	$$
+	then $\on{lc}(h)=b_r$. This can easily be checked by expanding the coefficients.
+	
+	So $f\sim (h,f_2,\cdots, f_n), h=f_1g_1+f_2g_2, \on{deg} h\leq d_0-1$, by induction, $f\sim (1,0,\cdots,0)$ is completable.
+\end{proof}
+\begin{rmk}
+	This theorem in fact generalizes the preceding lemma, allowing the coefficient to be in a local ring rather than a field.
+\end{rmk}
+
+\begin{thm}\label{thm:bivar}
+	$R$ is an integral domain, $S$ a multiplicative set, $f=(f_1,\cdots,f_n)\in R[x]^n$, if $f(x)\sim f(0)$ over $S^{-1}R[x]$, then there exists $c\in S$, $f(x+cy)\sim f(x)$ over $R[x,y]$.
+\end{thm}
+\begin{proof}
+	We start from $f(x)\sim f(0)$, let $M(x)\in\on{GL}_n(S^{-1}R[x])$ such that $f(x)M(x)=f(0)$, so $f(x)M(x)M(x+y)^{-1}=f(x+y)$, write $G(x,y)=M(x)M(x+y)^{-1}$, we see that $G(x,y)$ is a matrix with entries in $S^{-1}R[x,y]$, in addition $G(x,0)=\on{id}$.
+	
+	So $G(x,y)-G(x,0)=yH(x,y)$ in which $H$ is also a matrix with entries in $S^{-1}R[x,y]$, there then exist a element $c\neq 0$ (because $R$ is an integral domain) such that $cH(x,y)$ has coefficients in $R[x,y]$. So $G(x,cy) = \on{id}+cyH(x,cy)$ has all its entries in $R[x,y]$, by definition of $G$, we know
+	$$
+	f(x)G(x,cy)=f(x+cy).
+	$$
+	
+	Now it only suffices to show $G(x,cy)$ is invertible over $R[x,y]$. Since $M(x)\in\on{GL}_n(S^{-1}R[x])$, we know $\on{det}M(x)\in (S^{-1}R)^*$ is a constant, hence the determinant of $G(x,y)$ is identically $1$, hence invertible. Done.
+\end{proof}
+
+\begin{thm}\label{ID}
+	$R$ is an integral domain, $f=(f_1,\cdots,f_n)\in R[x]^n$ is unimodular and has a component with leading coefficient $1$, then $f(x)\sim f(0)$ over $R[x]$.
+\end{thm}
+\begin{proof}
+	Let $J$ be the set of $c\in R$ such that $f(x+cy)\sim f(x)$ over $R[x,y]$, then $J$ is an ideal:
+	
+	If $a,b\in J$, then $f(x+ay+by)\sim f(x+ay)$ over $R[x+ay, y]$ and hence over $R[x,y]$ (Note $\on{GL}_n(R[x+ay,y])\subset\on{GL}_n(R[x,y])$). Further $f(x+ay)\sim f(x)$ over $R[x,y]$, hence $f(x+ay+by)\sim f(x)$ over $R[x,y]$ and $a+b\in J$.
+	
+	If $a\in J, r\in R$, then $f(x+ary)\sim f(x)$ over $R[x,ry]$ and hence over $R[x,y]$ (Note $\on{GL}_n(R[x,ry])\subset\on{GL}_n(R[x,y])$). So $ar\in J$.
+	
+	Claim: $J=R$. By Thm. \ref{thm:local}, $f(x)\sim f(0)$ over $R_\mfk{p}[x]$ for any prime $\mfk{p}$, followed by Thm. \ref{thm:bivar}, we know $f(x)\sim f(x+cy)$ over $R[x,y]$ in which $c\notin \mfk{p}$. Since $c\in J$, $J\not\subset\mfk{p}$. So $J$ is not contained in any maximal ideal and is hence the whole ring, so $1\in J$.
+	
+	Now $f(x+y)M(x,y)=f(x)$, in which $M(x,y)\in\on{GL}_n(R[x,y])$. Note that $M(0,y)$ is the image of $M(x,y)$ under the ring homomorphism $\tilde{\pi}:\on{GL}_n(R[x,y])\rightarrow\on{GL}_n(R[y])$ induced by $\pi:R[x,y]\rightarrow R[y]$, hence $M(0,y)$ is invertible.
+	
+	So by plugging into $x=0$ we get $f(y)\sim f(0)$.
+\end{proof}
+
+With the preceding theorems above, we can use induction to prove Quillen-Suslin theorem:
+\begin{thm}[Quillen-Suslin]
+	If $f=(f_1,\cdots,f_n)\in k[x_1,\cdots,x_r]^n$ is unimodular, then $f$ is completable.
+\end{thm}
+\begin{proof}
+	Use induction on $r$:
+
+	If $r=1$, by Lem. \ref{PID}.
+	
+	If for $r-1$ the theorem already holds, now prove for $r$. Take
+	$$
+	f_1(x_1,\cdots,x_r)=\sum_{(a)\in I} c_{a}x_1^{a_1}\cdots x_r^{a_r}, 0\neq c_a\in k
+	$$
+	we now need a $k$-algebra automorphism to make leading coefficient of $f_1$ (with respect to $x_r$) become $1$. To do this, take $d>\on{max}_{(a)\in I}\{a_i\}$, and let
+	$$
+	y_r = x_r, y_{r-1} = x_{r-1}-x_r^d, y_{r-2}=x_{r-2}-x_r^{d^2},\cdots, y_1=x_1-x_r^{d^{r-1}}.
+	$$
+	Substitute them in to $f_1$, we get
+	$$
+	f_1(y_1,\cdots,y_r)=\sum_{(a)\in I}c_ay_r^{a_r+a_{r-1}d+\cdots+a_1d^{r-1}}+g(y_1,\cdots,y_r),
+	$$
+	in which $g$ does not contain any pure power of $y_r$. Due to the choice of $d$, the degree in the first sum are all distinct, hence non zero. So now the leading coefficient of $f_1$ with respect to $y_r$ is in $k$ and hence invertible. (Note this is the same substitution trick in Noether Normalization Theorem)
+	
+	Now let $R=k[y_1\cdots,y_{r-1}]$, then every $f_i$ can be seen as a polynomial in $R[y_r]$, and $f_1$ has leading coefficient $1$. So by Thm \ref{ID}, $f=(f_1,\cdots, f_n)\sim f(0)$ over $R[y_r]$, i.e. there exists $M\in\on{GL}_n(R[y_r])=\on{GL}_n(k[y_1,\cdots,y_r])\subset\on{GL}_n(k[x_1,\cdots,x_r])$ such that $fM=f(0)\in R=k[y_1,\cdots,y_{r-1}]$.
+	
+	But $f(0)$ is still unimodular and is a polynomial in $r-1$ variables $\{y_1,\cdots,y_{r-1}\}$, so by the induction hypothesis, there exists $N\in\on{GL}_n(k[y_1,\cdots,y_{r-1}])\subset\on{GL}_n(k[x_1,\cdots,x_r])$, such that $f(0)N=(1,0,\cdots,0)$.
+	
+	Hence $f(x)MN = (1,0,\cdots,0)$, in which $MN\in \on{GL}_n(k[x_1,\cdots,x_r])$, done!
+\end{proof}
+
+
+\section*{Acknowledgement}
+  I'd like to thank Prof. Pu Zhang and Prof. Mounir Hajli for their wonderful lectures on algebra, who encouraged and helped me a lot so that I had the confidence and knowledge to read through the whole proof.
+
+% ----------------------------------------------------------------------------------------------------
+\bibliographystyle{alpha}
+\bibliography{../universal-ref}
+\end{document}
+
+

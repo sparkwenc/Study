@@ -1,0 +1,164 @@
+% Documentclass Settings
+	\documentclass[a4paper, twoside]{article}
+	% Margins
+	\usepackage{geometry}
+		\geometry{
+			% showframe,
+			left   = 20mm,
+			right  = 20mm,
+			top    = 20mm,
+			bottom = 20mm
+		}
+
+	% Headers and footers
+	\usepackage{fancyhdr}
+		\pagestyle{fancy}
+		\fancyhf{}
+		\fancyhead[LE, RO]{\thepage}
+		\fancyhead[CE]{\textsc{Cong Wen}}
+		\fancyhead[CO]{\textsc\rightmark}
+
+		\setlength{\headheight}{15pt}
+		\renewcommand\headrulewidth{0pt}
+
+
+
+
+
+
+
+
+\input{../universal-pre}
+
+\title{\tbf{ABS2017}}
+\author{\tbf{Notes} by Cong Wen, 12/2022}
+\date{}
+% Last Updated: July 11, 2022
+
+
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+\begin{abstract}
+	This is my self-use notes\footnote{Last updated on January 19, 2022} on \tbf{On hyperplane sections of K3 surfaces}\cite{ABS2017}. Please reach out if you find anything incorrect.
+
+\end{abstract}
+\tableofcontents
+% ----------------------------------------------------------------------------------------------------
+
+\sct{The vanishing theorem}
+
+The paper generalized a theorem of Wahl\cite{Wahl1997}, characterizing certain BNP curves in terms of Wahl map. Precisely stated as below:
+
+\begin{thm}[Theorem~1.1]
+	Let $C$ be a BNP curve of genus $g\gqs12$, then $C$ lies on a polarized K3 surface (or a limit of which) if and only if its Wahl map is not surjective.
+\end{thm}
+
+To learn the proof, it contains two key parts, the first part proves a vanishing result using $g\gqs12$, the second part uses BNP condition to complete the geometric argument.
+
+\sct{Vanishing of the square of an ideal sheaf}
+
+\begin{thm}[Theorem~1.3]
+	Let $C\sbs\bP^{g-1}$ be a canonically embedded curve of $g\gqs11$ and $\mathrm{Cliff}(C)\gqs3$, then
+	\[
+		\mathrm{H}_{}^{1}(\bP^{g-1},\cI_{C/\bP^{g-1}}^{2}(k))=0,\fal k\gqs3.
+	\]
+\end{thm}
+
+
+First, recall a theorem of Voisin \cite{Voisin1988},
+\begin{thm}[Theorem~2.3]
+	If $\mathrm{Cliff}(C)\gqs3$, $L$ a general element of a component $S$ of $W_{g-2}^{1}(C)$, then
+	\begin{enr}
+		\item $L$ and $K_{C}-L$ are both bpf.
+		\item $\phi_{\sP{K_{C}-L}}$ maps $C$ birationally onto $\Gma\sbe\bP^{2}$ of degree $g$ with only double points as singularities.
+		\item $L$ is BNP.
+	\end{enr}
+\end{thm}
+
+Then, identify $C$ with its canonically embedded curve in $\bP:=\bP^{g-1}$, take some $L$ as above, construct a cubic scroll $C\sbs X\sbs\bP^{g-1}$.
+
+Now, geometrically, $X$ is a cone over the Segre variety $\bP^{1}\tms\bP^{2}\sbs\bP^{5}$ with a $(g-7)$-dimensional vertex $\bP W$.
+
+
+Then the followings are true:
+
+\begin{lem}
+	\begin{enr}
+		\item All quadrics $Q\in \mathrm{H}_{}^{0}(\bP^{g-1},\cI_{X/\bP^{g-1}}(2))$ have rank at most $4$.
+		\item Any $p\in X\bs\bP W$, there is a unique up to a constant factor non-zero quadric $Q_{p}\in \mathrm{H}_{}^{0}(\bP,\cI_{X/\bP}(2))$ which is singular at $p$.
+		\item If a quadric $Q\in \mathrm{H}_{}^{0}(\bP,\cO_{\bP}(2))$ contains $R\cup C$ for some ruling $R\sbs X$ and is singular at a point $p\in C$ with $p\nin R$, then $Q=Q_{p}\in \mathrm{H}_{}^{0}(\bP,\cI_{X/\bP}(2))$.
+	\end{enr}
+\end{lem}
+
+
+
+
+The key part of the paper goes as follows,
+\begin{thm}
+	If $C$ is a BNP curve of genus $g\gqs12$, then $C$ lies on a polarized K3 surface or on a limit thereof if and only if its Wahl map is not surjective.
+\end{thm}
+
+\begin{prp}
+	Let $\oL{S}\sbs\bP^{g}$ be a surface with canonical sections, and $C$ be a general hyperplane section of $\oL{S}$, assume $C$ is BNP of genus $g\gqs12$. Then the following are true.
+	\begin{enr}
+		\item If $S_{0}=\bP(E)$ is ruled over a smooth curve $\Gma$ of genus $\gma$, then $\gma\leq 1$.
+		\begin{enr}
+			\item If $S_{0}=\bP(E)$ is ruled over an elliptic curve $\Gma$, then $e+1\leq h\leq 7$.
+			\item If $S_{0}=\bP(E)$ is ruled over a smooth rational curve $\Gma$, then this minimal model can be replaced by $\bP^{2}$.
+		\end{enr}
+		\item If $S_{0}=\bP^{2}$, then $10\leq h\leq 18$, and $K_{S}^{2}=9-h\gqs-9$.
+	\end{enr}
+\end{prp}
+
+
+One key proposition involved in the computation comes from Epema\cite{Epema1984}.
+
+\begin{prp}[Proposition~9.3]
+	Suppose $S_{0}=\bP(E)$, by replacing $S_{0}$ with another minimal model, the following hold
+	\begin{enr}
+		\item $E=\cO_{\Gma}\op\cO_{\Gma}(D), \Deg D=-e$.
+		\item Either $D\sim-K_{\Gma}$, or $h\gqs1$ and $e>2\gma-2$.
+		\item $\nu_{i}\leq a-1, i=1,\ldots,h$.
+		\item $\sum\nu_{i}=a(e-2\gma+2)$.
+		\item $2g-2=a^{2}e-\sum\nu_{i}^{2}$.
+		\item $2a^{2}(\gma-1)+a(e-2\gma+2)\leq2g-2\leq a^{2}e-a(e-2\gma+2)$.
+		\item $(a-1)h\leq2[g-1-a^{2}(\gma-1)]$ for $a\gqs2$.
+		\item None of the base points of $\sP{C_{0}}$ lie on $\sgm\sbs S_{0}$.
+	\end{enr}
+\end{prp}
+
+\sct{The geometric argument}
+
+\begin{stp}
+	A surface with canonical sections is a projective surface $\oL{S}\sbs\bP^{g}$ with $g\gqs3$ whose general section is a smooth canonical curve of genus $g$. Such surfaces are first studied and classified by Epema, here it is required to be not a cone. Then we have the diagram
+	\[
+		\begin{tikzcd}
+			S_{0} & S\ar[r, "q"]\ar[l, "p"] & \oL{S}\sbs\bP^{g},
+		\end{tikzcd}
+	\]
+	where $q$ is the minimal resolution and $S_{0}$ is a choice of a minimal model of $S$. $S$ is smooth and equipped with a big and nef divisor $C$.
+\end{stp}
+
+In such a case, the strucure theorem is given in Epema's book\cite{Epema1984}:
+\begin{prp}
+	\begin{enr}
+		\item $\oL{S}$ is projectively normal with $h^{0}(-K_{S})=1$.
+		\item $S$ is either a minimal K3 surface or a ruled surface.
+		\item If $\oL{S}$ is not K3, then $S_{0}$ is either $\bP^{2}$ or a $\bP^{1}$-bundle over a smooth genus $\gma$ curve $\Gma$.
+	\end{enr}
+\end{prp}
+
+
+\begin{thm}[Theorem~10.3]
+	If $\oL{S}$ has smoothable singularities then $[\oL{S}]\in\Hilb^{\bP^{g}}$ belongs to $\oL{\cM}$, where $\oL{\cM}$ is the family of non-singular K3 surfaces of degree $2g-2$.
+\end{thm}
+
+
+
+% ----------------------------------------------------------------------------------------------------
+\bibliographystyle{alpha}
+\bibliography{../universal-ref}
+\end{document}
+

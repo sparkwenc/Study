@@ -1,0 +1,1039 @@
+% Last Updated: March 28, 2023
+	\documentclass[a4paper, twoside]{article}
+	% Margins
+	\usepackage{geometry}
+		\geometry{
+			% showframe,
+			left   = 20mm,
+			right  = 20mm,
+			top    = 20mm,
+			bottom = 20mm
+		}
+
+	% Headers and footers
+	\usepackage{fancyhdr}
+		\pagestyle{fancy}
+		\fancyhf{}
+		\fancyhead[LE, RO]{\thepage}
+		\fancyhead[CE]{\textsc{Cong Wen}}
+		\fancyhead[CO]{\textsc\rightmark}
+
+		\setlength{\headheight}{15pt}
+		\renewcommand\headrulewidth{0pt}
+
+
+
+
+
+
+
+
+\input{../universal-pre}
+
+\title{\tbf{Cohomology of algebraic varieties}}
+\author{Cong Wen, 09/2023}
+\date{}
+% Last Updated: March 28, 2023
+
+
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+\begin{abstract}
+	This is my self-use notes\footnote{Last updated on September 25, 2023} to understand \tbf{Cohomology of algebraic varieties}.
+
+	Please reach out if you find anything incorrect.
+\end{abstract}
+\tableofcontents
+% ----------------------------------------------------------------------------------------------------
+
+
+\sct{Outline}
+
+
+\prg{Ultimate goal} Develope whatever is needed to compute explicitly the cohomology of algebraic varieties as envisioned in Scholze's ICM report\cite{Scholze2017ICM}.
+
+
+
+To start with {\'e}tale cohomology, use \cite{Milne1980,Huber1996,Scholze2017Diamonds}
+
+\sct{Fundamentals}
+
+
+
+\begin{thm}[Zariski's main theorem]
+  If a scheme $X$ is quasi-compact, then any separated quasi-finite morphism $f:Y\ar X$ factors via
+  \[
+    \begin{tikzcd}
+      Y\ar[r, "f'"] & Y'\ar[r, "g"] & X,
+    \end{tikzcd}
+  \]
+  in which $f'$ is an open immersion, $g$ is finite.
+\end{thm}
+
+\begin{thm}[Openness of flat locus]
+  Let $f:Y\ar X$ be locally of finite type, then the set of points $y\in Y$ such that $\cO_{y}$ is flat over $\cO_{f(y)}$ is open, and non-empty if $X$ is integral.
+\end{thm}
+
+\begin{thm}[fpqc descent]
+  Let $f:Y\ar X$ be faithfully flat and quasi-compact. The following are the same
+  \begin{itm}
+    \item To give a scheme $Z$ affine over $X$ (resp. quasi-coherent $\cO_{X}$-module $M$).
+    \item To give a scheme $Z'$ affine over $Y$ (resp. quasi-coherent $\cO_{Y}$-module $M'$), together with an isomorphism $\phi:\pr_{1}\xS Z'\ar\pr_{2}\xS Z'$ (resp. $\phi:\pr_{1}\xS M'\ar\pr_{2}\xS M'$), such that
+    \[
+      \pr_{31}\xS(\phi)=\pr_{32}\xS(\phi)\pr_{21}\xS(\phi).
+    \]
+  \end{itm}
+\end{thm}
+
+\begin{thm}[Topological invariance of {\'e}tale morphisms]
+  Let $X_{0}$ be the closed subscheme of a scheme $X$ defined by a nilpotent ideal, then there is an equivalence of categories
+  \[
+    \begin{tikzcd}
+      \bmat{\text{{\'e}tale $X$-schemes}}\ar[r, leftrightarrow] & \bmat{\text{{\'e}tale $X_{0}$-schemes}} \\
+      Y\ar[r, mapsto] & Y_{0}=Y\tms_{X}X_{0}
+    \end{tikzcd}
+  \]
+\end{thm}
+
+\begin{thm}[Geometric characterization of Henselian]
+  Let $A$ be a local ring, $x\in\Spec A$ the closed point. Then the following are equivalent.
+  \begin{enr}
+    \item $A$ is Henselian.
+    \item If $f:Y\ar X$ is quasi-finite and separated, then
+    \[
+      Y=Y_{0}\sqcup Y_{1}\sqcup\cdots\sqcup Y_{n},
+    \]
+    with $f(Y_{0})$ does not contain $x$, $Y_{i}, i\gqs1$ finite over $X$ and is the spectrum of a local ring.
+    \item If $f:Y\ar X$ is {\'e}tale and there is a point $y\in Y$ such that $f(y)=x, \kpa(y)=\kpa(x)$, then $f$ has a section $s:X\ar Y$.
+  \end{enr}
+\end{thm}
+
+\begin{thm}
+  If $A$ is a Henselian local ring with residue ring $k$, there is an equivalence of categories
+  \[
+    \begin{tikzcd}
+      \bmat{\text{finite {\'e}tale $A$-algebras}}\ar[r, leftrightarrow] & \bmat{\text{finite {\'e}tale $k$-algebras}} \\
+      B\ar[r, mapsto] & B\ot_{A}k
+    \end{tikzcd}
+  \]
+\end{thm}
+
+\begin{thm}[Algebraic fundamental group]
+  Let $\oL{x}$ be a geometric point of the connected scheme $X$, there is an equivalence of categories
+  \[
+    \begin{tikzcd}
+      \bmat{\text{finite {\'e}tale $X$-schemes}}\ar[r, leftrightarrow] & \bmat{\text{$\pi_{1}(X,\oL{x})$-sets}} \\
+      Y\ar[r, mapsto] & \Hom_{X}(\oL{x}, Y)
+    \end{tikzcd}
+  \]
+  in which $\pi_{1}(X,\oL{x})$ acts continuously on the left of $\Hom_{X}(\oL{x},Y)$.
+\end{thm}
+
+\begin{thm}[Geometric characterization of Galois]
+  Let $K$ be a field, $X=\Spec K$, fix a separable closure $K^{s}$ of $K$, (resp. fix a geometric point $\oL{x}\ahr X$), $G=\Gal(K^{s}/K)=\pi_{1}(X,\oL{x})$ the absolute Galois group of $K$, there is an equivalence of categories
+  \[
+    \begin{tikzcd}
+      \bmat{\text{sheaves on $X_{\text{{\'e}t}}$}}\ar[r, leftrightarrow] & \bmat{\text{discrete $G$-modules}} \\
+      \cF\ar[r, mapsto] & M_{\cF}=\ilim_{\Spec K'}\cF(\Spec K') \\
+      \cF_{M}, \cF_{M}(\Spec K')=M^{\Gal(K^{s}/K')} & M\ar[l, mapsto]
+    \end{tikzcd}
+  \]
+\end{thm}
+
+\begin{thm}[Decomposition]
+  Let $X$ be a scheme, $U\ahr X$ an open subscheme, $Z$ the subscheme with underlying topological space $X-U$, denote the inclusions
+  \[
+    \begin{tikzcd}
+      Z\ar[r, hook, "i"] & X & U\ar[l, hook, "j"],
+    \end{tikzcd}
+  \]
+  Denote by $\BS(X_{\text{{\'e}t}})$ the category of sheaves on the {\'e}tale site of $X$, $\BT(X)$ the category of triples $(\cF_{1},\cF_{2},\phi), \cF_{1}\in\BS(Z_{\text{{\'e}t}}), \cF_{2}\in\BS(U_{\text{{\'e}t}}), \phi:\cF_{1}\ar i\xS j\zS \cF_{2}$. Let $\cF\in\BS(X)$, the canonical isomorphism $\Hom(j\xS\cF,j\xS\cF)\cong\Hom(\cF,j\zS j\xS\cF)$ gives a morphism $\phi_{\cF}:i\xS\cF\ar i\xS j\zS j\xS\cF$.
+
+  There is an equivalence of categories,
+  \[
+    \begin{tikzcd}
+      \BS(X_{\text{{\'e}t}})\ar[r, leftrightarrow] & \BT(X) \\
+      \cF\ar[r, mapsto] & (i\xS\cF, j\xS\cF, \phi_{\cF})
+    \end{tikzcd}
+  \]
+\end{thm}
+
+\begin{thm}[Six functors]
+  Use the identification above, the six functors can be explicitly written,
+  \[
+    \begin{tikzcd}
+      \BS(Z_{\text{{\'e}t}}) & \BS(X_{\text{{\'e}t}})\ar[r, equal] & \BT(X) & \BS(U_{\text{{\'e}t}}) \\
+      \cF_{1} & \ar[l, mapsto, "i\zS"](\cF_{1},\cF_{2},\phi) & (0,\cF_{2},0) & \cF_{2}\ar[l, mapsto, "j\zE"] \\
+      \cF_{1}\ar[r, mapsto, "i\zS"] & (\cF_{1},0,0) & (\cF_{1},\cF_{2},\phi)\ar[r, mapsto, "j\xS"] & F_{2} \\
+      \Ker\phi & \ar[l, mapsto, "i\xE"](\cF_{1}, \cF_{2}, \phi) & (i\xS j\zS\cF_{2}, \cF_{2}, \Id) & \cF_{2}\ar[l, mapsto, "j\zS"]
+    \end{tikzcd}
+  \]
+  they satisfies the following:
+  \begin{enr}
+    \item Each functor is left adjoint to the one below it.
+    \item $i\xS, i\zS, j\zE, j\xS$ are exact, $i\xE, j\zS$ are left exact.
+    \item $i\zS, j\zS$ are fully faithful, and for $\cF\in\BS(X_{\text{{\'e}t}})$, $\Supp\cF\sbs Z \iff \cF=i\zS\cF_{1}$ for some $\cF_{1}\in\BS(Z_{\text{{\'e}t}})$.
+    \item $i\zS, i\xE, j\xS, j\zS$ preserve injective objects.
+  \end{enr}
+\end{thm}
+\begin{exg}[Nearby cycle sheaf]
+  If $K$ is a local field with ring of integers $\cO$, with algebraic closure $\oL{K}$ and ring of integers $\oL{\cO}$. Then $\Spec\oL{\cO}=\{\oL{s},\oL{\eta}\}$, $Z=\{\oL{s}\}$ and $U=\{\oL{\eta}\}$. Let $X\ar\Spec\cO$ a separated scheme of finite type, its geometric special fiber $X_{\oL{s}}$ and geometric generic fiber $X_{\oL{\eta}}$ fits in the diagram, by abuse of notation,
+  \[
+    \begin{tikzcd}
+      X_{\oL{s}}\ar[r, hook, "\oL{i}"]\ar[d] & X_{\cO}\ar[d] & \ar[d]X_{\oL{\eta}}\ar[l, hook', "\oL{j}"'] \\
+      \{\oL{s}\}\ar[r, hook, "\oL{i}"] & \Spec\oL{\cO} & \{\oL{\eta}\}\ar[l, hook', "\oL{j}"']
+    \end{tikzcd}
+  \]
+  For a $\oL{\bQ_{\ell}}$-sheaf $\cF$ on the generic fiber $X_{\eta}$, its \tbf{nearby cycle sheaf} is defined on $X_{\oL{s}}$
+  \[
+    R^{k}\psi\cF=\oL{i}\xS R^{k}\oL{j}\zS\cF_{\oL{\eta}}.
+  \]
+\end{exg}
+
+\begin{thm}[Grothendieck/Leray spectral sequence]
+  Fix a site $\Sch_{E}$, $E\in\{\text{{\'e}t, Zar, fl, \ldots}\}$,
+  \begin{enr}
+    \item Any continuous $\pi:X_{E}\ar S_{E}$ and a sheaf $\cF\in\BS(X_{E})$ give rise to
+    \[
+      \mathrm{H}_{}^{p}(S_{E}, R^{q}\pi\zS\cF)\aoR \mathrm{H}_{}^{p+q}(X_{E},\cF).
+    \]
+    \item Any continuous $f:X_{E}\ar Y_{E}, g:Y_{E}\ar Z_{E}$ and a sheaf $\cF\in\BS(X_{E})$ gives rise to
+    \[
+      (R^{p}g\zS)(R^{q}f\zS)\cF\aoR R^{p+q}(g\cc f)\zS\cF.
+    \]
+  \end{enr}
+\end{thm}
+
+\begin{thm}[Local-global spectral sequence]
+	Any $\cF,\cG\in\BS(X_{E})$ gives rise to
+	\[
+		\mathrm{H}_{}^{p}(X_{E},\uL{\mathrm{Ext}}^{q}(\cF,\cG))\aoR\mathrm{Ext}^{p+q}(\cF,\cG).
+	\]
+\end{thm}
+
+\begin{thm}[Excision]
+  Let $Z\sbs X, Z'\sbs X'$ be closed subschemes, $\pi:X'\ar X$ an {\'e}tale morphism such that
+  \begin{enr}
+    \item $\pi|_{Z'}:Z'\ar Z$ is an isomorphism,
+    \item $\pi(X'-Z')\sbs X-Z$,
+  \end{enr}
+  then $\mathrm{H}_{Z}^{k}(X,\cF)\ar \mathrm{H}_{Z'}^{k}(X',\pi\xS\cF)$ is an isomorphism for all $k\gqs0,\cF\in\BS(X_{\text{{\'e}t}})$.
+\end{thm}
+
+\begin{thm}[Hochschild-Serre spectral sequence]
+  $\pi:Y\ar X$ a finite Galois covering with Galois group $G$ and a sheaf $\cF\in\BS(X_{\text{{\'e}t}})$ give rise to
+  \[
+    \mathrm{H}_{}^{p}(G, \mathrm{H}_{}^{q}(Y_{\text{{\'e}t}}, \cF))\aoR \mathrm{H}_{}^{p+q}(X_{\text{{\'e}t}}, \cF).
+  \]
+\end{thm}
+
+\begin{thm}[Flat/{\' E}tale versus Zariski]
+  Let $f:X_{\text{fl}}\ar X_{\text{Zar}}$ (resp. $f:X_{\text{{\'e}t}}\ar X_{\text{Zar}}$) be the continuous morphism induced by identity and $\cF$ a quasi-coherent $\cO_{X}$-module, recall $W(\cF)(U):=\Gma(U,\cF\ot_{\cO_{X}}\cO_{U})$ for any flat, locally of finite type (resp. {\'e}tale, finite type) $U\ar X$. There exists canonical isomorphisms
+  \begin{align*}
+    \mathrm{H}_{}^{k}(X_{\text{Zar}}, \cF) &\ar \mathrm{H}_{}^{k}(X_{\text{fl}}, W(\cF)), \\
+    \mathrm{H}_{}^{k}(X_{\text{Zar}}, \cF) &\ar \mathrm{H}_{}^{k}(X_{\text{{\'e}t}}, W(\cF)).
+  \end{align*}
+\end{thm}
+
+\begin{thm}[Flat versus {\' E}tale]
+  Let $G$ be a smooth, quasi-projective commutative group scheme over $X$, there exists canonical isomorphisms
+  \[
+    \mathrm{H}_{}^{k}(X_{\text{{\'e}t}}, G)\ar \mathrm{H}_{}^{k}(X_{\text{fl}}, G).
+  \]
+\end{thm}
+
+\begin{thm}[{\' E}tale versus Betti]
+  Let $X$ be smooth over $\bC$, then any finite abelian group $M$ gives
+  \[
+    \mathrm{H}_{}^{k}(X(\bC), M)\cong \mathrm{H}_{}^{k}(X_{\text{{\'e}t}}, M).
+  \]
+\end{thm}
+
+\begin{dfn}[Torsors]
+  Let $G$ be a flat group scheme locally of finite type acting on a scheme $X$, both schemes are over $S$, the following are equivalent,
+  \begin{itm}
+    \item $X$ is faithfully flat and locally of finite type over $S$, and $X\tms_{S}G\ar X\tms_{S}X, (x,g)\amt(x,xg)$ is an isomorphism.
+    \item There is a covering $(U_{i}\ar S)$ for $S_{\text{fl}}$ such that each $U_{i}$ is isomorphic with its $G_{U_{i}}$-action to $G_{U_{i}}$.
+  \end{itm}
+  Such a scheme $X$ is called a \tbf{$G$-torsor} over $S$. Moreover a sheaf $X$ on $S_{\text{fl}}$ is called a \tbf{$G$-torsor} if the second conditions is satisfied.
+\end{dfn}
+\begin{rmk}
+  The second condition says every $G$-torsor is locally trivial for the flat topology. Moreover, if $G$ is smooth/{\'e}tale/proper/... over $S$, then so is any $G$-torsor by fpqc descent and the flat locally triviality.
+\end{rmk}
+
+\begin{thm}[Hilbert's 90]
+  The following maps are isomorphisms
+  \[
+   \Pic X=\mathrm{H}_{}^{1}(X_{\text{Zar}}, \cO_{X}\xT) \ar \mathrm{H}_{}^{1}(X_{\text{{\'e}t}}, \bG_{m}) \ar \mathrm{H}_{}^{1}(X_{\text{fl}}, \bG_{m}).
+  \]
+\end{thm}
+
+\begin{thm}[Kummer/Artin-Schreier sequence]
+  For any scheme $X$ and integer $n$, the Kummer sequence is given
+  \[
+    \begin{tikzcd}
+      & 0\ar[r] & \mu_{n}\ar[r] & \bG_{m}\ar[r, "n"] & \bG_{m}\ar[r] & 0 & \\
+      0\ar[r] & \mu_{n}(X)\ar[r] & \Gma(X,\cO_{X})\xT\ar[r, "n"] & \Gma(X,\cO_{X})\xT\ar[r] & \mathrm{H}_{}^{1}(X,\mu_{n})\ar[r] & \Pic X\ar[r, "n"] & \Pic X
+    \end{tikzcd}
+  \]
+  For any scheme $X$ of characteristic $p$, the Artin-Scheier sequence is given
+  \[
+    \begin{tikzcd}
+      0\ar[r] & \uL{\bZ/p\bZ}\ar[r] & \cO_{X}\ar[r, "F-1"] & \cO_{X}\ar[r] & 0 \\
+      \Gma(X,\cO_{X})\ar[r, "F-1"] & \Gma(X,\cO_{X})\ar[r] & \mathrm{H}_{}^{1}(X,\uL{\bZ/p\bZ})\ar[r] & \mathrm{H}_{}^{1}(X,\cO_{X})\ar[r, "F-1"] & \mathrm{H}_{}^{1}(X,\cO_{X})
+    \end{tikzcd}
+  \]
+\end{thm}
+  \red{Can I recover the traditional statement of Kummer/Artin-Schreier theory fomr this?}
+
+\begin{thm}[Infinitesimal covering]
+  The exact sequence of sheaves on $X_{\text{fl}}$,
+  \[
+    \begin{tikzcd}
+      0\ar[r] & \afa_{p}\ar[r] & \bG_{a}\ar[r, "F"] & \bG_{a}\ar[r] & 0
+    \end{tikzcd}
+  \]
+  induces a cohomology sequence
+  \[
+    \begin{tikzcd}
+      0\ar[r] & \Gma(X,\cO_{X})/\Gma(X,\cO_{X})^{p}\ar[r] & \mathrm{H}_{}^{1}(X_{\text{fl}},\afa_{p})\ar[r] & \mathrm{H}_{}^{1}(X,\cO_{X})\ar[r, "F"]\ar[r] & \mathrm{H}_{}^{1}(X,\cO_{X}).
+    \end{tikzcd}
+  \]
+\end{thm}
+
+\begin{thm}[Cartier operator]
+  Let $X$ be a smooth projective variety over a perfect field $k$ of characteristic $p$, then there are exact sequences on $X_{\text{{\'e}t}}$.
+  \[
+    \begin{tikzcd}
+      0\ar[r] & \cO_{X}\ar[r, "F"] & \cO_{X}\ar[r, "\dif{}"] & \dif{\Oga_{X}^{1}}\ar[r, "C"] & \Oga_{X}^{1}\ar[r] & 0 \\
+      0\ar[r] & \cO_{X}\xT\ar[r, "F"] & \cO_{X}\xT\ar[r, "\dif{\log}"] & \dif{\Oga_{X}^{1}}\ar[r, "C-\Id"] & \Oga_{X}^{1}\ar[r] & 0 \\
+    \end{tikzcd}
+  \]
+  Moreover, we have
+  \begin{align*}
+    \mathrm{H}_{}^{1}(X_{\text{fl}}, \afa_{p})&=\{\oga\in \mathrm{H}_{}^{0}(X,\Oga_{X}^{1})\mid \dif{\oga}=0, C\oga=0\} \\
+    \mathrm{H}_{}^{1}(X_{\text{fl}}, \mu_{p})&=\{\oga\in \mathrm{H}_{}^{0}(X,\Oga_{X}^{1})\mid \dif{\oga}=0, C\oga=\oga\}
+  \end{align*}
+\end{thm}
+
+\begin{dfn}[Azumaya algebra]
+  Let $X$ be a scheme, an $\cO_{X}$-algebra $A$ is called an Azumaya algebra over $X$ if it is coherent as an $\cO_{X}$-module and for all closed point $x$ of $X$, $A_{x}$ is an Azumaya algebra over $\cO_{X,x}$.
+\end{dfn}
+
+\begin{thm}[Characterization of Azumaya algebra]
+  Let $X$ be a scheme, $A$ be an $\cO_{X}$-algebra of finite type. Then the following are equivalent,
+  \begin{enr}
+    \item $A$ is an Azumaya algebra over $X$,
+    \item $A$ is locally free as an $\cO_{X}$-module, $A_{x}\ot\kpa(x)$ is a central simple algebra over $\kpa(x)$ for all $x$ of $X$,
+    \item $A$ is locally free as an $\cO_{X}$-module, $A\ot_{\cO_{X}}A^{\text{op}}\ar\uL{\End}_{\cO_{X}}(A)$ is an isomorphism.
+  \end{enr}
+\end{thm}
+
+\begin{thm}[Brauer group and cohomological Brauer group]
+  There is a canonical injection
+  \[
+    \Brr(X)\ar \mathrm{H}_{}^{2}(X_{\text{{\'e}t}}, \bG_{m})=\Brr'(X).
+  \]
+
+  If $X$ is quasi-compact, $\gma\in\Brr'(X)$, then there exists an open $U\sbs X$ with $\Cdm(X-U)>1$ such that $\gma|_{U}$ comes from $\Brr(U)$. Moreover if $X$ is regular, $U$ can be taken such that $\Cdm(X-U)>2$, if $X$ is smooth affine, $U$ can be taken to be $X$.
+\end{thm}
+
+\begin{dfn}
+  Say a sheaf $\cF\in\BS(X_{\text{{\'e}t}})$ is \tbf{finite} if $\cF(U)$ is finite for all quasi-compact $U$, say it has \tbf{finite stalks} if $\cF_{\oL{x}}$ is finite for all geometric points $\oL{x}$ of $X$.
+\end{dfn}
+
+\begin{rmk}
+  A sheaf may be finite without having finite stalks and conversely.
+\end{rmk}
+
+\begin{thm}
+  Let $\cF\in\BS(X_{\text{{\'e}t}})$, then $\cF$ is represented by a unique locally separated algebraic space $\oT{\cF}$ which is {\'e}tale over $X$.
+
+  Moreover if it is locally constant, then it having finite stalks implies it is finite and is represented by a group scheme $\oT{\cF}$ which is finite and {\'e}tale over $X$.
+\end{thm}
+
+\begin{dfn}[Algebraic space]
+  A sheaf $\cF$ on $X_{\text{{\'e}t}}$ is an \tbf{algebraic space} if there is an equivalence relation
+  \[
+    \begin{tikzcd}
+      R\ar[r, shift left=1, "i_{1}"]\ar[r, shift right=1, "i_{2}"'] & U,
+    \end{tikzcd}
+  \]
+  and a map $u:U\ar \cF$ such that $i_{1},i_{2}$ are surjective and {\'e}tale, $R\ar U\tms_{X}U$ is quasi-compact, and $\cF$ is identified with $U/R$ via $u$.
+\end{dfn}
+
+\begin{thm}[Representability of {\'e}tale sheaf]
+  Any sheaf $\cF\in\BS(X_{\text{{\'e}t}})$ is represented by a unique locally separated algebra space $\oT{F}$ which is {\'e}tale over $X$.
+\end{thm}
+
+\begin{thm}[Contructible sheaf]
+  Let $\cF\in\BS(X_{\text{{\'e}t}})$, the following are equivalent,
+  \begin{enr}
+    \item $\cF$ is constructible.
+    \item Every irreducible closed subscheme $Z$ of $X$ contains a non-empty open subscheme $U$ such that $\cF|_{U}$ is locally constant and has finite stalks.
+    \item Every quasi-compact open $U\sbs X$ is a finite union of locally closed subschemes $U=\cup_{i}Z_{i}$ such that $\cF|_{Z_{i}}$ is finite and $\cF|_{Z_{i}'}$ is constant for some finite {\'e}tale $Z'\ar Z$.
+    \item For any $x\in X$, $\oT{\cF}_{x}:=\oT{\cF}\tms_{\cF}\Spec \kpa(x)$ is a finite algebraic space over $\kpa(x)$, and $x\amt h(x)$ is a constructible function.
+  \end{enr}
+\end{thm}
+
+\begin{dfn}[$\ell$-adic sheaf]
+  Let $\ell$ be a prime, an \tbf{$\ell$-adic sheaf} on $X_{\text{{\'e}t}}$ is a projective system $\cF=(\cF_{n})_{n\in\bN}$ of sheaves such that each $\cF_{n+1}\ar\cF_{n}$ induces an isomorphism $\cF_{n+1}/\ell^{n}\cF_{n+1}\cong\cF_{n}$. And $\mathrm{H}_{}^{k}(X,\cF):=\plim_{n}\mathrm{H}_{}^{k}(X,\cF_{n})$. An $\ell$-adic sheaf $\cF$ is \tbf{constructible/locally constant} if each $\cF_{n}$ is, $\cF$ is \tbf{lisse} if it is both constructible and locally constant.
+\end{dfn}
+
+\begin{thm}[Poincar{\'e} duality]
+  Let $X$ be a smooth projective curve over a algebraically closed field $k$, $n$ an integer prime to $\Char k$, then
+  \begin{enr}
+    \item For any non-empty open subscheme $U\sbs X$, there is a canonical isomorphism
+    \[
+      \eta(U):\mathrm{H}_{c}^{2}(U,\mu_{n})\ar\bZ/n\bZ.
+    \]
+    \item For any constructible sheaf $\cF$ of $\bZ/n\bZ$-modules on such $U$, the groups $\mathrm{H}_{c}^{k}(U,\cF),\mathrm{Ext}_{U}^{k}(\cF,\mu_{n})$ are finite for all $k$ and zero for $k>2$, the following canonical pairings are nondegenerate.
+    \[
+      \mathrm{H}_{c}^{k}(U,\cF)\tms \mathrm{H}_{U}^{2-k}(\cF,\mu_{n})\ar \mathrm{H}_{c}^{2}(U,\mu_{n})\cong\bZ/n\bZ.
+    \]
+  \end{enr}
+\end{thm}
+
+\begin{thm}[Lefschetz trace formula]
+  Let $X$ be a smooth projective curve over a algebraically closed field $k$, $\phi:X\ar X$ a non-constant morphism and $(\Gma_{\phi}.\Dta)$ the algebraic number of fixed points of $\phi$, then for $\ell\neq\Char(k)$,
+  \[
+    (\Gma_{\phi}.\Dta)=\sum_{k}(-1)^{k}\Trc_{\ell}^{k}(\phi).
+  \]
+\end{thm}
+
+\begin{thm}[Euler-Poincar{\'e} characteristic and conductors]
+  Let $X$ be a smooth projective curve over a algebraically closed field $k$ of genus $g$, then for any constructible $\bF_{\ell}$-module $\cF$ on $X$, for any $\ell\neq \Char k$, we have
+  \[
+    \chi(X,\cF):=\sum_{k}(-1)^{k}\Dim \mathrm{H}_{}^{k}(X,\cF)=(2-2g)\Dim\cF_{\oL{\eta}}-\sum_{x\in X^{0}}c_{x}(\cF).
+  \]
+\end{thm}
+
+\begin{stp}
+  Next consider a smooth complete (hence projective) surface $X$ over an algebraically closed field $k$.
+\end{stp}
+
+\begin{thm}[Existence of Lefschetz pencils]
+  There exists a surface $\oT{X}$ which is obtained by blowing up finite number of points of $X$, and a proper flat morphism $\pi:\oT{X}\ar\bP^{1}$ satisfying the Lefschetz condtion: $\pi$ admits a section, the generic fiber of $\pi$ is a smooth curve, and closed fibers has at most a single node singularity.
+\end{thm}
+
+\begin{thm}[Cohomology of Lefschetz pencil]
+  Let $S$ be a smooth curve over $k$ with generic fiber $i:\eta\ar S$, $\pi:X\ar S$ satisfies the Lefschetz condition above, $T$ the set of points of $S$ such that $X_{s}$ is singular. Then for any $\Char k\nmid n$,
+  \begin{enr}
+    \item For any geometric point $\oL{s}$, the following are isomorphisms
+    \[
+      (R^{k}\pi\zS \mu_{n})_{\oL{s}}\ar \mathrm{H}_{}^{k}(X_{\oL{s}},\mu_{n}), R^{k}\pi\zS\mu_{n}\ar i\zS i\xS R^{k}\pi\zS\mu_{n}.
+    \]
+    \item We have
+    \[
+      R^{k}\pi\zS \mu_{n}=\begin{cases}
+        \mu_{n} & k=0 \\
+        \bZ/n\bZ  & k=2 \\
+        0    & k>2
+      \end{cases}.
+    \]
+    And $\cF=R^{1}\pi\zS \mu_{n}$ is constructible, $\cF|_{S-T}$ is locally constant.
+  \end{enr}
+  Moreover,
+  \[
+    \cF_{s}=\begin{cases}
+      0 & s\in T \\
+      (\uL{\bZ/n\bZ})^{2p_{a}(X_{\eta})-1} & s\nin T
+    \end{cases}.
+  \]
+\end{thm}
+
+\begin{thm}[Pushforward of blowup]
+  Let $\Bup:X'\ar X$ be the blowing up at a closed point $i:p\ahr X$, then
+  \[
+    R^{k}\Bup\zS \mu_{n}=\begin{cases}
+      \mu_{n} & k=0 \\
+      i\zS\uL{\bZ/n\bZ} & k=2 \\
+      0 & k=1, k>2
+    \end{cases}.
+  \]
+\end{thm}
+
+\begin{thm}[Relation of Chern numbers]
+  Let $X$ be as above, we have
+  \[
+    \chi(X_{\text{{\'e}t}},\ell)=c_{2}(X)=12\chi(X,\cO_{X})-c_{1}(X)^{2}.
+  \]
+\end{thm}
+
+\begin{thm}[Picard-Lefschetz formula]
+  There exists a unit $\lda_{X}\in (\lda_{X}(n))\in\plim_{p\nmid n}\bZ/n\bZ$ such that $\fal \sgm\in I_{s}, \gma\in\cF(-1)_{\oL{\eta}}$,
+  \[
+    \sgm(\gma)=\gma-\lda_{X}(n)\vep_{s}(\sgm)(\gma.\dta_{s})\dta_{s}.
+  \]
+\end{thm}
+
+\begin{thm}[Conjugacy of vanishing cycles]
+  For any $\dta_{s},\dta_{s'}$ of vanishing cycles, there is a $\sgm\in\pi_{1}^{t}(\bP^{1}-T,\oL{\eta})$ such that $\sgm\dta_{s}=\pm \dta_{s'}$.
+\end{thm}
+
+\begin{thm}[Computation for Lefschetz pencil]
+  If $\pi:X\ar \bP^{1}$ is a Lefschetz pencil with irreducible fibers and $\Char k\nmid n$, denote by $T\sbs\bP^{1}$ the set over which fibers of $\pi$ are singular, $\gma_{E},\gma_{F}$ the cohomology classes of a section and a smooth fiber, and $\pi_{1}^{t}=\pi_{1}^{t}(\bP^{1}-T, \oL{\eta})$. Let $\Lda=\bZ/n\bZ, \Char k\nmid n$ or $\bZ_{\ell},\bQ_{\ell}, \ell\neq\Char k$, then
+  \[
+    \mathrm{H}_{}^{k}(X,\Lda(1))=\begin{cases}
+      \Lda(1) & k=0 \\
+      ... &
+    \end{cases}.
+  \]
+
+  Moreover $\mathrm{H}_{}^{0}(X,\Lda)=\Lda= \mathrm{H}_{}^{4}(X,\Lda)$. And $\mathrm{H}_{}^{1}(X,\Lda),\mathrm{H}_{}^{2}(X,\Lda)/(\sA{\gma_{E}}\op\sA{\gma_{F}}), \mathrm{H}_{}^{3}(X,\Lda)$ are the cohomology of the complex
+  \[
+    \begin{tikzcd}
+      \cF_{\oL{\eta}}\ar[r, "\afa"] & \Lda^{t}\ar[r, "\bta"] & \cF_{\oL{\eta}} \\
+      \gma\ar[r, maps to] & ((\gma.\dta_{1}),\ldots, (\gma.\dta_{t})) & \\
+      & (a_{1},\ldots,a_{t})\ar[r, maps to] & a_{1}\dta_{1}+\cdots+a_{t}\sgm_{1}\cdots\sgm_{t-1}(\dta_{t}).
+    \end{tikzcd}
+  \]
+\end{thm}
+
+\begin{thm}[Finite generation of N{\'e}ron-Severi group]
+  With notations above, the N{\'e}ron-Severi group
+  \[
+    \NS(X):=\Pic(X)/\Pic^{0}(X)
+  \]
+  is finitely generated.
+\end{thm}
+
+\begin{thm}[Castelnuovo's criterion]
+  $X$ is rational if and only if $P_{2}(X)=p_{a}(X)=0$.
+\end{thm}
+
+\begin{thm}[Cohomological dimension]
+  Let $X$ be a scheme of finite type over a separably closed field $k$, then
+  \[
+    \Cd_{\ell}(X_{\text{{\'e}t}})\lqs2\Dim(X).
+  \]
+\end{thm}
+
+\begin{thm}[Finiteness]
+  If $\pi:Y\ar X$ is proper and $\cF$ is a constructible sheaf on $(\Sch/Y)_{\text{{\'e}t}}$, then $R^{k}\pi\zS\cF, k\gqs0$ is a constructible sheaf on $(\Sch/X)_{\text{{\'e}t}}$.
+\end{thm}
+
+\begin{thm}[Proper base change]
+  \[
+    \begin{tikzcd}
+      Y'\ar[r, "g"]\ar[d, "\pi'"] & Y\ar[d, "\pi"] \\
+      X'\ar[r, "f"] & X
+    \end{tikzcd}
+  \]
+  In the Cartesian diagram $\pi$ is proper, $\cF$ a torsion sheaf on $Y_{\text{{\'e}t}}$, then the base change morphisms are isomorphisms for all $k$,
+  \[
+    f\xS R^{k}\pi\zS\cF\ar R^{k}\pi'\zS g\xS\cF.
+  \]
+\end{thm}
+
+\begin{thm}[Local constructibility]
+  A sheaf $\cF$ on $(\Sch/X)_{\text{{\'e}t}}$ is locally constructible if and only if
+  \begin{enr}
+    \item $\cF$ is locally of finite type,
+    \item for any complete $\cO_{X}$-algebra $A$ with residue field $k$, $\cF(A)\ar\cF(k)$ is an isomorphism.
+  \end{enr}
+\end{thm}
+
+\begin{dfn}[Compactifiable morphism]
+  Any \tbf{compactifiable} morphism $\pi:U\ar S$, is a morphism which fits into
+  \[
+    \begin{tikzcd}
+      \ar[rd, "\pi"]U\ar[rr, hook, "j"] & ~ & X\ar[ld, "\oL{\pi}"] \\
+      ~ & S & ~
+    \end{tikzcd}
+  \]
+  with $j$ open immersion and $\oL{\pi}$ proper, then write $R_{c}^{k}\pi\zS\cF=R^{k}\oL{\pi}j\zE\cF$.
+\end{dfn}
+
+\begin{thm}
+  The functors $R_{c}^{k}\pi\zS$ enjoys the following properties,
+  \begin{enr}
+    \item $R_{c}^{k}\pi\zS\cF$ is independent of $j:U\ahr X$,
+    \item $R_{c}^{k}\pi\zS$ form a $\dta$-functor and commute with base change,
+    \item if $S$ is quasi-compact, $\pi$ is quasi-finite, separated and {\'e}tale, then
+    \[
+      R_{c}^{k}\pi\zS=\begin{cases}
+        \pi\zE & k=0 \\
+        0 & k>0
+      \end{cases},
+    \]
+    \item if $\cF$ is constructible, then so is $R_{c}^{k}\pi\zS\cF$,
+    \item if for $\nu:V\ar U$, $\pi\cc\nu:V\ar X$ is compactifiable, then for all torsion sheaves $\cF$ on $V$,
+    \[
+      (R_{c}^{i}\pi\zS)(R_{c}^{j}\nu\zS)\cF\aoR R_{c}^{i+j}(\pi\cc\nu)\zS\cF.
+    \]
+  \end{enr}
+\end{thm}
+
+
+\begin{thm}[Smooth base change]
+  \[
+    \begin{tikzcd}
+      Y'\ar[r, "g"]\ar[d, "\pi'"] & Y\ar[d, "\pi"] \\
+      X'\ar[r, "f"] & X
+    \end{tikzcd}
+  \]
+  In the Cartesian diagram $f$ is smooth, $\pi$ is quasi-compact, $\cF$ a torsion sheaf on $Y_{\text{{\'e}t}}$, whose torison is prime to $\Char(X)$, then the base change morphisms are isomorphisms for all $k$,
+  \[
+    f\xS R^{k}\pi\zS\cF\ar R^{k}\pi'\zS g\xS\cF.
+  \]
+\end{thm}
+
+\begin{cor}[Smooth specialization]
+  If $\pi:Y\ar X$ is proper and smooth, $\cF$ constructible locally constant sheaf on $Y_{\text{{\'e}t}}$ whose torsion is prime to $\Char(X)$, then $R^{k}\pi\zS\cF,k\gqs0$ is constructible and locally constant. If $X$ is connected, then $\mathrm{H}_{}^{k}(Y_{\oL{x}},\cF|_{Y_{\oL{x}}})\cong (R^{k}\pi\zS\cF)_{\oL{x}}, k\gqs0$ for all geometric points $\oL{x}\in X$.
+\end{cor}
+
+\begin{dfn}[Acyclicity]
+    A morphism $f:X\ar S$ is said to be \tbf{$n$-acyclic} ($n\gqs-1$), if for any {\'e}tale $S'\ar S$ of finite type and any torsion sheaf $\cF$ on $S'$ whose torsion is prime to $\Char S$, $\mathrm{H}_{}^{i}(S',\cF)\ar \mathrm{H}_{}^{i}(X',{f'}\xS\cF)$ is bijective for $0\lqs i\lqs n$ and injective for $i=n+1$. $f$ is said to be \tbf{acyclic} if it is $n$-acyclic for all $n$, and said to be \tbf{universally ($n$)-acyclic} if $g'$ is ($n$)-acyclic for all $S$-scheme $S'$, and said to be \tbf{(universally) locally ($n$)-acyclic} if for every geometric point $\oL{s}$ of $S$, the associated map
+    \[
+        \oT{f}:\Spec\cO_{S,\oL{s}}\ar\Spec\cO_{X,\oL{s}}
+    \]
+    is (universally) ($n$)-acyclic.
+\end{dfn}
+
+\begin{thm}[Criterion of $n$-acyclicity]
+    If $f:X\ar S$ is quasi-compact, locally ($n-1$)-acyclic, and that all geometric fibers $X_{\oL{s}}\ar\oL{s}$ with $k(\oL{s})$ algebraic over $k(s)$ is $n$-acyclic, then $f$ is $n$-acyclic.
+\end{thm}
+
+\begin{thm}[Smooth implies acyclic]
+    Any smooth morphism $f:X\ar S$ is (universally) locally acyclic.
+\end{thm}
+
+
+\begin{dfn}[Smooth pair]
+    Let $S$ be a scheme, a smooth $S$-pair $(Z,X)$ is a closed immersion $i:Z\ahr X$ of smooth $S$-schemes. Say $(Z,X)$ has codimension $c$ if for all $s\in S$, $Z_{s}$ has pure codimension $c$ in $X_{s}$.
+
+    For $\cF\in\BS(X_{\text{{\'e}t}})$, write $\mathrm{\uL{H}}_{Z}^{k}(X,\cF)=R^{k}i\xE\cF$, it gives
+    \[
+        \mathrm{H}_{}^{i}(Z,\mathrm{\uL{H}}_{Z}^{j}(X,\cF))\aoR \mathrm{H}_{Z}^{i+j}(X,\cF).
+    \]
+\end{dfn}
+
+\begin{thm}[Cohomological purity]
+    Let $(Z,X)$ be a smooth $S$-pair of codimension $c$, $\cF\in\BS(X_{\text{{\'e}t}})$ locally constant and torsion, prime to $\Char(X)$. Then $\mathrm{\uL{H}}_{Z}^{k}(X,\cF)=0, k\neq2c$ and $T_{Z/X}:=\mathrm{\uL{H}}_{Z}^{2c}(X,\cF)$ is locally isomorphic to $i\xS\cF$ on $Z_{\text{{\'e}t}}$.
+\end{thm}
+
+\begin{thm}[Gysin sequence]
+    Let $(Z,X)$ be a smooth $S$-pair of codimension $c$, $\cF\in\BS(X_{\text{{\'e}t}})$ locally constant and torsion, prime to $\Char(X)$, then
+    \[
+        R^{k}f\zS\cF\cong R^{k}g\zS(\cF|_{U}), 0\lqs k\lqs 2c-2,
+    \]
+    and there is an exact sequence
+    \[
+        \begin{tikzcd}
+            0\ar[r] & R^{2c-1}f\zS\cF\ar[r] & R^{2c-1}g\zS\cF|_{U}\ar[r] & h\zS(i\xS\cF\ot T_{Z/X})\ar[r] & \cdots\\
+            ~\ar[r] & R^{k}f\zS\cF\ar[r] & R^{k}g\zS\cF|_{U}\ar[r] & R^{k-2c+1}\zS(i\xS\cF\ot T_{Z/X})\ar[r] & \cdots
+        \end{tikzcd}
+    \]
+\end{thm}
+
+\begin{cor}[Finiteness of torsion sheaf]
+    Let $X$ be a smooth variety over a field $k$, let $\cF$ be a finite, locally constant sheaf whose torsion is prime to $\Char k$, then $\mathrm{H}_{}^{i}(X,\cF)$ is finite for all $i$.
+\end{cor}
+
+
+\begin{stp}
+    Fix a separably closed field $k$ and an integer $n$ prime to $\Char(k)$. All schemes are smooth varieties over $S=\Spec k$, sheaves are $n$-torsion. Write $\Lda(r)=\Ot_{i=1}^{r}\mu_{n}$.
+\end{stp}
+
+\begin{thm}[Fundamental class]
+    There is a unique function $(Z,X)\amt s_{Z/X}$ associating with any smooth $S$-pair $(Z,X)$ of codimension $c$ a fundamental class $s_{Z/X}\in \mathrm{H}_{Z}^{2c}(X, \Lda(c))$ such that
+    \begin{enr}
+        \item $s_{Z/X}$ has order $n$,
+        \item the case $c=1$, $Z$ connected is defined,
+        \item (pullback) if $\phi:(Z',X')\ar(Z,X)$ is a morphism of $S$-pairs of codimension $c$, then $\phi\xS(s_{Z/X})=s_{Z'/X'}$,
+        \item (composition) if $(Z,Y), (Y,X), (Z,X)$ are smooth pairs of codimension $a,b,c$, then $s_{Z/Y}\ot s_{Y/X}=s_{Z/X}$ given the canonical isomorphisms
+        \[
+            \mathrm{H}_{Z}^{2a}(Y, \mathrm{\uL{H}}_{Y}^{2b}(X,\Lda(c)))\cong \mathrm{H}_{Z}^{2c}(X, \Lda(c)).
+        \]
+  \end{enr}
+\end{thm}
+
+\begin{thm}[Weak Lefschetz]
+    Let $X$ be a projective variety of dimension $m$ over a separably closed field $k$, and $i:Z\ar X$ the inclusion of a hyperplane section.
+    \begin{enr}
+        \item If $X,Z$ are smooth, then any locally constant sheaf $\cF$ of $\bZ/n\bZ$-modules on $X$ with $n$ prime to $\Char(k)$, $i\zS:\mathrm{H}_{}^{i}(Z,\cF)\ar \mathrm{H}_{}^{i+2}(X,\cF(1))$ of the Gysin sequence is an isomorphism for $i\gqs m$ and a surjection for $i=m-1$.
+        \item Any torsion sheaf $\cF$ on $X$, the canonical map $\mathrm{H}_{Z}^{i}(X,\cF)\ar \mathrm{H}_{}^{i}(X,\cF)$ is an isomorphism for $i\gqs m+2$ and a surjection for $i=m+1$.
+    \end{enr}
+\end{thm}
+
+\begin{thm}[K{\"u}nneth formula \Rnum{1}]
+    Consider the diagram
+    \[
+        \begin{tikzcd}
+            \ar[r, "q"]\ar[d, "p"]X\tms_{S}Y\ar[rd, "h"] & Y\ar[d, "g"] \\
+            X\ar[r, "f"] & S
+        \end{tikzcd}
+    \]
+    where $S=\Spec k$, $k$ is separably closed, $f,g$ are compactifiable, $\cF,\cG$ are flat constructible sheaves on $X,Y$ of $A$-modules, $A$ the integral closure of $\bZ_{\ell}$ in a finite extension of $\bQ_{\ell}$.
+
+    Then there is a canonical quasi-isomorphism
+    \[
+        \BH_{c}^{\blt}(X,\cF)\ot\BH_{c}^{\blt}(Y,\cG)\cong\BH_{c}^{\blt}(X\tms Y, \cF\bt\cG),
+    \]
+    and an exact sequence
+    \[
+        \begin{tikzcd}
+            0\ar[r] & \sum\limits_{p+q=k}\mathrm{H}_{c}^{p}(X,\cF)\ot \mathrm{H}_{c}^{q}(Y,\cG)\ar[r] & \mathrm{H}_{c}^{k}(X\tms Y,\cF\bt\cG) \\
+            ~\ar[r] & \sum\limits_{p+q=k+1}\mathrm{Tor}_{1}^{A}(\mathrm{H}_{c}^{p}(X,\cF), \mathrm{H}_{c}^{q}(Y,\cG))\ar[r] & 0.
+        \end{tikzcd}
+    \]
+\end{thm}
+
+\begin{thm}[Deligne's constructibility]
+    Let $S$ be a regular quasi-compact scheme of dimension $1$ or $0$, $\Lda=\bZ/n\bZ$ where $\Char(S)\nmid n$, then for any morphism $\pi:Y\ar X$ of $S$-schemes of finite type, and any constructible sheaf $\cF$ of $\Lda$-modules on $Y$, $R^{i}\pi\zS\cF$ are constructible.
+\end{thm}
+
+\begin{thm}[K{\"u}nneth formula \Rnum{2}]
+    Let $X,Y$ be schemes of finite type over $S$, $S=\Spec k$, $k$ is separably closed, let $\cF,\cG$ be sheaves of $\Lda$-modules on $X,Y$, then there is a canonical isomorphism
+    \[
+        \BR\Gma(X,\cF)\ot\xbL \BR\Gma(Y,\cG)\cong\BR\Gma(X\tms Y, \cF\bt\xbL\cG).
+    \]
+\end{thm}
+
+\begin{stp}
+    Fix an algebraically closed field $k$, $X$ quasi-projective smooth variety over $k$, $\Lda=\bZ/n\bZ$ and $\Char(k)\nmid n$.
+\end{stp}
+
+\begin{thm}[Existence of Chern class]
+    Let $E$ be a vector bundle of rank $r$ over $X$, $p:P=\bP(E)\ar X$ the associated projective bundle. Let $\xi\in \mathrm{H}_{}^{2}(P,\Lda(1))$ be the image of $\cO_{P}(1)$ under the map $\Pic(P)\ar \mathrm{H}_{}^{2}(P,\Lda(1))$ arising from Kummer sequence. Then the following map is an isomorphism of graded $\mathrm{H}_{}^{\blt}(X)$-modules,
+    \begin{align*}
+      \mathrm{H}_{}^{\blt}(X)[T]/(T^{r})&\ar \mathrm{H}_{}^{\blt}(P) \\
+      T&\amt \xi
+    \end{align*}
+
+    Hence there are unique elements $c_{k}(E)\in \mathrm{H}_{}^{2k}(X)$ such that
+    \[
+        c_{0}(E)\xi^{r}+c_{1}(E)\xi^{r-1}+\cdots+c_{r}(E)=0,
+    \]
+    and $c_{0}(E)=1, c_{k}(E)=0$ for $k>r$. These $c_{k}(E)$ are called the \tbf{$k$\ts{th} Chern class}, $c(E)=\sum_{k}c_{k}(E)$ the \tbf{total Chern class}, and the \tbf{Chern polynomial} is
+    \[
+        c_{t}(E)=1+c_{1}(E)t+\cdots+c_{r}(E)t^{r}.
+    \]
+\end{thm}
+\begin{thm}[Properties of Chern class]
+    The Chern class satisfy the following:
+    \begin{enr}
+        \item (Functoriality) If $\pi:Y\ar X$ is a morphism of smooth quasi-projective varieties, $E$ a vector bundle on $X$, then
+        \[
+            c_{k}(\pi\xI(E))=\pi\xS(c_{k}(E)), \fal k.
+        \]
+        \item (Normalization) If $E$ is a line bundle on $X$, then $c_{t}(E)=1+p_{X}(E)t$, $p_{X}$ arising from the Kummer sequence.
+        \item (Additivity) If $X$ is smooth quasi-projective, then a short exact sequence
+        \[
+            \begin{tikzcd}
+                0\ar[r] & E'\ar[r] & E\ar[r] & E''\ar[r] & 0.
+            \end{tikzcd}
+        \]
+        gives $c_{t}(E)=c_{t}(E')c_{t}(E'')$.
+    \end{enr}
+    Moreover, these three properties characterize the Chern classes uniquely.
+\end{thm}
+
+\begin{thm}[Poincar{\'e} duality]
+    Let $X$ be a smooth separated variety of dimension $d$ over a separably closed field $k$, then
+    \begin{enr}
+        \item There is a unique isomorphism
+        \[
+            \eta_{X}:\mathrm{H}_{c}^{2d}(X,\Lda(d))\ar \Lda,
+        \]
+        such that $\cl_{X}(p)=1$ for each closed point $p\in X$.
+        \item For any constructible sheaf of $\Lda$-modules on $X$, there are canonical perfect pairings
+        \[
+            \mathrm{H}_{c}^{r}(X,\cF)\tms \mathrm{Ext}_{X}^{2d-r}(\cF,\Lda(d))\ar \mathrm{H}_{c}^{2d}(X,\Lda(d))\cong\Lda.
+        \]
+    \end{enr}
+\end{thm}
+
+\begin{thm}[Relative isomorphisms]
+    Let $\pi:X\ar S$ be a smooth compactifiable morphism, all of whose fibers have dimension $d$. Then for a complex $\cG\xB$ of sheaves on $S$, the \tbf{twisted inverse image} functor $\pi\xE:D(S)\ar D(X)$ is defined
+    \[
+        \pi\xE\cG\xB:=(\pi\xS\cG\xB\ot\Lda(d))[2d].
+    \]
+    Then we have isomorphisms
+    \[
+        \begin{tikzcd}
+            \Dta_{X/S}^{1}: & \BR\pi\zS\BR \mathrm{\uL{Hom}}_{X}^{}(\cF\xB, \pi\xE\cG\xB)\ar[r] & \BR \mathrm{\uL{Hom}}_{S}^{}(\BR\pi\zE\cF\xB, \cG\xB) \\
+            \Dta_{X/S}^{2}: & \BR \mathrm{Hom}_{X}^{}(\cF\xB, \pi\xE\cG\xB)\ar[r] & \BR \mathrm{Hom}_{S}^{}(\BR\pi\zE\cF\xB,\cG\xB) \\
+            \Dta_{X/S}^{3}: & \mathrm{\bE xt}_{X}^{k}(\cF\xB, \pi\xE\cG\xB)\ar[r] & \mathrm{\bE xt}_{S}^{k}(\BR\pi\zE\cF\xB, \cG\xB).
+        \end{tikzcd}
+    \]
+\end{thm}
+
+\begin{dfn}[$\zeta$-function]
+    For any variety $X$ over a finite field $\bF_{q}$, $Z(X,t)$ is defined
+    \[
+        Z(X,t):=\exp\sR{\sum_{n>0}\frac{\# X(\bF_{q^{n}})}{n}t^{n}}.
+    \]
+\end{dfn}
+
+\begin{thm}[Lefschetz trace formula]
+    Let $\phi:X\ar X$ be an endomorphism such that $(\Gma_{\phi}\cdot\Dta)$ is defined, then
+    \[
+        (\Gma_{\phi}\cdot\Dta)=\sum_{k=0}^{2d}(-1)^{k}\Trc(\phi|\mathrm{H}_{}^{k}(X,\bQ_{\ell})).
+    \]
+\end{thm}
+
+\begin{thm}[Rationality of $\zeta$-function]
+    Let $X$ be a smooth projective variety of dimension $d$ over $k=\bF_{q}$, then
+    \[
+        Z(X,t)=\prod_{r=0}^{2d}\Det(1-t\Frob|\mathrm{H}_{}^{r}(X\ot\oL{k},\bQ_{\ell}))^{(-1)^{r+1}},
+    \]
+    Moreover, $Z(X,t)$ satisfies a functional equation, let $\chi=(\Dta\cdot\Dta)$,
+    \[
+        Z(X, 1/q^{d}t)=\pm q^{d\chi/2}t^{\chi}Z(X,t).
+    \]
+
+    More generally, if $X$ is a separated variety of dimension $d$ over $k=\bF_{q}$, then
+    \[
+        Z(X,t)=\prod_{r=0}^{2d}\Det(1-t\Frob|\mathrm{H}_{c}^{r}(X\ot\oL{k},\bQ_{\ell}))^{(-1)^{r+1}},
+    \]
+\end{thm}
+
+
+
+% From now on the main objects of study will shift to rigid analytic varieties and adic spaces\cite{Huber1996}.
+
+% \begin{stp}
+%   Let $k$ be a non-archimedean complete field and $\bB^{n}=\Spm k\sA{T_{1},\ldots,T_{n}}$.
+% \end{stp}
+
+
+
+
+\ssc{The example sheet}
+\begin{mtv}
+    Given some random scheme or adic space $X$, and some random sheaf $\cF\in\BS(X_{\text{{\'e}t}})$, can I compute its cohomology groups $\mathrm{H}_{}^{k}(X_{\text{{\'e}t}}, \cF)$, for example, $X=\Spec\bZ[1/p], \cF=\bG_{m}$? More generally, for $X$ to be some random arithmetic curve or surface defined by a set of concrete polynomials?
+\end{mtv}
+
+\begin{exg}[The sheaf $\bG_{m}$]
+    Assume $X$ is regular, integral, and quasi-compact with generic point $\eta=\Spec K$, $\cF=\bG_{m,X}\in\BS(X_{\text{{\'e}t}})$. The strategy to compute $\mathrm{H}_{}^{k}(X_{\text{{\'e}t}}, \cF)$:
+\end{exg}
+
+
+
+
+
+\sct{DMOS1982}
+
+
+\begin{ups}
+	Any Hodge cycle on an Abelian variety defined over field of characteristic $0$ is absolute Hodge.
+\end{ups}
+
+
+\subsection{Review of cohomologies}
+
+\begin{stp}
+  Let $X$ be a non-singular projective variety over over $\bC$ of dimension $n$. Denote by $X_{\text{\'et}}, X_{\mathrm{zar}}$ the variety equipped with {\'e}tale and Zariski topology.
+
+  Denote by $X^{\mathrm{an}}$ its associated complex analytic manifold, in particular, it is compact K\"ahler.
+
+  Denote by $X\xF$ its associated smooth manifold.
+
+\end{stp}
+
+\begin{dfn}[Singular]
+  Let $S\xB(X,k), S\zF\xB(X,k)$ be the $k$-valued continuous, smooth singular complex respectively, then the singular cohomology is defined by
+  \begin{align*}
+	\mathrm{H}_{\mathrm{sing}}^{n}(X,k)&=\mathrm{H}_{~}^{n}(S\xB(X,k)),\\
+	\mathrm{H}_{\mathrm{sing},\infty}^{n}(X,k)&=\mathrm{H}_{~}^{n}(S\zF\xB(X,k)).\\
+  \end{align*}
+\end{dfn}
+
+
+\begin{dfn}[de Rham]
+  Let $\Omega_{X\xF}\xB$ be the sheaf of $\bR$-valued $C\xF$-differential forms, then the de Rham cohomology is defined by
+  \[
+	\mathrm{H}_{\mathrm{dR}}^{k}(X)=\mathrm{H}_{~}^{k}(\mathrm{H}_{~}^{0}(X, \Omega_{X\xF}\xB)).
+  \]
+\end{dfn}
+
+\begin{thm}[de Rham]
+  There is canonical isomorphisms
+  \[
+	\mathrm{H}_{\mathrm{dR}}^{\bullet}(X)\cong \mathrm{H}_{\mathrm{sing},\infty}^{\bullet}(X, \bR)\cong\mathrm{H}_{\mathrm{sing}}^{\bullet}(X, k)\cong \mathrm{H}_{~}^{\bullet}(X, \uL{k}).
+  \]
+  Afterwards write singular (Betti) cohomology as $\mathrm{H}_{\mathrm{B}}^{\bullet}(X)$.
+\end{thm}
+
+\begin{thm}
+  The Hodge-de Rham spectral sequence
+  \[
+	E_{1}^{p,q}= \mathrm{H}^{q}(\Omega_{X^{\mathrm{an}}}^{p})\Longrightarrow\bH^{p+q}(\Omega_{X^{\mathrm{an}}}\xB)
+  \]
+  degenerates, hence there is a canonical splitting, Hodge decomposition,
+  \[
+	\mathrm{H}_{\mathrm{dR}}^{n}(X, \bC)=\bigoplus_{p+q=n}\mathrm{H}_{~}^{q}(X, \Omega_{X^{\mathrm{an}}}^{p}).
+  \]
+\end{thm}
+
+\begin{thm}
+  Any embedding $\sigma:k\hookrightarrow \bC$ defines an isomoprhism
+  \[
+	\mathrm{H}_{\mathrm{dR}}^n(X)\otimes_\sigma\bC\rightarrow\mathrm{H}_\sigma^n(X)\otimes_\bQ\bC.
+  \]
+\end{thm}
+
+
+\begin{dfn}[\'etale]
+  Define the \'etale cohomology by
+  \[
+	\mathrm{H}_{\text{\'et}}^{\bullet}(X)\equiv \mathrm{H}_{~}^{n}(X_{\text{\'et}}, \hat{\bZ})\otimes_{\bZ}\bQ=\sR{\varprojlim_{m}\mathrm{H}_{~}^{\bullet}(X_{\text{\'et}}, \bZ/m\bZ)}\otimes_{\bZ}\bQ.
+  \]
+\end{dfn}
+
+\begin{thm}[Comparison]
+  There is a canonical isomorphism
+  \[
+	\mathrm{H}_{\mathrm{B}}^{\bullet}(X)\otimes_{\bQ}\bA_{\bQ,f}\cong \mathrm{H}_{\text{\'et}}^{\bullet}(X)
+  \]
+\end{thm}
+
+\begin{rmk}
+  There are three cohomologies defined here: Betti, de Rham, and \'etale
+  \[
+	\mathrm{H}_{\mathrm{B}}^{\bullet}(X), \mathrm{H}_{\mathrm{dR}}^{\bullet}(X), \mathrm{H}_{\text{\'et}}^{\bullet}(X).
+  \]
+\end{rmk}
+
+
+\begin{dfn}[Tate twist]
+  \begin{align*}
+	\bQ_{\mathrm{B}}(1)&=2\pi i\bQ,\\
+	\bQ_{\mathrm{dR}}(1)&=k,\\
+	\bQ_{\text{\'et}}(1)&=\bA_{\bQ,f}(1)=\sR{\varprojlim_{m}\mu_{m}(k)}\otimes_{\bZ}\bQ.\\
+  \end{align*}
+  And hence the cohomologies:
+  \begin{align*}
+	\mathrm{H}_{\mathrm{B}}^{\bullet}(X)(m)=\mathrm{H}_{~}^{\bullet}(X^{\mathrm{an}}, (2\pi i)^{m}\bQ),\\
+	\mathrm{H}_{\text{\'et}}^{\bullet}(X)(m)=\sR{\varprojlim_{r}\mathrm{H}_{~}^{\bullet}(X_{\text{\'et}}, \mu_{r}(k)^{m})}\otimes_{\bZ}\bQ,\\
+	\mathrm{H}_{\mathrm{dR}}^{\bullet}(X)(m)=\mathrm{H}_{\mathrm{dR}}^{\bullet}(X).\\
+  \end{align*}
+
+\end{dfn}
+
+\begin{rmk}
+  Note that $\bQ(1)$ should be the realization of the Tate motive in the cohomology theory $\mathrm{H}_{2}(\bP^{1})$.
+\end{rmk}
+
+\begin{thm}[Comparison]
+  Note that
+  \begin{align*}
+	\bQ_{\mathrm{B}}(1)\otimes_{\bQ}\bA_{\bQ,f}&=\bQ_{\text{\'et}}(1),\\
+	\bQ_{\mathrm{B}}(1)\otimes_{\bQ}\bC&=\bQ_{\mathrm{dR}}(1)\otimes_{k}\bC,\\
+  \end{align*}
+  and hence
+  \begin{align*}
+	\mathrm{H}_{\mathrm{B}}^{\bullet}(X)\otimes\bA_{\bQ,f}&\cong \mathrm{H}_{\text{\'et}}^{\bullet}(X)(m),\\
+	\mathrm{H}_{\mathrm{B}}^{\bullet}(X)\otimes\bC&\cong \mathrm{H}_{\mathrm{dR}}^{\bullet}(X)(m).\\
+  \end{align*}
+\end{thm}
+
+
+With theses cohomologies, now need to define the map from an algebraic cycle $Z$ on $X$ of codimension $p$ to $\mathrm{H}_{~}^{2p}(X)(p)$. This is done using Chern classes: there is a functorial homomorphism
+\[
+  c_{1}:\Pic X\rightarrow \mathrm{H}_{~}^{2}(X)(1),
+\]
+and the Chern polynomial
+\[
+  c_{t}(E)=\sum_{p}c_{p}(E)t^{p}, c_{p}(E)\in \mathrm{H}_{~}^{2p}(X)(p),
+\]
+
+note that $c_{t}$ is additive, hence factors through the Grothendieck group of vector bundles on $X$, which is the same thing as Grothendieck group of coherent $\cO_{X}$-modules since $X$ is smooth. Now
+\[
+  cl(Z)=\frac{1}{(p-1)!}c_{p}(\cO_{Z}).
+\]
+
+For Betti and \'etale theory, $c_{1}$ is given by the boundary map of the sequences:
+\[
+  \begin{tikzcd}
+    \ar[r]0 & \ar[r]2\pi i\bZ & \ar[r, "\exp"]\cO_{X^{\mathrm{an}}} & \cO_{X^{\mathrm{an}}}\xS\ar[r] & 0\\
+    \ar[r]0 & \ar[r]\mu_{m} & \ar[r, "m"]\cO_{X}\xS & \ar[r]\cO_{X}\xS & 0\\
+  \end{tikzcd}
+\]
+hence $\Pic X\rightarrow \mathrm{H}_{~}^{2}(X^{\mathrm{an}}, 2\pi i\bZ)$ and $\Pic X\rightarrow \mathrm{H}_{~}^{2}(X_{\text{\'et}}, \mu_{m}(k))$.
+
+For de Rham theory, consider
+\[
+  \begin{tikzcd}
+    0\ar[r] & \ar[d]0\ar[r] & \ar[d, "d\log"]\ar[r]\cO_{S}\xS & \ar[d]\ar[r]0 & \cdots\\
+    0\ar[r] & \cO_{X}\ar[r, "d"] & \Omega_{X}^{1}\ar[r, "d"] & \Omega_{X}^{2}\ar[r, "d"] & \cdots\\
+  \end{tikzcd}
+\]
+gives the map
+\[
+  c_{1}:\Pic X=\mathrm{H}_{~}^{1}(X, \cO_{X}\xS)=\bH^{2}(X, 0\rightarrow\cO_{X}\xS\rightarrow\cdots)\rightarrow\bH^{2}(X,\Omega_{X}\xB)=\mathrm{H}_{\mathrm{dR}}^{2}(X)=\mathrm{H}_{\mathrm{dR}}^{2}(X)(1)
+\]
+
+\begin{thm}
+  The three maps $c_{1}$ are compatible with the comparison isomorphisms, as well as the $cl$ map.
+\end{thm}
+
+\begin{rmk}
+  If $k=\bC$, there is a more direct way to define $cl(Z)\in \mathrm{H}_{2d-2p}^{\mathrm{sing}}(X(\bC), \bQ)$: the choice of $i$ already determines an orientation of $X$ and the smooth part of $Z$, hence $cl(Z)$ is topologically defined. Now by Poincar\'e duality, $cl(Z)$ corresponds to $cl_{\mathrm{top}}(Z)\in \mathrm{H}_{\mathrm{B}}^{2p}(X)$ with image inside $\mathrm{H}_{\mathrm{B}}^{2p}(X)(p)$ induced by $1\mapsto 2\pi i, \bQ\rightarrow \bQ(1)$ being $cl_{\mathrm{B}}(Z)$.
+\end{rmk}
+
+
+There are three isomorphisms induced by trace maps corresponding for each cohomology theory:
+\begin{align*}
+  \Trc_{\mathrm{B}}&: \mathrm{H}_{\mathrm{B}}^{2n}(X)(n)\rightarrow \bQ\\
+  \Trc_{\text{\'et}}&: \mathrm{H}_{\text{\'et}}^{2n}(X)(n)\rightarrow \bA_{\bQ,f}\\
+  \Trc_{\mathrm{dR}}&: \mathrm{H}_{\mathrm{dR}}^{2n}(X)(n)\rightarrow k\\
+\end{align*}
+They are determined by the normalization condition that $\Trc(cl(\mathrm{pt.}))=1$, and are also compatible with comparison isomorphisms.
+
+\begin{rmk}
+  In case $k=\bC$, $\Trc_{\mathrm{B}}$ and $\Trc_{\mathrm{dR}}$ can be written explicitly:
+  \[
+    \begin{tikzcd}
+      \Trc_{\mathrm{B}}: & \ar[r, "\cong"]\mathrm{H}_{\mathrm{B}}^{2n}(X)(n) & \ar[r]\mathrm{H}_{\mathrm{B}}^{2n}(X) & \mathrm{H}_{~}^{2n}(\mathrm{H}_{~}^{0}(X\xF, \Omega_{X\xF}\xB))\ar[r] & \bC\\
+       & 1\ar[r, mapsto] & 2\pi i & \ar[r, mapsto][\omega] & \int_{X}\omega\\
+      \Trc_{\mathrm{dR}}: & \ar[r, equal]\mathrm{H}_{\mathrm{B}}^{2n}(X)(n) & \ar[r, "\cong"]\mathrm{H}_{\mathrm{dR}}^{2n}(X) & \mathrm{H}_{~}^{2n}(\mathrm{H}_{~}^{0}(X\xF, \Omega_{X\xF}\xB))\ar[r] & \bC\\
+      ~ & ~ & ~ & \ar[r, mapsto][\omega] & \frac{1}{(2\pi i)^{n}}\int_{X}\omega\\
+    \end{tikzcd}
+  \]
+
+  The definition of $\Trc_{\text{\'et}}$ is in Milne's book on \'etale cohomology.
+\end{rmk}
+
+
+\begin{prp}
+  Let $X$ be a variety over an algebraically closed field $k\subset\bC$, and $Z$ be an algebraic cycle on $X_{\bC}$ of dimension $r$. Then take $\omega\in \mathrm{H}_{~}^{0}(X_{\bC}, \Omega_{X_{\bC}}^{r})$, such that $[\omega]\in \mathrm{H}_{\mathrm{dR}}^{2r}(X)$, then
+  \[
+    \int_{Z}\omega\in (2\pi i)^{r}k.
+  \]
+\end{prp}
+
+
+If $X$ is an abelian variety over $k\subset\bC$, then $\mathrm{H}_{~}^{r}(X)=\wedge^{r}\mathrm{H}_{~}^{1}(X)$ and $\mathrm{H}_{~}^{1}(X^{n})=\oplus^{n}\mathrm{H}_{~}^{1}(X)$ for each cohomology theory.
+
+Now if $v\in\bG_{m}(\bQ)$ act on $\bQ_{\mathrm{B}}(1)$ as $v\xI$, there is an action
+\[
+  \GL(\mathrm{H}_{\mathrm{B}}^{1}(X))\times\bG_{m}\Lact \mathrm{H}_{\mathrm{B}}^{r}(X^{n})(m), \forall r,n,m.
+\]
+
+Now let $G<\GL(\mathrm{H}_{\mathrm{B}}^{1}(X))\times\bG_{m}$ be the subgroup fixing all tensors of the form $cl_{\mathrm{B}}(Z)$, $Z$ being an algebraic cycle on some $X^{n}$. Also consider the comparison isomorphism:
+\[
+  \begin{tikzcd}
+     \ar[r, "\cong"]\mathrm{H}_{\mathrm{dR}}^{1}(X)\otimes_{k}\bC & \mathrm{H}_{~}^{1}(X^{\mathrm{an}}, \bC) & \mathrm{H}_{\mathrm{B}}^{1}(X)\otimes_{\bQ}\bC\ar[l, "\cong"'] \\
+  \end{tikzcd}
+\]
+the periods of $X$ are defined to be the entries of transition matrix between $\{\alpha_{i}\}$ and $\{a_{i}\}$, the $k$-basis and $\bQ$-basis of $\mathrm{H}_{\mathrm{dR}}^{1}(X)$ and $\mathrm{H}_{\mathrm{B}}^{1}(X)$ respectively.
+
+\begin{prp}
+  \[
+    \Tdg k(p_{ij})\leq \Dim G.
+  \]
+\end{prp}
+
+
+
+
+% ----------------------------------------------------------------------------------------------------
+\bibliographystyle{amsalpha}
+\bibliography{../universal-ref}
+\end{document}
+

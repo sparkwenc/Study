@@ -1,0 +1,318 @@
+% Last Updated: March 28, 2023
+	\documentclass[a4paper, twoside]{article}
+	% Margins
+	\usepackage{geometry}
+		\geometry{
+			% showframe,
+			left   = 20mm,
+			right  = 20mm,
+			top    = 20mm,
+			bottom = 20mm
+		}
+
+	% Headers and footers
+	\usepackage{fancyhdr}
+		\pagestyle{fancy}
+		\fancyhf{}
+		\fancyhead[LE, RO]{\thepage}
+		\fancyhead[CE]{\textsc{Cong Wen}}
+		\fancyhead[CO]{\textsc\rightmark}
+
+		\setlength{\headheight}{15pt}
+		\renewcommand\headrulewidth{0pt}
+
+
+
+
+
+
+
+
+\input{../universal-pre}
+
+\title{\tbf{Topics in representation theory}}
+\author{\tbf{Notes} by Cong Wen, 05/2023}
+\date{}
+% Last Updated: March 28, 2023
+
+
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+\begin{abstract}
+	This is my self-use notes\footnote{Last updated on May 26, 2023} on \tbf{Topics in representation theory}.
+
+	Please reach out if you find anything incorrect.
+
+\end{abstract}
+\tableofcontents
+% ----------------------------------------------------------------------------------------------------
+
+\sct{$\GL_{n}$ over $p$-adic fields}
+This part of the note is based on \cite{PR2008}.
+
+\ssc{Preliminaries}
+
+\begin{stp}
+	Let $G$ be a locally compact totally disconnected topological group, $V$ a complex vector space, $\pi:G\ar\Aut_{\bC}(V)$ a group homomorphism. Let $\Dta_{G}$ be the modular character of $G$, $H$ a closed subgroup of $G$, $C$ an open compact subgroup of $G$ and $\cH_{C}=C_{c}\xF(C\bs G/C)$ the algebra with convolution product.
+\end{stp}
+
+\begin{dfn}
+	Say $(\pi,V)$ is
+	\begin{itm}
+		\item smooth if $\Stab_{G}(v)$ is open for all $v\in V$.
+		\item admissible if $V^{K}$ is finite-dimensional for all open compact subgroup $K$ of $G$.
+		\item irreducible if all $G$-stable subspaces of $V$ are trivial.
+		\item finitely generated if there exist $v_{1},\ldots,v_{n}\in V$ such that the minimal $G$-stable space they generate is $V$.
+		\item of finite length if there is a finite length filtration of $V$ such that all successive quotients are irreducible.
+	\end{itm}
+\end{dfn}
+
+\begin{thm}[{\cite[2.1, 2.4]{PR2008}}]
+	Let $(\pi,V)$ be a smooth irreducible representation of $G$, and either of the following is true,
+	\begin{itm}
+		\item (Schur) $(\pi,V)$ is admissible,
+		\item (Dixmier) $G$ is a countable union of compact sets,
+	\end{itm}
+	then $\Dim_{\bC}\Hom_{G}(\pi,\pi)=1$.
+\end{thm}
+
+\begin{dfn}
+	Let $(\sgm,W)$ be a smooth representation of $H$, then the normalized induction $\Ind_{H}^{G}(\sgm)$ and compact induction $\ind_{H}^{G}(\sgm)$ of $G$ are defined via
+	\begin{align*}
+	  \Ind_{H}^{G}(\sgm)&=\left\{f:G\ar W \middle| \emat{f(hg)=(\Dta_{G}(h)/\Dta_{H}(h))^{1/2}\sgm(h)f(g),\fal g\in G, h\in H \\ f(gk)=f(g), \fal g\in G, k\in K_{f}, \text{$K_{f}$ open compact} }\right\} \\
+	  \ind_{H}^{G}(\sgm)&=\left\{f\in\Ind_{H}^{G}(\sgm)\middle| \text{$f$ is compactly supported modulo $B$}\right\}
+	\end{align*}
+\end{dfn}
+
+\begin{thm}[{\cite[2.7]{PR2008}}]
+	Notations as above,
+	\begin{enr}
+		\item $\Ind_{H}^{G},\ind_{H}^{G}$ are exact between the categories of smooth representations of $H$ and $G$.
+		\item $\Ind_{H}^{G},\ind_{H}^{G}$ are transitive.
+		\item $\Ind_{H}^{G}(\sgm)\xV=\ind_{H}^{G}(\sgm\xV)$, for any smooth representation $\sgm$ of $H$.
+		\item (Frobenius Reciprocity) Let $\pi,\sgm$ be smooth representations of $G,H$ respecrtively, then
+		\begin{enr}
+			\item $\Hom_{G}(\pi,\Ind_{H}^{G}(\sgm))=\Hom_{H}(\pi|_{H},(\Dta_{G}/\Dta_{H})^{1/2}\sgm)$,
+			\item $\Hom_{G}(\ind_{H}^{G}(\sgm),\pi)=\Hom_{H}((\Dta_{G}/\Dta_{H})^{-1/2}\sgm,(\pi\xV|_{H})\xV)$,
+		\end{enr}
+		both identities are functorial in $\pi,\sgm$.
+	\end{enr}
+\end{thm}
+
+\begin{thm}[{\cite[2.8]{PR2008}}]
+	Let $(\pi,V)$ be a representation of $G$, then
+	\begin{enr}
+		\item $(\pi,V)\amt(\pi^{C},V^{C})$ is exact additive from smooth admissible representations of $G$ to finite dimensional $\cH_{C}$-modules.
+		\item If $(\pi,V)$ is admissible and $V^{C}\neq0$, then $(\pi,V)$ is irreducible if and only if $(\pi^{C},V^{C})$ is irreducible.
+		\item If $(\pi_{i},V_{i})$ is irreducible admissible and $V_{i}^{C}\neq0, i=1,2$, then $\pi_{1}\cong\pi_{2}$ if and only if $\pi_{1}^{C}\cong\pi_{2}^{C}$.
+	\end{enr}
+\end{thm}
+
+\begin{stp}
+	Let $F$ be a non-archimedean local field with ring of integers $\cO_{F}$, uniformizer $\vpi_{F}$ and residual field $k_{F}=\cO_{F}/\km_{F}$ of characteristic $p$. Assume from now on $G=\GL_{n}(F)$, $T$ the diagonal subgroup (maximal torus), $B=TU$ the upper-triangular subgroup (Borel subgroup), $U$ the upper-triangular and diagonal $1$ subgroup (unipotent radical), $U\xM$ the lower-triangular and diagonal $1$ subgroup, $Z$ the center, $C$ an open compact subgroup, $W=N_{G}(T)/T\cong S_{n}$ the Weyl group. Let $P=MN$ be the standard parabolic subgroup of $G$ associated to the partition $n_{1}+\cdots+n_{k}=n$ and $M=\GL_{n_{1}}(F)\tms\cdots\tms\GL_{n_{k}}(F)$ its associated Levi subgroup, $N$ its unipotent radical. Let $K=\GL_{n}(\cO_{F})$ and $K_{m}=\Ker(\GL_{n}(\cO_{F})\ar\GL_{n}(\cO_{F}/\km_{F}^{m}))$ and the Iwahori subgroup $I\sbs\GL_{n}(\cO_{F})$ is the inverse image of the Borel subgroup of $\GL_{n}(k_{F})$ via $\GL_{n}(\cO_{F})\ar\GL_{n}(k_{F})$, they are all open compact subgroups of $G$. If $\pi$ is a representation of $G$, denote by $\pi(s)=\pi\ot\sP{\Det(\cdot)}_{F}^{s}$ the twisting for any $s\in\bC$.
+\end{stp}
+
+\begin{thm}[{\cite[3.2, 3.3, 3.4, 3.5]{PR2008}}]
+	There are decompositions of $G$,
+	\begin{enr}
+		\item (Bruhat) $G=\coprod_{w\in W}BwB$.
+		\item (Cartan) $G=\coprod_{a\in A}KaK$, where $A=\{\Diag(\vpi_{F}^{m_{1}},\ldots,\vpi_{F}^{m_{n}})|m_{1}\lqs\cdots\lqs m_{n}\}$.
+		\item (Iwasawa) $G=KB$.
+		\item (Iwahori) $C=(C\cap U\xM)(C\cap T)(C\cap U)$.
+	\end{enr}
+\end{thm}
+
+
+\begin{thm}[{\cite[3.6, 3.7]{PR2008}}]
+	Let $(\pi,V)$ be a smooth representation of $G$, then
+	\begin{enr}
+		\item $(\pi,V)$ is irreducible and finite dimensional if and only if $\pi(g)=\chi(\Det(g))$ with $\chi$ a character of $F\xT$.
+		\item $(\pi,V)$ is of finite length if and only if $(\pi,V)$ is admissible and finitely generated.
+	\end{enr}
+\end{thm}
+
+
+\begin{thm}[{\cite[4.1]{PR2008}}]
+	A representation $\rho$ of $M$ yields the parabolic induction $\Ind_{P}^{G}(\rho)$ which satisfies
+	\begin{enr}
+		\item $\rho\amt\Ind_{P}^{G}(\rho)$ is exact additive between the categories of smooth representations of $M$ and $G$.
+		\item $\Ind_{P}^{G}(\rho)=\ind_{P}^{G}(\rho)$ and $\Ind_{P}^{G}(\rho\xV)\cong\Ind_{P}^{G}(\rho)\xV$.
+		\item If $\rho$ is unitary/admissible/finitely generated then so is $\Ind_{P}^{G}(\rho)$.
+		\item If $\rho$ is irreducible then $\Ind_{P}^{G}(\rho)$ is of finite length.
+	\end{enr}
+\end{thm}
+
+\begin{thm}[{\cite[5.1, 5.3]{PR2008}}]
+	Let $(\pi,V)$ be a smooth representation of $G$, then $\pi|_{P}$ restricted to $V_{N}=V/\{n.v-v|\fal n\in N, v\in V\}$ is a representation $(\pi_{N},V_{N})$ of $M$, called the Jacquet module of $\pi$, it satisfies
+	\begin{enr}
+		\item $\pi\amt\pi_{N}$ is exact additive from smooth representations of $G$ to smooth representations of $M$.
+		\item (Transitivity) Let $Q\sbs P$ be another standard parabolic subgroup, then $(\pi_{N_{p}})_{N_{Q}\cap M_{P}}\cong\pi_{N_{Q}}$.
+		\item (Frobenius Reciprocity) Let $\sgm$ be a smooth representation of $M$, then
+		\[
+			\Hom_{G}(\pi,\Ind_{P}^{G}(\sgm))\cong\Hom_{M}(\pi_{N},\sgm\Dta_{P}^{-1/2}).
+		\]
+		\item If $\pi$ is admissible/finitely generated then so is $\pi_{N}$.
+	\end{enr}
+\end{thm}
+
+\begin{thm}[{\cite[5.9, 5.10]{PR2008}}]
+	Let $\rho$ be a smooth irreducible representation of $M$ and $\pi$ be any irreducible subquotient of $\Ind_{P}^{G}(\rho)$, then $\pi_{N}$ is non-zero and there exists $w\in W\cap N_{G}(M)$ such that $\pi$ is a sub of $\Ind_{P}^{G}({}^{w}\rho)$.
+\end{thm}
+
+\begin{thm}[{\cite[6.1]{PR2008}}]
+	Let $(\pi,V)$ be an irreducible admissible representation of $G$. Say $\pi$ is supercuspidal if any of the following equivalent condtions holds,
+	\begin{enr}
+		\item One (equivalently, any) matrix coeffient $f_{v,v\xV}$ of $\pi$ belongs to $C_{c}^{\ift}(Z\bs G)$.
+		\item All Jacquet modules of $\pi$ is zero.
+		\item $\pi$ is not a subquotient of any parabolic induction.
+	\end{enr}
+\end{thm}
+
+\begin{dfn}[{\cite[7.2]{PR2008}}]
+	Let $(\pi,V)$ be a smooth irreducible representation of $G$. Say $\pi$ is essentially square integrable if there exists $\chi:F\xT\ar\bR_{>0}$ such that for every $v\in V$,
+	\[
+		\int_{Z\bs G}\sP{f_{v,v\xV}(g)}^{2}\chi(\Det(g))\dif{g}<+\ift.
+	\]
+	Say $\pi$ is square integrable if $\chi$ can be taken to be trivial, such $\pi$ is also said to be in the discrete series for $G$.
+\end{dfn}
+
+
+\ssc{Classification}
+
+
+% \begin{thm}[{\cite[6.5, 6.6]{PR2008}}]
+% 	Every irreducible admissible representation of $G$ is a sub of $\Ind_{P}^{G}(\sgm)$ for some supercuspidal representation $\sgm$ of a Levi subgroup $M$, moreover, it essentially appears of multiplicity one in the following sense.
+
+% 	Let $\sgm_{i}$ be the irreducible supercuspidal representations of a Levi subgroup $M_{i}$ and $\pi_{i}=\Ind_{P_{i}}^{G}(\sgm_{i})$, $i=1,2$. Then the following are equivalent
+% 	\begin{enr}
+% 		\item There exists $w\in W$ such that $wM_{1}w\xI=M_{2}$ and ${}^{w}\sgm_{1}=\sgm_{2}$.
+% 		\item $\Hom_{G}(\pi_{1},\pi_{2})\neq0$.
+% 		\item $\pi_{1},\pi_{2}$ have one same irreducible subquotient.
+% 		\item All irreducible subquotients of $\pi_{1},\pi_{2}$ coincides with multiplicity.
+% 	\end{enr}
+% \end{thm}
+
+\begin{thm}[{\cite[7.4, 7.5]{PR2008}}]
+	Let $\sgm_{i}$ be irreducible supercuspidal representations of $\GL_{n_{i}}(F)$, then
+	\begin{enr}
+		\item $\Ind_{P}^{G}(\sgm_{1}\bt\cdots\bt\sgm_{k})$ is reducible if and only if there exists $i\neq j$ such that $n_{i}=n_{j}$ and $\sgm_{i}\cong\sgm_{j}(1)$.
+		\item In particular, if $n_{i}\eqv m, \sgm_{i}=\rho(i-1), 1\lqs i\lqs k$, denote by $\Dta(\rho)=\rho\bt\rho(1)\bt\cdots\bt\rho(k-1)$, then
+		\begin{enr}
+			\item $\Ind_{P}^{G}(\Dta(\rho))$ has a unique irreducible quotient $Q(\Dta(\rho))$, which is essentially square integrable.
+			\item Every essentially square integrable representation of $G$ arises in this way.
+			\item $Q(\Dta(\rho))$ is square integrable if and only if $\rho$ or $\rho((b-1)/2)$ is unitary.
+		\end{enr}
+	\end{enr}
+\end{thm}
+
+\begin{thm}[{\cite[8.1]{PR2008}}]
+	Choose $\Dta_{i}(\rho_{i})$ for $\GL_{n_{i}}(F)$ such that any $i<j$, $\Dta_{i}(\rho_{i})$ does not precede $\Dta_{j}(\rho_{j})$, then
+	\begin{enr}
+		\item $\Ind_{P}^{G}(Q(\Dta_{1}(\rho_{1}))\bt\cdots\bt Q(\Dta_{k}(\rho_{k})))$ is irreducible if and only if no two $\Dta_{i}(\rho_{i})$ are linked.
+		\item $\Ind_{P}^{G}(Q(\Dta_{1}(\rho_{1}))\bt\cdots\bt Q(\Dta_{k}(\rho_{k})))$ admits a unique irreducible quotient $Q(\Dta_{1}(\rho_{1}),\ldots,\Dta_{k}(\rho_{k}))$.
+		\item Any irreducible admissible representation of $G$ is isomorphic to some $Q(\Dta_{1}(\rho_{1}),\ldots,\Dta_{k}(\rho_{k}))$.
+		\item For another choice $(\Dta_{1}(\rho_{1}'),\ldots,\Dta_{k}(\rho_{k}'))$,
+		\[
+			Q(\Dta_{1}(\rho_{1}),\ldots,\Dta_{k}(\rho_{k}))\cong Q(\Dta_{1}(\rho_{1}'),\ldots,\Dta_{k'}(\rho_{k'}'))
+		\]
+		if and only if $k=k'$ and $\fal 1\lqs i\lqs k, \Dta_{i}(\rho_{i})=\Dta_{s(i)}(\rho_{s(i)}')$ for some $s\in S_{k}$.
+	\end{enr}
+\end{thm}
+
+\begin{thm}[{\cite[9.1, 9.2, 9.3]{PR2008}}]
+	Let $(\pi,V)$ be an irreducible admissible representation of $G$. Fix a non-trivial additive character $\psi_{F}:F\ar\bC$ of $F$ and define $\Psi:U\ar\bC$ by $\Psi(u)=\psi_{F}(u_{1,2}+\cdots+u_{n-1,n})$, then
+	\[
+		\Dim_{\bC}\Hom_{G}(\pi,\Ind_{U}^{G}(\Psi))=\Dim_{\bC}\Hom_{U}(\pi|_{U},\Psi)\lqs1.
+	\]
+	$(\pi,V)$ is said to be generic if the equality holds, the functional $\ell\in\Hom_{U}(\pi|_{U},\Psi)$ is called a Whittaker function.
+
+	Write $\pi=Q(\Dta_{1}(\rho_{1}),\ldots,\Dta_{k}(\rho_{k}))$, then $\pi$ is generic if and only if no two $\Dta_{i}(\rho_{i})$ are linked.
+\end{thm}
+
+
+\begin{thm}[{\cite[4.2]{PR2008}}]
+	Let $\chi_{1},\ldots,\chi_{n}$ be characters of $F\xT$, then $\pi(\chi_{1},\ldots,\chi_{n})=\Ind_{B}^{G}(\chi_{1}\bt\cdots\bt\chi_{n})$ is called the principal series representation of $G$, which satisfies
+	\begin{enr}
+		\item $\pi(\chi_{1},\ldots,\chi_{n})$ is reducible if and only if there exists $i\neq j$ such that $\chi_{i}=\chi_{j}(1)$.
+		\item If $\chi_{i}$ are all unitary, then $\pi(\chi_{1},\ldots,\chi_{n})$ is unitary irreducible.
+	\end{enr}
+
+	The Jacquet module $\pi(\chi_{1},\ldots,\chi_{n})_{U}$ is of finite length, its semisimplification is isomorphic to $\Op_{w\in W}\chi^{w}\Dta_{B}^{1/2}$.
+\end{thm}
+
+\begin{thm}[{\cite[7.6, 7.7]{PR2008}}]
+	Take $m=1,k=n$ and $\rho=\sP{\Det(\cdot)}_{F}^{(1-n)/2}$, then $\St_{n}=\Ind_{P}^{G}(\Dta(\rho))$ is called the Steinberg representation of $G$, which satisfies
+	\begin{enr}
+		\item $\St_{n}$ is square integrable with trivial central character.
+		\item The Jacquet module $(\St_{n})_{B}$ is of dimension one.
+	\end{enr}
+\end{thm}
+
+\ssc{Properties}
+
+\begin{thm}[{\cite[9.5, 9.6]{PR2008}}]
+	Let $(\pi,V)$ be an irreducible admissible representation of $G$. Say $\pi$ is tempered if
+	\begin{enr}
+		\item the central character $\oga_{\pi}$ is unitary.
+		\item one (equivalent, any) matrix coefficients belongs to $L^{2+\eps}(Z(F)\bs \GL_{n}(F)),\fal\eps>0$.
+	\end{enr}
+
+	Write $\pi=Q(\Dta_{1}(\rho_{1}),\ldots,\Dta_{k}(\rho_{k}))$, then $\pi$ is tempered if and only if $\pi$ is generic and every $Q(\Dta_{i}(\rho_{i}))$ is square integrable.
+\end{thm}
+
+\begin{thm}[{\cite[9.7, 9.8]{PR2008}}]
+	The spherical Hecke algebra $\cH_{K}$ satisfies
+	\begin{enr}
+		\item (Gelfand) $\cH_{K}$ is commutative.
+		\item (Satake) $\cH_{K}\cong\bC[t_{1}^{\pm1},\ldots,t_{n}^{\pm1}]^{W}$.
+	\end{enr}
+\end{thm}
+
+\begin{thm}[{\cite[9.9, 9.10]{PR2008}}]
+	Let $(\pi,V)$ be an irreducible admissible representation of $G$. Say $\pi$ is unramified if $V^{K}\neq0$, or equvalently, if $\pi$ is the unique irreducible quotient of $\Ind_{B}^{G}(\chi_{1}\bt\cdots\bt\chi_{n})$ where $\chi_{i}$ are unramified characters of $F\xT$.
+\end{thm}
+
+\begin{thm}[{\cite[9.14]{PR2008}}]
+	Let $(\pi,V)$ be an admissible representation of $G$, then the projection $V\ar V_{U}$ induces an isomorphism $V^{I}\cong V_{U}^{I\cap T}$.
+\end{thm}
+
+\begin{thm}[{\cite[9.12, 9.15]{PR2008}}]
+	Let $(\pi,V)$ be an irreducible admissible representation of $G$. Say $\pi$ is Iwahori spherical if $V^{I}\neq0$, or equivalently, if $\pi$ is an irreducible subquotient of $\Ind_{B}^{G}(\chi_{1}\bt\cdots\bt\chi_{n})$ where $\chi_{i}$ are unramified characters of $F\xT$.
+\end{thm}
+
+\prg{Local Langlands Correspondence}
+
+\begin{thm}
+	There is a natural (in the sense of preserving $L$ and $\eps$ factors) bijection between irreducible admissible representations of $G$ and $\Frob$-semisimple $n$-dimensional Weil-Deligne representations of $W_{F}$, the latter is in turn by the Jacobson-Morozov theorem in bijection with $n$-dimensional representation of $W_{F}\tms\SL_{2}(\bC)$ which is semisimple when restricted to $W_{F}$ and algebraic when restricted to $\SL_{2}(\bC)$.
+\end{thm}
+
+\begin{rmk}
+	Proving this bijection boils down to proving the bijection between irreducible representations of $W_{F}$ and irreducible supercuspidal representations of $\GL_{n}(F)$, to see this in two steps:
+	\begin{enr}
+		\item An $n$-dimensional representation of $W_{F}\tms\SL_{2}(\bC)$ which is semisimple when restricted to $W_{F}$ and algebraic when restricted to $\SL_{2}(\bC)$ must be of the form $\sgm=\Op_{i=1}^{r}\sgm_{i}\ot\Sp(m_{i})$, where $\sgm_{i}$ is an $n_{i}$-dimensional irreducible representation of $W_{F}$ and $\Sp(m_{i})$ the $m_{i}$-dimensional irreducible representation of $\SL_{2}(\bC)$.
+		\item Attach to each $\sgm_{i}$ an irreducible supercuspidal representation $\pi_{i}$ of $\GL_{n_{i}}(F)$, then $\St_{m_{i}}(\pi_{i})=Q(\Dta_{i}(\pi_{i}((1-m_{i})/2)))$ is an essentially square integrable representation of $\GL_{m_{i}n_{i}}(F)$. Arrange $\Dta_{i}(\pi_{i}((1-m_{i})/2))$ to meet the requirement of Langlands classification, then $Q(\Dta_{1}(\pi_{1}((1-m_{1})/2)),\ldots,\Dta_{r}(\pi_{r}((1-m_{r})/2)))$ is the desired irreducible admissible representation of $G$.
+	\end{enr}
+\end{rmk}
+
+\sct*{Further Exercises}
+
+Can one explicitly write down all irreducible admissible representations of $\GL_{n}(F)$, or more generally, any reductive group over a $p$-adic field, and specify all the properties they do or do not satisfy in a table?
+
+
+\sct{Weil representations}
+
+This part of the note is based on \cite{Prasad1993}.
+
+
+GGGG
+
+
+
+
+% ----------------------------------------------------------------------------------------------------
+\bibliographystyle{amsalpha}
+\bibliography{../universal-ref}
+\end{document}
+

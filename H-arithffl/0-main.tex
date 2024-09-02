@@ -1,0 +1,77 @@
+% Last Updated: March 28, 2023
+\documentclass[a4paper, twoside]{article}
+
+% Margins
+\usepackage{geometry}
+	\geometry{
+		% showframe,
+		left   = 20mm,
+		right  = 20mm,
+		top    = 20mm,
+		bottom = 20mm
+	}
+
+% Headers and footers
+\usepackage{fancyhdr}
+	\pagestyle{fancy}
+	\fancyhf{}
+	\fancyhead[LE, RO]{\thepage}
+	\fancyhead[CE]{\textsc{Cong Wen}}
+	\fancyhead[CO]{\textsc\rightmark}
+
+	\setlength{\headheight}{15pt}
+	\renewcommand\headrulewidth{0pt}
+
+% universal preamble
+\input{/Users/wenc/Documents/Math/universal-pre}
+
+
+
+
+\begin{document}
+\title{\tbf{Untitled}}
+\author{Cong Wen, 04/2024}
+\date{}
+\maketitle
+\thispagestyle{empty}
+% ----------------------------------------------------------------------------------------------------
+
+\begin{abstract}
+	This is my self-use notes\footnote{Last updated on April 11, 2024} on the arithmetic of function field.
+\end{abstract}
+\tableofcontents
+
+% \sct{04/07/23, meet Yun}
+
+% For reading \cite{YZShtukas1}, see the analogue of classical Heegner points and Heegner-Drinfeld cycles by using Drinfeld modules to find how the rank changes to $1$ when restricted to the torus; and $\Sht_{\GL_{1}}\ar X'\ar X$ is the analogue of $\Spc{H_{K}}\ar \Spc{K}\ar\Spc{\bQ}$, the first arrows are $\Pic{X'}$, $\Pic\cO_{K}$-torsors respectively. For Jacquet's papers\cite{Jacquet1986,Jacquet1987} reproving Waldspurger formula and the origins of relative trace formula, read ideas from it, since his technical details are sometimes different.
+
+% For heuristics on shtukas and Shimura varieties. The integral model of Shimura varieties parametrizes actual varieties over the base, while the Shtukas should be thought as parametrizing certain cohomology theory of varieties over the base. The analogue is not strict since the cocharacters are required to be minuscule in number field case, stronger statements in the spirit of automorphic to Galois might be achived once this restriction is removed by transplanting Lafforgues' proof\cite{Lafforgue2018Chtoucas}, which requires varying over all cocharacters at every leg, but whether the restriction could possibly be removed is not known currently, and Scholze's torsion class paper\cite{Scholze2015} is still in the classical setting of Shimura varieties.
+
+% For perspectives on different versions of geometric Langlands, the de Rham form\cite{AG2015} is the strongest (than Betti\cite{BZN2018} and Dolbeault\cite{DP2012}), and implies many classical statements, but whose further study requires more about the representation theory of e.g., Kac-Moody algebras. For a first step, read Laumon's Duke paper\cite{Laumon1987Correspondance} on constructing cuspidal Hecke eigensheaves from unramified local systems, Frenkel's Bulletin paper\cite{Frenkel2004} about Frenkel-Gaitsgory-Vilonen\cite{FGV2002}. For different versions of geometric Satake, read the introduction of Zhu\cite{Zhu2017Affine}, also, this development is orthogonal with that in Fargues-Scholze\cite{FS2021LLC}.
+
+\subfile{1-prelim}
+
+\subfile{1-laumon}
+
+\subfile{2-equidis}
+
+\subfile{3-highGZ}
+
+\subfile{4-excursion}
+
+\subfile{5-support}
+
+
+
+% \subfile{6-highSW}
+
+
+
+
+
+
+% ----------------------------------------------------------------------------------------------------
+\bibliographystyle{amsalpha}
+\bibliography{/Users/wenc/Documents/Math/universal-ref}
+\end{document}
+
