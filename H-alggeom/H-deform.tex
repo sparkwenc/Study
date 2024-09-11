@@ -1,52 +1,29 @@
-% Last Updated: October 1, 2023
-	\documentclass[a4paper, twoside]{article}
-	% Margins
-	\usepackage{geometry}
-		\geometry{
-			% showframe,
-			left   = 20mm,
-			right  = 20mm,
-			top    = 20mm,
-			bottom = 20mm
-		}
-
-	% Headers and footers
-	\usepackage{fancyhdr}
-		\pagestyle{fancy}
-		\fancyhf{}
-		\fancyhead[LE, RO]{\thepage}
-		\fancyhead[CE]{\textsc{Cong Wen}}
-		\fancyhead[CO]{\textsc\rightmark}
-
-		\setlength{\headheight}{15pt}
-		\renewcommand\headrulewidth{0pt}
-
-
-
-
-
-
-
-
+% Last Updated: 09/10/2024
+\documentclass[a4paper, twoside]{article}
+% \documentclass[a4paper, twoside]{amsart}
 \input{/Users/wenc/Documents/Math/universal-pre}
 
-\title{\tbf{Deformation Theory} (reading notes)}
-\author{Cong Wen, 02/2024}
-\date{}
-
-
-
-
-
 \begin{document}
-\maketitle
-\thispagestyle{empty}
-\begin{abstract}
-	This is my reading notes\footnote{Last updated on February 08, 2024} on \tbf{Deformation Theory}\cite{Hartshorne2010}. Please reach out if you find anything incorrect.
+\ifmain
+    \title{\tbf{Deformation theory}}
+    \author{Cong Wen, 02/24}
+    \makeatletter
+    \@ifclassloaded{amsart}{
+        \address{X University}
+        \email{sparkwenc@gmail.com}
+    }{\date{}}
+    \makeatother
 
-\end{abstract}
-\tableofcontents
+    \maketitle
+    \begin{abstract}
+        Notes\footnote{Last updated on January 01, 2000} on deformation theory.
+    \end{abstract}
+
+    \tableofcontents
+\fi
 % ----------------------------------------------------------------------------------------------------
+
+Ref:~\cite{Illusie1971,Illusie1972,Hartshorne2010}.
 
 \sct*{Cotangent complex}
 \begin{stp}
@@ -56,9 +33,9 @@
 \begin{thm}[{\cite[III.2.1.2.3, III.2.2.2]{Illusie1971}}]
 	Let $R$ be a ring, $I\sbs R$ an ideal such that $I^{2}=0$ and $R_{0}=R/I$.
 
-	To deform a flat $R_{0}$-algebra $S_{0}$ to a flat $R$-algebra $S$, there is an obstruction class in $\Ext{}{2}{(\bL_{S_{0}/R_{0}},S_{0}\ot_{R_{0}}I)}$ which vanishes precisely when such a deformation exists. If it exists, then the set of all isomorphism classes of such deformations forms a torson under $\Ext{}{1}{(\bL_{S_{0}/R_{0}},S_{0}\ot_{R_{0}}I)}$, and every such deformation has automorphism group $\Hom(\bL_{S_{0}/R_{0}},S_{0}\ot_{R_{0}}I)$.
+	To deform a flat $R_{0}$-algebra $S_{0}$ to a flat $R$-algebra $S$, there is an obstruction class in $\Ext{}{2}{(\bL_{S_{0}/R_{0}},S_{0}\ot_{R_{0}}I)}$ which vanishes precisely when such a deformation exists. If it exists, then the set of all isomorphism classes of such deformations forms a torson under $\Ext{}{1}{(\bL_{S_{0}/R_{0}},S_{0}\ot_{R_{0}}I)}$, and every such deformation has automorphism group $\Hom{}{}{(\bL_{S_{0}/R_{0}},S_{0}\ot_{R_{0}}I)}$.
 
-	For two flat $R_{0}$-algebras $S_{0},S_{0}'$ and their deformation $S,S'$, to lift a morphism $f_{0}:S_{0}\ar S_{0}'$ to $f:S\ar S'$, there is an obstruction class in $\Ext{}{1}{(\bL_{S_{0}/R_{0}},S_{0}'\ot_{R_{0}}I)}$ which vanishes precisely when such a lift exists. If it exists, then the set of all such lifts forms a torsor under $\Hom(\bL_{S_{0}/R_{0}},S_{0}\ot_{R_{0}}I)$.
+	For two flat $R_{0}$-algebras $S_{0},S_{0}'$ and their deformation $S,S'$, to lift a morphism $f_{0}:S_{0}\ar S_{0}'$ to $f:S\ar S'$, there is an obstruction class in $\Ext{}{1}{(\bL_{S_{0}/R_{0}},S_{0}'\ot_{R_{0}}I)}$ which vanishes precisely when such a lift exists. If it exists, then the set of all such lifts forms a torsor under $\Hom{}{}{(\bL_{S_{0}/R_{0}},S_{0}\ot_{R_{0}}I)}$.
 \end{thm}
 
 
@@ -136,7 +113,8 @@ Four deformation problems are considered
 
 
 % ----------------------------------------------------------------------------------------------------
-\bibliographystyle{amsalpha}
-\bibliography{/Users/wenc/Documents/Math/universal-ref}
+\ifmain
+    \bibliographystyle{amsalpha}
+    \bibliography{/Users/wenc/Documents/Math/universal-ref}
+\fi
 \end{document}
-
