@@ -1,64 +1,42 @@
-% Last Updated: October 1, 2023
-	\documentclass[a4paper, twoside]{article}
-	% Margins
-	\usepackage{geometry}
-		\geometry{
-			% showframe,
-			left   = 20mm,
-			right  = 20mm,
-			top    = 20mm,
-			bottom = 20mm
-		}
-
-	% Headers and footers
-	\usepackage{fancyhdr}
-		\pagestyle{fancy}
-		\fancyhf{}
-		\fancyhead[LE, RO]{\thepage}
-		\fancyhead[CE]{\textsc{Cong Wen}}
-		\fancyhead[CO]{\textsc\rightmark}
-
-		\setlength{\headheight}{15pt}
-		\renewcommand\headrulewidth{0pt}
-
-
-
-
-
-
-
-
+% Last Updated: 09/10/2024
+\documentclass[a4paper, twoside]{article}
+% \documentclass[a4paper, twoside]{amsart}
 \input{/Users/wenc/Documents/Math/universal-pre}
 
-\title{\tbf{Arithmetic Cohomology}}
-\author{Cong Wen, 02/2024}
-\date{}
-
-
-
-
-
 \begin{document}
-\maketitle
-\thispagestyle{empty}
-\begin{abstract}
-	The ultimate goal of this project\footnote{Last updated on Feb 08, 2024} is to define and study arithmetic cohomology.
+\ifmain
+    \title{\tbf{Title}}
+    \author{Cong Wen, 09/24}
+    \makeatletter
+    \@ifclassloaded{amsart}{
+        \address{X University}
+        \email{sparkwenc@gmail.com}
+    }{\date{}}
+    \makeatother
 
-\end{abstract}
-\tableofcontents
+    \maketitle
+    \begin{abstract}
+        Notes\footnote{Last updated on January 01, 2000} on Arakelov geometry.
+    \end{abstract}
+
+    \tableofcontents
+\fi
 % ----------------------------------------------------------------------------------------------------
 
 
-\subfile{1-outline}
+\file{1-outline}
 
-\subfile{2-prelim}
+\file{2-prelim}
 
-\subfile{3-defns}
+\file{3-acoh}
+
+\file{4-finite}
 
 
 
 % ----------------------------------------------------------------------------------------------------
-\bibliographystyle{amsalpha}
-\bibliography{/Users/wenc/Documents/Math/universal-ref}
+\ifmain
+    \bibliographystyle{amsalpha}
+    \bibliography{/Users/wenc/Documents/Math/universal-ref}
+\fi
 \end{document}
-

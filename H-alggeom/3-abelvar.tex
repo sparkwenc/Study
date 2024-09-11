@@ -1,53 +1,28 @@
-% Last Updated: March 28, 2023
-	\documentclass[a4paper, twoside]{article}
-	% Margins
-	\usepackage{geometry}
-		\geometry{
-			% showframe,
-			left   = 20mm,
-			right  = 20mm,
-			top    = 20mm,
-			bottom = 20mm
-		}
-
-	% Headers and footers
-	\usepackage{fancyhdr}
-		\pagestyle{fancy}
-		\fancyhf{}
-		\fancyhead[LE, RO]{\thepage}
-		\fancyhead[CE]{\textsc{Cong Wen}}
-		\fancyhead[CO]{\textsc\rightmark}
-
-		\setlength{\headheight}{15pt}
-		\renewcommand\headrulewidth{0pt}
-
-
-
-
-
-
-
-
-\input{../universal-pre}
-
-\title{\tbf{Geometry of moduli of abelian varieties}}
-\author{Cong Wen, 04/2023}
-\date{}
-% Last Updated: March 28, 2023
-
-
+% Last Updated: 09/10/2024
+\documentclass[a4paper, twoside]{article}
+% \documentclass[a4paper, twoside]{amsart}
+\input{/Users/wenc/Documents/Math/universal-pre}
 
 \begin{document}
-\maketitle
-\thispagestyle{empty}
-\begin{abstract}
-	This is my self-use notes\footnote{Last updated on May 27, 2023} to understand \tbf{Geometry of moduli of abelian varieties} following \cite{Grushevsky2009}.
+\ifmain
+    \title{\tbf{Geometry of abelian varieties}}
+    \author{Cong Wen, 04/23}
+    \makeatletter
+    \@ifclassloaded{amsart}{
+        \address{X University}
+        \email{sparkwenc@gmail.com}
+    }{\date{}}
+    \makeatother
 
-	Please reach out if you find anything incorrect.
+    \maketitle
+    \begin{abstract}
+        Notes\footnote{Last updated on January 01, 2000} on the geometry of abelian varieties.
+    \end{abstract}
 
-\end{abstract}
-\tableofcontents
+    \tableofcontents
+\fi
 % ----------------------------------------------------------------------------------------------------
+
 
 \sct{The complex fiber}
 
@@ -103,7 +78,8 @@ As summarized above, the top-weight cohomology computation boils down to working
 
 
 % ----------------------------------------------------------------------------------------------------
-\bibliographystyle{amsalpha}
-\bibliography{../universal-ref}
+\ifmain
+    \bibliographystyle{amsalpha}
+    \bibliography{/Users/wenc/Documents/Math/universal-ref}
+\fi
 \end{document}
-

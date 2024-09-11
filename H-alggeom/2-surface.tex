@@ -1,49 +1,29 @@
-% Documentclass Settings
-	\documentclass[a4paper, twoside]{article}
-	% Margins
-	\usepackage{geometry}
-		\geometry{
-			% showframe,
-			left   = 20mm,
-			right  = 20mm,
-			top    = 20mm,
-			bottom = 20mm
-		}
-
-	% Headers and footers
-	\usepackage{fancyhdr}
-		\pagestyle{fancy}
-		\fancyhf{}
-		\fancyhead[LE, RO]{\thepage}
-		\fancyhead[CE]{\textsc{Cong Wen}}
-		\fancyhead[CO]{\textsc\rightmark}
-
-		\setlength{\headheight}{15pt}
-		\renewcommand\headrulewidth{0pt}
-
-
-
-
-
-
-
-\input{../universal-pre}
-
-\title{\tbf{Ciliberto2020}}
-\author{\tbf{Notes} by Cong Wen, 01/2023}
-\date{}
+% Last Updated: 09/10/2024
+\documentclass[a4paper, twoside]{article}
+% \documentclass[a4paper, twoside]{amsart}
+\input{/Users/wenc/Documents/Math/universal-pre}
 
 \begin{document}
-\maketitle
-\thispagestyle{empty}
-\begin{abstract}
-	This is my self-use notes\footnote{Last updated on Jan 19, 2023} on \tbf{Classification of complex algebraic surfaces}\cite{Ciliberto2020}. Please reach out if you find anything incorrect.
+\ifmain
+    \title{\tbf{Geometry of surfaces}}
+    \author{Cong Wen, 01/23}
+    \makeatletter
+    \@ifclassloaded{amsart}{
+        \address{X University}
+        \email{sparkwenc@gmail.com}
+    }{\date{}}
+    \makeatother
 
-\end{abstract}
-\tableofcontents
+    \maketitle
+    \begin{abstract}
+        Notes\footnote{Last updated on January 01, 2000} on geometry of surfaces.
+    \end{abstract}
 
-
+    \tableofcontents
+\fi
 % ----------------------------------------------------------------------------------------------------
+
+Ref:~\cite{Ciliberto2020}.
 
 \begin{stp}
 	Throughout the note, a variety will mean a smooth irreducible projective complex variety, a surface(resp. curve) will mean a variety of dimension $2$(resp. $1$).
@@ -221,6 +201,8 @@ Minimal model program for surfaces are very well known, and doesn't need the int
 
 
 % ----------------------------------------------------------------------------------------------------
-\bibliographystyle{alpha}
-\bibliography{../universal-ref}
+\ifmain
+    \bibliographystyle{amsalpha}
+    \bibliography{/Users/wenc/Documents/Math/universal-ref}
+\fi
 \end{document}

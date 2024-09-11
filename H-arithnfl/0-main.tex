@@ -1,46 +1,27 @@
-% Last Updated: March 1, 2024
+% Last Updated: 09/10/2024
 \documentclass[a4paper, twoside]{article}
-	
-% Margins
-\usepackage{geometry}
-	\geometry{
-		% showframe,
-		left   = 20mm,
-		right  = 20mm,
-		top    = 20mm,
-		bottom = 20mm
-	}
-
-% Headers and footers
-\usepackage{fancyhdr}
-	\pagestyle{fancy}
-	\fancyhf{}
-	\fancyhead[LE, RO]{\thepage}
-	\fancyhead[CE]{\textsc{Cong Wen}}
-	\fancyhead[CO]{\textsc\rightmark}
-
-	\setlength{\headheight}{15pt}
-	\renewcommand\headrulewidth{0pt}
-
-% universal preamble
+% \documentclass[a4paper, twoside]{amsart}
 \input{/Users/wenc/Documents/Math/universal-pre}
 
-
-
-
 \begin{document}
-\title{\tbf{Title}}
-\author{Cong Wen, xx/20xx}
-\date{}
-\maketitle
-\thispagestyle{empty}
+\ifmain
+    \title{\tbf{Title}}
+    \author{Cong Wen, 09/24}
+    \makeatletter
+    \@ifclassloaded{amsart}{
+        \address{X University}
+        \email{sparkwenc@gmail.com}
+    }{\date{}}
+    \makeatother
+
+    \maketitle
+    \begin{abstract}
+        Notes\footnote{Last updated on January 01, 2000} on the arithmetic of number fields.
+    \end{abstract}
+
+    \tableofcontents
+\fi
 % ----------------------------------------------------------------------------------------------------
-
-\begin{abstract}
-	This is my self-use notes\footnote{Last updated on January 01, 2000} on arithmetic of number fields.
-
-\end{abstract}
-\tableofcontents
 
 
 \begin{qst}
@@ -55,76 +36,75 @@
 
 \sct{Global Theory}
 
-	\subfile{autrepn}
+	% \subfile{autrepn}
 
-	\subfile{galrepn}
+	% \subfile{galrepn}
 
-	\subfile{shimvar}
+	% \subfile{shimvar}
 
-	\subfile{sphcvar}
+	% \subfile{sphcvar}
 
-    \subfile{IUTeich}
+    % \subfile{IUTeich}
 
 
 \sct{Local Theory}
 
-	\subfile{highRam}
+	% \subfile{highRam}
 
-	\subfile{highLoc}
+	% \subfile{highLoc}
 
-	\subfile{pHodge}
+	\file{4-arithmeticfl}
 
-	\subfile{RZspace}
+	\file{5-locspecial}
 
-	\subfile{pcurve}
+	\file{6-pHodge}
 
-	\subfile{pshtuka}
+	% \subfile{RZspace}
 
-	\subfile{infplace}
+	% \subfile{pcurve}
+
+	% \subfile{pshtuka}
+
+	% \subfile{infplace}
 
 
 \part{Applications}
 
 \sct{Arithmetic geometry}
 
-	\subfile{ecurve}
+	\file{1-ecurve}
 
-	\subfile{mcurve}
+	\file{2-mcurve}
 
-	\subfile{modular}
+	\file{3-modular}
 
-	\subfile{fcurve}
+	% \subfile{fcurve}
 
-	\subfile{rpoints}
+	% \subfile{rpoints}
 
-	\subfile{numfield}
+	% \subfile{numfield}
 
 
 \sct{Arithmetic algebra}
 
-	\subfile{invgal}
+	% \subfile{invgal}
 
-	\subfile{quatalg}
+	% \subfile{quatalg}
 
 
 \sct{Arithmetic statistics}
 
-	\subfile{selfdual}
+	% \subfile{selfdual}
 
-	\subfile{erankone}
+	% \subfile{erankone}
 
 
 \sct{Arithmetic dynamics}
 
 
-
-
-
-
-
-
 % ----------------------------------------------------------------------------------------------------
-\bibliographystyle{amsalpha}
-\bibliography{/Users/wenc/Documents/Math/universal-ref}
+\ifmain
+    \bibliographystyle{amsalpha}
+    \bibliography{/Users/wenc/Documents/Math/universal-ref}
+\fi
 \end{document}
-

@@ -1,14 +1,28 @@
-% Last Updated: March 1, 2024
-\documentclass[0-main]{subfiles}
+% Last Updated: 09/10/2024
+\documentclass[a4paper, twoside]{article}
+% \documentclass[a4paper, twoside]{amsart}
+\input{/Users/wenc/Documents/Math/universal-pre}
 
 \begin{document}
-\ifSubfilesClassLoaded{
-	% \title{\tbf{Untitled}}
-	% \author{Cong Wen, xx/20xx}
-	% \maketitle
-	\tableofcontents
-}{}
+\ifmain
+    \title{\tbf{Title}}
+    \author{Cong Wen, 09/24}
+    \makeatletter
+    \@ifclassloaded{amsart}{
+        \address{X University}
+        \email{sparkwenc@gmail.com}
+    }{\date{}}
+    \makeatother
+
+    % \maketitle
+    % \begin{abstract}
+    %     Notes\footnote{Last updated on January 01, 2000}.
+    % \end{abstract}
+
+    \tableofcontents
+\fi
 % ----------------------------------------------------------------------------------------------------
+
 
 \ssc{On elliptic curves}
 
@@ -346,9 +360,11 @@ Ref:~\cite{Gross1980,Cox2013}.
 
 \red{Next: Study \cite{DG1995}}
 
+
+
 % ----------------------------------------------------------------------------------------------------
-\ifSubfilesClassLoaded{
-	\bibliographystyle{amsalpha}
-	\bibliography{/Users/wenc/Documents/Math/universal-ref}
-}{}
+\ifmain
+    \bibliographystyle{amsalpha}
+    \bibliography{/Users/wenc/Documents/Math/universal-ref}
+\fi
 \end{document}

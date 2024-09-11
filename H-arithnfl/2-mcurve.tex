@@ -1,14 +1,31 @@
-% Last Updated: March 1, 2024
-\documentclass[0-main]{subfiles}
+% Last Updated: 09/10/2024
+\documentclass[a4paper, twoside]{article}
+% \documentclass[a4paper, twoside]{amsart}
+\input{/Users/wenc/Documents/Math/universal-pre}
 
 \begin{document}
-\ifSubfilesClassLoaded{
-	% \title{\tbf{Untitled}}
-	% \author{Cong Wen, xx/20xx}
-	% \maketitle
-	\tableofcontents
-}{}
+\ifmain
+    \title{\tbf{Title}}
+    \author{Cong Wen, 09/24}
+    \makeatletter
+    \@ifclassloaded{amsart}{
+        \address{X University}
+        \email{sparkwenc@gmail.com}
+    }{\date{}}
+    \makeatother
+
+    % \maketitle
+    % \begin{abstract}
+    %     Notes\footnote{Last updated on January 01, 2000}.
+    % \end{abstract}
+
+    \tableofcontents
+\fi
 % ----------------------------------------------------------------------------------------------------
+
+
+
+
 
 \ssc{On modular curves}
 	It seems standard in every landmark paper settling important results which involves the arithmetic of modular curves would contain a lot addressing fundamental facts about them, a few is collected below.
@@ -607,9 +624,10 @@ The functional equation $L(s,\eps)$ of $K$ is
 Mimic and push the proof as in Section 6 of Cesnavicius-Neurura-Saha and \cite{Raynaud1991}.
 
 
+
 % ----------------------------------------------------------------------------------------------------
-\ifSubfilesClassLoaded{
-	\bibliographystyle{amsalpha}
-	\bibliography{/Users/wenc/Documents/Math/universal-ref}
-}{}
+\ifmain
+    \bibliographystyle{amsalpha}
+    \bibliography{/Users/wenc/Documents/Math/universal-ref}
+\fi
 \end{document}

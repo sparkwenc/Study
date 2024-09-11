@@ -1,54 +1,27 @@
-% Last Updated: March 28, 2023
-	\documentclass[a4paper, twoside]{article}
-	% Margins
-	\usepackage{geometry}
-		\geometry{
-			% showframe,
-			left   = 20mm,
-			right  = 20mm,
-			top    = 20mm,
-			bottom = 20mm
-		}
-
-	% Headers and footers
-	\usepackage{fancyhdr}
-		\pagestyle{fancy}
-		\fancyhf{}
-		\fancyhead[LE, RO]{\thepage}
-		\fancyhead[CE]{\textsc{Cong Wen}}
-		\fancyhead[CO]{\textsc\rightmark}
-
-		\setlength{\headheight}{15pt}
-		\renewcommand\headrulewidth{0pt}
-
-
-
-
-
-
-
-
-\input{../universal-pre}
-
-\title{\tbf{Diophantine approximation}}
-\author{\tbf{Notes} by Cong Wen, 09/2023}
-\date{}
-% Last Updated: March 28, 2023
-
-
+% Last Updated: 09/10/2024
+\documentclass[a4paper, twoside]{article}
+% \documentclass[a4paper, twoside]{amsart}
+\input{/Users/wenc/Documents/Math/universal-pre}
 
 \begin{document}
-\maketitle
-\thispagestyle{empty}
-\begin{abstract}
-	This is my self-use notes\footnote{Last updated on September 25, 2023} to understand some topics in \tbf{Diophantine approximation}.
+\ifmain
+    \title{\tbf{Uniform finiteness}}
+    \author{Cong Wen, 09/23}
+    \makeatletter
+    \@ifclassloaded{amsart}{
+        \address{X University}
+        \email{sparkwenc@gmail.com}
+    }{\date{}}
+    \makeatother
 
-	Please reach out if you find anything incorrect.
-\end{abstract}
-\tableofcontents
+    \maketitle
+    \begin{abstract}
+        Notes\footnote{Last updated on September 25, 2023} on the uniform finiteness.
+    \end{abstract}
+
+    \tableofcontents
+\fi
 % ----------------------------------------------------------------------------------------------------
-
-
 
 
 \sct{Vojta's method}
@@ -312,7 +285,7 @@ pass $\oL{L}$ to $\oT{L}\in\aPic(S_{\bQ}/\bQ)$, one has
 \[
 	\oL{L}^{d}\gqs\oL{L}^{d-1}\frac{2}{3g-1}\cO(c)=\frac{2c}{3g-1}\oT{L}^{d-1}>0,
 \]
-hence the result, (recall that an adelic line bundle $\oL{L}$ over $Y$ is big if and only if $\aVol(\oL{L})=\oL{L}^{\Dim Y}>0$ by the adelic Hilbert-Samuel formula).
+hence the result, (recall that an adelic line bundle $\oL{L}$ over $Y$ is big if and only if $\aVol{}{}{(\oL{L})}=\oL{L}^{\Dim Y}>0$ by the adelic Hilbert-Samuel formula).
 
 
 \begin{prf}[Sketch of the proof of Theorem~3.9]
@@ -436,7 +409,7 @@ it is similar that it suffices to combine
 \end{enr}
 but the difference is that in function field case varieties are over $k$ but the points in question are over $\oL{K}$, hence one needs additional argument to pass varieties to $K$ in the induction step:
 
-By Noether's normalization, consider $\psi_{i}:Y\ar\bA_{k}^{d}\ar\bA_{k}^{1}$ and its generic fiber $Y_{i}\ar\Spec K$, then non-isotriviality of $y:\Spec\oL{K}\ar Y$ guarantees that there exists some $i$ such that the image of $y$ under $\psi_{i}$ is non-closed, hence $y\in Y_{i}(\oL{K})$, now the base change can be applied to $Y_{i}$, the desired result is obtained by choosing
+By Noether's normalization, consider $\psi_{i}:Y\ar\bA_{k}^{d}\ar\bA_{k}^{1}$ and its generic fiber $Y_{i}\ar\Spc K$, then non-isotriviality of $y:\Spc{\oL{K}}\ar Y$ guarantees that there exists some $i$ such that the image of $y$ under $\psi_{i}$ is non-closed, hence $y\in Y_{i}(\oL{K})$, now the base change can be applied to $Y_{i}$, the desired result is obtained by choosing
 \begin{enr}
 	\item $\oL{M}=\oL{\Tta}+\pi\xS\oL{\lda}_{S}+\cO(1)$,
 	\item $y=\oga_{X_{s}}-(2g-2)\afa$,
@@ -446,16 +419,16 @@ note that in the geometric case $\oL{\lda}_{S}$ is already nef so the constants 
 
 
 \prg{The uniformity of constants}
-The constants $c_{1},c_{2}$ depend on $(g,k(t))$ a priori, in fact, they only depend on $(g,\Char(k))$ by base change of the prime field, to prove the independence of $\Char(k)$, one needs the upgraded version of the height inequality:
+The constants $c_{1},c_{2}$ depend on $(g,k(t))$ a priori, in fact, they only depend on $(g,\Chr(k))$ by base change of the prime field, to prove the independence of $\Chr(k)$, one needs the upgraded version of the height inequality:
 
 \begin{thm}[Theorem~4.8]
-	Let $S$ be a flat quasi-projective integral scheme over $\bZ$, $\psi:S\ar\bA_{\bZ}^{1}$ a flat morphism of finite type. Let $\pi:X\ar S$ be a smooth relative curve of genus $g\gqs2$, $\oL{L}$ a nef adelic line bundle over $X/\bZ$, $\oL{M}$ an adelic line bundle over $S/\bZ$, if $\oL{L}$ is potentially big over $X/S$, then there is an open subscheme $U$ of $S$, a integer $N'$, and constants $c_{1},c_{2}>0$, such that for any $K=k(t), \Char(k)\nmid N', y\in U_{k}(\oL{K})$,
+	Let $S$ be a flat quasi-projective integral scheme over $\bZ$, $\psi:S\ar\bA_{\bZ}^{1}$ a flat morphism of finite type. Let $\pi:X\ar S$ be a smooth relative curve of genus $g\gqs2$, $\oL{L}$ a nef adelic line bundle over $X/\bZ$, $\oL{M}$ an adelic line bundle over $S/\bZ$, if $\oL{L}$ is potentially big over $X/S$, then there is an open subscheme $U$ of $S$, a integer $N'$, and constants $c_{1},c_{2}>0$, such that for any $K=k(t), \Chr(k)\nmid N', y\in U_{k}(\oL{K})$,
 	\[
 		\#\{x\in X_{k}(\oL{K}):\pi(x)=y, h_{\oL{L}}(x)\leq c_{1}h_{\oL{M}}(y)\}\leq c_{2}.
 	\]
 \end{thm}
 
-Assuming this, to check uniformity, one has to check for all but finitely many $\Char(k)$, fix $N\gqs3$, and $S=M_{g,N}$ the moduli space of smooth curves of genus $g$ over $\bZ[1/N]$ with full level-$N$ structure, $\pi:X\ar S$ the universal curve, similar to above, one only has to deal with the induction step: for any closed integral subscheme $Y$ of $J$ which is flat over $\bZ[1/N]$, there is an open subscheme $U$ of $Y$, a multiple $N'$ of $N$, and constants $c_{1},c_{2}>0$ such that for any $K=k(t)$ with $\Char(k)\nmid N'$, and non-isotrivial $y\in U_{k}(\oL{K})$ with $s=\pi_{J}(y)\in S_{k}(\oL{K})$,
+Assuming this, to check uniformity, one has to check for all but finitely many $\Chr(k)$, fix $N\gqs3$, and $S=M_{g,N}$ the moduli space of smooth curves of genus $g$ over $\bZ[1/N]$ with full level-$N$ structure, $\pi:X\ar S$ the universal curve, similar to above, one only has to deal with the induction step: for any closed integral subscheme $Y$ of $J$ which is flat over $\bZ[1/N]$, there is an open subscheme $U$ of $Y$, a multiple $N'$ of $N$, and constants $c_{1},c_{2}>0$ such that for any $K=k(t)$ with $\Chr(k)\nmid N'$, and non-isotrivial $y\in U_{k}(\oL{K})$ with $s=\pi_{J}(y)\in S_{k}(\oL{K})$,
 \[
 	\#\{x\in X_{s}(\oL{K}):h_{\oL{L}}(x)\leq c_{1}(\max(h_{\mathrm{Fal}}(C),1)+\oH{h}(y))\}\leq c_{2}.
 \]
@@ -466,7 +439,8 @@ proof is similar to the function field case, use Noether's normalization togethe
 
 
 % ----------------------------------------------------------------------------------------------------
-\bibliographystyle{amsalpha}
-\bibliography{../universal-ref}
+\ifmain
+    \bibliographystyle{amsalpha}
+    \bibliography{/Users/wenc/Documents/Math/universal-ref}
+\fi
 \end{document}
-
