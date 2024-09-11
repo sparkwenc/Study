@@ -1,61 +1,39 @@
-% Documentclass Settings
+% Last Updated: 09/10/2024
 \documentclass[a4paper, twoside]{article}
-
-% Margins
-\usepackage{geometry}
-	\geometry{
-		% showframe,
-		left   = 20mm,
-		right  = 20mm,
-		top    = 20mm,
-		bottom = 20mm
-	}
-
-% Headers and footers
-\usepackage{fancyhdr}
-	\pagestyle{fancy}
-	\fancyhf{}
-	\fancyhead[LE, RO]{\thepage}
-	\fancyhead[CE]{\textsc{Cong Wen}}
-	\fancyhead[CO]{\textsc\rightmark}
-
-	\setlength{\headheight}{15pt}
-	\renewcommand\headrulewidth{0pt}
-
-% universal preamble
+% \documentclass[a4paper, twoside]{amsart}
 \input{/Users/wenc/Documents/Math/universal-pre}
 
-
-
-
 \begin{document}
-\title{\tbf{Differential geometry}}
-\author{Cong Wen, 12/2023}
-\date{}
-\maketitle
-\thispagestyle{empty}
+\ifmain
+    \title{\tbf{Title}}
+    \author{Cong Wen, 12/23}
+    \makeatletter
+    \@ifclassloaded{amsart}{
+        \address{X University}
+        \email{sparkwenc@gmail.com}
+    }{\date{}}
+    \makeatother
+
+    \maketitle
+    \begin{abstract}
+        Notes\footnote{Last updated on January 01, 2000} on differential geometry.
+    \end{abstract}
+
+    \tableofcontents
+\fi
 % ----------------------------------------------------------------------------------------------------
 
-\begin{abstract}
-	This is my self-use notes\footnote{Last updated on December 12, 2023} in understanding \tbf{Differential geometry}.
 
-	Please reach out if you find anything incorrect.
-\end{abstract}
-\tableofcontents
+\file{1-prelim}
 
+\file{2-calabiyau}
 
-\subfile{prelim}
-
-\subfile{1-calabiyau}
-
-\subfile{2-ytdconj}
-
-\subfile{3-threefolds}
 
 
 
 % ----------------------------------------------------------------------------------------------------
-\bibliographystyle{amsalpha}
-\bibliography{/Users/wenc/Documents/Math/universal-ref}
+\ifmain
+    \bibliographystyle{amsalpha}
+    \bibliography{/Users/wenc/Documents/Math/universal-ref}
+\fi
 \end{document}
-
