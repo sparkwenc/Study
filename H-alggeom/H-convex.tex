@@ -1,0 +1,53 @@
+% Last Updated: 09/10/2024
+\documentclass[a4paper, twoside]{article}
+% \documentclass[a4paper, twoside]{amsart}
+\input{/Users/wenc/Documents/Math/universal-pre}
+
+\begin{document}
+\ifmain
+    \title{\tbf{Title}}
+    \author{Cong Wen, 09/24}
+    \makeatletter
+    \@ifclassloaded{amsart}{
+        \address{X University}
+        \email{sparkwenc@gmail.com}
+    }{\date{}}
+    \makeatother
+
+    % \maketitle
+    % \begin{abstract}
+    %     Notes\footnote{Last updated on January 01, 2000}.
+    % \end{abstract}
+
+    \tableofcontents
+\fi
+% ----------------------------------------------------------------------------------------------------
+
+\sct{Convex geometry}
+
+Ref:~\cite{LM2009Convex}
+
+% \cite{KK2012NewtonOkounkov}
+
+\begin{thm}[{\cite{LM2009Convex}}]
+    Let $X$ be a smooth irreducible projective variety of dimension $d$ over $\bC$. Take a flag $X\zB$ of smooth irreducible subvarieties $X_{i}$ of codimension $i$ and a big divisor $D$ on $X$. There is a closed convex cone $\Dta_{X\zB}\ahr\bR^{d}\tms\NS\sR{X}_{\bR}\axr{\pr_{2}}\NS\sR{X}_{\bR}$, whose fiber $\Dta_{X\zB,[D]}\sbs\bR^{d}$ over $[D]$ is the closed convex hull of
+    \[
+        \bcup_{m\gqs1}\frac{1}{m}\Img\sR{\nu_{X\zB}:\HH{}{0}{(X,\cO_{X}(mD))}-\{0\}\ar\bZ^{d}}\sbs\bZ^{d}\ot\bR,
+    \]
+    and $\Vol_{\bR^{d}}(\Dta_{X\zB,[D]})\cdot d!=\Vol_{X}(D)$. Moreover, there are natural choices of $X\zB$, so that $\Dta_{X}$ is canonically defined.
+\end{thm}
+
+
+
+
+
+
+
+
+% ----------------------------------------------------------------------------------------------------
+\ifmain
+    \bibliographystyle{amsalpha}
+    \bibliography{/Users/wenc/Documents/Math/universal-ref}
+\fi
+\end{document}
+
