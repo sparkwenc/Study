@@ -9,7 +9,7 @@
 \printhead{}{}{1}
 
 
-\sct{Iwasawa theory}
+\sct{Cyclotomic Iwasawa theory}
 
 \begin{cmt}[0]
 
@@ -46,8 +46,9 @@ Ref:~\cite{Washington1997}, \cite{Rubin1991}.
 
 Ref:~\cite{MW1984}
 
-One can extract information of certain metabelian extensions of $\bQ$ via their representations appearing in the cohomology of modular curves.
+One can extract information of certain metabelian extensions of $\bQ$ via their representations appearing in the cohomology of modular curves $X_{1}(ap^{n})$.
 
+\hrule
 
 \begin{stp}
     Let $p$ be an odd prime, $\bQ\zF$ the unique $\bZ_{p}$-extension of $\bQ$ and $\bQ_{n}$ the subfield of $\bQ\zF$ of degree $p^{n}$.
@@ -68,12 +69,16 @@ One can extract information of certain metabelian extensions of $\bQ$ via their 
 		\end{dfn}
 	\end{cmt}
 
-	The reciprocity isomorphisms $A_{n}:=\Cl(F_{n})\cong H_{n}:=\Gal(L_{n}/F_{n})$ are compatible with the action by $\Gal(F/\bQ)$. Both $A\zF:=\ilim A_{n}$ and $H\zF:=\plim H_{n}$ are $\Lda$-modules with a commuting action by $\Gal(F/\bQ)$.
+	The reciprocity isomorphisms $A_{n}:=\Cl(F_{n})\cong H_{n}:=\Gal(L_{n}/F_{n})$ are compatible with the action by $\Gal(F/\bQ)$. Both $A\zF:=\ilim_{n}A_{n}$ and $H\zF:=\plim_{n}H_{n}$ are $\Lda$-modules with a commuting action by $\Gal(F/\bQ)$.
 
 	$H_{\ift,\chi}$ is pseudo-isomorphic to $\Op_{i=1}^{r}\Lda_{\chi}/(h_{i})$, the ideal $(h_{1},\lds,h_{r})\sbs\Lda_{\chi}$ admits a unique generator $h_{p}(\chi,T)=\pi_{\chi}^{\mu_{\chi}}h_{\chi}(T)$. The Iwasawa polynomial of $\Hom{}{}{(A\zF,\bQ_{p}/\bZ_{p})}_{\chi}$ is $h_{p}(\chi\xI,(1+T)\xI-1)$.
 \end{stp}
 
+\hrule
 
+
+\begin{stp}
+	Let $a$ be an integer prime to $p$. Denote $\bZ_{p,a}:=\plim_{n}\bZ/p^{n}a\bZ$ as a compact topological group, then $\bZ_{p,a}\xT\cong\sR{\bZ/pa\bZ}\xT\tms\Oga$. Denote by $R^{(\ift)}=\plim_{n}R^{(n)}$ where $R^{(n)}:=\bZ_{p}[\sR{\bZ/ap^{n}\bZ}\xT]$, then $R^{(\ift)}\cong R^{(1)}\dS{\Oga}$.
 \begin{cmt}
 	\begin{thm}[{\cite[Page~195]{MW1984}}]
 		Let $p$ be a prime, $G=G_{p}\tms G^{p}$ be a finite abelian group of order $n$. Then $R=\bZ_{p}[G]$ is a complete semi-local ring, one has $R=\prod_{\km\in\Pi}R_{\km}$, where $\Pi$ is the \tbf{components} of $R$,
@@ -89,6 +94,70 @@ One can extract information of certain metabelian extensions of $\bQ$ via their 
 		The surjection $\Sgm\atr\Pi$ gives an isomorphism $R_{\km}\ot\bQ_{p}\cong\prod_{\sgm\in\km}R_{\sgm}\ot\bQ_{p}$, each $R_{\sgm}\ot\bQ_{p}$ is a field.
 	\end{thm}
 \end{cmt}
+
+\begin{cmt}
+	\begin{dfn}
+		For a component $\km$ of $R^{(1)}$, say it is \tbf{$a$-primitive} if its reduced conductor is $a$ or $ap$; say it is \tbf{pseudo-primitive} if there is a character belonging to $\km$ with conductor $a$ or $ap$.
+
+		If $\km$ is pseudo-primitive of reduced conductor $ap/r$, then (1) $r$ is square-free, (2) every prime $q|r$ is either $p$ or congruent to $1$ mod $p$, (3) $(r,ap/r)=1$.
+	\end{dfn}
+\end{cmt}
+
+	Let $\rho:\bZ_{p}\dS{\Gal(\oL{\bQ}/\bQ)}\ar R^{(\ift)}$ be the unique continuous ring homomorphism extending $\Gal(\oL{\bQ}/\bQ)\ar\bZ_{p,a}\xT$.
+
+	Say a $R_{\km}^{(\ift)}$-module equipped with a commuting action of $\Gal(\oL{\bQ}/\bQ)$ is yoked if its $\Gal(\oL{\bQ}/\bQ)$-structure is compatible with $\rho$.
+
+\end{stp}
+
+\hrule
+
+
+\begin{cmt}
+	\begin{dfn}
+		Given $k\gqs1,N\gqs0,b$ integers, consider the Stickelberger elements
+		\[
+			\vtt_{k}(b;N):=(N^{k-1}/k)\sum_{t=1,(t,N)=1}^{N}B_{k}(\sA{bt/N})[t]^{-1}\in\bQ[\sR{\bZ/N\bZ}\xT].
+		\]
+
+		The Stickelberger ideal is given by
+		\[
+			S_{k}(N):=\bZ[\sR{\bZ/N\bZ}\xT]\cap\sum_{b\in\bZ}\vtt_{k}(b;N)\bZ[\sR{\bZ/N\bZ}\xT].
+		\]
+
+		Stickelberger theorem states that $2S_{1}(N)$ annihilates $\Cl(\bQ(\zta_{N}))$.
+
+		Let $c$ be an integer prime to $2kN$ and the denominator of $k$-th Bernoulli polynomial, define
+		\[
+			\vtt_{k,c}(b; N)=(1-c^{k}[c]^{-1})\vtt_{k}(b;N),\quad \vtt_{k,c}(b;ap\xF)=\plim_{n}\vtt_{k,c}(b;ap^{n})\in R^{(\ift)}.
+		\]
+
+		Consider the homomorphism $\afa_{\chi}:R^{(\ift)}\ar\cO_{\chi}\dS{\Oga}\ar\cO_{\chi}\dS{T}$
+
+			(\red{Under certain conditions} the element $\afa_{\chi}(\vtt_{k,c}(1;N))/\afa_{\chi}(1-c^{k}[c]\xI)\in\cO_{\chi}\dS{T}$ is well defined, denote it by $G_{p,k}(\chi,T)$), then one has
+			\[
+				G_{p}(\chi,T):=-G_{p,1}(\chi\xI\oga,T)=-G_{p,k}(\chi\xI\oga^{k},u^{k-1}(1+T)-1).
+			\]
+	\end{dfn}
+
+	\begin{dfn}
+		The $p$-adic $L$-function $L_{p}(s,\chi)$ attached to a non-trivial even primitive $p$-adic Dirichlet character $\chi$ is the unique continuous function on $\bZ_{p}$ which interpolates $k\gqs1$,
+		\[
+			L_{p}(\chi,1-k)=-(1-\chi\oga^{-k}(p)p^{k-1})B_{k}(\chi\oga^{-k})/k.
+		\]
+
+		If $\chi$ has conductor not divisible by $p^{2}$, there is a unique power series $G_{p}(\chi,T)\in\cO_{\chi}\dS{T}$ such that $G_{p}(\chi,u^{s}-1)=L_{p}(\chi,s)$.
+	\end{dfn}
+
+
+	\begin{cnj}
+		Let $\chi$ be an even primitive Dirichlet character of conductor not divisible by $p^{2}$, then as ideals of $\cO_{\chi}\dS{T}$,
+		\[
+			(h_{p}(\oH{\chi},T))=(G_{p}(\chi,T)).
+		\]
+	\end{cnj}
+
+\end{cmt}
+
 
 
 \printref
