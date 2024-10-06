@@ -2,7 +2,6 @@
 % \documentclass[a4paper, twoside]{amsart}
 \input{/Users/wenc/Documents/Math/universal-pre}
 
-
 \setshowlvl{1}
 \begin{document}
 \confighead{}{}{}
@@ -95,19 +94,30 @@ One can extract information of certain metabelian extensions of $\bQ$ via their 
 	\end{thm}
 \end{cmt}
 
+\end{stp}
+
 \begin{cmt}
 	\begin{dfn}
 		For a component $\km$ of $R^{(1)}$, say it is \tbf{$a$-primitive} if its reduced conductor is $a$ or $ap$; say it is \tbf{pseudo-primitive} if there is a character belonging to $\km$ with conductor $a$ or $ap$.
 
 		If $\km$ is pseudo-primitive of reduced conductor $ap/r$, then (1) $r$ is square-free, (2) every prime $q|r$ is either $p$ or congruent to $1$ mod $p$, (3) $(r,ap/r)=1$.
 	\end{dfn}
+
 \end{cmt}
 
-	Let $\rho:\bZ_{p}\dS{\Gal(\oL{\bQ}/\bQ)}\ar R^{(\ift)}$ be the unique continuous ring homomorphism extending $\Gal(\oL{\bQ}/\bQ)\ar\bZ_{p,a}\xT$.
+\begin{cmt}
+	Let $\rho:\bZ_{p}\dS{\Gal(\oL{\bQ}/\bQ)}\ar R^{(\ift)}$ be the unique continuous ring homomorphism extending the cyclotomic character $\Gal(\oL{\bQ}/\bQ)\ar\bZ_{p,a}\xT$, $\oL{\rho}$ its conjugate, and $\rho(k)$ the Tate twists by $\Gal(\oL{\bQ}/\bQ)\ar\bZ_{p}\xT$.
 
-	Say a $R_{\km}^{(\ift)}$-module equipped with a commuting action of $\Gal(\oL{\bQ}/\bQ)$ is yoked if its $\Gal(\oL{\bQ}/\bQ)$-structure is compatible with $\rho$.
+	\begin{dfn}
+		Let $\km$ be a component of $R^{(1)}$, and $\eta:\bZ_{p}\dS{\Gal(\oL{\bQ}/\bQ)}\ar R_{\km}^{(\ift)}$ a continuous morphism.
 
-\end{stp}
+		Say a $R_{\km}^{(\ift)}$-module $M$ is \tbf{$\eta$-yoked} if it admits a commuting $\Gal(\oL{\bQ}/\bQ)$ action compatible with $\eta$.
+	\end{dfn}
+
+	\begin{dfn}
+		Let $K/\bQ$ be an abelian Galois extension, $L/K$ a $p$-abelian Galois extension such that $L/\bQ$ is Galois. Say $L/K$ is \tbf{of type $\km$} if $\Gal(L/K)$ is $\oL{\rho}(-1)$-yoked, and is \tbf{virtually unramified of type $\km$} if it is moreover unramified outside primes dividing $a$.
+	\end{dfn}
+\end{cmt}
 
 \hrule
 
@@ -155,8 +165,50 @@ One can extract information of certain metabelian extensions of $\bQ$ via their 
 			(h_{p}(\oH{\chi},T))=(G_{p}(\chi,T)).
 		\]
 	\end{cnj}
-
 \end{cmt}
+
+\begin{dfn}
+	Let $\km$ be a component, $F_{\km}\xP$ the finite abelian extension of $\bQ$ cut out by the Dirichlet characters in $\km$ of conductor dividing $ap$, and let $F_{\km}=F_{\km}\xP(\zta_{p})$. Denote by following the field tower
+	\[
+		\begin{tikzcd}
+			& \bQ\zF\ar[rd, hook] && \\
+			\bQ\ar[ru, "\bZ_{p}", hook]\ar[rd, hook] && K_{\km}\ar[r, "H_{\km}", hook] & L_{\km}\ar[r, "I_{\km}", hook] & L_{\km}\xR \\
+			& F_{\km}\ar[ru, hook] &&
+		\end{tikzcd}
+	\]
+	where
+	\begin{itm}
+		\item $L_{\km}$ is the maximal unramified abelian extension of $K_{\km}$ of type $\km$,
+		\item $L_{\km}\xR$ is the maximal virtually unramified extension of $L_{\km}$ of type $\km$.
+	\end{itm}
+\end{dfn}
+
+\begin{stp}
+	Let $\kX$ be the set of pseudo-primitive components of the following type
+	\begin{enr}
+		\item of level $N=p^{n}$ and basic character $\oga^{-2}$.
+		\item of level $N=p^{n}$ and basic character $\chi_{0}$.
+		\item of level $N=ap^{n}$ and $\oH{S}_{m}'(ap)$ the unit ideal in $R_{\km}^{(1)}$.
+	\end{enr}
+
+	For any pseudo-primitive component $\km\nin\kX$, let $\psi=\psi^{p}\psi_{p}$ be its basic character, where $\psi_{p}=\oga^{k}, 0\lqs k<p-1$, say $\km$ is \tbf{in case (1)} if either $\psi^{p}(p)\neq1$ or $k\neq-1$, and is \tbf{in case (2)} otherwise.
+
+
+	For any pseudo-primitive component $\km$, there are an ideal $\kb_{\km}^{(n)}\sbs R_{\km}^{(n)}$ and an extension $L_{\km}^{(n)}/K_{\km}$ virtually unramified of type $\km$ such that
+	\begin{enr}
+		\item if $n_{q_{i}}\eqv1\bmod{q_{i}}$ and $n_{q_{i}}\eqv q_{i}\bmod{N/q_{i}}$, then
+		\[
+			(1-l[l])^{\kpa}\prod_{q_{i}\neq p, q_{i}\mid r}(q_{i}[n_{q_{i}}]-1)\kb_{\km}^{(n)}\sbs\oH{S}_{\km}'(N).
+		\]
+		\item let $\Phi_{\km}^{(n)}$ be the $R_{\km}^{(\ift)}$-fitting ideal of $\Gal(L_{\km}^{(n)}/K_{\km})$, there exists an ideal $\kA_{\km}\sbs R_{\km}^{(\ift)}$ of finite index such that $\kA_{\km}\Phi_{\km}^{(n)}\sbs\kb_{\km}^{(n)}$ in $R_{\km}^{(\ift)}$ for all $n\gqs1$.
+	\end{enr}
+
+\end{stp}
+
+
+\begin{thm}
+	For each even primitive character $\chi$ of conductor not divisible by $p^{2}$, $(h_{p}(\oH{\chi},T))=(G_{p}(\chi,T))$.
+\end{thm}
 
 
 
