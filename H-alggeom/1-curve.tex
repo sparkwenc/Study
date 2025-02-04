@@ -316,6 +316,52 @@ The references: \cite{FP2005Effective,Farkas2009}.
 test test \cite{Hejhal1976,Hejhal1983}
 
 
+
+\sct{Stabilization of line bundles}
+
+Ref: \href{https://arxiv.org/pdf/2501.18825}{arXiv:2501.18825}
+
+\begin{stp}
+	Let $X$ be a smooth irreducible projective curve of genus $g$ over $\bC$, and $f:X\ar\bP^{1}$ a surjective morphism of degree $n$.
+\end{stp}
+
+\begin{thm}[Section~3, Proposition]
+	In the case $g=0$, consider any integer $k=qn+i$ with $0\lqs i< n$, then
+	\[
+		f\zS\cO_{X}(k)=(i+1)\cO_{\bP^{1}}(q)\op(n-i-1)\cO_{\bP^{1}}(q-1).
+	\]
+\end{thm}
+
+
+\begin{thm}[Section~4, Proposition]
+	In the case $g=1$, let $\cE(r,d)$ be the set of isomorphism classes of indecomposable vector bundles over $X$ with rank $r$ and degree $d$, with $\cE_{r}$ as the unique class in $\cE(r,0)$ such that $h^{0}(X,\cE_{r})\neq0$. Given $\cE\in\cE(r,d)$ and $q\in\bZ$ such that $0\lqs d-qrn<rn$, then
+	\[
+		f\zS\cE=\begin{cases}
+		  \cO_{\bP^{1}}(q)\op(rn-2)\cO_{\bP^{1}}(q-1)\op\cO_{\bP^{1}}(q-2) & \cE\ot f\xS\cO_{\bP^{1}}(-q)=\cE_{r} \\
+		  (d-qrn)\cO_{\bP^{1}}(q)\op((q+1)rn-d)\cO_{\bP^{1}}(q-1) & \T{otherwise}
+		\end{cases}
+	\]
+\end{thm}
+
+\begin{thm}[Section~5, Theorem, Proposition]
+	In general, one has $f\zS(K_{X}\ot\cE\xS)=K_{\bP^{1}}\ot(f\zS\cE)\xS$.
+
+	For a line bundle $\cL$, and given $f\zS\cL=\op_{j=1}^{n}\cO_{\bP^{1}}(n_{j})$, let $s(\cL,f):=\max_{1\lqs i,j\lqs n}\sP{n_{i}-n_{j}}$ be the range, then
+	\begin{itm}
+		\item if $n>2g-2$, $s(\cL,f)\lqs2$,
+		\item if $n>g-1$,
+		\begin{itm}
+			\item if $\cL$ is general, then $s(\cL,f)\lqs1$,
+			\item if $d=g-1$, then $s(\cL,f)\lqs2$,
+			\item if $d=g-2$, then $s(\cL,f)\lqs3$, equality holds exactly when $\cL=K_{X}\ot f\xS\cO_{\bP^{1}}(-1)$,
+			\item if $d=g$, then $s(\cL,f)\lqs3$, equality holds exactly when $\cL=f\xS\cO_{\bP^{1}}(1)$,
+		\end{itm}
+		\item if $n$ is odd, then $s(\cL,f)\lqs (2g-5/2)/n+5/2$,
+		\item if $n$ is even, then $s(\cL,f)\lqs(2g-2)/n+5/2$.
+	\end{itm}
+\end{thm}
+
+
 % ----------------------------------------------------------------------------------------------------
 \ifmain
     \bibliographystyle{amsalpha}
