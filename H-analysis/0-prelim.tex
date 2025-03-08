@@ -1,0 +1,280 @@
+\documentclass[article, a4paper, twoside]{universal}
+
+\setshowlvl{1}
+\begin{document}
+\confighead{}{}{}
+\printhead{}{}{1}
+
+
+\sct{Functional analysis}
+
+Ref:~\cite{Brezis2011}
+
+\ssc{Preliminaries}
+
+\begin{thm}[Hahn-Banach]
+    Let $E$ be a vector space over $\bR$.
+    \begin{enr}[label=(\arabic*)]
+        \item (Analytic form, Theorem~1.1) Let $p:E\ar\bR$ a function such that $p(\lda x)=\lda p(x)$ for all $x\in E,\lda>0$ and $p(x+y)\gqs p(x)+p(y)$ for all $x,y\in E$, let $G\sbs E$ be a linear subspace, $g:G\ar\bR$ a linear function such that $g(x)\lqs p(x)$ for all $x\in G$. Then there exists a linear function $f:E\ar\bR$ such that $f|_{G}=g|_{G}$ and $f(x)\lqs p(x)$ for all $x\in E$.
+
+
+        Suppose now $E$ is normed.
+        \item (Geometric form, Theorem~1.6) Let $A,B\sbs E$ be two non-empty convex subsets such that $A\cap B=\ept$ and one of them is open. Then there exists a closed hyperplane separating $A$ and $B$.
+        \item (Geometric form, Theorem~1.7) Let $A,B\sbs E$ be two non-empty convex subsets such that $A\cap B=\ept$ and $A$ is closed, $B$ is compact. Then there exists a closed hyperplane strictly separating $A$ and $B$.
+    \end{enr}
+
+\end{thm}
+
+\begin{thm}[Baire category]
+    Let $X$ be a complete metric space, $(X_{n})_{n\gqs1}$ a sequence of closed subsets in $X$, if $\Int(X_{n})\neq\ept$ for all $n\gqs1$, then $\Int(\cup_{n=1}^{\ift}X_{n})=\ept$.
+\end{thm}
+
+\begin{thm}[Uniform boundedness, Theorem~2.2]
+    Let $E,F$ be two Banach spaces, $(T_{i})_{i\in I}$ a family of operators $T_{i}\in\cL(E,F)$, if $\sup_{i\in I}\dP{T_{i}x}<\ift$ for all $x\in E$, then $\sup_{i\in I}\dP{T_{i}}_{\cL(E,F)}<\ift$.
+\end{thm}
+
+\begin{thm}[]
+    Let $E,F$ be two Banach spaces and $T\in\cL(E,F)$.
+    \begin{enr}[label=(\arabic*)]
+        \item (Open mapping, Theorem~2.6) If $T$ is surjective, then there exists $C>0$ such that $T(B_{E}(0,1))\sps B_{F}(0,C)$.
+        \item (Closed graph, Theorem~2.9) If the graph of $T$ is closed in $E\tms F$, then $T$ is continuous.
+    \end{enr}
+\end{thm}
+
+
+\begin{dfn}
+    Let $E$ be a metric space, say it is separable if the following equivalent conditions hold
+    \begin{enr}[label=(\arabic*)]
+        \item There is a countable dense subset $D\sbs E$.
+    \end{enr}
+\end{dfn}
+
+
+\begin{dfn}[Fischer-Riesz]
+    Let $\Oga\sbs\bR^{N}$ be a measurable subset and $p\in\bR$ with $1\lqs p\lqs\ift$, the following subsets of measurable functions are Banach spaces with the given norm.
+    \[
+        L^{p}(\Oga):=\begin{cases}
+          \{f:\Oga\ar\bR: \T{$f$ is integrable}\},\quad \dP{f}_{1}:=\int_{\Oga}\sP{f}\dif{\mu} & p=1 \\
+          \{f:\Oga\ar\bR: \sP{f}^{p}\in L^{1}(\Oga)\},\quad \dP{f}_{p}:=\sR{\int_{\Oga}\sP{f}^{p}\dif{\mu}}^{1/p} & 1<p<\ift \\
+          \{f:\Oga\ar\bR:\T{$\xis C\gqs0, \sP{f}\lqs C$ a.e. on $\Oga$}\},\quad \dP{f}_{\ift}:=\inf\{C\gqs0:\T{$\dP{f}\lqs C$ a.e. on $\Oga$}\}& p=\ift
+        \end{cases}
+    \]
+\end{dfn}
+
+\begin{thm}[H{\"o}lder's inequality]
+    Let $1\lqs p,q\lqs\ift$ such that $1/p+1/q=1$, take $f\in L^{p}(\Oga)$ and $g\in L^{q}(\Oga)$, then $fg\in L^{1}(\Oga)$ and $\dP{fg}_{1}\lqs\dP{f}_{p}\dP{g}_{q}$.
+\end{thm}
+
+
+\begin{thm}
+    Let $\Oga$ be a measurable subset of $\bR^{N}$ and not a finite number of points, then
+    \begin{enr}[label=(\arabic*)]
+        \item For $1<p<\ift$, $L^{p}(\Oga)$ is reflexive, separable with dual space $L^{q}(\Oga)$.
+        \item For $p=1$, $L^{1}(\Oga)$ is not reflexive, separable with dual space $L^{\ift}(\Oga)$.
+        \item For $p=\ift$, $L^{\ift}(\Oga)$ is not reflexive, not separable with dual space strictly larger then $L^{1}(\Oga)$.
+    \end{enr}
+\end{thm}
+
+
+\begin{thm}[Young, Theorem~4.33]
+    Let $1\lqs p,q\lqs\ift$ such that $1/r=1/p+1/q-1\gqs0$, take $f\in L^{p}(\bR^{N}),g\in L^{q}(\bR^{N})$, then $f\ast g\in L^{r}(\bR^{N}),\dP{f\ast g}_{r}\lqs \dP{f}_{p}\dP{g}_{q}$.
+\end{thm}
+
+\begin{dfn}
+    Let $\Oga\sbs\bR^{N}$ be open and $1\lqs p\lqs \ift$, define $L_{\T{loc}}^{p}(\Oga)$ to the functions $f:\Oga\ar\bR$ such that $f\chi_{K}\in L^{p}(\Oga)$ for every compact set $K\sbs\Oga$.
+\end{dfn}
+
+\begin{thm}[Proposition~4.20]
+    Let $f\in C_{c}^{k}(\bR^{N}), k\gqs0$ and $g\in L_{\T{loc}}^{1}(\bR^{N})$, then $(f\ast g)\in C^{k}(\bR^{N})$ and $D^{\afa}(f\ast g)=(D^{\afa}f)\ast g$ for all $\afa$ with $\sP{\afa}\lqs k$.
+\end{thm}
+
+
+\begin{dfn}
+    A sequence of mollifiers is a sequence of functions $(\rho_{n})_{n\gqs1}$, where $\rho_{n}\in C_{c}^{\ift}(\bR^{N})$ such that $\rho_{n}\gqs0$, $\Sup\rho_{n}\sbs\oL{B(0,1/n)}$ and $\int\rho_{n}=1$.
+\end{dfn}
+
+\begin{thm}[Proposition~4.21, Theorem~4.22]
+    The following holds
+    \begin{itm}
+        \item Let $f\in C^{0}(\bR^{N})$, then $\lim\limits_{n\ar\ift}(\rho_{n}\ast f)=f$ uniformly on compact sets of $\bR^{N}$.
+        \item Let $f\in L^{p}(\bR^{N}), 1\lqs p<\ift$, then $\lim\limits_{n\ar\ift}(\rho_{n}\ast f)=f$ in $L^{p}(\bR^{N})$.
+    \end{itm}
+\end{thm}
+
+
+\begin{thm}[Arzel{\`a}-Ascoli, Theorem~4.25]
+    Let $K$ be a compact metric space, $\cH$ a subset of the countinuous functions $C^{0}(K)$. If $\cH$ is bounded and uniformly equicontinuous, then it has compact closure in $C^{0}(K)$.
+\end{thm}
+
+
+\begin{thm}[Fr{\'e}chet-Kolmogorov, Theorem~4.26]
+    Let $\cF$ be a bounded set in $L^{p}(\bR^{N}),1\lqs p<\ift$, if $\lim\limits_{\sP{h}\ar0}\dP{\tau_{h}f-f}_{p}=0$ uniformly in $f\in \cF$, then $\cF|_{\Oga}$ has compact closure in $L^{p}(\Oga)$ for any measurable $\Oga\sbs\bR^{N}$ with finite measure.
+\end{thm}
+
+\begin{dfn}
+    Let $E,F$ be two Banach spaces and $T\in\cL(E,F)$. $T$ is compact if $T(B_{E})$ has compact closure in $F$, denote by $\cK(E,F)$ such operators. $T$ is a Fredholm operator if $\Ker(T)$ has finite dimension, $\Img(T)$ is closed and has finite codimension, denote by $\Phi(E,F)$ such operators, and $\Ind(T):=\Dim\Ker(T)-\Cdm\Img(T)$.
+\end{dfn}
+
+\begin{dfn}
+    Let $T\in\cL(E)$, the resolvent set $\rho(T)$ is those $\lda\in\bR$ such that $(T-\lda \Id)$ is bijective; the spectrum set $\rho(T)$ is $\bR\ssm\rho(T)$; the eigenvalue set $\mrm{EV}(T)$ is those $\lda\in\bR$ such that $\Ker(T-\lda\Id)\neq 0$.
+\end{dfn}
+
+\begin{thm}[Theorem~6.8]
+    Let $T\in\cK(E)$ with $\Dim E=\ift$, then $0\in\sgm(T)$, $\sgm(T)\ssm\{0\}=\mrm{EV}(T)\ssm\{0\}$, and one of the following holds
+    \begin{itm}
+        \item $\sgm(T)=\{0\}$.
+        \item $\sgm(T)\ssm\{0\}$ is finite.
+        \item $\sgm(T)\ssm\{0\}$ is a sequence converging to $0$.
+    \end{itm}
+\end{thm}
+
+\begin{thm}[Theorem~6.11, Theorem~6.12]
+    Let $H$ be a seperable Hilbert space and $T$ a compact self-adjoint operator, then there exists a Hilbert basis of eigenvectors of $T$. A bounded operator $T$ is Hilbert-Schmidt if there is a Hilbert basis $(e_{n})$ such that $\dP{T}_{\T{HS}}^{2}:=\sum_{n}\sP{Te_{n}}^{2}<\ift$, such operators are compact.
+
+    In particular, if $H=L^{2}(\Oga), K\in L^{2}(\Oga\tms\Oga)$, then $T:u\amt\int_{\Oga\tms\Oga}Ku$ is Hilbert-Schmidt.
+\end{thm}
+
+
+\sct{Partial differential equations}
+
+Ref:~\cite{Evans2010}
+
+\begin{dfn}
+    Let $k\gqs1$ be an integer, $U\sbs \bR^{n}$ an open subset.
+
+    A $k$-th order partial differential equation is an expression
+    \[
+        F(D^{k}u,D^{k-1}u,\lds,u,x)=0, \fal x\in U,
+    \]
+    where $F:\bR^{n^{k}}\tms\cds \bR\tms U\ar\bR$ is given and $u:U\ar bR$ is unknown. The equation is
+    \begin{enr}[label=(\arabic*)]
+        \item linear if it has the form $\sum_{\sP{\afa}\lqs}a_{\afa}D^{\afa}u=f$, and homogeneous if $f\eqv0$.
+        \item semilinear if it has the form $\sum_{\sP{\afa}=k}D^{\afa}u+a_{0}(D^{k-1}u,\lds,u,x)=0$.
+        \item quasilinear if it has the form $\sum_{\sP{\afa}=k}a_{\afa}(D^{k-1}u,\lds,u,x)D^{\afa}u+a_{0}(D^{k-1}u,\lds,u,x)=0$.
+        \item fully nonlinear if if depends nonlinearly on $D^{k}u$.
+    \end{enr}
+\end{dfn}
+
+\ssc{Linear PDE}
+
+\sss{Transport equation}
+\begin{thm}
+    For a fixed vector $b\in\bR^{n}$, the transport equation $u_{t}+bDu=f$ in $\bR^{n}\tms(0,\ift)$ and $u=g$ on $\bR\tms\{t=0\}$ is solved by $u(x,t)=g(x-tb)+\int_{0}^{t}f(x+(s-t)b,s)\dif{s}$.
+\end{thm}
+
+\sss{Poisson's equation}
+
+\begin{thm}
+    Consider Poisson's equation $-\Dta u=f$ in $U$ and $u=g$ on $\ptl U$.
+
+    For $x\in\bR^{n}$ and $x\neq 0$, the fundamental solution is given by
+    \[
+        \Phi(x)=\begin{cases}
+          -\dfrac{1}{2\pi}\log\sP{x} & n = 2 \\
+          \dfrac{1}{n(n-2)\afa(n)}\dfrac{1}{\sP{x}^{n-2}} & n\gqs3
+        \end{cases}
+    \]
+    where $\afa(n)=\pi^{n/2}/\Gma(n/2+1)$ is the volume of unit ball in $\bR^{n}$.
+
+    Let the Green's function for the region $U$ be $G(x,y):=\Phi(y-x)-\phi^{x}(y)$ for $x,y\in U, x\neq y$, where $\phi^{x}$ solves $\Dta\phi^{x}=0$ in $U$ and $\phi^{x}=\Phi(y-x)$ on $\ptl U$. If $u\in C^{2}(\oL{U})$ solves $-\Dta u=f$ in $U$ and $u=g$ on $\ptl U$, then
+    \[
+        u(x)=-\int_{\ptl U}g(y)\frac{\ptl G}{\ptl \nu}(x,y)\dif{y}+\int_{U}f(y)G(x,y)\dif{y}.
+    \]
+    Moreover, let $\cA=\{w\in C^{2}(\oL{U}):w|_{\ptl U}=g|_{\ptl U}\}$ and the energy functional $I[w]:=\int_{U}\frac{1}{2}\sP{Dw}^{2}-wf\dif{x}$. Then $u$ solves the equation if and only if $I[u]=\min_{w\in\cA}I[w]$.
+\end{thm}
+
+\begin{thm}[Mean-Value property]
+    Let $U\sbs\bR^{n}$ be open and $u\in C^{2}(U)$. Then $u$ is harmonic if and only if
+    \[
+        u(x)=\frac{1}{\mu(\ptl B(x,r))}\int_{\ptl B(x,r)}u\dif{S}=\frac{1}{\mu(B(x,r))}\int_{B(x,r)}u\dif{V},\quad\fal B(x,r)\sbs U.
+    \]
+
+    As a result, one has
+    \begin{itm}
+        \item (Maximum principle) If $u\in C^{2}(U)\cap C^{0}(\oL{U})$ is harmonic in $U$, then $\max_{\oL{U}}u=\max_{\ptl U}u$; if further $U$ is connected and there exists $x_{0}\in U$ such that $u(x_{0})=\max_{\oL{U}}u$ then $u$ is constant in $U$.
+
+        Thus, there is at most one solution $u\in C^{2}(U)\cap C^{0}(\oL{U})$ to $-\Dta u=f$ in $U$ and $u=g$ on $\ptl U$.
+
+        \item (Regularity) If $u\in C^{0}(U)$ satisfies the mean-value property, then $u\in C^{\ift}(U)$, moreover $u$ is analytic.
+        \item (Local estimates) If $u$ is harmonic in $U$, then
+        \[
+            \sP{D^{\afa}u(x_{0})}\lqs\frac{C_{k}}{r^{n+k}}\dP{u}_{L^{1}(B(x_{0},r))}, C_{k}=\frac{(2^{n+1}nk)^{k}}{\afa(n)},\quad \fal B(x_{0},r)\sbs U, \sP{\afa}=k.
+        \]
+        \item (Liouville) If $u:\bR^{n}\ar\bR$ is harmonic and bounded, then $u$ is constant.
+
+        Thus, for any $f\in C_{c}^{2}(\bR^{n}),n\gqs3$, any bounded solution of $-\Dta u=f$ in $\bR^{n}$ has the form
+        \[
+            u(x)=\int_{\bR^{n}}\Phi(x-y)f(y)\dif{y} +C.
+        \]
+        \item (Harnack's inequality) For any connected open $V\Sbs U$, there exists $C>0$ depending on $V$ such that $\sup_{V}u\lqs C\inf_{V}u$ for all non-negative harmonic functions $u$ in $U$.
+    \end{itm}
+\end{thm}
+
+
+\sss{Heat Equation}
+
+\begin{thm}
+    Consider the heat equation $u_{t}-\Dta_{x}u=f$ in $\bR^{n}\tms(0,\ift)$ and $u=g$ on $R^{n}\tms\{t=0\}$.
+
+    For $t>0$, the fundamental solution is given by
+    \[
+        \Phi(x,t)=\frac{1}{(4\pi t)^{n/2}}e^{-\frac{\sP{x}^{2}}{4t}}
+    \]
+
+    And the heat equation is solved by
+    \[
+        u(x,t)=\int_{\bR^{n}}\Phi(x-y,t)g(y)\dif{y}+\int_{0}^{t}\int_{\bR^{n}}\Phi(x-y,t-s)f(y,s)\dif{y}\dif{s},
+    \]
+    such that (1) $u\in C_{1}^{2}(\bR^{n}\tms(0,\ift))$, (2) $u_{t}-\Dta_{x}u=f$, (3) $\lim_{(x,t)\ar(x_{0},0)}=g(x_{0})$ for each $x_{0}\in\bR^{n}$.
+\end{thm}
+
+\begin{thm}[Mean-Value property]
+    Let $U\sbs\bR^{n}$ be open bounded and $0<T<\ift$, let $U_{T}:=U\tms(0,T]$, and $u\in C_{1}^{2}(U_{T})$ solve $u_{t}-\Dta_{x}u=0$ in $U_{T}$, then
+    \[
+        u(x,t)=\frac{1}{4r^{n}}\iint_{E(x,t;r)}u(y,s)\frac{\sP{x-y}^{2}}{(t-s)^{2}}\dif{y}\dif{s},\quad \fal E(x,t;r)\sbs U_{T},
+    \]
+    where $E(x,t;r):=\{(y,s)\in\bR^{n+1}:s\lqs t, \Phi(x-y,t-s)\gqs1/r^{n}\}$. Furthermore, one has
+    \begin{itm}
+        \item (Maximum principle) If $u\in C_{1}^{2}(U_{T})\cap C^{0}(\oL{U_{T}})$ solves $u_{t}-\Dta_{x}u=0$ in $U_{T}$, then $\max_{\oL{U_{T}}}u=\max_{\Gma_{T}}u$; if further $U$ is connected and there is $(x_{0},t_{0})\in U_{T}$ such that $u(x_{0},t_{0})=\max_{\oL{U_{T}}}u$, then $u$ is constant in $\oL{U_{t_{0}}}$.
+        \item (Uniqueness) Let $g\in C^{0}(\Gma_{T})$ and $f\in C^{0}(U_{T})$, there exists at most one solution $u\in C_{1}^{2}(U_{T})\cap C^{0}(\oL{U_{T}})$ to $u_{t}-\Dta_{x}u=f$ in $U_{T}$ and $u=g$ on $\Gma_{T}$.
+        \item (Regularity) If $u\in C_{1}^{2}(U_{T})$ solves $u_{T}-\Dta_{x}u=0$, then $u\in C^{\ift}(U_{T})$.
+        \item (Local estimates) There exists constant $C_{k,l}$ for each $k,l\gqs0$ such that for all solutions $u$
+        \[
+            \max_{C(x,t;r/2)}\sP{D_{x}^{k}D_{t}^{l}u}\lqs\frac{C_{kl}}{r^{k+2l+n+2}}\dP{u}_{L^{1}(C(x,t;r))},\quad \fal C(x,t;r/2)\sbs C(x,t;r)\sbs U_{T},
+        \]
+        where $C(x,t;r):=\{(y,s):\sP{x-y}\lqs r, t-r^{2}\lqs s\lqs t\}$.
+    \end{itm}
+\end{thm}
+
+
+\sss{Wave Equation}
+
+\begin{thm}
+    Consider the wave equation $u_{tt}-\Dta_{x}u =0$ in $\bR^{n}\tms(0,\ift)$ and $u=g, u_{t}=h$ on $\bR^{n}\tms\{t=0\}$.
+    \begin{itm}
+    \item If $n=1$, let $g\in C^{2}(\bR)$ and $h\in C^{1}(\bR)$, then $u$ is solved by
+    \[
+        u(x,t)=\frac{1}{2}(g(x+t)+g(x-t))+\frac{1}{2}\int_{x-t}^{x+t}h(y)\dif{y}.
+    \]
+    \item If $n\gqs2$ is even, let $m=n/2+1$, $g\in C^{m+1}(\bR^{n})$ and $h\in C^{m}(\bR^{n})$, then $u$ is solved by
+    \begin{align*}
+      u(x,t)=&\frac{1}{n!!}\ptl_{t}(\ptl_{t}/t)^{m-2}\sR{\frac{t^{n}}{\mu(B(x,t))}\int_{B(x,t)}\frac{g(y)}{(t^{2}-\sP{y-x}^{2})^{1/2}}\dif{y}}\\
+      +&\frac{1}{n!!}(\ptl_{t}/t)^{m-2}\sR{\frac{t^{n}}{\mu(B(x,t))}\int_{B(x,t)}\frac{h(y)}{(t^{2}-\sP{y-x}^{2})^{1/2}}\dif{y}}.
+    \end{align*}
+
+    \item If $n\gqs3$ is odd, let $m=(n+1)/2$, $g\in C^{m+1}(\bR^{n})$ and $h\in C^{m}(\bR^{n})$, then $u$ is solved by
+    \begin{align*}
+      u(x,t)=&\frac{1}{(n-2)!!}\ptl_{t}(\ptl_{t}/t)^{m-2}\sR{\frac{t^{n-2}}{\mu(\ptl B(x,t))}\int_{\ptl B(x,t)}g\dif{S}}\\
+      +&\frac{1}{(n-2)!!}(\ptl_{t}/t)^{m-2}\sR{\frac{t^{n-2}}{\mu(\ptl B(x,t))}\int_{\ptl B(x,t)}h\dif{S}}.
+    \end{align*}
+    \end{itm}
+
+    $u$ satisfies that (1) $u\in C^{2}(\bR^{n}\tms[0,\ift))$, (2) $u_{tt}-\Dta_{x}u=0$ in $\bR^{n}\tms(0,\ift)$, (3) for each $x_{0}\in\bR^{n}$,
+    \[
+        \lim_{(x,t)\ar(x_{0},0)}u(x,t)=g(x_{0}),\quad \lim_{(x,t)\ar(x_{0},0)}u_{t}(x,t)=h(x_{0}).
+    \]
+\end{thm}
+
+\printref
+\end{document}
+
