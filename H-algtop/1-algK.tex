@@ -7,45 +7,44 @@
 
 Ref: arXiv2405.04329.
 
-
 \begin{stp}
-    Let $p$ be a prime, $K$ a $p$-adic field of ramification degree $e$ and residue degree $f$.
+    Let $p$ be a prime, $K$ a $p$-adic field of ramification degree $e$ and residue degree $f$ with uniformizer $\vpi$, denote by $R_{n}:=\cO_{K}/\vpi^{n}$. Then $\RMK_{r}(R_{n})$ can be effectively determined for all $r\gqs0$ and $n\gqs1$.
 
-    Consider the problem of computing $K_{r}(\cO_{K}/\vpi^{n})$ for $r\gqs0$ and $n\gqs1$.
 \end{stp}
 
-
-
+ $\RMK_{r}(R_{n};\bZ[1/p])\cong \RMK_{r}(\bF_{q};\bZ[1/p])$ for $r\gqs0$.
+\begin{cmt}[1]
 If $n\gqs1$, by Quillen\cite{Quillen1972}, one has
 \[
-    K_{r}(\bF_{q})=\begin{cases}
+    \RMK_{r}(\bF_{q})=\begin{cases}
       \bZ & r = 0 \\
       \bZ/(q^{k}-1) & r = 2k-1 \\
       0 & \T{otherwise}
     \end{cases}
 \]
 
-if $n\gqs e$, $\cO_{K}/\vpi^{n}=\bF_{q}[z]/z^{n}$, by Hesselholt-Madsen\cite{HM1997Cyclic}, one has ???
+if $n\lqs e$, $R_{n}=\bF_{q}[z]/z^{n}$, by Hesselholt-Madsen\cite{HM1997Cyclic}, \red{(to add)}.
+\end{cmt}
 
-
-
-The paper started with Dundas-Goodwille-McCarthy, $K_{r}(\cO_{K}/\vpi^{n};\bZ_{p})\cong\mrm{TC}_{r}(\cO_{K}/\vpi^{n};\bZ_{p})$ for $r\gqs0$.
-
-Then, by Bhatt-Morrow-Scholze, there is a strictly decreasing filtration $F_{\T{mot}}^{\gqs\blt}\mrm{TC}(R;\bZ_{p})$ with graded piece $\Gr_{\T{mot}}^{k}\mrm{TC}(R;\bZ_{p})\cong\bZ_{p}(k)(R)[2k]$, whose spectral sequences converges to $\mrm{TC}_{r}(R;\bZ_{p})$, consequently, one has
+(\cite{DGMC2013}) $\RMK_{r}(R_{n};\bZ_{p})\cong\mrm{TC}_{r}(R_{n};\bZ_{p})$ for $r\gqs0$. (\cite{BMS2019}) There is a strictly decreasing filtration $F_{\T{mot}}^{\gqs\blt}\mrm{TC}(R_{n};\bZ_{p})$ with graded piece $\Gr_{\T{mot}}^{k}\mrm{TC}(R_{n};\bZ_{p})\cong\bZ_{p}(k)(R)[2k]$ , whose spectral sequences converges to $\mrm{TC}_{r}(R_{n};\bZ_{p})$, consequently, one has
 \[
-    K_{r}(R;\bZ_{p})\cong \begin{cases}
-      \HH{}{0}{(\bZ_{p}(0)(R))}\cong \bZ_{p} & r = 0 \\
-      \HH{}{1}{(\bZ_{p}(k)(R))} & r=2k-1, k\gqs1 \\
-      \HH{}{2}{(\bZ_{p}(k)(R))} & r=2k-2, k\gqs2
+    \RMK_{r}(R_{n};\bZ_{p})\cong \begin{cases}
+      \HH{}{0}{(\bZ_{p}(0)(R_{n}))}\cong \bZ_{p} & r = 0 \\
+      \HH{}{1}{(\bZ_{p}(k)(R_{n}))} & r=2k-1, k\gqs1 \\
+      \HH{}{2}{(\bZ_{p}(k)(R_{n}))} & r=2k-2, k\gqs2
     \end{cases}
 \]
 
 
-Moreover, the cohomology of $\bZ_{p}(k)(R)$ could be effectively computed: For $k\gqs1$, there is a cochain complex
+Moreover, the cohomology of $\bZ_{p}(k)(R_{n}),k\gqs1$ could be effectively computed, there is a cochain complex
 \[
     \bZ_{p}^{f(kn-1)}\axr{\mrm{syn}^{0}}\bZ_{p}^{2f(kn-1)}\axr{\mrm{syn}^{1}}\bZ_{p}^{f(kn-1)},
 \]
-where $\mrm{syn}^{0}$ and $\mrm{syn}^{1}$ are effectively computable, and which is quasi-isomorphic to $\bZ_{p}(k)(R)$.
+where $\mrm{syn}^{0}$ and $\mrm{syn}^{1}$ are effectively computable, and which is quasi-isomorphic to $\bZ_{p}(k)(R)$. If $k\gqs2$ satisfies
+\[
+    k-1\gqs\frac{p}{p-1}\sR{\frac{p}{p-1}(p^{\sCe{n/e}}-1)-p^{\sCe{n/e}}(\sCe{n/e}-n/e)},
+\]
+then $\RMK_{2k-2}(R_{n};\bZ_{p})=0$.
 
 
 

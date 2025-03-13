@@ -1,0 +1,321 @@
+\documentclass[article, a4paper, twoside]{universal}
+
+\setshowlvl{1}
+\begin{document}
+\confighead{}{}{}
+\printhead{}{}{1}
+
+\sct{Homological algebra}
+Ref: \cite{Weibel1994}
+
+
+\begin{dfn}[5.2.1, 5.2.8]
+    A homology spectral sequence $(E_{p,q}^{r}) $ in an abelian category $\cA$ is the data of
+    \begin{itm}
+        \item family of objects $(E_{p,q}^{r})$ of $\cA$ for all $p,q\in\bZ$ and $r\gqs a$.
+        \item maps $d_{p,q}^{r}:E_{p,q}^{r}\ar E_{p-r,q+r-1}^{r}$ such that $d_{p-r,q+r-1}^{r}\cc d_{p,q}^{r}=0$.
+        \item isomorphisms $E_{p,q}^{r+1}\cong Z_{p,q}^{r+1}/B_{p,q}^{r+1}$, where $Z_{p,q}^{r+1}:=\Ker(d_{p,q}^{r})$ and $B_{p,q}^{r+1}:=\Img(d_{p+r,q-r+1}^{r})$.
+    \end{itm}
+    Define $Z_{p,q}^{\ift}:=\bcap_{r=a}^{\ift}Z_{p,q}^{r}$ and $B_{p,q}^{\ift}:=\bcup_{r=a}^{\ift}B_{p,q}^{r}$, and $E_{p,q}^{\ift}:=Z_{p,q}^{\ift}/B_{p,q}^{\ift}$, note that
+    \[
+        0=B_{p,q}^{a}\sbs\cds B_{p,q}^{r}\sbs\cds\sbs B_{p,q}^{\ift}\sbs Z_{p,q}^{\ift}\sbs\cds\sbs Z_{p,q}^{r}\sbs\cds\sbs Z_{p,q}^{a}=E_{p,q}^{a}.
+    \]
+\end{dfn}
+
+\begin{dfn}[5.2.5, 5.2.7, 5.2.9, 5.2.10]
+    Define the homology spectral sequence $(E_{p,q}^{r})$ to be
+    \begin{itm}
+        \item \tbf{bounded} if there are finitely many nonzero terms of total degree $n$ in $E_{\blt,\blt}^{a}$ for each $n$, for such sequence, there is $r_{0}$ for each $p,q$ such that $E_{p,q}^{r}\cong E_{p,q}^{r+1}\cong E_{p,q}^{\ift}$ for all $r\gqs r_{0}$.
+        \item \tbf{collapses} at $E^{r}$ if there is exactly one nonzero row or column in $(E_{p,q}^{r})$.
+        \item \tbf{bounded below} if for each $n$, there is $s$ such that terms of total degree $n$ in $E_{p,q}^{a}$ vanishes for $p<s$.
+        \item \tbf{regular} if for each $p,q$, $d_{p,q}^{r}=0$ for $r\gg 0$, equivalently $Z_{p,q}^{r}=Z_{p,q}^{\ift}$ for $r\gg 0$.
+    \end{itm}
+\end{dfn}
+
+\begin{dfn}[5.2.5, 5.2.11]
+    Let $(E_{p,q}^{r})$ be a homology spectral sequence, and $(H_{n})$ be a family of objects in $\cA$ with an increasing filtration $F_{\blt}$. Say the sequence $(E_{p,q}^{r})$
+    \begin{itm}
+        \item \tbf{weakly converges to} $H_{\blt}$ if $E_{p,q}^{\ift}\cong F_{p}H_{p+q}/F_{p-1}H_{p+q}$ for all $p,q$.
+        \item \tbf{approaches} $H_{\blt}$ if it weakly converges to $H_{\blt}$ and $H_{n}=\bcup_{p} F_{p}H_{n},\bcap_{p}F_{p}H_{n}=0,\fal n$.
+        \item \tbf{converges} to $H_{\blt}$ if it approaches $H_{\blt}$, is regular, and $H_{n}=\plim_{p}(H_{n}/F_{p}H_{n}),\fal n$, denote by $E_{p,q}^{a}\aR H_{p+q}$.
+    \end{itm}
+
+    In particular, if the filtration $F_{\blt}$ is finite, and $(E_{p,q}^{r})$ is bounded, then weak convergence implies convergence.
+\end{dfn}
+
+\begin{thm}[Mapping lemma]
+    Let $f:(E_{p,q}^{r})\ar(G_{p,q}^{r})$ be a morphism of spectral sequences such that for some $r$, $f^{r}:E_{p,q}^{r}\cong G_{p,q}^{r}$ for all $p,q$, then $f^{s}:E_{p,q}^{s}\cong G_{p,q}^{s}$ for all $s\gqs r$ and all $p,q$, as well as $f^{\ift}:E_{p,q}^{\ift}\cong G_{p,q}^{\ift}$.
+\end{thm}
+
+\begin{dfn}
+    Let $C$ be a chain complex with an increasing filtration $F_{\blt}$. Define the filtration to be
+    \begin{itm}
+        \item \tbf{bounded} if for each $n$, there are $s<t$ such that $F_{s}C_{n}=0$ and $F_{t}C_{n}=C_{n}$.
+        \item \tbf{bounded below} if for each $n$, there is $s$ such that $F_{s}C_{n}=0$.
+        \item \tbf{bounded above} if for each $n$, there is $t$ such that $F_{t}C_{n}=C_{n}$.
+        \item \tbf{exhaustive} if $\bcup_{p}F_{p}C=C$.
+        \item \tbf{Hausdorff} if $\bcap_{p}F_{p}C=0$.
+        \item \tbf{complete} if $C=\plim_{p}(C/F_{p}C)$.
+    \end{itm}
+\end{dfn}
+
+\begin{thm}[5.4.1, 5.4.5, 5.5.1, 5.5.10]
+    Let $C$ be a chain complex with an increasing filtration $F_{\blt}$, it naturally determines a homology spectral sequence starting with $E_{p,q}^{0}=F_{p}C_{p+q}/F_{p-1}C_{p+q}$ and $E_{p,q}^{1}=\HH{p+q}{}{(E_{p,\blt}^{0})}$. The spectral sequence arising from $C$ and $\oH{C}$ are the same.
+
+    \begin{itm}
+        \item If the filtration is bounded, then the spectral sequence is bounded and converges to $\HH{\blt}{}{(C)}$.
+        \item If the filtration is bounded below and exhaustive, then the spectral sequence is bounded below and converges to $\HH{\blt}{}{(C)}$. The convergence is natural in that if $f:C\ar D$ is a map of filtered complexes, then $f\zS:\HH{\blt}{}{(C)}\ar\HH{\blt}{}{(D)}$ is compatible with the corresponding map of spectral sequences.
+        \item If the filtration is complete and exhaustive, and the spectral sequence is regular, then
+        \begin{itm}
+            \item the spectral sequence weakly converges to $\HH{\blt}{}{(C)}$.
+            \item if the spectral sequence is bounded above, then it converges to $\HH{\blt}{}{(C)}$.
+        \end{itm}
+    \end{itm}
+\end{thm}
+
+\begin{thm}[Eilenberg-Moore Comparison, 5.5.11]
+    Let $f:C\ar D$ be a map of complexes with complete and exhaustive filtration, if for some $r\gqs0$ $f^{r}:E_{p,q}^{r}(C)\cong E_{p,q}^{r}(D)$ for all $p,q$, then $f\zS:\HH{\blt}{}{(C)}\cong\HH{\blt}{}{(D)}$.
+\end{thm}
+
+\begin{thm}[5.6.1, 5.6.2]
+    Consider a double complex $C_{\blt,\blt}$ in an abelian category $\cA$.
+
+    The column filtration ${}^{\Rnum{1}}F\zB\Tot(C_{\blt,\blt})$ gives a spectral sequence ${}^{\Rnum{1}}E_{p,q}^{r}$ starting with
+    \[
+        {}^{\Rnum{1}}E_{p,q}^{0}=C_{p,q},\quad {}^{\Rnum{1}}E_{p,q}^{1}=\HH{q}{v}{(C_{p,\blt})},\quad {}^{\Rnum{1}}E_{p,q}^{2}=\HH{p}{h}{\HH{q}{v}(C_{\blt,\blt})}.
+    \]
+
+    \begin{itm}
+        \item If $C_{\blt,\blt}$ is in the first quadrant, ${}^{\Rnum{1}}E_{p,q}^{2}$ converges to $\HH{p+q}{}{(\Tot(C_{\blt,\blt}))}$.
+        \item If $C_{p,q}=0$ in the second quadrant, ${}^{\Rnum{1}}E_{p,q}^{2}$ converges to $\HH{p+q}{}{(\Tot^{\op}(C_{\blt,\blt}))}$.
+        \item If $C_{p,q}$ in the fourth quadrant, ${}^{\Rnum{1}}E_{p,q}^{2}$ weakly converges to $\HH{p+q}{}{(\Tot^{\prod}(C_{\blt,\blt}))}$.
+    \end{itm}
+
+    The row filtration ${}^{\Rnum{2}}F\zB\Tot(C_{\blt,\blt})$ gives a spectral sequence ${}^{\Rnum{2}}E_{p,q}^{r}$ starting with
+    \[
+        {}^{\Rnum{2}}E_{p,q}^{0}=C_{q,p},\quad {}^{\Rnum{2}}E_{p,q}^{1}=\HH{q}{h}{(C_{\blt,p})},\quad {}^{\Rnum{2}}E_{p,q}^{2}=\HH{p}{v}{\HH{q}{h}{(C_{\blt,\blt})}}.
+    \]
+
+    \begin{itm}
+        \item If $C_{\blt,\blt}$ is in the first quadrant, ${}^{\Rnum{2}}E_{p,q}^{2}$ converges to $\HH{p+q}{}{(\Tot(C_{\blt,\blt}))}$.
+        \item If $C_{p,q}=0$ in the fourth quadrant, ${}^{\Rnum{2}}E_{p,q}^{2}$ converges to $\HH{p+q}{}{(\Tot^{\op}(C_{\blt,\blt}))}$.
+        \item If $C_{p,q}=0$ in the second quadrant, ${}^{\Rnum{2}}E_{p,q}^{2}$ weakly converges to $\HH{p+q}{}{(\Tot^{\prod}(C_{\blt,\blt}))}$.
+    \end{itm}
+\end{thm}
+
+\begin{thm}[5.6.6, 5.6.3]
+    Let $f:R\ar S$ be a map of rings, for every $R$-module $A$ and $S$-module $B$.
+    \begin{itm}
+        \item there is a first quadrant homology spectral sequence
+        \[
+            E_{p,q}^{2}:=\Tor{p}{S}{(\Tor{q}{R}{(A,S)},B)}\aR\Tor{p+q}{R}{(A,B)}.
+        \]
+        \item there is a first quadrant cohomology spectral sequence
+        \[
+            E_{2}^{p,q}:=\Ext{S}{p}{(B,\Ext{R}{q}{(S,A)})}\aR\Ext{R}{p+q}{(B,A)}.
+        \]
+    \end{itm}
+\end{thm}
+
+\begin{dfn}[5.7.4, 5.7.9]
+    Let $F:\cA\ar\cB$ be a functor of abelian categories.
+
+    \begin{itm}
+        \item Suppose $F$ is right exact and $\cA$ has enough projectives. For a chain complex $A\zB$ in $\cA$, take a Cartan-Eilenberg resolution $P\zB\ar A\zB$, define $\bL_{k}F(A\zB):=\HH{k}{}{(\Tot^{\op}F(P\zB))}$, this gives the \tbf{left hyper-derived functors} $\bL_{k}F:\mrm{Ch}(\cA)\ar\cB$.
+        \item Suppose $F$ is left exact and $\cA$ has enough injectives. For a chain complex $A\zB$ in $\cA$, take a Cartan-Eilenberg resolution $A\zB\ar I\zB$, define $\bR_{k}F(A\zB):=\HH{k}{}{(\Tot^{\prod}F(I\zB))}$, this gives the \tbf{right hyper-derived functors} $\bR_{k}F:\mrm{Ch}(\cA)\ar\cB$.
+    \end{itm}
+
+\end{dfn}
+
+\begin{thm}[5.7.6, 5.7.9]
+    The spectral sequence ${}^{\Rnum{2}}E_{p,q}^{2}=(L_{p}F)(\HH{q}{}{(A)})$ converges to $\bL_{p+q}F(A)$. If $A$ is bounded below, ${}^{\Rnum{1}}E_{p,q}^{2}=\HH{p}{}{(L_{q}F(A))}$ converges to $\bL_{p+q}F(A)$.
+
+    The spectral sequence ${}^{\Rnum{2}}E_{2}^{p,q}=(R^{p}F)(\HH{}{q}{(A)})$ weakly converges to $\bR^{p+q}F(A)$. If $A$ is bounded below, ${}^{\Rnum{1}}E_{2}^{p,q}=\HH{}{p}{(R^{q}F(A))}$ converges to $\bR^{p+q}F(A)$.
+\end{thm}
+
+\begin{thm}[Grothendieck, 5.8.3]
+    Let $\cA,\cB,\cC$ be abelian categories such that $\cA,\cB$ have enough injectives. Let $F:\cB\ar\cC$ and $G:\cA\ar\cB$ be left exact functors such that $G$ sends injective objects to $F$-acyclic objects. Then there exists a convergent first quadrant cohomology spectral sequence for each $A$ in $\cA$,
+    \[
+        {}^{\Rnum{1}}E_{2}^{p,q}=(R^{p}F)(R^{q}G)(A)\aR R^{p+q}(FG)(A).
+    \]
+\end{thm}
+
+\sct{Higher algebra}
+Ref: Lurie-HigherAlgebra
+
+% \ssc{Fonudations}
+
+\begin{dfn}
+    A simplicial set $\cC$ is a presheaf of sets on the simplex category $\Dta$.
+\end{dfn}
+
+\begin{dfn}[0.0.0.1]
+    An $\ift$-category is a simplicial set $\cC$ such that any map of simplicial sets $f_{0}:\Lda_{i}^{n}\ar\cC$ can be extended to $f:\Dta^{n}\ar\cC$ for $0<i<n$. (Aka, weak Kan complex: all the inner horns have a filler)
+\end{dfn}
+
+\begin{dfn}[1.1.1.1]
+    Let $\cC$ be an $\ift$-category, a zero object $0$ is an object which is both initial and final. Say $\cC$ is pointed if it contains a zero object.
+\end{dfn}
+
+\begin{dfn}[1.1.1.4]
+    Let $\cC$ be a pointed $\ift$-category, a triangle in $\cC$ is a diagram
+    \[
+        \begin{tikzcd}
+            X\ar[r, "f"]\ar[d] & Y\ar[d, "g"] \\
+            0 \ar[r] & Z
+        \end{tikzcd}
+    \]
+    \begin{itm}
+        \item it is a fiber sequence if it is a pullback square, write $X=\mrm{fib}(Y\axr{g}Z)$.
+        \item it is a cofiber sequence if it is a pushout square, write $Z=\mrm{cofib}(X\axr{f}Y)$.
+    \end{itm}
+\end{dfn}
+
+\begin{dfn}[1.1.1.9]
+    An $\ift$-category $\cC$ is stable if the following holds
+    \begin{enr}[label=(\arabic*)]
+        \item There exists a zero object $0\in\cC$.
+        \item Every morphism in $\cC$ admits a fiber and a cofiber.
+        \item A triangle in $\cC$ is a fiber sequence if and only if it is a cofiber sequence.
+    \end{enr}
+
+    \red{Moreover, 1.1.3.4, 1.4.2.21}
+\end{dfn}
+
+
+\begin{dfn}[1.1.2.7]
+    Let $\cC$ be a stable $\ift$-category, denote by $\Sgm:\cC\ar\cC$ the suspension functor and $\Oga:\cC\ar\cC$ the loop functor. For $n\in\bZ$, define $X\amt X[n]$ as
+        \[
+            X[n]=\begin{cases}
+              \Sgm^{n}(X) & n\gqs0 \\
+              \Oga^{-n}(X) & n\lqs0
+            \end{cases}
+        \]
+\end{dfn}
+
+\begin{thm}[1.1.2.14]
+    \red{To define a distinguished triangle, consider (1.1.2.11)}
+
+    Let $\cC$ be a stable $\ift$-category, then the homotopy category $h\cC$ is triangulated.
+
+\end{thm}
+
+\begin{thm}[1.1.4.1]
+    Let $F:\cC\ar\cD$ be a functor between stable $\ift$-categories, the the following are equivalent,
+    \begin{enr}[label=(\arabic*)]
+        \item $F$ is left exact.
+        \item $F$ is right exact.
+        \item $F$ is exact.
+    \end{enr}
+\end{thm}
+
+
+\begin{dfn}[1.2.1.1]
+    Let $\cD$ be a triangulated category, a $t$-structure on $\cD$ is a pair of full subcategories $\cD_{\gqs0},\cD_{\lqs0}$ such that
+    \begin{enr}[label=(\arabic*)]
+        \item For $X\in\cD_{\gqs0}, Y\in\cD_{\lqs0}$, one has $\Hom{\cD}{}{(X,Y[-1])}=0$.
+        \item $\cD_{\gqs0}[1]\sbe\cD_{\gqs0}$ and $\cD_{\lqs0}[-1]\sbe\cD_{\lqs0}$.
+        \item For $X\in\cD$, there exists a fiber sequence $U\ar X\ar V$ where $U\in\cD_{\gqs0}$ and $V\in\cD_{\lqs0}[-1]$.
+    \end{enr}
+\end{dfn}
+
+
+\begin{dfn}[1.2.1.4, 1.2.1.11]
+    Let $\cC$ be a stable $\ift$-category, a $t$-structure on $\cC$ is a $t$-structure on $h\cC$.
+
+    The heart $\cC^{\hrts}$ is the full subcategory $\cC_{\lqs0}\cap\cC_{\gqs0}\sbs\cC$, denote by $\pi_{0}:\cC\ar\cC^{\hrts}$ the functor $\tau_{\lqs0}\cc\tau_{\gqs0}\cong\tau_{\gqs0}\cc\tau_{\lqs0}$, and $\pi_{n}=[-n]\cc\pi_{0}:\cC\ar\cC^{\hrts}$.
+\end{dfn}
+
+
+\begin{thm}[1.4.4.12]
+    Let $\cC$ be a presentable stable $\ift$-category, a $t$-structure on $\cC$ is accessible if $\cC_{\gqs0}$ is presentable.
+
+    \red{equivalently, 1.4.4.13}
+\end{thm}
+
+
+
+\begin{dfn}[1.4.2.1]
+    Let $F:\cC\ar\cD$ be a functor between $\ift$-categories,
+    \begin{enr}[label=(\arabic*)]
+        \item if $\cC$ admits pushouts, then say $F$ is excisive if $F$ preserves pushout squares.
+        \item if $\cC$ admits a final object $*$, then say $F$ is reduced if $F(*)$ is a final object.
+    \end{enr}
+\end{dfn}
+
+
+\begin{dfn}[1.4.2.5, 1.4.2.8, 1.4.3.1]
+    Let $\cS$ be the $\ift$-category of spaces, $\cS^{\T{fin}}$ the $\ift$-category of finite spaces, and $\cS\zS^{\T{fin}}$ the $\ift$-category of its pointed objects.
+
+    Let $\cC$ be an $\ift$-category which admits finite limits, a spectrum object of $\cC$ is a reduced, excisive functor $X:\cS\zS^{\T{fin}}\ar\cC$, let $\Spr(\cC)$ be the category of spectrum objects of $\cC$.
+
+    A spectrum is a spectrum object of the $\ift$-category $\cS$ of spaces. Denote by $\Spr$ the $\ift$-category of spectra.
+\end{dfn}
+
+\begin{thm}[1.4.3.6]
+    $\Spr$ is a stable $\ift$-category, moreover,
+    \begin{enr}[label=(\arabic*)]
+        \item Let $\Spr_{\lqs-1}$ be the full subcategory spanned by those $X$ such that $\Oga^{\ift}(X)$ is contractible, then $\Spr_{\lqs-1}$ determines an accessible $t$-structure on $\Spr$.
+        \item The $t$-structure on $\Spr$ is both left and right complete, $\Spr^{\hrts}$ is canonically equivalent to $N(\Ab)$.
+    \end{enr}
+\end{thm}
+
+
+\begin{dfn}[2.0.0.2]
+    Let $\Fin\zS$ be the category of pointed finite set, whose objects are $\sA{n}:=\{*,1,\cds,n\}$ for each $n\gqs0$, and whose morphisms are $\Hom{\Fin\zS}{}{(\sA{m},\sA{n})}:=\{\afa\in\Hom{\Set}{}{(\sA{m},\sA{n})}:\afa(*)=*\}$.
+
+    For each $1\lqs i\lqs n$, denote by $\rho^{i}:\sA{n}\ar\sA{1}$ the morphism sending $i$ to $1$ and others to $*$.
+\end{dfn}
+
+\begin{dfn}[2.1.1.8, 2.1.2.1]
+    Say a morphism $f:\sA{m}\ar\sA{n}$ is
+    \begin{enr}[label=(\arabic*)]
+        \item inert if for each $i\in\sA{n}\xC$, $\sP{f\xI(i)}=1$.
+        \item active if $f\xI(*)=*$.
+    \end{enr}
+\end{dfn}
+
+\begin{dfn}[2.1.1.10]
+    An $\ift$-operad is a functor $p:\cO^{\ot}\ar N(\Fin\zS)$ such that
+    \begin{enr}[label=(\arabic*)]
+        \item For every inert morphism $f:\sA{m}\ar\sA{n}$ in $N(\Fin\zS)$ and $C\in\cO^{\ot}_{\sA{m}}$, there is a $p$-coCartesian $\oL{f}:C\ar D$ in $\cO^{\ot}$ lifting $f$, where $D\in\cO^{\ot}_{\sA{n}}$, this determines $f\zE:\cO_{\sA{m}}^{\ot}\ar\cO_{\sA{n}}^{\ot}$.
+        \item Let $C\in\cO_{\sA{m}}^{\ot},D\in\cO_{\sA{n}}^{\ot}$, and choose $p$-coCartesian morphisms $D\ar D_{i}$ lying over $\rho^{i}$, then the induced $\Map_{\cO^{\ot}}^{f}(C,D)\ar\prd_{1\lqs i\lqs n}\Map_{\cO^{\ot}}^{\rho^{i}\cc f}(C,D_{i})$ is a homotopy equivalence.
+        \item For a finite collection $C_{1},\lds,C_{n}\in\cO_{\sA{1}}^{\ot}$, there exists $C\in\cO_{\sA{n}}^{\ot}$ and a collection of $p$-coCartesian morphisms $C\ar C_{i}$ lifting $\rho^{i}:\sA{n}\ar\sA{1}$.
+    \end{enr}
+\end{dfn}
+
+\begin{dfn}[2.1.2.3]
+    Let $p:\cO^{\ot}\ar N(\Fin\zS)$ be an $\ift$-operad, say a morphism $f$ in $\cO^{\ot}$ is
+    \begin{enr}[label=(\arabic*)]
+        \item inert if $p(f)$ is inert and $f$ is $p$-coCartesian.
+        \item active if $p(f)$ is active.
+    \end{enr}
+\end{dfn}
+
+\begin{dfn}[2.1.2.7]
+    Let $\cO^{\ot},\cP^{\ot}$ be $\ift$-operads, an $\ift$-operad map is a map of simplicial sets $f:\cO^{\ot}\ar\cP^{\ot}$ such that (1) $f$ preserves inert morphisms, (2) $f$ commutes with $\cO^{\ot}\ar N(\Fin\zS)$ and $\cP^{\ot}\ar N(\Fin\zS)$.
+
+    Denote by $\Alg_{\cO}(\cP)$ the full subcategory of $\Fun_{N(\Fin\zS)}(\cO^{\ot},\cP^{\ot})$ spanned by the $\ift$-operad maps.
+\end{dfn}
+
+
+\begin{dfn}[5.1.0.2, 5.1.0.4]
+    Define a topological category ${}^{t}\bE_{k}^{\ot}$, whose objects are $\sA{n}\in\Fin\zS$, and whose morphisms are $\Hom{{}^{t}\bE_{k}^{\ot}}{}{(\sA{m},\sA{n})}:=\cpd_{\afa\in\Hom{\Fin\zS}{}{(\sA{m},\sA{n})}}\prd_{1\lqs j\lqs n}\Rect(B_{1}(0)^{k}\tms\afa\xI(j)\ar B_{1}(0)^{k})$ with the induced topology. Denote by $\bE_{k}^{\ot}=N({}^{t}\bE_{k}^{\ot})$ the $\ift$-operad of little $k$-cubes.
+\end{dfn}
+
+\begin{thm}[5.1.1.4]
+    Let $k\gqs0$, then the map $\Map_{{}^{t}\bE_{k}^{\ot}}(\sA{m},\sA{n})\ar\Hom{\Fin\zS}{}{(\sA{m},\sA{n})}$ is $(k-1)$-connective. As a result, $\bE_{\ift}^{\ot}:=\ilim_{j\gqs0}\bE_{j}^{\ot}\cong N(\Fin\zS)$.
+\end{thm}
+
+
+
+
+\begin{dfn}[7.1.0.1]
+    Let $0\lqs k\lqs \ift$, $\mrm{Sp}$ the $\ift$-category of spectra, and $\bE_{k}^{\ot}$ the $\ift$-operad of little $k$-cubes. An $\bE_{k}$-ring is an $\bE_{k}$-algebra object of $\Spr$, denote by $\Alg^{(k)}$ the $\ift$-category $\Alg_{\bE_{k}}(\Spr)$ of $\bE_{k}$-ring spectra.
+\end{dfn}
+
+
+
+\printref
+\end{document}
+
