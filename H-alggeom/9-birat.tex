@@ -1,32 +1,16 @@
-% Last Updated: 09/10/2024
 \documentclass[a4paper, twoside]{article}
 % \documentclass[a4paper, twoside]{amsart}
 \input{/Users/wenc/Documents/Math/universal-pre}
 
 \begin{document}
-\ifmain
-    \title{\tbf{Title}}
-    \author{Cong Wen, 09/24}
-    \makeatletter
-    \@ifclassloaded{amsart}{
-        \address{X University}
-        \email{sparkwenc@gmail.com}
-    }{\date{}}
-    \makeatother
-
-    % \maketitle
-    % \begin{abstract}
-    %     Notes\footnote{Last updated on January 01, 2000}.
-    % \end{abstract}
-
-    \tableofcontents
-\fi
-% ----------------------------------------------------------------------------------------------------
-
+\confighead{}{}{}
+\printhead{}{}{1}
 
 
 \sct{Birational geometry}
 
+\ssc{Finite generation of canonical ring}
+Ref:~\cite{BCHM2010}
 
 \begin{thm}[{\cite[Theorem~1.2]{BCHM2010}}]
 	Let $(X,\Dta)$ be a klt pair, where $K_{X}+\Dta$ is Cartier. Let $\pi:X\ar U$ be a morphism of quasi-projective varieties. If either (1) $\Dta$ is $\pi$-big and $K_{X}+\Dta$ is $\pi$-pseudo-effective or (2) $K_{X}+\Dta$ is $\pi$-big, then
@@ -51,12 +35,5 @@
 	Then there are finitely many $1\lqs i\lqs k$ many birational maps $\phi_{i}:X\adr Y_{i}$ over $U$ such that if $\phi:X\adr Y$ is any $\bQ$-factorial weak log canonical model over $U$ of $K_{X}+\Dta$, where $\Dta\in\cL_{S+A}(V)$, which only contracts elements of $\kC$ and which does not contract every component of $S$, then there is an index $1\lqs i\lqs k$ such that the induced birational map $\xi:Y_{i}\adr Y$ is an isomorphism in a neighborhood of the strict transforms of $S$.
 \end{thm}
 
-
-
-
-% ----------------------------------------------------------------------------------------------------
-\ifmain
-    \bibliographystyle{amsalpha}
-    \bibliography{/Users/wenc/Documents/Math/universal-ref}
-\fi
+\printref
 \end{document}

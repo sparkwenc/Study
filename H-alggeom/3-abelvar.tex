@@ -1,40 +1,20 @@
-% Last Updated: 09/10/2024
 \documentclass[a4paper, twoside]{article}
 % \documentclass[a4paper, twoside]{amsart}
 \input{/Users/wenc/Documents/Math/universal-pre}
 
 \begin{document}
-\ifmain
-    \title{\tbf{Geometry of abelian varieties}}
-    \author{Cong Wen, 04/23}
-    \makeatletter
-    \@ifclassloaded{amsart}{
-        \address{X University}
-        \email{sparkwenc@gmail.com}
-    }{\date{}}
-    \makeatother
-
-    \maketitle
-    \begin{abstract}
-        Notes\footnote{Last updated on January 01, 2000} on the geometry of abelian varieties.
-    \end{abstract}
-
-    \tableofcontents
-\fi
-% ----------------------------------------------------------------------------------------------------
+\confighead{}{}{}
+\printhead{}{}{1}
 
 
-\sct{The complex fiber}
+\sct{Moduli of abelian varieties}
 
-This part of the note is my reading record of \cite{Grushevsky2009}.
+\ssc{Top weight rational cohomology}
+Ref:~\cite{BBCMMW2020}
 
+The paper computed the top-weight rational cohomology of the moduli stack $\cA_{g}$ of principally polarized abelian varieties of dimension $g$ in a tropical way. More specifically, it computed $\Gr_{g(g+1)}^{W}\mathrm{H}_{}^{\blt}(\cA_{g};\bQ)$ for $g=5,6,7$, and gives vanishing results for $g=8,9,10$.
 
-\sct{Top weight rational cohomology}
-\ssc{The preliminaries}
-	The paper computed the top-weight rational cohomology of the moduli stack $\cA_{g}$ of principally polarized abelian varieties of dimension $g$ in a ``tropical'' way. More specifically, it computed $\Gr_{g(g+1)}^{W}\mathrm{H}_{}^{\blt}(\cA_{g};\bQ)$ for $g=5,6,7$, and gives vanishing results for $g=8,9,10$.
-
-	To learn, we collect key parts of the paper as follows, notations conform with those in loc. cit.
-
+\sss{Preliminaries}
 \begin{thm}[{\cite[Theorem~5.8]{CGP2021}}]
 	Let $\cX\sbe\oL{\cX}$ be an irreducible smooth variety or Deligne-Mumford stack of dimension $d$ over $\bC$, with a normal crossing compactification $\oL{\cX}$ and boundary $\cD$. Let $\Dta$ be the dual complex of $\cD$, then
 	\[
@@ -62,7 +42,7 @@ This part of the note is my reading record of \cite{Grushevsky2009}.
 % 	The inflation complex $I\zB^{(g)}$ consisting of those of $P\zB^{(g)}$ of rank $\lqs g-1$ and of rank $g$ with a coloop is acyclic.
 % \end{thm}
 
-\ssc{The computation}
+\sss{The computation}
 
 As summarized above, the top-weight cohomology computation boils down to working out properties of $P\zB^{(g)}$, which requires a careful study of $V\zB^{(g)}$ and $P\zB^{(g-1)}$ inductively.
 
@@ -75,11 +55,5 @@ As summarized above, the top-weight cohomology computation boils down to working
 
 	Hence, the computation of the top weight cohomology of $\cA_{g}$ can be reduced to the computation of the homology of the dual complex of the boundary of its perfect toriodal compactification, whose computation can be in turn reduced to the computation of Voronoi complex, which is far from well-known in higher dimensions.
 
-
-
-% ----------------------------------------------------------------------------------------------------
-\ifmain
-    \bibliographystyle{amsalpha}
-    \bibliography{/Users/wenc/Documents/Math/universal-ref}
-\fi
+\printref
 \end{document}

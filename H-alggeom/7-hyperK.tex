@@ -1,33 +1,18 @@
-% Last Updated: 09/10/2024
 \documentclass[a4paper, twoside]{article}
 % \documentclass[a4paper, twoside]{amsart}
 \input{/Users/wenc/Documents/Math/universal-pre}
 
 \begin{document}
-\ifmain
-    \title{\tbf{Title}}
-    \author{Cong Wen, 09/24}
-    \makeatletter
-    \@ifclassloaded{amsart}{
-        \address{X University}
-        \email{sparkwenc@gmail.com}
-    }{\date{}}
-    \makeatother
+\confighead{}{}{}
+\printhead{}{}{1}
 
-    % \maketitle
-    % \begin{abstract}
-    %     Notes\footnote{Last updated on January 01, 2000}.
-    % \end{abstract}
 
-    \tableofcontents
-\fi
-% ----------------------------------------------------------------------------------------------------
-
+\sct{Hyper-K{\"a}hler geometry}
 
 \ssc{Beauville-Bogomolov decomposition}
+Ref:~\href{https://math.unice.fr/~beauvill/conf/decomp.pdf}{Beauville's slides}.
 
-Beauville-Bogomolov decomposition\cite{Bogomolov1974,Beauville1983Kahler} is the structure theorem for complex compact K{\"a}hler manifolds with torsion first Chern class, settled in 1980s. To learn, we collect statements from \href{https://math.unice.fr/~beauvill/conf/decomp.pdf}{Beauville's slides}.
-
+Beauville-Bogomolov decomposition~\cite{Bogomolov1974,Beauville1983Kahler} is the structure theorem for complex compact K{\"a}hler manifolds with torsion first Chern class.
 
 \begin{thm}
 	Let $M$ be a complex compact K{\"a}hler manifold with $c_{1}(M)=0\in \mathrm{H}_{}^{2}(M;\bR)$, then there exists a finite {\'e}tale $\oT{M}\ar M$ such that
@@ -72,9 +57,9 @@ The decomposition theorem is a direct consequence of Yau's theorem\cite{Yau1978}
 \end{prf}
 
 
-\sct{hyper-K{\"a}hler geometry}
+\ssc{Miscellany}
 
-We collect many facts about hyper-K{\"a}hler manifolds, mainly from Huybrechts' paper\cite{Huybrechts1999}, as well as many statements from the notes of \href{https://people.bath.ac.uk/masgks/Papers/kinosaki19.pdf}{Sankaran} and \href{https://www.math.ens.psl.eu/~debarre/HKmanifolds.pdf}{Debarre}.
+Ref:~\cite{Huybrechts1999}, \href{https://people.bath.ac.uk/masgks/Papers/kinosaki19.pdf}{Sankaran's notes}, \href{https://www.math.ens.psl.eu/~debarre/HKmanifolds.pdf}{Debarre's notes}.
 
 
 Any K3 surface admits an interesting $0$-cycle $c_{X}\in\CH{0}{}{(X)}$:
@@ -88,13 +73,10 @@ Any K3 surface admits an interesting $0$-cycle $c_{X}\in\CH{0}{}{(X)}$:
 \end{thm}
 
 
-\sct{DHMV2022}
 
+Ref:~\cite{DHMV2024}
 
-The paper proved certain hyper-K{\"a}hler fourfold is of K3\ts{[2]}  deformation type. The key is to prove the hyper-K{\"a}hler SYZ conjecture conditionally.
-
-To learn, we collect key parts of the paper as follows. Notations conform with those in loc. cit.
-
+Certain hyper-K{\"a}hler fourfold is proved to be of K3\ts{[2]} deformation type by proving the hyper-K{\"a}hler SYZ conjecture conditionally.
 
 \begin{cnj}
 	Any hyper-K{\"a}hler manifold can be deformed into one with a Lagrangian fibration.
@@ -105,12 +87,5 @@ To learn, we collect key parts of the paper as follows. Notations conform with t
 \end{cnj}
 
 
-
-
-
-% ----------------------------------------------------------------------------------------------------
-\ifmain
-    \bibliographystyle{amsalpha}
-    \bibliography{/Users/wenc/Documents/Math/universal-ref}
-\fi
+\printref
 \end{document}

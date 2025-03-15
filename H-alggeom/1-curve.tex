@@ -1,38 +1,16 @@
-% Last Updated: 09/10/2024
 \documentclass[a4paper, twoside]{article}
 % \documentclass[a4paper, twoside]{amsart}
 \input{/Users/wenc/Documents/Math/universal-pre}
 
 \begin{document}
-\ifmain
-    \title{\tbf{Geometry of curves}}
-    \author{Cong Wen, 07/22}
-    \makeatletter
-    \@ifclassloaded{amsart}{
-        \address{X University}
-        \email{sparkwenc@gmail.com}
-    }{\date{}}
-    \makeatother
-
-    \maketitle
-    \begin{abstract}
-        Notes\footnote{Last updated on January 01, 2000} on geometry of curves.
-    \end{abstract}
-
-    \tableofcontents
-\fi
-% ----------------------------------------------------------------------------------------------------
+\confighead{}{}{}
+\printhead{}{}{1}
 
 
-
-\sct{Fundamentals}
-Some fundamental results about $\oL{\cM}_{g,n}$ are collected here.
+\sct{Kodaira dimension of moduli of curves}
 
 \ssc{Preliminaries}
 
-One would like to know the structure of $\Pic(\oL{\cM}_{g,n})$ and $\Pic(\cM_{g,n})$ before doing divisor computations.
-
-\red{Where can I find the cases for $g=1,2$?}
 \begin{thm}[{\cite[Theorem~2]{AC1987}}]
 	Let $g\gqs3,n\gqs0$ be integers, then
 	\begin{enr}
@@ -46,7 +24,7 @@ One would like to know the structure of $\Pic(\oL{\cM}_{g,n})$ and $\Pic(\cM_{g,
 
 \ssc{General strategy}
 
-Assume $g\gqs4$ throughout the note. To prove $\oL{\cM}_{g}$ is of general type, it suffices to prove $K_{\oL{\cM}_{g}}$ is nef and big, so it suffices to find an effective divisor $D$ such that $K_{X}-D$ is ample. Now $K_{\oL{\cM}_{g}}$ is computed in \cite{HM1982}, and the ampleness criterion is in \cite{Mumford1977}, so one has the slope criterion.
+Assume $g\gqs4$ throughout the note. To prove $\oL{\cM}_{g}$ is of general type, it suffices to prove $K_{\oL{\cM}_{g}}$ is nef and big, so it suffices to find an effective divisor $D$ such that $K_{X}-D$ is ample. Now $K_{\oL{\cM}_{g}}$ is computed in \cite{HM1982}, and the ampleness criterion is in \cite{Mumford1977Stability}, so one has the slope criterion.
 
 \begin{thm}[{\cite[Theorem~2~bis.]{HM1982}}]
 	On the smooth variety $\oL{\cM}_{g,\mathrm{sm}}$, one has
@@ -55,7 +33,7 @@ Assume $g\gqs4$ throughout the note. To prove $\oL{\cM}_{g}$ is of general type,
 	\]
 \end{thm}
 
-\begin{thm}[{\cite[Corollary~5.18]{Mumford1977}}]
+\begin{thm}[{\cite[Corollary~5.18]{Mumford1977Stability}}]
 	$(12e-4)\lda-e\dta$ is ample for $e\gqs5$.
 \end{thm}
 
@@ -75,9 +53,6 @@ Assume $g\gqs4$ throughout the note. To prove $\oL{\cM}_{g}$ is of general type,
 	\end{enr}
 \end{rmk}
 
-
-
-\sct{Known results}
 Denote $\kpa:=\kpa(\oL{\cM}_{g,n})$, $d:=\Dim\oL{\cM}_{n,g}$. Let \red{NK} stand for ``not known'', then we summarize as follows.
 
 \begin{table}[H]
@@ -121,9 +96,9 @@ Denote $\kpa:=\kpa(\oL{\cM}_{g,n})$, $d:=\Dim\oL{\cM}_{n,g}$. Let \red{NK} stand
 				& $[11,12]$ & \red{NK} & \\
 				& $\gqs13$ & $d$ & \cite{Farkas2009} \\
 		  	\hline
-		  	$10$& $\lqs9$  & $-$ & \cite{FP2005} \\
-				& $=10$ & $0$ & \cite{FP2005} \\
-				& $\gqs11$ & $d$ & \cite{FP2005} \\
+		  	$10$& $\lqs9$  & $-$ & \cite{FP2005Effective} \\
+				& $=10$ & $0$ & \cite{FP2005Effective} \\
+				& $\gqs11$ & $d$ & \cite{FP2005Effective} \\
 		  	\hline
 		  	$11$& $\lqs10$ & $-$ & \cite{Logan2003} \\
 				& $=11$ & $19$& \cite{Logan2003} \\
@@ -180,10 +155,7 @@ Denote $\kpa:=\kpa(\oL{\cM}_{g,n})$, $d:=\Dim\oL{\cM}_{n,g}$. Let \red{NK} stand
 \end{table}
 
 
-\sct{Eisenbund-Harris-Mumford}
-
-
-\ssc{EH1987}
+\ssc{Eisenbund-Harris-Mumford}
 
 \begin{thm}[{\cite[Theorem~A]{EH1987Kodaira}}]
 	$\oL{\cM}_{g,n}$ is of general type for all $g\gqs24,n\gqs0$.
@@ -199,36 +171,28 @@ Denote $\kpa:=\kpa(\oL{\cM}_{g,n})$, $d:=\Dim\oL{\cM}_{n,g}$. Let \red{NK} stand
 	Key facts and arguments about them are collected in this section.
 \end{rmk}
 
-\ssc{Brill-Noether divisors}
+\sss{Brill-Noether divisors}
 
-For basis of Brill-Noether theory:
 \begin{thm}[Brill-Noether Theorem]
 	Let $C$ be a smooth projective curve of genus $g$, then the Brill-Noether locus is defined by
 	\[
 		W_{d}^{r}(C)=\{L\in\Pic(C)\mid h^{0}(L)\gqs r+1\}.
 	\]
 	If $C$ is general, then
-	\begin{enr}
+	\begin{enr}[label=(\arabic*)]
 		\item \cite{GH1980}: $\Dim W_{d}^{r}(C)=\rho(g,r,d)=g-(r+1)(d-g+r)$.
-		\item \cite{Gieseker1982}: $W_{d}^{r}(C)$ is smooth away from $W_{d}^{r+1}(C)$.
+		\item \cite{Gieseker1982Petri}: $W_{d}^{r}(C)$ is smooth away from $W_{d}^{r+1}(C)$.
 		\item \cite{FL1981}: $W_{d}^{r}(C)$ is irreducible when $\rho(g,r,d)>0$.
 	\end{enr}
 \end{thm}
 
-
-
-Use Joe's lectures, Joe-Eisenbud's proof, deformation theoretical proof of Clemens\cite{Clemens2000}, ask Harris.
-
-(A digression: As learnt from a seminar, I learnt that in the proof of \cite{FJP2020}, Farkas has to prove the divisors $\cM_{23,12}^{1},\cM_{23,17}^{2},\cM_{23,20}^{3}$ all have distinct support.)
-
-
+% (A digression: As learnt from a seminar, I learnt that in the proof of \cite{FJP2020}, Farkas has to prove the divisors $\cM_{23,12}^{1},\cM_{23,17}^{2},\cM_{23,20}^{3}$ all have distinct support.)
 
 \begin{thm}[{\cite[Theorem~1]{EH1987Kodaira}}]
 	Assume $g=(r+1)(s-1)-1, s\gqs3, d=rs-1$. Then $\rho(g,r,d)=-1$, the Brill-Noether locus $D_{s}^{r}\eqv\oL{\cM}_{g,d}^{r}$ is a divisor, one has
 	\[
 		D_{s}^{r}=c\sR{(g+e)\lda-\frac{g+1}{6}\dta_{0}-\sum_{i=1}^{[g/2]}i(g-i)\dta_{i}}, c\in\bQ_{>0}.
 	\]
-	\red{What is the $e$ in question???}
 \end{thm}
 
 \begin{cor}
@@ -240,7 +204,7 @@ Use Joe's lectures, Joe-Eisenbud's proof, deformation theoretical proof of Cleme
 \end{cor}
 
 
-\ssc{Gieseker-Petri divisors}
+\sss{Gieseker-Petri divisors}
 \begin{thm}[{\cite[Theorem~2]{EH1987Kodaira}}]
 	Assume $g=2(s-1), s\gqs3, d=s$. Then $\rho(g,r,d)=0$, the Gieseker-Petri locus $E_{s}^{r}\eqv E_{d}^{1}$ is a divisor, one has
 	\[
@@ -269,7 +233,7 @@ Use Joe's lectures, Joe-Eisenbud's proof, deformation theoretical proof of Cleme
 	\]
 \end{stp}
 
-\ssc{Weierstrass divisors}
+\sss{Weierstrass divisors}
 
 \begin{thm}[Theorem~2.2]
 	The Weierstrass divisor $W\sbs\oL{\cM}_{2,1}$ is given by
@@ -296,25 +260,6 @@ Use Joe's lectures, Joe-Eisenbud's proof, deformation theoretical proof of Cleme
 \begin{thm}[Proposition~4.1]
 	If $g=(r+1)(s-1)-1, s\gqs3, d=rs-1$. Then $D_{s}^{r}$ meets neither $i(P_{g})$ nor $j(\oL{\cM}_{2,1}-W)$.
 \end{thm}
-
-This proves Theorem~1. For Theorem~2, determine the coefficients of $E_{d}^{1}$ by restricting to curves.
-
-
-
-\sct{Farkas-Popa}
-
-The references: \cite{FP2005Effective,Farkas2009}.
-
-
-
-
-\sct{Farkas-Jensen-Payne}
-
-(non-abelian Brill-Noether theory, tropicalization)
-
-
-test test \cite{Hejhal1976,Hejhal1983}
-
 
 
 \sct{Stabilization of line bundles}
@@ -362,9 +307,5 @@ Ref: \href{https://arxiv.org/pdf/2501.18825}{arXiv:2501.18825}
 \end{thm}
 
 
-% ----------------------------------------------------------------------------------------------------
-\ifmain
-    \bibliographystyle{amsalpha}
-    \bibliography{/Users/wenc/Documents/Math/universal-ref}
-\fi
+\printref
 \end{document}

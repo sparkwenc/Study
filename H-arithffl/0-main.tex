@@ -1,29 +1,10 @@
-% Last Updated: 09/10/2024
 \documentclass[a4paper, twoside]{article}
 % \documentclass[a4paper, twoside]{amsart}
 \input{/Users/wenc/Documents/Math/universal-pre}
 
 \begin{document}
-\ifmain
-    \title{\tbf{Title}}
-    \author{Cong Wen, 09/24}
-    \makeatletter
-    \@ifclassloaded{amsart}{
-        \address{X University}
-        \email{sparkwenc@gmail.com}
-    }{\date{}}
-    \makeatother
-
-    \maketitle
-    \begin{abstract}
-        Notes\footnote{Last updated on January 01, 2000} on the arithmetic of function fields.
-    \end{abstract}
-
-    \tableofcontents
-\fi
-% ----------------------------------------------------------------------------------------------------
-
-% \sct{04/07/23, meet Yun}
+\confighead{}{}{}
+\printhead{}{}{1}
 
 % For reading \cite{YZShtukas1}, see the analogue of classical Heegner points and Heegner-Drinfeld cycles by using Drinfeld modules to find how the rank changes to $1$ when restricted to the torus; and $\Sht_{\GL_{1}}\ar X'\ar X$ is the analogue of $\Spc{H_{K}}\ar \Spc{K}\ar\Spc{\bQ}$, the first arrows are $\Pic{X'}$, $\Pic\cO_{K}$-torsors respectively. For Jacquet's papers\cite{Jacquet1986,Jacquet1987} reproving Waldspurger formula and the origins of relative trace formula, read ideas from it, since his technical details are sometimes different.
 
@@ -43,14 +24,6 @@
 
 \file{5-support}
 
-\file{6-glc}
 
-\file{6-highSW}
-
-
-% ----------------------------------------------------------------------------------------------------
-\ifmain
-    \bibliographystyle{amsalpha}
-    \bibliography{/Users/wenc/Documents/Math/universal-ref}
-\fi
+\printref
 \end{document}

@@ -1,42 +1,14 @@
-% Last Updated: 09/10/2024
 \documentclass[a4paper, twoside]{article}
 % \documentclass[a4paper, twoside]{amsart}
 \input{/Users/wenc/Documents/Math/universal-pre}
 
 \begin{document}
-\ifmain
-    \title{\tbf{Title}}
-    \author{Cong Wen, 09/24}
-    \makeatletter
-    \@ifclassloaded{amsart}{
-        \address{X University}
-        \email{sparkwenc@gmail.com}
-    }{\date{}}
-    \makeatother
-
-    \maketitle
-    \begin{abstract}
-        Notes\footnote{Last updated on January 01, 2000} on group theory.
-    \end{abstract}
-
-    \tableofcontents
-\fi
-% ----------------------------------------------------------------------------------------------------
-
-
-
+\confighead{}{}{}
+\printhead{}{}{1}
 
 \file{1-reductive}
 
 
-% \sct{On finite groups}
 
-% \ssc{Maximal subgroups of $\GL_{2}(\bF_{p})$}
-% Use \cite[Section~2]{Serre1972}, describe and classify all its subgroups.
-
-% ----------------------------------------------------------------------------------------------------
-\ifmain
-    \bibliographystyle{amsalpha}
-    \bibliography{/Users/wenc/Documents/Math/universal-ref}
-\fi
+\printref
 \end{document}

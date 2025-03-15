@@ -1,34 +1,16 @@
-% Last Updated: 09/10/2024
 \documentclass[a4paper, twoside]{article}
 % \documentclass[a4paper, twoside]{amsart}
 \input{/Users/wenc/Documents/Math/universal-pre}
 
 \begin{document}
-\ifmain
-    \title{\tbf{Title}}
-    \author{Cong Wen, 09/24}
-    \makeatletter
-    \@ifclassloaded{amsart}{
-        \address{X University}
-        \email{sparkwenc@gmail.com}
-    }{\date{}}
-    \makeatother
-
-    % \maketitle
-    % \begin{abstract}
-    %     Notes\footnote{Last updated on January 01, 2000}.
-    % \end{abstract}
-
-    \tableofcontents
-\fi
-% ----------------------------------------------------------------------------------------------------
-
+\confighead{}{}{}
+\printhead{}{}{1}
 
 \sct{Laumon's construction}
 
 \ssc{Arithmetic setting}
 
-\prg{Langlands conjecture}
+\sss{Langlands conjecture}
 \begin{cnj}[{\cite[1.1.1]{Laumon1987Correspondance}}]
 	Every geometrically irreducible unramified representation $\sgm:\Gal(\oL{F}/F)\ar\GL_{n}(\oL{\bQ}_{\ell})$
 	corresponds to a unique cuspidal Hecke-eigen function $f_{\sgm}:\GL_{n}(F)\bs\GL_{n}(\bA)/\GL_{n}(\cO)\ar\oL{\bQ}_{\ell}$ such that for all $x\in\sP{X}$ and $1\lqs i\lqs n$,
@@ -37,7 +19,7 @@
 	\]
 \end{cnj}
 
-\prg{Whittaker function}
+\sss{Whittaker function}
 \begin{thm}[{\cite[1.2.3]{Laumon1987Correspondance}}]
 	Fix a non-zero $\dta\in\Oga_{X/k}^{1}$ and an additive character $\psi:k\ar\oL{\bQ}_{\ell}\xT$. One can define
 	\[
@@ -60,7 +42,7 @@
 	\end{itm}
 \end{thm}
 
-\prg{Automorphic function}
+\sss{Automorphic function}
 \begin{thm}[{\cite[5.9]{Shalika1974}}]
 	The functions $V_{\sgm,i}:Q_{i}^{1}(F)\bs\GL_{n}(\bA)/\GL_{n}(\cO)\ar\oL{\bQ}_{\ell},1\lqs i\lqs n$ below satisfy
 	\begin{itm}
@@ -82,7 +64,7 @@
 
 \ssc{Geometric setting}
 
-\prg{Langlands conjecture}
+\sss{Langlands conjecture}
 \begin{cnj}[{\cite[2.1.1]{Laumon1987Correspondance}}]
 	Every geometrically irreducible lisse $\oL{\bQ}_{\ell}$-sheaf $E$ over $X$ corresponds to a natural geometrically irreducible cuspidal Hecke-eigen perverse $\oL{\bQ}_{\ell}$-sheaf $\cK_{E}$ over $\Fib_{X,n}$ such that
 	\[
@@ -91,7 +73,7 @@
 	Moreover $\cK_{E}$ is unique up to twisting by a geometrically constant $\oL{\bQ}_{\ell}$-sheaf of rank $1$, and it can be choosen such that the correspondence is functorial in $k$.
 \end{cnj}
 
-\prg{The Whittaker sheaf}
+\sss{The Whittaker sheaf}
 \begin{stp}
 	Let $\Coh_{X,0}^{m}$ be the smooth algebraic stack of coherent $\cO_{X}$-modules $\cM$ of length $m$, and $\oT{\Coh}{}_{X,0}^{m}$ the smooth algebraic stack of flags of coherent $\cO_{X}$-modules $\cM\zB=(\cM_{m}\atr\cdots\atr\cM_{0})$, where $\cM_{i}$ is of length $i$.
 
@@ -127,7 +109,7 @@
 	\end{enr}
 \end{thm}
 
-\prg{The automorphic sheaf}
+\sss{The automorphic sheaf}
 
 \begin{stp}
 	Denote by $D_{i}$ effective divisors of degree $d_{i}$, and $A_{i}:=(i-1)K_{X}+D_{i}+\cdots+D_{n}$ divisors of degree $a_{i}=(i-1)(2g-2)+d_{i}+\cdots+d_{n}$, and $\cL_{i}\in\Fib_{X,i}$. Consider the following moduli spaces
@@ -210,9 +192,5 @@
 \end{cnj}
 
 
-% ----------------------------------------------------------------------------------------------------
-\ifmain
-    \bibliographystyle{amsalpha}
-    \bibliography{/Users/wenc/Documents/Math/universal-ref}
-\fi
+\printref
 \end{document}

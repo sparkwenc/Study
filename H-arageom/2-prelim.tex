@@ -1,31 +1,17 @@
-% Last Updated: 09/10/2024
 \documentclass[a4paper, twoside]{article}
 % \documentclass[a4paper, twoside]{amsart}
 \input{/Users/wenc/Documents/Math/universal-pre}
 
 \begin{document}
-\ifmain
-    \title{\tbf{Title}}
-    \author{Cong Wen, 09/24}
-    \makeatletter
-    \@ifclassloaded{amsart}{
-        \address{X University}
-        \email{sparkwenc@gmail.com}
-    }{\date{}}
-    \makeatother
-
-    % \maketitle
-    % \begin{abstract}
-    %     Notes\footnote{Last updated on January 01, 2000}.
-    % \end{abstract}
-
-    \tableofcontents
-\fi
-% ----------------------------------------------------------------------------------------------------
+\confighead{}{}{}
+\printhead{}{}{1}
 
 
 \sct{Preliminaries}
 
+\ssc{Arithmetic intersection}
+
+\begin{cmt}[0]
 In this part, we collect all important historical results,
 \begin{itm}
 	\item Arithmetic intersection~\cite{GS1990Arithmetic}, characteristic classes~\cite{GS1990-1,GS1990-2}.
@@ -33,6 +19,7 @@ In this part, we collect all important historical results,
 	\item Heat kernels~\cite{BGV2004} and analytic torsion~\cite{BGS1988-1,BGS1988-2,BGS1988-3}.
 	\item Quillen superconnections~\cite{Quillen1985,BF1986-1,BF1986-2}.
 \end{itm}
+\end{cmt}
 
 \begin{stp}
 	Let $K$ be a number field, $\cO_{K}$ its ring of integers.
@@ -57,7 +44,7 @@ There is an exact sequence
 
 \ssc{Bott-Chern forms}
 
-This part follows~\cite{BC1965}.
+Ref:~\cite{BC1965}.
 
 \begin{thm}[{\cite[Theorem~I]{BC1965}}]
 	Let $X$ be a complex manifold of dimension $n$, and $E$ a Hermitian vector bundle of rank $n$ over $X$, then there exists a real valued form $\rho$ on $B\xS(E)=\{e\in E:0< \sP{E}< 1\}$ of type $(n-1,n-1)$ such that $\pi\zS c_{n}(E)=dd^{c}\rho/4\pi$.
@@ -117,10 +104,5 @@ Ref:~\cite{LLY2011}.
 \end{exg}
 
 
-
-% ----------------------------------------------------------------------------------------------------
-\ifmain
-    \bibliographystyle{amsalpha}
-    \bibliography{/Users/wenc/Documents/Math/universal-ref}
-\fi
+\printref
 \end{document}

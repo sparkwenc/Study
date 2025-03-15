@@ -1,29 +1,12 @@
-% Last Updated: 09/10/2024
 \documentclass[a4paper, twoside]{article}
 % \documentclass[a4paper, twoside]{amsart}
 \input{/Users/wenc/Documents/Math/universal-pre}
 
 \begin{document}
-\ifmain
-    \title{\tbf{Title}}
-    \author{Cong Wen, 09/24}
-    \makeatletter
-    \@ifclassloaded{amsart}{
-        \address{X University}
-        \email{sparkwenc@gmail.com}
-    }{\date{}}
-    \makeatother
+\confighead{}{}{}
+\printhead{}{}{1}
 
-    % \maketitle
-    % \begin{abstract}
-    %     Notes\footnote{Last updated on January 01, 2000}.
-    % \end{abstract}
-
-    \tableofcontents
-\fi
-% ----------------------------------------------------------------------------------------------------
-
-
+\sct{$p$-adic geometry}
 
 \ssc{Integral $p$-adic Hodge theory}
 Ref:~\cite{BMS2018}.
@@ -203,9 +186,5 @@ Ref:~\cite{BS2022Prisms}.
 
 
 
-% ----------------------------------------------------------------------------------------------------
-\ifmain
-    \bibliographystyle{amsalpha}
-    \bibliography{/Users/wenc/Documents/Math/universal-ref}
-\fi
+\printref
 \end{document}

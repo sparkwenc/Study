@@ -1,32 +1,15 @@
-% Last Updated: 09/10/2024
 \documentclass[a4paper, twoside]{article}
 % \documentclass[a4paper, twoside]{amsart}
 \input{/Users/wenc/Documents/Math/universal-pre}
 
 \begin{document}
-\ifmain
-    \title{\tbf{Title}}
-    \author{Cong Wen, 09/24}
-    \makeatletter
-    \@ifclassloaded{amsart}{
-        \address{X University}
-        \email{sparkwenc@gmail.com}
-    }{\date{}}
-    \makeatother
-
-    % \maketitle
-    % \begin{abstract}
-    %     Notes\footnote{Last updated on January 01, 2000}.
-    % \end{abstract}
-
-    \tableofcontents
-\fi
-% ----------------------------------------------------------------------------------------------------
+\confighead{}{}{}
+\printhead{}{}{1}
 
 
-\ssc{On elliptic curves}
+\sct{On elliptic curves}
 
-\sss{Leading conjectures}
+\ssc{Leading conjectures}
 \begin{cnj}[Birch--Swinnerton-Dyer]
 	Let $E$ be an elliptic curve over $\bQ$, then
 	\[
@@ -80,7 +63,7 @@
 	Discriminant conjecture is stronger than this, read \cite{HS1988}.
 \end{rmk}
 
-\sss{Reduction and Ogg--Saito}
+\ssc{Reduction and Ogg--Saito}
 
 For Tate's algorithm, read \cite{Tate1975}, \cite[Page~365]{Silverman1994}, \cite{Liu2002}, \cite{Lorenzini2010}, \cite{Szydlo1999}, \cite{Szydlo2004}, \href{https://mathoverflow.net/questions/127908/reduction-types-of-elliptic-curves}{MathOverflow}. To understand the formula of Ogg--Saito, read \cite{Ogg1967}, \cite{Saito1988Noether}, \href{https://www.math.u-bordeaux.fr/~qliu/Notes/Ogg-Saito.pdf}{Liu's Notes}. Also read many of Liu's work on the reduction of genus $2$ curves.
 
@@ -90,12 +73,12 @@ For Tate's algorithm, read \cite{Tate1975}, \cite[Page~365]{Silverman1994}, \cit
 
 For the Brumer--Kramer bound, use \cite{BK1994} and 2302.13127.
 
-\sss{Global minimal models}
+\ssc{Global minimal models}
 
 Ref:~\cite{Gross1982Minimal,Silverman1984}
 
 
-\sss{Infinitude of supersingular primes}
+\ssc{Infinitude of supersingular primes}
 
 \begin{thm}[{\cite[Theorem~1]{Elkies1987Invent}}]
 	Let $E$ be any elliptic curve over $\bQ$ and $S$ any finite set of primes. There exists a prime $p\nin S$ such that $E$ has supersingular reduction at $p$.
@@ -121,7 +104,7 @@ Ref:~\cite{Gross1982Minimal,Silverman1984}
 	\]
 \end{rmk}
 
-\sss{Classification theorem of torsion}
+\ssc{Classification theorem of torsion}
 
 \begin{thm}
 	Let $E$ be an elliptic curve over $\bQ$, if $\Phi$ is a torsion subgroup of $E(\bQ)$, then
@@ -159,7 +142,7 @@ Ref:~\cite{Gross1982Minimal,Silverman1984}
 		\]
 \end{prf}
 
-\sss{Complex multiplication case}
+\ssc{Complex multiplication case}
 
 % \ssc{Mordell curves}
 
@@ -362,9 +345,5 @@ Ref:~\cite{Gross1980,Cox2013}.
 
 
 
-% ----------------------------------------------------------------------------------------------------
-\ifmain
-    \bibliographystyle{amsalpha}
-    \bibliography{/Users/wenc/Documents/Math/universal-ref}
-\fi
+\printref
 \end{document}

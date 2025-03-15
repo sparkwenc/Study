@@ -1,57 +1,23 @@
-% Last Updated: 09/10/2024
 \documentclass[a4paper, twoside]{article}
 % \documentclass[a4paper, twoside]{amsart}
 \input{/Users/wenc/Documents/Math/universal-pre}
 
 \begin{document}
-\ifmain
-    \title{\tbf{Title}}
-    \author{Cong Wen, 09/24}
-    \makeatletter
-    \@ifclassloaded{amsart}{
-        \address{X University}
-        \email{sparkwenc@gmail.com}
-    }{\date{}}
-    \makeatother
-
-    \maketitle
-    \begin{abstract}
-        Notes\footnote{Last updated on January 01, 2000} on the arithmetic of number fields.
-    \end{abstract}
-
-    \tableofcontents
-\fi
-% ----------------------------------------------------------------------------------------------------
+\confighead{}{}{}
+\printhead{}{}{1}
 
 
 \begin{qst}
 	Motivating questions
 	\begin{itm}
 		\item What's the inverse of $j$-invariant? Related to hypergeometric functions, Picard-Fuchs equations, Gauss-Manin connections and mirror symmetry?
-		\item The Euler characteristic of arithmetic groups and Gauss-Bonnet??? See \cite[Page~255]{Brown1994} and \cite{Harder1971}.
+		\item The Euler characteristic of arithmetic groups and Gauss-Bonnet. See \cite[Page~255]{Brown1994} and \cite{Harder1971}.
 	\end{itm}
 \end{qst}
 
-\part{Preliminaries}
+% \part{Global Theory}
 
-\sct{Global Theory}
-
-	% \subfile{autrepn}
-
-	% \subfile{galrepn}
-
-	% \subfile{shimvar}
-
-	% \subfile{sphcvar}
-
-    % \subfile{IUTeich}
-
-
-\sct{Local Theory}
-
-	% \subfile{highRam}
-
-	% \subfile{highLoc}
+\part{Local Theory}
 
 	\file{4-arithmeticfl}
 
@@ -59,18 +25,8 @@
 
 	\file{6-pHodge}
 
-	% \subfile{RZspace}
 
-	% \subfile{pcurve}
-
-	% \subfile{pshtuka}
-
-	% \subfile{infplace}
-
-
-\part{Applications}
-
-\sct{Arithmetic geometry}
+\part{Arithmetic geometry}
 
 	\file{1-ecurve}
 
@@ -78,33 +34,22 @@
 
 	\file{3-modular}
 
-	% \subfile{fcurve}
 
-	% \subfile{rpoints}
-
-	% \subfile{numfield}
-
-
-\sct{Arithmetic algebra}
+% \sct{Arithmetic algebra}
 
 	% \subfile{invgal}
 
 	% \subfile{quatalg}
 
 
-\sct{Arithmetic statistics}
+% \sct{Arithmetic statistics}
 
 	% \subfile{selfdual}
 
 	% \subfile{erankone}
 
 
-\sct{Arithmetic dynamics}
 
 
-% ----------------------------------------------------------------------------------------------------
-\ifmain
-    \bibliographystyle{amsalpha}
-    \bibliography{/Users/wenc/Documents/Math/universal-ref}
-\fi
+\printref
 \end{document}

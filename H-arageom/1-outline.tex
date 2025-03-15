@@ -1,27 +1,10 @@
-% Last Updated: 09/10/2024
 \documentclass[a4paper, twoside]{article}
 % \documentclass[a4paper, twoside]{amsart}
 \input{/Users/wenc/Documents/Math/universal-pre}
 
 \begin{document}
-\ifmain
-    \title{\tbf{Arithmetic Cohomology}}
-    \author{Cong Wen, 02/24}
-    \makeatletter
-    \@ifclassloaded{amsart}{
-        \address{X University}
-        \email{sparkwenc@gmail.com}
-    }{\date{}}
-    \makeatother
-
-    \maketitle
-    % \begin{abstract}
-    %     Notes\footnote{Last updated on January 01, 2000}.
-    % \end{abstract}
-
-    \tableofcontents
-\fi
-% ----------------------------------------------------------------------------------------------------
+\confighead{}{}{}
+\printhead{}{}{1}
 
 
 \sct{Outline}
@@ -58,11 +41,11 @@ The origin of my idea is that all kinds of real-valued (although, there should b
 	\item Euler-Minkowski characteristic in~\cite{Neukirch1999}.
 	\item arithmetic degree in~\cite{GS1990Arithmetic}.
 \end{enr}
-\prg{Effective sections} Neukirch's $\#\HH{}{0}{(\cO_{K})}$ is the same as Abbes-Bouche's $\#\HH{\mathrm{Ar}}{0}{(X,L)}$ if $X=\Spc{\cO_{K}}$.
-\prg{Arithmetic volume} The existing two definitions of arithmetic volume are actually not equivalent, according to~\cite[Page~368]{Chen2011} or~\cite[Page~613]{Yuan2008Big}. However the difference is slight, and one implies another, ``arithmetic bigness'' and ``arithmetic strongly bigness''. I'd like to conform to the one using $\oH{\chi}_{\mathrm{sup}}$.
-\prg{Arithmetic degree} I think $\oH{\chi}_{\mathrm{sup}}$ should really be thought of as arithmetic degree rather than the arithmetic Euler characteristic. I suspect it can be thought as the analogue of Euler characteristic because $\aHH{}{1}{}$ of number fields will actually vanish in my definition.
+\spg{Effective sections} Neukirch's $\#\HH{}{0}{(\cO_{K})}$ is the same as Abbes-Bouche's $\#\HH{\mathrm{Ar}}{0}{(X,L)}$ if $X=\Spc{\cO_{K}}$.
+\spg{Arithmetic volume} The existing two definitions of arithmetic volume are actually not equivalent, according to~\cite[Page~368]{Chen2011} or~\cite[Page~613]{Yuan2008Big}. However the difference is slight, and one implies another, ``arithmetic bigness'' and ``arithmetic strongly bigness''. I'd like to conform to the one using $\oH{\chi}_{\mathrm{sup}}$.
+\spg{Arithmetic degree} I think $\oH{\chi}_{\mathrm{sup}}$ should really be thought of as arithmetic degree rather than the arithmetic Euler characteristic. I suspect it can be thought as the analogue of Euler characteristic because $\aHH{}{1}{}$ of number fields will actually vanish in my definition.
 
-\prg{Ideas from QFT} What is the relationship between Kim's use of Chern-Simons functional and the Bott-Chern form I'm trying to understand? In particular, in that model $\Spc{\cO_{K}}$ should be $3$-dimensional, but from Arakelov theoretic point of view, it should be $1$-dimensional, what's the problem here?
+\spg{Ideas from QFT} What is the relationship between Kim's use of Chern-Simons functional and the Bott-Chern form I'm trying to understand? In particular, in that model $\Spc{\cO_{K}}$ should be $3$-dimensional, but from Arakelov theoretic point of view, it should be $1$-dimensional, what's the problem here?
 
 \begin{rmk}
 	Some stuffs of the TODO list,
@@ -79,9 +62,5 @@ The origin of my idea is that all kinds of real-valued (although, there should b
 
 
 
-% ----------------------------------------------------------------------------------------------------
-\ifmain
-    \bibliographystyle{amsalpha}
-    \bibliography{/Users/wenc/Documents/Math/universal-ref}
-\fi
+\printref
 \end{document}

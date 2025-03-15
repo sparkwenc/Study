@@ -1,32 +1,14 @@
-% Last Updated: 09/10/2024
 \documentclass[a4paper, twoside]{article}
 % \documentclass[a4paper, twoside]{amsart}
 \input{/Users/wenc/Documents/Math/universal-pre}
 
 \begin{document}
-\ifmain
-    \title{\tbf{Title}}
-    \author{Cong Wen, 09/24}
-    \makeatletter
-    \@ifclassloaded{amsart}{
-        \address{X University}
-        \email{sparkwenc@gmail.com}
-    }{\date{}}
-    \makeatother
-
-    % \maketitle
-    % \begin{abstract}
-    %     Notes\footnote{Last updated on January 01, 2000}.
-    % \end{abstract}
-
-    \tableofcontents
-\fi
-% ----------------------------------------------------------------------------------------------------
-
+\confighead{}{}{}
+\printhead{}{}{1}
 
 \sct{Arithmetic fundamental lemma}
 
-Ref:~\cite{Zhang2012,RSZ2017,RSZ2018,Zhang2021Weil}, LRZ2024, etc etc etc.
+Ref:~\cite{Zhang2012,RSZ2017,RSZ2018,Zhang2021Weil}, \cite{LRZ2024Quasi}.
 
 \begin{stp}
 	Let $p$ be an odd prime, $F$ a finite extension of $\bQ_{p}$, $E/F$ a quadratic extension. Let $W_{n,E/F}^{\blt}$ be the split and non-split $E/F$-Hermitian space of dimension $n+1$ where $\blt\in\{\text{ns}, \text{sp}\}$, fix $u_{n,E/F}^{\blt}\in W_{n,E/F}^{\blt}$ the special vectors and $W_{n,E/F}^{\blt,\flt}$ their orthogonal completement, let $\RU_{n,E/F}^{\blt},\RU_{n,E/F}^{\blt,\flt}$ be their unitary groups. The following actions define regular semisimple elements explicitly and there are bijections
@@ -59,9 +41,6 @@ Ref:~\cite{Zhang2012,RSZ2017,RSZ2018,Zhang2021Weil}, LRZ2024, etc etc etc.
 \end{rmk}
 
 
-% ----------------------------------------------------------------------------------------------------
-\ifmain
-    \bibliographystyle{amsalpha}
-    \bibliography{/Users/wenc/Documents/Math/universal-ref}
-\fi
+
+\printref
 \end{document}

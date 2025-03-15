@@ -1,28 +1,10 @@
-% Last Updated: 09/10/2024
 \documentclass[a4paper, twoside]{article}
 % \documentclass[a4paper, twoside]{amsart}
 \input{/Users/wenc/Documents/Math/universal-pre}
 
 \begin{document}
-\ifmain
-    \title{\tbf{Title}}
-    \author{Cong Wen, 09/24}
-    \makeatletter
-    \@ifclassloaded{amsart}{
-        \address{X University}
-        \email{sparkwenc@gmail.com}
-    }{\date{}}
-    \makeatother
-
-    % \maketitle
-    % \begin{abstract}
-    %     Notes\footnote{Last updated on January 01, 2000}.
-    % \end{abstract}
-
-    \tableofcontents
-\fi
-% ----------------------------------------------------------------------------------------------------
-
+\confighead{}{}{}
+\printhead{}{}{1}
 
 \sct{Arithmetic cohomology theory}
 It is very desirable to have a good global cohomology theory that is naturally compatible with height theory for arithmetic varieties, this note\footnote{Last updated on 03/2024} records some experimental thoughts.
@@ -172,20 +154,16 @@ and (2) compute all arithmetic cohomology groups of $\Spc{\cO_{K}}$. As a first 
 	\red{TODO: make precise these heuristics, provide their decompositions into local heights and compare with recent developments in Arakelov and height theory for line bundles \cite{YZ2021}.}
 \end{prf}
 
-\sct{Memorandum of Neukirch}
+% \sct{Memorandum of Neukirch}
 
-Everything above should be compatible with things here.
+% Everything above should be compatible with things here.
 
-Let $\oL{M}$ be a metrized $\cO_{K}$-module, including $\oL{\cO}_{K}$.
+% Let $\oL{M}$ be a metrized $\cO_{K}$-module, including $\oL{\cO}_{K}$.
 
-If $\oL{M}$ is invertible, one has Euler-Minkowski characteristic (Definition~3.1) $\chi(\oL{M}):=-\log\Vol{\oL{M}}$, and degree (Proposition~3.3) $\Deg(\oL{M})$.
+% If $\oL{M}$ is invertible, one has Euler-Minkowski characteristic (Definition~3.1) $\chi(\oL{M}):=-\log\Vol{\oL{M}}$, and degree (Proposition~3.3) $\Deg(\oL{M})$.
 
-$\bY:=\chi(X,\cO_{X})$.
+% $\bY:=\chi(X,\cO_{X})$.
 
 
-% ----------------------------------------------------------------------------------------------------
-\ifmain
-    \bibliographystyle{amsalpha}
-    \bibliography{/Users/wenc/Documents/Math/universal-ref}
-\fi
+\printref
 \end{document}

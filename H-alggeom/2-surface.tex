@@ -1,36 +1,22 @@
-% Last Updated: 09/10/2024
 \documentclass[a4paper, twoside]{article}
 % \documentclass[a4paper, twoside]{amsart}
 \input{/Users/wenc/Documents/Math/universal-pre}
 
 \begin{document}
-\ifmain
-    \title{\tbf{Geometry of surfaces}}
-    \author{Cong Wen, 01/23}
-    \makeatletter
-    \@ifclassloaded{amsart}{
-        \address{X University}
-        \email{sparkwenc@gmail.com}
-    }{\date{}}
-    \makeatother
+\confighead{}{}{}
+\printhead{}{}{1}
 
-    \maketitle
-    \begin{abstract}
-        Notes\footnote{Last updated on January 01, 2000} on geometry of surfaces.
-    \end{abstract}
 
-    \tableofcontents
-\fi
-% ----------------------------------------------------------------------------------------------------
+\sct{Algebraic surfaces}
 
 Ref:~\cite{Ciliberto2020}.
 
 \begin{stp}
-	Throughout the note, a variety will mean a smooth irreducible projective complex variety, a surface(resp. curve) will mean a variety of dimension $2$(resp. $1$).
+	Throughout the note, a variety will mean a smooth irreducible projective complex variety, a surface (resp. curve) will mean a variety of dimension $2$ (resp. $1$).
 \end{stp}
 
-\sct{Minimal model program for surfaces}
-Minimal model program for surfaces are very well known, and doesn't need the introduction of any conditions of singularities.
+\ssc{Minimal model program for surfaces}
+Minimal model program for surfaces are very well studied, and doesn't need the introduction of any conditions of singularities.
 
 \begin{thm}[{\cite[Theorem~\Rnum{2}.11]{Beauville1996}}]
 	Let $f:S\ar S_{0}$ be a birational morphism of surfaces, then $f$ is the composition of a sequence of blowups $\eps_{k}:S_{k}\ar S_{k-1},1\leq k\leq n$ and an isomorphism $u:S\cong S_{n}$.
@@ -72,7 +58,7 @@ Minimal model program for surfaces are very well known, and doesn't need the int
 \end{thm}
 
 
-\sct{Classification by Kodaira dimension}
+\ssc{Classification by Kodaira dimension}
 
 \begin{thm}[$P_{12}$-theorem]
 	Let $S$ be a surface, then
@@ -112,13 +98,13 @@ Minimal model program for surfaces are very well known, and doesn't need the int
 	Let $S$ be a minimal surface with $\kpa=2$, then $\sP{nK_{S}}$ is bpf for $n\gqs5$, $\vfi_{\sP{nK_{S}}}$ is birational for $n\gqs6$.
 \end{thm}
 
-\sct{More characterizations}
+\ssc{More characterizations}
 
-\prg{Bielliptic surfaces}
+\sss{Bielliptic surfaces}
 
 \begin{thm}[Bagnera-De Franchis, Theorem~12.1]
 	Let $S$ be a bielliptic surface, then it is of the form $S=E\tms F/G$, where $E,F$ are smooth elliptic curves, $G$ a group of translation of $E$ acting on $F$, $S$ is one of the following $7$ cases,
-	\begin{enr}
+	\begin{enr}[label=(\arabic*)]
 		\item $2K_{S}=0$,
 		\begin{itm}
 			\item $G=\bZ/2\bZ$ via $x\amt-x$ on $F$.
@@ -143,7 +129,7 @@ Minimal model program for surfaces are very well known, and doesn't need the int
 
 
 
-\prg{Rational surface}
+\sss{Rational surface}
 
 \begin{thm}[Projective plane, Theorem~2.1]
 	Let $S$ be a surface, then $S\cong\bP^{2}$ if and only if  $\mathrm{H}_{}^{1}(S,\bZ)=P_{2}=0$.
@@ -168,9 +154,9 @@ Minimal model program for surfaces are very well known, and doesn't need the int
 % \end{thm}
 
 
-\prg{Ruled surface}
+\sss{Ruled surface}
 \begin{dfn}
-	A surjective morphism $S\ar C$ from a surface $S$ to $C$ is ruled if there exists a fiber isomorphic to $\bP^{1}$. $S$ is a $\bP^{1}$-bundle(scroll) if every fiber is isomorphic to $\bP^{1}$.
+	A surjective morphism $S\ar C$ from a surface $S$ to $C$ is ruled if there exists a fiber isomorphic to $\bP^{1}$. $S$ is a $\bP^{1}$-bundle (scroll) if every fiber is isomorphic to $\bP^{1}$.
 \end{dfn}
 
 \begin{thm}[Noether-Enriques, Theorem~4.2]
@@ -186,7 +172,7 @@ Minimal model program for surfaces are very well known, and doesn't need the int
 \end{thm}
 
 
-\prg{Elliptic fibrations}
+\sss{Elliptic fibrations}
 
 \begin{thm}[Theorem~9.18]
 	Let $S$ be a strongly minimal surface admitting a surjective morphism $f:S\ar C$ such that the general fiber is an elliptic curve, then
@@ -197,12 +183,5 @@ Minimal model program for surfaces are very well known, and doesn't need the int
 \end{thm}
 
 
-
-
-
-% ----------------------------------------------------------------------------------------------------
-\ifmain
-    \bibliographystyle{amsalpha}
-    \bibliography{/Users/wenc/Documents/Math/universal-ref}
-\fi
+\printref
 \end{document}

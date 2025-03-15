@@ -1,31 +1,15 @@
-% Last Updated: 09/10/2024
 \documentclass[a4paper, twoside]{article}
 % \documentclass[a4paper, twoside]{amsart}
 \input{/Users/wenc/Documents/Math/universal-pre}
 
 \begin{document}
-\ifmain
-    \title{\tbf{Deformation theory}}
-    \author{Cong Wen, 02/24}
-    \makeatletter
-    \@ifclassloaded{amsart}{
-        \address{X University}
-        \email{sparkwenc@gmail.com}
-    }{\date{}}
-    \makeatother
+\confighead{}{}{}
+\printhead{}{}{1}
 
-    \maketitle
-    \begin{abstract}
-        Notes\footnote{Last updated on January 01, 2000} on deformation theory.
-    \end{abstract}
 
-    \tableofcontents
-\fi
-% ----------------------------------------------------------------------------------------------------
+\sct{Cotangent complexes}
+Ref:~\cite{Illusie1971,Illusie1972}.
 
-Ref:~\cite{Illusie1971,Illusie1972,Hartshorne2010}.
-
-\sct*{Cotangent complex}
 \begin{stp}
 	To any morphism $R\ar S$ of rings, one has the cotangent complex $\bL_{S/R}\in D^{\lqs0}(S)$.
 \end{stp}
@@ -39,16 +23,19 @@ Ref:~\cite{Illusie1971,Illusie1972,Hartshorne2010}.
 \end{thm}
 
 
-\sct{Intro}
-Four deformation problems are considered
-\begin{enr}
-	\item (A) subschemes of a fixed scheme $X$,
-	\item (B) line bundles of a fixed scheme $X$,
-	\item (C) coherent sheaves of a fixed scheme $X$,
-	\item (D) deformation of abstract schemes.
+
+\sct{Deformation theory}
+Ref:~\cite{Hartshorne2010}.
+
+One considers the deformation problem of the following,
+\begin{enr}[label=(\Alph*)]
+	\item subschemes of a fixed scheme $X$.
+	\item line bundles of a fixed scheme $X$.
+	\item coherent sheaves of a fixed scheme $X$.
+	\item deformation of abstract schemes.
 \end{enr}
 
-\sct{First-Order Deformations}
+\ssc{First-order deformations}
 \begin{stp}
 	Let $k$ be an algebraically closed field.
 \end{stp}
@@ -64,11 +51,11 @@ Four deformation problems are considered
 
 \begin{thm}
 	Let $X$ be a scheme over $k$, consider the deformations over $D=\Spc{k[\eps]/(\eps^{2})}$,
-	\begin{enr}
-		\item (A) {\cite[Theorem~2.4]{Hartshorne2010}} Let $Y$ be a closed subscheme of $X$, then deformations is given by $\HH{}{0}{(Y,\cN_{Y/X})}$.
-		\item (B) {\cite[Proposition~2.6]{Hartshorne2010}} Let $\cL$ be an invertible sheaf on $X$, then deformations is given by $\HH{}{1}{(X,\cO_{X})}$.
-		\item (C) {\cite[Theorem~2.7]{Hartshorne2010}} Let $\cF$ be a coherent sheaf on $X$, then deformations is given by $\Ext{\cO_{X}}{1}{(\cF,\cF)}$.
-		\item (D) {\cite[Theorem~5.3]{Hartshorne2010}} If $X$ is nonsingular, then the deformation of $X$ is given by $\HH{}{1}{(X,\cT_{X})}$.
+	\begin{enr}[label=(\Alph*)]
+		\item {\cite[Theorem~2.4]{Hartshorne2010}} Let $Y$ be a closed subscheme of $X$, then deformations is given by $\HH{}{0}{(Y,\cN_{Y/X})}$.
+		\item {\cite[Proposition~2.6]{Hartshorne2010}} Let $\cL$ be an invertible sheaf on $X$, then deformations is given by $\HH{}{1}{(X,\cO_{X})}$.
+		\item {\cite[Theorem~2.7]{Hartshorne2010}} Let $\cF$ be a coherent sheaf on $X$, then deformations is given by $\Ext{\cO_{X}}{1}{(\cF,\cF)}$.
+		\item {\cite[Theorem~5.3]{Hartshorne2010}} If $X$ is nonsingular, then the deformation of $X$ is given by $\HH{}{1}{(X,\cT_{X})}$.
 	\end{enr}
 \end{thm}
 
@@ -80,7 +67,7 @@ Four deformation problems are considered
 	I should learn the Andre-Quillen cohomology and Illusie's contangent complexes.
 \end{rmk}
 
-\sct{Higher-Order Deformations}
+\ssc{Higher-order deformations}
 \begin{stp}
 	Let $k$ be a field, $C,C'$ local Artin rings with residue field $k$, $J$ ideal of $C'$ such that $\km_{C'}J=0,C'/J\cong C$.
 \end{stp}
@@ -103,18 +90,5 @@ Four deformation problems are considered
 \end{thm}
 
 
-
-\sct{Formal Moduli}
-
-
-
-\sct{Global Questions}
-
-
-
-% ----------------------------------------------------------------------------------------------------
-\ifmain
-    \bibliographystyle{amsalpha}
-    \bibliography{/Users/wenc/Documents/Math/universal-ref}
-\fi
+\printref
 \end{document}
