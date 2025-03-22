@@ -8,8 +8,92 @@
 
 \sct{Birational geometry}
 
+\ssc{Singularities}
+Ref:~\cite{KM1998Birational}.
+
+\begin{dfn}[2.11, 2.12]
+	Let $Y$ be a normal variety, say that $Y$ has
+	\begin{itm}
+		\item \tbf{canonical singularities} if $K_{Y}$ is $\bQ$-Cartier and $f\zS\cO_{X}(mK_{X})=\cO_{Y}(mK_{Y})$ for every resolution of singularities $f:X\ar Y$.
+		\item \tbf{terminal singularities} if $K_{Y}$ is $\bQ$-Cartier and $f\zS\cO(mK_{X}-E)=\cO_{Y}(mK_{Y})$ for every resolution of singularities $f:X\ar Y$ where $E$ is the reduced exceptional divisor.
+	\end{itm}
+\end{dfn}
+
+\begin{dfn}[2.13]
+	Let $X$ be a normal and proper variety, say that $X$ is a \tbf{minimal model} if $X$ has terminal singularities and $K_{X}$ is nef.
+\end{dfn}
+
+\begin{dfn}[2.25, 2.28, 2.34, 2.37, 6.22]
+	Let $(X,\Dta)$ be a pair where $X$ is normal and $D=\sum a_{i}D_{i}$ a sum of distinct prime divisors, assume $m(K_{X}+D)$ is Cartier for some $m>0$.
+
+
+	Let $f:Y\adr X$ be a birational morphism from a normal variety $Y$ with $\Ex(f)=E$ and $E_{i}$ its irreducible exceptional divisors, then $f\zS\xI\Dta=\sum a_{i}f\zS\xI D_{i}$. There exists $a(E_{i},X,\Dta)\in\bQ$ such that $ma(E_{i},X,\Dta)\in\bZ$ and
+	\[
+		\cO_{Y}(m(K_{Y}+f\zS\xI\Dta))\cong f\xS\cO_{X}(m(K_{X}+\Dta))(\sum ma(E_{i},X,\Dta)E_{i}),
+	\]
+	$E_{i}$ is called \tbf{crepant} if $a(E_{i},X,\Dta)=0$, $f$ is called \tbf{crepant} if $a(E_{i},X,D)=0$ for all $i$.
+
+	Define the \tbf{discrepancy} of $(X,\Dta)$ to be $\Dsc(X,\Dta):=\inf_{E}\{a(E,X,\Dta):\T{$E$ is an exceptional divisor over $X$}\}$, and the total discrepancy $\totDsc(X,\Dta):=\inf_{E}\{a(E,X,\Dta):\T{$E$ is a divisor over $X$}\}$.
+
+
+	Say that $(X,\Dta)$ is
+	\begin{itm}
+		\item \tbf{terminal} if $\Dsc(X,\Dta)>0$,
+		\item \tbf{canonical} if $\Dsc(X,\Dta)\gqs0$,
+		\item \tbf{klt (Kawamata log terminal)} if $\Dsc(X,\Dta)>-1$ and $\sFl{\Dta}\lqs0$,
+		\item \tbf{plt (purely log terminal)} if $\Dsc(X,\Dta)>-1$,
+		\item \tbf{lc (log canonical)} if $\Dsc(X,\Dta)\gqs-1$,
+	\end{itm}
+	assume that $0\lqs a_{i}\lqs1$, say that $(X,\Dta)$ is \tbf{dlt (divisorial log terminal)} if there is a closed subset $Z\sbs X$ such that (1) $X\ssm Z$ is smooth, $\Dta|_{X\ssm Z}$ is a simple normal crossing divisor, (2) if $f:Y\ar X$ is birational and $E\sbs Y$ is an irreducible divisor such that $\Ctr_{X}E\sbs Z$, then $a(E,X,\Dta)>-1$.
+\end{dfn}
+
+\begin{thm}[Kodaira Vanishing, 2.70]
+	Let $(X,\Dta)$ be a proper klt pair, $N$ a $\bQ$-Cartier Weil divisor on $X$ such that $N\eqv M+\Dta$ where $M$ is a nef and big $\bQ$-Cartier $\bQ$-divisor, then $\HH{}{i}{(X,\cO_{X}(-N))}=0$ for $0\lqs i <\Dim X$.
+\end{thm}
+
+\begin{thm}[Non-vanishing, 3.4]
+	Let $X$ be a proper variety, $D$ a nef Cartier divisor, $G$ a $\bQ$-divisor. If $aD+G-K_{X}$ is $\bQ$-Cartier, nef and big for some $a>0$, $(X,-G)$ is klt, then for all $m\gg0$, $\HH{}{0}{(X,mD+\sCe{G})}\neq0$.
+\end{thm}
+
+\begin{thm}[Basepoint-free, 3.3]
+	Let $(X,\Dta)$ be a proper klt pair with $\Dta$ effective, $D$ a nef Cartier divisor such that $aD-K_{X}-\Dta$ is nef and big for some $a>0$. Then $\sP{bD}$ is basepoint-free for all $b\gg0$.
+\end{thm}
+
+\begin{thm}[Rationality, 3.5]
+	Let $(X,\Dta)$ be a proper klt pair with $\Dta$ effective and $K_{X}+\Dta$ not nef. Take $a(X)>0$ such that $a(X)\cdot(K_{X}+\Dta)$ is Cartier, let $H$ be a nef and big Cartier divisor, then $r(H):=\max\{t\in\bR:H+t(K_{X}+\Dta)\T{ is nef}\}$ is a rational number of the form $u/v$ with $0<v\lqs a(X)(\Dim X+1)$.
+\end{thm}
+
+\begin{thm}[Cone theorem, 3.7]
+	Let $(X,\Dta)$ be a projective klt pair with $\Dta$ effective, then
+	\begin{enr}[label=(\arabic*)]
+		\item there are countably many rational curves $C_{j}\sbs X$ such that $0<-(K_{X}+\Dta)C_{j}\lqs2\Dim X$ and
+		\[
+			\oL{\NE}(X)=\oL{\NE}(X)_{(K_{X}+\Dta)\gqs0}+\sum\bR_{\gqs0}[C_{j}].
+		\]
+		\item for any $\eps>0$ and ample $\bQ$-divisor $H$,
+		\[
+			\oL{\NE}(X)=\oL{\NE}(X)_{(K_{X}+\Dta+\eps H)\gqs0}+\sum_{\T{finite}}\bR_{\gqs0}[C_{j}].
+		\]
+		\item (contraction) let $F\sbs\oL{\NE}(X)$ be a $(K_{X}+\Dta)$-negative extremal face, then there is a unique morphism $c_{F}:X\ar Z$ to a projective variety such that $c_{F,*}\cO_{X}=\cO_{Z}$, and an irreducible curve $C\sbs X$ is mapped to a point by $c_{F}$ if and only if $[C]\in F$. If $L$ is a line bundle on $X$ such that $(L\cdot C)=0$ for all $C$ with $[C]\in F$, then there exists a line bundle $L_{Z}$ on $Z$ such that $L\cong c_{F}\xS L_{Z}$.
+	\end{enr}
+\end{thm}
+
+\begin{dfn}[Flip, 3.33]
+	Let $X$ be a normal scheme, $D$ a $\bQ$-divisor on $X$ such that $K_{X}+D$ is $\bQ$-Cartier.
+
+	A \tbf{$(K_{X}+D)$-flipping contraction} is a proper birational morphism $f:X\ar Y$ to a normal scheme $Y$ such that $\Cdm\Ex(f)\gqs2$ and $-(K_{X}+D)$ is $f$-ample.
+
+	A normal scheme $X\xP$ with a proper birational morphism $f\xP:X\xP\ar Y$ is called a \tbf{$(K_{X}+D)$-flip} of $f$ if $K_{X\xP}+D\xP$ is $\bQ$-Cartier, $K_{X\xP}+D\xP$ is $f\xP$-ample and $\Cdm\Ex(f\xP)\gqs2$. The induced rational map $\phi:X\adr X\xP$ is also called a \tbf{$(K_{X}+D)$-flip}.
+\end{dfn}
+
+\begin{dfn}[Flop, 6.10]
+	Let $X$ be a normal variety, a \tbf{flopping contraction} is a proper birational morphism $f:X\ar Y$ to a normal variety $Y$ such that $\Cdm\Ex(f)\gqs2$ and $K_{X}$ is numerically $f$-trivial.
+
+	If $D$ is a $\bQ$-Cartier $\bQ$-divisor on $X$ such that $-(K_{X}+D)$ is $f$-ample, then the $(K_{X}+D)$-flip of $f$ is also called the \tbf{$D$-flop}, if $X\ar Y$ is extremal, the $D$-flop does not depend on $D$, call $\phi:X\adr X\xP$ the \tbf{flop} of $f$.
+\end{dfn}
+
 \ssc{Finite generation of canonical ring}
-Ref:~\cite{BCHM2010}
+Ref:~\cite{BCHM2010}.
 
 \begin{thm}[{\cite[Theorem~1.2]{BCHM2010}}]
 	Let $(X,\Dta)$ be a klt pair, where $K_{X}+\Dta$ is Cartier. Let $\pi:X\ar U$ be a morphism of quasi-projective varieties. If either (1) $\Dta$ is $\pi$-big and $K_{X}+\Dta$ is $\pi$-pseudo-effective or (2) $K_{X}+\Dta$ is $\pi$-big, then
