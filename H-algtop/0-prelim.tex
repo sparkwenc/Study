@@ -6,7 +6,7 @@
 \printhead{}{}{1}
 
 \sct{Homological algebra}
-Ref: \cite{Weibel1994}
+Ref:~\cite{Weibel1994}
 
 
 \begin{dfn}[5.2.1, 5.2.8]
@@ -141,21 +141,67 @@ Ref: \cite{Weibel1994}
 \end{thm}
 
 \sct{Higher algebra}
-Ref: Lurie-HigherAlgebra
+Ref:~\cite{Lurie2009}, Lurie-HigherAlgebra (2017),
 
 % \ssc{Fonudations}
 
 \begin{dfn}
-    A simplicial set $\cC$ is a presheaf of sets on the simplex category $\Dta$.
+    Let $\Dta^{n}$ be the standard $n$-simplex, and $\Dta$ the simplex category. A \tbf{simplicial set} $\cC$ is a presheaf of sets on the simplex category $\Dta$, denote by $\Set_{\Dta}$ the category of simplicial sets.
 \end{dfn}
 
-\begin{dfn}[0.0.0.1]
-    An $\ift$-category is a simplicial set $\cC$ such that any map of simplicial sets $f_{0}:\Lda_{i}^{n}\ar\cC$ can be extended to $f:\Dta^{n}\ar\cC$ for $0<i<n$. (Aka, weak Kan complex: all the inner horns have a filler)
+\begin{dfn}
+    Let $\cC$ be any category, denote by $N(\cC)$ its nerve, it is a simplicial set.
+\end{dfn}
+
+\begin{thm}[{\cite[1.1.2.2]{Lurie2009}}]
+    Let $\cK$ be a simplicial set, there exists a small category $\cC$ such that $K\cong N(\cC)$ if and only if any map of simplicial set $f_{0}:\Lda_{i}^{n}\ar\cK$ can be \tbf{uniquely} lifted to $f:\Dta^{n}\ar\cK$ for $0<i<n$.
+\end{thm}
+
+\begin{dfn}[{\cite[2.4.1.1]{Lurie2009}}]
+    Let $p:X\ar S$ be an inner fibration of simplicial sets, $f:x\ar y$ an edge in $X$. Say that $f$ is \tbf{$p$-Cartesian} if the induced $X_{/f}\ar X_{/y}\tms_{S_{/p(y)}}S_{/p(f)}$ is a trivial Kan fibration, and \tbf{$p$-coCartesian} if it is Cartesian with respect to $p^{\T{op}}:X^{\T{op}}\ar S^{\T{op}}$.
+\end{dfn}
+
+\begin{thm}[{\cite[2.4.1.8]{Lurie2009}}]
+    Let $p:Y\ar S$ be an inner fibration of simplicial sets and $e:\Dta^{1}\ar Y$ an edge, then $e$ is $p$-coCartesian if and only if for each $n\gqs1$ and diagram
+    \[
+        \begin{tikzcd}
+            \{0\}\tms\Dta^{1}\ar[r, "e"]\ar[d, hook] & Y\ar[d, equal]\\
+            \Dta^{n}\tms\{0\}\coprod_{\ptl\Dta^{n}\tms\{0\}}\ptl\Dta^{n}\tms\Dta^{1}\ar[r, "f"]\ar[d, hook] & Y\ar[d, "p"] \\
+            \Dta^{n}\tms\Dta^{1}\ar[r, "g"]\ar[ru, dashed, "h"] & S
+        \end{tikzcd}
+    \]
+    there exists the map $h$ making the diagram commutative.
+\end{thm}
+
+\begin{dfn}[0.0.0.1, Page~12]
+    An \tbf{$\ift$-category/weak Kan complex} is a simplicial set $\cC$ such that any map of simplicial sets $f_{0}:\Lda_{i}^{n}\ar\cC$ can be lifted to $f:\Dta^{n}\ar\cC$ for $0<i<n$.
+
+    A \tbf{space/Kan complex} is a simplicial set $\cC$ such that any map of simplicial sets $f_{0}:\Lda_{i}^{n}\ar\cC$ can be lifted to $f:\Dta^{n}\ar\cC$ for $0\lqs i\lqs n$. (\cite[1.2.16.1]{Lurie2009}) Denote by $\Kan$ the category of Kan complexes and $\cS:=N(\Kan)$ the \tbf{$\ift$-category of spaces}.
+
+    A space $X$ is \tbf{$n$-connective} ($n\gqs0$) if $X$ is non-empty and $\pi_{i}(X,x)$ is trivial for $i<n$ and every vertex $x$ of $X$, \tbf{$n$-truncated} ($n\gqs-1$) if $\pi_{i}(X,x)$ is trivial for $i>n$ and every vertex $x$ of $X$.
+\end{dfn}
+
+\begin{dfn}[6.1.6.1, 6.1.6.4]
+    Let $\cC$ be an $\ift$-category and $X$ a Kan complex, denote by $\cC^{X}$ the $\ift$-category $\Fun(X,\cC)$. A map $f:X\ar Y$ of Kan complexes induces $f\xS:\cC^{Y}\ar\cC^{X}$, if $\cC$ admits small limits and colimits, $f\xS$ admits left and right adjoint denoted by $f\zS$ and $f\zE$.
+
+    Let $\cC$ be an $\ift$-category with an intial and final object, then any map of Kan complexes $f:X\ar Y$ with $(-1)$-truncated homotopy fibers determines the \tbf{norm map} $\Nrm_{f}:f\zE\ar f\zS$.
+\end{dfn}
+
+\begin{dfn}[6.1.6.2, 6.1.6.24]
+    Let $G$ be a group, view $\bB G$ as a Kan complex, a \tbf{$G$-equivariant object} of $\cC$ is an object of $\cC^{\bB G}$, if $\cC$ admits small limits and colimits, the projection $\pr:\bB G\ar\Dta^{0}$ induces
+    \[
+        \pr\zS:\cC^{\bB G}\ar\cC, M\amt M^{G};\quad \pr\zE:\cC^{\bB G}\ar\cC, M\amt M_{G},
+    \]
+    the \tbf{Tate construction} of $M$ is defined by $M\amt M^{tG}:=\Cfb(\Nrm:M_{G}\ar M^{G})$.
 \end{dfn}
 
 \begin{dfn}[1.1.1.1]
-    Let $\cC$ be an $\ift$-category, a zero object $0$ is an object which is both initial and final. Say $\cC$ is pointed if it contains a zero object.
+    Let $\cC$ be an $\ift$-category, a \tbf{zero object} $0$ is an object which is both initial and final. Say $\cC$ is \tbf{pointed} if it contains a zero object.
 \end{dfn}
+
+\begin{thm}[6.1.6.7]
+    Let $\cC$ be an $\ift$-category with an initial and final object, then $\cC$ is pointed if and only if for every map $f:X\ar Y$ of Kan complexes with $(-1)$-truncated homotopy fibers, the norm map $\Nrm_{f}:f\zE\ar f\zS$ is an equivalence.
+\end{thm}
 
 \begin{dfn}[1.1.1.4]
     Let $\cC$ be a pointed $\ift$-category, a triangle in $\cC$ is a diagram
@@ -166,13 +212,13 @@ Ref: Lurie-HigherAlgebra
         \end{tikzcd}
     \]
     \begin{itm}
-        \item it is a fiber sequence if it is a pullback square, write $X=\mrm{fib}(Y\axr{g}Z)$.
-        \item it is a cofiber sequence if it is a pushout square, write $Z=\mrm{cofib}(X\axr{f}Y)$.
+        \item it is a \tbf{fiber sequence} if it is a pullback square, write $X=\mrm{fib}(Y\axr{g}Z)$.
+        \item it is a \tbf{cofiber sequence} if it is a pushout square, write $Z=\mrm{cofib}(X\axr{f}Y)$.
     \end{itm}
 \end{dfn}
 
 \begin{dfn}[1.1.1.9]
-    An $\ift$-category $\cC$ is stable if the following holds
+    An $\ift$-category $\cC$ is \tbf{stable} if the following holds
     \begin{enr}[label=(\arabic*)]
         \item There exists a zero object $0\in\cC$.
         \item Every morphism in $\cC$ admits a fiber and a cofiber.
@@ -201,7 +247,7 @@ Ref: Lurie-HigherAlgebra
 \end{thm}
 
 \begin{thm}[1.1.4.1]
-    Let $F:\cC\ar\cD$ be a functor between stable $\ift$-categories, the the following are equivalent,
+    Let $F:\cC\ar\cD$ be a functor between stable $\ift$-categories, the following are equivalent,
     \begin{enr}[label=(\arabic*)]
         \item $F$ is left exact.
         \item $F$ is right exact.
@@ -228,7 +274,7 @@ Ref: Lurie-HigherAlgebra
 
 
 \begin{thm}[1.4.4.12]
-    Let $\cC$ be a presentable stable $\ift$-category, a $t$-structure on $\cC$ is accessible if $\cC_{\gqs0}$ is presentable.
+    Let $\cC$ be a presentable stable $\ift$-category, a $t$-structure on $\cC$ is \tbf{accessible} if $\cC_{\gqs0}$ is presentable.
 
     \red{equivalently, 1.4.4.13}
 \end{thm}
@@ -238,18 +284,20 @@ Ref: Lurie-HigherAlgebra
 \begin{dfn}[1.4.2.1]
     Let $F:\cC\ar\cD$ be a functor between $\ift$-categories,
     \begin{enr}[label=(\arabic*)]
-        \item if $\cC$ admits pushouts, then say $F$ is excisive if $F$ preserves pushout squares.
-        \item if $\cC$ admits a final object $*$, then say $F$ is reduced if $F(*)$ is a final object.
+        \item if $\cC$ admits pushouts, then say $F$ is \tbf{excisive} if $F$ preserves pushout squares.
+        \item if $\cC$ admits a final object $*$, then say $F$ is \tbf{reduced} if $F(*)$ is a final object.
     \end{enr}
 \end{dfn}
 
 
-\begin{dfn}[1.4.2.5, 1.4.2.8, 1.4.3.1]
+\begin{dfn}[1.4.2.5, 1.4.2.8, 1.4.3.1, 1.4.4.5]
     Let $\cS$ be the $\ift$-category of spaces, $\cS^{\T{fin}}$ the $\ift$-category of finite spaces, and $\cS\zS^{\T{fin}}$ the $\ift$-category of its pointed objects.
 
-    Let $\cC$ be an $\ift$-category which admits finite limits, a spectrum object of $\cC$ is a reduced, excisive functor $X:\cS\zS^{\T{fin}}\ar\cC$, let $\Spr(\cC)$ be the category of spectrum objects of $\cC$.
+    Let $\cC$ be an $\ift$-category which admits finite limits, a \tbf{spectrum object} of $\cC$ is a reduced, excisive functor $X:\cS\zS^{\T{fin}}\ar\cC$, let $\Spr(\cC)$ be the category of spectrum objects of $\cC$.
 
-    A spectrum is a spectrum object of the $\ift$-category $\cS$ of spaces. Denote by $\Spr$ the $\ift$-category of spectra.
+    A \tbf{spectrum} is a spectrum object of the $\ift$-category $\cS$ of spaces. Denote by $\Spr$ the $\ift$-category of spectra, the \tbf{sphere spectrum} $\bS\in\Spr$ is the image of the final object $*\in\cS$ under $\Sgm^{\ift}:\cS\ar\Spr$.
+
+    A spectrum is \tbf{connective} if $\pi_{n}X=0$ for $n<0$, \tbf{discrete} if $\pi_{n}X=0$ for $n\neq0$.
 \end{dfn}
 
 \begin{thm}[1.4.3.6]
@@ -270,37 +318,50 @@ Ref: Lurie-HigherAlgebra
 \begin{dfn}[2.1.1.8, 2.1.2.1]
     Say a morphism $f:\sA{m}\ar\sA{n}$ is
     \begin{enr}[label=(\arabic*)]
-        \item inert if for each $i\in\sA{n}\xC$, $\sP{f\xI(i)}=1$.
-        \item active if $f\xI(*)=*$.
+        \item \tbf{inert} if for each $i\in\sA{n}\xC$, $\sP{f\xI\{i\}}=1$.
+        \item \tbf{active} if $f\xI\{*\}=\{*\}$.
     \end{enr}
 \end{dfn}
 
-\begin{dfn}[2.1.1.10]
-    An $\ift$-operad is a functor $p:\cO^{\ot}\ar N(\Fin\zS)$ such that
+\begin{dfn}[2.1.1.10, 2.1.1.12]
+    An \tbf{$\ift$-operad} is a functor $p:\cO^{\ot}\ar N(\Fin\zS)$ of $\ift$-categories such that
     \begin{enr}[label=(\arabic*)]
         \item For every inert morphism $f:\sA{m}\ar\sA{n}$ in $N(\Fin\zS)$ and $C\in\cO^{\ot}_{\sA{m}}$, there is a $p$-coCartesian $\oL{f}:C\ar D$ in $\cO^{\ot}$ lifting $f$, where $D\in\cO^{\ot}_{\sA{n}}$, this determines $f\zE:\cO_{\sA{m}}^{\ot}\ar\cO_{\sA{n}}^{\ot}$.
         \item Let $C\in\cO_{\sA{m}}^{\ot},D\in\cO_{\sA{n}}^{\ot}$, and choose $p$-coCartesian morphisms $D\ar D_{i}$ lying over $\rho^{i}$, then the induced $\Map_{\cO^{\ot}}^{f}(C,D)\ar\prd_{1\lqs i\lqs n}\Map_{\cO^{\ot}}^{\rho^{i}\cc f}(C,D_{i})$ is a homotopy equivalence.
         \item For a finite collection $C_{1},\lds,C_{n}\in\cO_{\sA{1}}^{\ot}$, there exists $C\in\cO_{\sA{n}}^{\ot}$ and a collection of $p$-coCartesian morphisms $C\ar C_{i}$ lifting $\rho^{i}:\sA{n}\ar\sA{1}$.
     \end{enr}
+
+    Denote by $\cO:=\cO^{\ot}_{\sA{1}}=p\xI\{\sA{1}\}$ the \tbf{underlying $\ift$-category} of $\cO^{\ot}$.
 \end{dfn}
 
 \begin{dfn}[2.1.2.3]
     Let $p:\cO^{\ot}\ar N(\Fin\zS)$ be an $\ift$-operad, say a morphism $f$ in $\cO^{\ot}$ is
     \begin{enr}[label=(\arabic*)]
-        \item inert if $p(f)$ is inert and $f$ is $p$-coCartesian.
-        \item active if $p(f)$ is active.
+        \item \tbf{inert} if $p(f)$ is inert and $f$ is $p$-coCartesian.
+        \item \tbf{active} if $p(f)$ is active.
     \end{enr}
 \end{dfn}
 
-\begin{dfn}[2.1.2.7]
-    Let $\cO^{\ot},\cP^{\ot}$ be $\ift$-operads, an $\ift$-operad map is a map of simplicial sets $f:\cO^{\ot}\ar\cP^{\ot}$ such that (1) $f$ preserves inert morphisms, (2) $f$ commutes with $\cO^{\ot}\ar N(\Fin\zS)$ and $\cP^{\ot}\ar N(\Fin\zS)$.
+\begin{dfn}[2.1.2.7, 2.1.2.10]
+    Let $\cO^{\ot},\cP^{\ot}$ be $\ift$-operads, an \tbf{$\ift$-operad map} is a map of simplicial sets $f:\cO^{\ot}\ar\cP^{\ot}$ such that (1) $f$ preserves inert morphisms, (2) $f$ commutes with $\cO^{\ot}\ar N(\Fin\zS)$ and $\cP^{\ot}\ar N(\Fin\zS)$. Say $f$ if a \tbf{fibration of $\ift$-operads} if $f$ is a categorical fibration.
+\end{dfn}
 
-    Denote by $\Alg_{\cO}(\cP)$ the full subcategory of $\Fun_{N(\Fin\zS)}(\cO^{\ot},\cP^{\ot})$ spanned by the $\ift$-operad maps.
+\begin{dfn}[2.1.3.1]
+    Let $\cC^{\ot}\ar\cO^{\ot}$ be a fibration of $\ift$-operads, and $\afa:\cO'^{\ot}\ar\cO^{\ot}$ an $\ift$-operad map, denote by $\Alg_{\cO'/\cO}(\cC)$ the full subcategory of $\Fun_{\cO^{\ot}}(\cO'^{\ot},\cC^{\ot})$ spanned by the maps of $\ift$-operads. If $\cO^{\ot}=N(\Fin\zS)$, $\Alg_{\cO'/\cO}(\cC)$ is abbreviated as $\Alg_{\cO'}(\cC)$ and is referred to as the \tbf{$\cO'$-algebra objects} of $\cC$.
+\end{dfn}
+
+
+\begin{dfn}[2.4.2.1]
+    Let $\cC$ be an $\ift$-category, $\cO^{\ot}$ an $\ift$-operad. A \tbf{$\cO$-monoid} in $\cC$ is a functor $M:\cO^{\ot}\ar\cC$ such that for every object $X\in\cO_{\sA{n}}^{\ot}$ corresponding to $\{X_{i}\in\cO\}_{1\lqs u\lqs n}$, the canonical maps $M(X)\ar M(X_{i})$ make $M(X)$ as the product $\prod_{1\lqs i\lqs n} M(X_{i})$.
 \end{dfn}
 
 
 \begin{dfn}[5.1.0.2, 5.1.0.4]
-    Define a topological category ${}^{t}\bE_{k}^{\ot}$, whose objects are $\sA{n}\in\Fin\zS$, and whose morphisms are $\Hom{{}^{t}\bE_{k}^{\ot}}{}{(\sA{m},\sA{n})}:=\cpd_{\afa\in\Hom{\Fin\zS}{}{(\sA{m},\sA{n})}}\prd_{1\lqs j\lqs n}\Rect(B_{1}(0)^{k}\tms\afa\xI(j)\ar B_{1}(0)^{k})$ with the induced topology. Denote by $\bE_{k}^{\ot}=N({}^{t}\bE_{k}^{\ot})$ the $\ift$-operad of little $k$-cubes.
+    Define a topological category ${}^{t}\bE_{k}^{\ot}$, whose objects are $\sA{n}\in\Fin\zS$, and whose morphisms are
+    \[
+        \Hom{{}^{t}\bE_{k}^{\ot}}{}{(\sA{m},\sA{n})}:=\cpd_{\afa\in\Hom{\Fin\zS}{}{(\sA{m},\sA{n})}}\prd_{1\lqs j\lqs n}\Rect(B_{1}(0)^{k}\tms\afa\xI(j)\ar B_{1}(0)^{k})
+    \]
+    with the induced topology. Denote by $\bE_{k}^{\ot}=N({}^{t}\bE_{k}^{\ot})$ the \tbf{$\ift$-operad of little $k$-cubes}.
 \end{dfn}
 
 \begin{thm}[5.1.1.4]
@@ -308,10 +369,8 @@ Ref: Lurie-HigherAlgebra
 \end{thm}
 
 
-
-
 \begin{dfn}[7.1.0.1]
-    Let $0\lqs k\lqs \ift$, $\mrm{Sp}$ the $\ift$-category of spectra, and $\bE_{k}^{\ot}$ the $\ift$-operad of little $k$-cubes. An $\bE_{k}$-ring is an $\bE_{k}$-algebra object of $\Spr$, denote by $\Alg^{(k)}$ the $\ift$-category $\Alg_{\bE_{k}}(\Spr)$ of $\bE_{k}$-ring spectra.
+    Let $0\lqs k\lqs \ift$, $\mrm{Sp}$ the $\ift$-category of spectra, and $\bE_{k}^{\ot}$ the $\ift$-operad of little $k$-cubes. An \tbf{$\bE_{k}$-ring} is an $\bE_{k}$-algebra object of $\Spr$, denote by $\Alg^{(k)}:=\Alg_{\bE_{k}}(\Spr)$ the $\ift$-category of \tbf{$\bE_{k}$-ring spectra}.
 \end{dfn}
 
 
