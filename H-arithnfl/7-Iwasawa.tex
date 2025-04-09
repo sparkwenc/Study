@@ -1,6 +1,6 @@
 \documentclass[article, a4paper, twoside]{universal}
 
-\setshowlvl{1}
+\setshowlvl{0}
 \begin{document}
 \confighead{}{}{}
 \printhead{}{}{1}
@@ -41,42 +41,75 @@ Ref:~\cite{Washington1997}, \cite{Rubin1991}.
 
 \end{cmt}
 
+\ssc{Method of Eisenstein ideals}
+
 Ref:~\cite{MW1984}
 
-One can extract information of certain metabelian extensions of $\bQ$ via their representations appearing in the cohomology of modular curves $X_{1}(ap^{n})$.
-
-\hrule
-
 \begin{stp}
-    Let $p$ be an odd prime, $\bQ\zF$ the unique $\bZ_{p}$-extension of $\bQ$ and $\bQ_{n}$ the subfield of $\bQ\zF$ of degree $p^{n}$.
-
-	Let $\chi:\Gal(\oL{\bQ}/\bQ)\atr\Gal(F/\bQ)\ar\cO_{\chi}\xT$ be a primitive $p$-adic Dirichlet character of field of definition $F$ such that $F\cap\bQ\zF=\bQ$, denote $F_{n}=F\bQ_{n}$ and $F\zF=F\bQ\zF$; let $L_{n}$ be the $p$-Hilber class field of $F_{n}$ and $M_{n}$ be the maximal $p$-extension of $F_{n}$ unramified outside $p$. One has the field tower
-	\[
-		\begin{tikzcd}
-			\bQ_{n}\ar[d, hook]\ar[r, hook] & F_{n}\ar[d, hook]\ar[r, hook] & L_{n}\ar[d, hook]\ar[r, hook] & M_{n}\ar[d, hook] \\
-			\bQ\zF\ar[r, hook] & F\zF\ar[r, hook] & L\zF\ar[r, hook] & M\zF
-		\end{tikzcd}
-	\]
-
-	Let $\Gal(F\zF/\bQ)\cong\Gal(F/\bQ)\tms\Gma$ be the natural decomposition, denote $\Lda:=\bZ_{p}\dS{\Gma}$. For any topological generator $\gma\in\Gma$, there is an isomorphism $\sgm_{\gma}:\Lda\ar\bZ_{p}\dS{T}$ given by $\gma\amt1+T$. For any $\Lda$-module $U$ with a commuting action by $\Gal(F/\bQ)$, denote by $U_{\chi}$ the $\Lda_{\chi}$-module twisted by $\chi$.
-
-	\begin{cmt}
-		\begin{dfn}
-			Let $A,B$ be $\Lda$-modules of finite type. Say $A$ and $B$ are \tbf{pseudo-isomorphic} if there is a $\Lda$-homomorphism $f:A\ar B$ with finite kernel and cokernel.
-		\end{dfn}
-	\end{cmt}
-
-	The reciprocity isomorphisms $A_{n}:=\Cl(F_{n})\cong H_{n}:=\Gal(L_{n}/F_{n})$ are compatible with the action by $\Gal(F/\bQ)$. Both $A\zF:=\ilim_{n}A_{n}$ and $H\zF:=\plim_{n}H_{n}$ are $\Lda$-modules with a commuting action by $\Gal(F/\bQ)$.
-
-	$H_{\ift,\chi}$ is pseudo-isomorphic to $\Op_{i=1}^{r}\Lda_{\chi}/(h_{i})$, the ideal $(h_{1},\lds,h_{r})\sbs\Lda_{\chi}$ admits a unique generator $h_{p}(\chi,T)=\pi_{\chi}^{\mu_{\chi}}h_{\chi}(T)$. The Iwasawa polynomial of $\Hom{}{}{(A\zF,\bQ_{p}/\bZ_{p})}_{\chi}$ is $h_{p}(\chi\xI,(1+T)\xI-1)$.
+    Let $p$ be an odd prime, $\chi:\Gal(\oL{\bQ}/\bQ)\atr\Gal(K_{\chi}/\bQ)\ar\cO_{\chi}\xT$ a non-trivial even primitive $p$-adic Dirichlet character of conductor not divisible by $p^{2}$ with field of definition $K_{\chi}$.
 \end{stp}
 
-\hrule
+\begin{stp}
+	Let $\bQ\zF$ be the unique $\bZ_{p}$-extension of $\bQ$ and $\bQ_{n}$ the subfield of $\bQ\zF$ of degree $p^{n}$, let $F\sps K_{\chi}$ be an abelian extension of $\bQ$, one has $F\cap\bQ\zF=\bQ$, denote $F_{n}=F\bQ_{n}$, $F\zF=F\bQ\zF$ and $\Gal(F\zF/\bQ)\cong\Gal(F/\bQ)\tms\Gma$ the natural decomposition, fix a topological generator $\gma\in\Gma$, there is an isomorphism $\sgm_{\gma}:\Lda_{\chi}:=\cO_{\chi}\dS{\Gma}\ar\cO_{\chi}\dS{T}$ given by $\gma\amt1+T$.
 
+	Let $L_{n}$ be the $p$-Hilbert class field of $F_{n}$, the reciprocity isomorphisms $C_{n}:=\Cl(F_{n})\cong H_{n}:=\Gal(L_{n}/F_{n})$ are compatible with the action by $\Gal(F/\bQ)$, both $C\zF:=\ilim_{n}C_{n}$ and $H\zF:=\plim_{n}H_{n}$ are $\bZ_{p}\dS{\Gma}$-modules with a commuting action by $\Gal(F/\bQ)$. $H_{\ift,\chi}:=H_{\ift}\ot_{\bZ_{p}[\Gal(F/\bQ)]}\cO_{\chi}$ is a torsion $\Lda_{\chi}$-module of finite type, it admits a morphism to $\Op_{i=1}^{r}\Lda_{\chi}/(h_{i})$ with finite kernel and cokernel, the ideal $\sgm_{\gma}(h_{1},\lds,h_{r})\sbs\cO_{\chi}\dS{T}$ admits a unique generator of the form $h_{p}(\chi,T)=\pi_{\chi}^{\mu_{\chi}}h_{\chi}(T)$ where $h_{\chi}(T)$ is a distinguished polynomial.
+
+	Define $h_{p}(\chi,T)$, $\mu_{\chi}$ and $\lda_{\chi}:=\Deg(h_{\chi}(T))$ to be the \tbf{Iwasawa polynomial}, \tbf{$\mu$-invariant} and \tbf{$\lda$-invariant} of the $\Lda_{\chi}$-module $H_{\ift,\chi}$. The Iwasawa polynomial of $\Hom{}{}{(C_{\ift},\bQ_{p}/\bZ_{p})}_{\chi}$ is given by $h_{p}(\chi\xI,(1+T)\xI-1)$.
+\end{stp}
 
 \begin{stp}
-	Let $a$ be an integer prime to $p$. Denote $\bZ_{p,a}:=\plim_{n}\bZ/p^{n}a\bZ$ as a compact topological group, then $\bZ_{p,a}\xT\cong\sR{\bZ/pa\bZ}\xT\tms\Oga$. Denote by $R^{(\ift)}=\plim_{n}R^{(n)}$ where $R^{(n)}:=\bZ_{p}[\sR{\bZ/ap^{n}\bZ}\xT]$, then $R^{(\ift)}\cong R^{(1)}\dS{\Oga}$.
+	The \tbf{$p$-adic $L$-function $L_{p}(s,\chi)$} is the unique continuous function on $\bZ_{p}$ such that for all $k\gqs1$, let $\chi_{k}$ be the primitive character associated to $\chi\oga^{-k}$ and $f_{k}$ be the conductor of $\chi_{k}$, one has
+	\[
+		L_{p}(\chi,1-k)=-(1-\chi_{k}(p)p^{k-1})B_{k}(\chi_{k})/k,\quad B_{k}(\chi_{k})=(1/f_{k})\sum_{t=1, (t,f_{k})=1}^{f_{k}}B_{k}(\sA{t/N})\chi_{k}(t),
+	\]
+	moreover, there is a unique power series $G_{p}(\chi,T)\in\cO_{\chi}\dS{T}$ such that $G_{p}(\chi,u^{s}-1)=L_{p}(\chi,s)$ for all $s\in\bZ_{p}$. \red{(TODO: add more explicit description, ref Page 206)}
+\end{stp}
+
+\begin{thm}[{\cite[1.9~Theorem]{MW1984}}]\label{thm:main}
+	As ideals in $\cO_{\chi}\dS{T}$, $(h_{p}(\oH{\chi},T))=(G_{p}(\chi,T))$.
+\end{thm}
+
+\begin{prf}[Sketch of the proof of \cref{thm:main}]
+	By the analytic class number formula, it suffices to prove one-side inclusion, as for the method of Eisenstein ideals, one proves $h_{p}(\oH{\chi},T)\in(G_{p}(\chi,T))$.
+
+	Indeed, let $\psi$ be the character $\chi\oga^{-2}$, it belongs to some pseudo-primitive component $\km$ of $R^{(1)}$. Let $\kX$ be the set of pseudo-primitive components satisfying one of the conditions (1) of level $N=p^{n}$ and basic character $\oga^{-2}$, (2) of level $N=p^{n}$ and basic character $\chi_{0}$, (3) of level $N=ap^{n}$ and $\oH{S}_{\km}'(ap)$ the unit ideal in $R_{\km}^{(1)}$.
+
+
+	\begin{itm}
+		\item If $\km\in\kX$, the right hand side will be a unit ideal.
+		\item If $\km\nin\kX$, one proves the following inclusion, and then show the extra factor is either nonzero, or is zero in which case the desired equality is easy or known.
+		\[
+			(1-\psi(l)[l\xI])^{\kpa}\prod_{q_{i}\mid r, q_{i}\neq p}(1-\psi(n_{q_{i}})[q_{i}\xI])\cdot h_{p}(\oH{\chi},T)\sbs G_{p}(\chi,T).
+		\]
+	\end{itm}
+
+	To prove the inclusion in the case $\km\nin\kX$, it suffices to construct an ideal $\kb_{\km}^{(n)}\sbs R_{\km}^{(n)}$ and an extension $L_{\km}^{(n)}/K_{\km}^{(n)}$ virtually unramified of type $\km$ such that
+	\begin{enr}[label=(\arabic*)]
+		\item if $n_{q_{i}}\eqv1\bmod{q_{i}}$ and $n_{q_{i}}\eqv q_{i}\bmod{(N/q_{i})}$, then $(1-l[l])^{\kpa}\prod_{q_{i}\neq p, q_{i}\mid r}(q_{i}[n_{q_{i}}]-1)\kb_{\km}^{(n)}\sbs\oH{S}_{\km}'(N)$.
+		\item let $\Phi_{\km}^{(n)}$ be the $R_{\km}^{(\ift)}$-fitting ideal of $\Gal(L_{\km}^{(n)}/K_{\km}^{(n)})$, there exists an ideal $\kA_{\km}\sbs R_{\km}^{(\ift)}$ of finite index independent of $n$, such that $\kA_{\km}\Phi_{\km}^{(n)}\sbs\kb_{\km}^{(n)}$ in $R_{\km}^{(\ift)}$ for all $n\gqs1$.
+	\end{enr}
+
+	For any pseudo-primitive component $\km\nin\kX$, let $\psi=\psi^{p}\psi_{p}$ be its basic character, where $\psi_{p}=\oga^{k}, 0\lqs k<p-1$, say $\km$ is \tbf{in case (1)} if either $\psi^{p}(p)\neq1$ or $k\neq-1$, and is \tbf{in case (2)} otherwise.
+
+	The construction of $\kb_{\km}^{(n)}\sbs R_{\km}^{(n)}$ and $L_{\km}^{(n)}/K_{\km}^{(n)}$ in case (1) is sketched below.
+\end{prf}
+
+% \begin{cmt}
+% \begin{dfn}
+% 	Let $\km$ be a component, $F_{\km}\xP$ the finite abelian extension of $\bQ$ cut out by the Dirichlet characters in $\km$ of conductor dividing $ap$, and let $F_{\km}=F_{\km}\xP(\zta_{p})$. Consider the field tower
+% 	\[
+% 		\begin{tikzcd}
+% 			\bQ\ar[r, "\bZ_{p}", hook]\ar[d, hook] & \bQ\zF\ar[d, hook] && \\
+% 			F_{\km}\ar[r, hook] & K_{\km}\ar[r, "H_{\km}", hook] & L_{\km}\ar[r, "I_{\km}", hook] & L_{\km}\xR
+% 		\end{tikzcd}
+% 	\]
+% 	where $L_{\km}$ is the maximal unramified abelian extension of $K_{\km}$ of type $\km$, and $L_{\km}\xR$ is the maximal virtually unramified extension of $K_{\km}$ of type $\km$.
+% \end{dfn}
+% \end{cmt}
+
 \begin{cmt}
+\begin{stp}
+	Let $a$ be an integer prime to $p$. Denote $\bZ_{p,a}:=\plim_{n}\bZ/p^{n}a\bZ$ as a compact topological group, then $\bZ_{p,a}\xT\cong\sR{\bZ/pa\bZ}\xT\tms\Oga$. Denote by $R^{(\ift)}=\plim_{n}R^{(n)}$ where $R^{(n)}:=\bZ_{p}[\sR{\bZ/ap^{n}\bZ}\xT]$, then $R^{(\ift)}\cong R^{(1)}\dS{\Oga}$.
 	\begin{thm}[{\cite[Page~195]{MW1984}}]
 		Let $p$ be a prime, $G=G_{p}\tms G^{p}$ be a finite abelian group of order $n$. Then $R=\bZ_{p}[G]$ is a complete semi-local ring, one has $R=\prod_{\km\in\Pi}R_{\km}$, where $\Pi$ is the \tbf{components} of $R$,
 		\begin{itm}
@@ -90,9 +123,9 @@ One can extract information of certain metabelian extensions of $\bQ$ via their 
 		\end{itm}
 		The surjection $\Sgm\atr\Pi$ gives an isomorphism $R_{\km}\ot\bQ_{p}\cong\prod_{\sgm\in\km}R_{\sgm}\ot\bQ_{p}$, each $R_{\sgm}\ot\bQ_{p}$ is a field.
 	\end{thm}
+\end{stp}
 \end{cmt}
 
-\end{stp}
 
 \begin{cmt}
 	\begin{dfn}
@@ -112,102 +145,101 @@ One can extract information of certain metabelian extensions of $\bQ$ via their 
 		Say a $R_{\km}^{(\ift)}$-module $M$ is \tbf{$\eta$-yoked} if it admits a commuting $\Gal(\oL{\bQ}/\bQ)$ action compatible with $\eta$.
 	\end{dfn}
 
-	\begin{dfn}
+	\begin{dfn}[1.8~Definition]
 		Let $K/\bQ$ be an abelian Galois extension, $L/K$ a $p$-abelian Galois extension such that $L/\bQ$ is Galois. Say $L/K$ is \tbf{of type $\km$} if $\Gal(L/K)$ is $\oL{\rho}(-1)$-yoked, and is \tbf{virtually unramified of type $\km$} if it is moreover unramified outside primes dividing $a$.
 	\end{dfn}
 \end{cmt}
 
-\hrule
-
 
 \begin{cmt}
-	\begin{dfn}
-		Given $k\gqs1,N\gqs0,b$ integers, consider the Stickelberger elements
-		\[
-			\vtt_{k}(b;N):=(N^{k-1}/k)\sum_{t=1,(t,N)=1}^{N}B_{k}(\sA{bt/N})[t]^{-1}\in\bQ[\sR{\bZ/N\bZ}\xT].
-		\]
-
-		The Stickelberger ideal is given by
-		\[
-			S_{k}(N):=\bZ[\sR{\bZ/N\bZ}\xT]\cap\sum_{b\in\bZ}\vtt_{k}(b;N)\bZ[\sR{\bZ/N\bZ}\xT].
-		\]
-
-		Stickelberger theorem states that $2S_{1}(N)$ annihilates $\Cl(\bQ(\zta_{N}))$.
-
-		Let $c$ be an integer prime to $2kN$ and the denominator of $k$-th Bernoulli polynomial, define
-		\[
-			\vtt_{k,c}(b; N)=(1-c^{k}[c]^{-1})\vtt_{k}(b;N),\quad \vtt_{k,c}(b;ap\xF)=\plim_{n}\vtt_{k,c}(b;ap^{n})\in R^{(\ift)}.
-		\]
-
-		Consider the homomorphism $\afa_{\chi}:R^{(\ift)}\ar\cO_{\chi}\dS{\Oga}\ar\cO_{\chi}\dS{T}$
-
-			(\red{Under certain conditions} the element $\afa_{\chi}(\vtt_{k,c}(1;N))/\afa_{\chi}(1-c^{k}[c]\xI)\in\cO_{\chi}\dS{T}$ is well defined, denote it by $G_{p,k}(\chi,T)$), then one has
-			\[
-				G_{p}(\chi,T):=-G_{p,1}(\chi\xI\oga,T)=-G_{p,k}(\chi\xI\oga^{k},u^{k-1}(1+T)-1).
-			\]
-	\end{dfn}
-
-	\begin{dfn}
-		The $p$-adic $L$-function $L_{p}(s,\chi)$ attached to a non-trivial even primitive $p$-adic Dirichlet character $\chi$ is the unique continuous function on $\bZ_{p}$ which interpolates $k\gqs1$,
-		\[
-			L_{p}(\chi,1-k)=-(1-\chi\oga^{-k}(p)p^{k-1})B_{k}(\chi\oga^{-k})/k.
-		\]
-
-		If $\chi$ has conductor not divisible by $p^{2}$, there is a unique power series $G_{p}(\chi,T)\in\cO_{\chi}\dS{T}$ such that $G_{p}(\chi,u^{s}-1)=L_{p}(\chi,s)$.
-	\end{dfn}
-
-
-	\begin{cnj}
-		Let $\chi$ be an even primitive Dirichlet character of conductor not divisible by $p^{2}$, then as ideals of $\cO_{\chi}\dS{T}$,
-		\[
-			(h_{p}(\oH{\chi},T))=(G_{p}(\chi,T)).
-		\]
-	\end{cnj}
-\end{cmt}
 
 \begin{dfn}
-	Let $\km$ be a component, $F_{\km}\xP$ the finite abelian extension of $\bQ$ cut out by the Dirichlet characters in $\km$ of conductor dividing $ap$, and let $F_{\km}=F_{\km}\xP(\zta_{p})$. Denote by following the field tower
+	Given $k\gqs1,N\gqs0,b$ integers, consider the Stickelberger elements
 	\[
-		\begin{tikzcd}
-			& \bQ\zF\ar[rd, hook] && \\
-			\bQ\ar[ru, "\bZ_{p}", hook]\ar[rd, hook] && K_{\km}\ar[r, "H_{\km}", hook] & L_{\km}\ar[r, "I_{\km}", hook] & L_{\km}\xR \\
-			& F_{\km}\ar[ru, hook] &&
-		\end{tikzcd}
+		\vtt_{k}(b;N):=(N^{k-1}/k)\sum_{t=1,(t,N)=1}^{N}B_{k}(\sA{bt/N})[t]^{-1}\in\bQ[(\bZ/N\bZ)\xT].
 	\]
-	where
-	\begin{itm}
-		\item $L_{\km}$ is the maximal unramified abelian extension of $K_{\km}$ of type $\km$,
-		\item $L_{\km}\xR$ is the maximal virtually unramified extension of $L_{\km}$ of type $\km$.
-	\end{itm}
+	The \tbf{$k$-th Stickelberger ideals} are given by
+	\[
+		S_{k}(N):=\bZ[(\bZ/N\bZ)\xT]\cap\sum_{b\in\bZ}\vtt_{k}(b;N)\bZ[(\bZ/N\bZ)\xT],\quad S_{k}'(N):=\bZ[(\bZ/N\bZ)\xT]\cap\sum_{b\in\bZ, (b,p)=1}\vtt_{k}(b;N)\bZ[(\bZ/N\bZ)\xT].
+	\]
 \end{dfn}
+\end{cmt}
+
+\begin{cmt}
+\begin{dfn}[3.7~Proposition~1, Remark]
+	Fix a prime $p$ and an integer $a$ prime to $p$, $F$ a number field and $S=\Spc\cO_{F}[a\xI]$. If $\Gma\ar S$ is a $p$-divisible group such that $\Gma_{F}$ is the subquotient of the $p$-divisible group associated to an abelian variety over $F$ with potentially good reduction above $p$, then the ind-scheme $\mu(\Gma)$ generated by all multiplicative-type subgroup schemes in $\Gma$ is a finite flat multiplicative-type group scheme.
+
+	In such case, the $p$-divisible group $\Gma':=\Gma/\mu(\Gma)$ is said to be the canonical \tbf{$\mu$-deprived quotient} of $\Gma$. If $\Gma=\Gma'$, say that $\Gma$ is \tbf{$\mu$-deprived}.
+\end{dfn}
+Let $A_{n,S}$ be the N{\'e}ron model of $A_{n}$, $\km$ an even pseudo-primitive component, $P$ a maximal ideal of $\bT_{\km}$ containing $U_{p}-1$, $A_{n,P}$ the associated $P$-divisible group, let $B_{n}:=A_{n}/\mu(A_{n,P})\ar S$, which is called the canonical quotient of $A$ which is \tbf{$\mu$-deprived at $P$}. \red{(Thus $B$ depends on a choice of $\km$, HOW???)}
+\end{cmt}
+
+\begin{cmt}
 
 \begin{stp}
-	Let $\kX$ be the set of pseudo-primitive components of the following type
-	\begin{enr}
-		\item of level $N=p^{n}$ and basic character $\oga^{-2}$.
-		\item of level $N=p^{n}$ and basic character $\chi_{0}$.
-		\item of level $N=ap^{n}$ and $\oH{S}_{m}'(ap)$ the unit ideal in $R_{\km}^{(1)}$.
-	\end{enr}
+	\red{Chapter5's case(1) set}
 
-	For any pseudo-primitive component $\km\nin\kX$, let $\psi=\psi^{p}\psi_{p}$ be its basic character, where $\psi_{p}=\oga^{k}, 0\lqs k<p-1$, say $\km$ is \tbf{in case (1)} if either $\psi^{p}(p)\neq1$ or $k\neq-1$, and is \tbf{in case (2)} otherwise.
+	Let $\km$ be a pseudo-primitive character, $\psi=\psi^{p}\oga^{k}$ be the basic character associated to $\km$, where $\psi^{p}$ has conductor prime to $p$, $\oga$ the Teichm{\"u}ller character, $0\lqs k<p-1$, say that $\km$ is in case (1) if $\Gcd(k,p-1)>1$ or $\psi^{p}(p)\neq1$ or $k\neq-1$ is odd.
+\end{stp}
 
+\end{cmt}
 
-	For any pseudo-primitive component $\km$, there are an ideal $\kb_{\km}^{(n)}\sbs R_{\km}^{(n)}$ and an extension $L_{\km}^{(n)}/K_{\km}$ virtually unramified of type $\km$ such that
-	\begin{enr}
-		\item if $n_{q_{i}}\eqv1\bmod{q_{i}}$ and $n_{q_{i}}\eqv q_{i}\bmod{N/q_{i}}$, then
-		\[
-			(1-l[l])^{\kpa}\prod_{q_{i}\neq p, q_{i}\mid r}(q_{i}[n_{q_{i}}]-1)\kb_{\km}^{(n)}\sbs\oH{S}_{\km}'(N).
-		\]
-		\item let $\Phi_{\km}^{(n)}$ be the $R_{\km}^{(\ift)}$-fitting ideal of $\Gal(L_{\km}^{(n)}/K_{\km})$, there exists an ideal $\kA_{\km}\sbs R_{\km}^{(\ift)}$ of finite index such that $\kA_{\km}\Phi_{\km}^{(n)}\sbs\kb_{\km}^{(n)}$ in $R_{\km}^{(\ift)}$ for all $n\gqs1$.
-	\end{enr}
+\begin{stp}
+	Fix $p$ a prime and $n\gqs1$, let $N=ap^{n}$ with $(a,p)=1$. For $k\gqs1$, let $X_{1}(ap^{k};ap^{k-1})\ar\Spc\bQ$ be the modular curve associated to $\Gma_{0}(ap^{k})\cap\Gma_{1}(ap^{k-1})$, the map $X_{1}(ap^{k})\axr{\pi_{k}}X_{1}(ap^{k};ap^{k-1})\axr{\rho_{k}}X_{1}(ap^{k-1})$ induces the map $J_{1}(ap^{k})\axl{\pi_{k}\xS}J_{1}(ap^{k};ap^{k-1})\axr{\rho_{k,*}}J_{1}(ap^{k-1})$, let $K_{1}$ be the maximal abelian subvariety of $J_{1}(ap;a)$ with multiplicative reduction at $p$, one can then inductively define
+	\[
+		\begin{tikzcd}
+			\cds & A_{2} && A_{1} && \\
+			\cds & J_{1}(ap^{2})\ar[u, "\afa_{2}", two heads] & J_{1}(ap^{2};ap)\ar[l, "\pi_{2}\xS"']\ar[r, "\rho_{2,*}"]\ar[ru, "\afa_{1}\cc\rho_{2,*}"] & J_{1}(ap)\ar[u, "\afa_{1}", two heads] & J_{1}(ap; a)\ar[l, "\pi_{1}\xS"']\ar[r, "\rho_{1,*}"] & J_{1}(a) \\
+			\cds & K_{2}\ar[ru, hook]\ar[u, "\pi_{2}\xS|_{K_{2}}"] && K_{1}\ar[ru, hook]\ar[u, "\pi_{1}\xS|_{K_{1}}"] &&
+		\end{tikzcd}
+	\]
+	where $A_{k}:=\Cok(\pi_{k}\xS|_{K_{k}}:K_{k}\ar J_{1}(ap^{k}))$ and $K_{k+1}:=\Ker(\afa_{k}\cc\rho_{k+1,*}:J_{1}(ap^{k+1},ap^{k})\ar A_{k})$. The Hecke algebra $\bT^{(n)}\sbs\End{\bQ}{}{(A_{n})}$ is generated over $\bZ$ by $T_{l}$ for $l\nmid N$, $U_{q,*}$ for $q\mid N$ and $\sA{r}$ for $r\in(\bZ/N\bZ)\xT/\{\pm1\}$, $\bT^{(n)}$ admits a $R^{(n)}$-module structure via $R^{(n)}\ar\bT^{(n)}, [r]\amt\sA{r}$, let $\bT^{(n)}_{p}=\bT^{(n)}\ot\bZ_{p}$.
 
 \end{stp}
 
+\begin{dfn}[{\cite[4.3~Definition, 5.1]{MW1984}}]
+	Let $\km$ be a pseudo-primitive component with basic character $\chi$ having conductor $ap/r$. Define $\bT^{(n)}_{\km}:=\bT^{(n)}_{p}\ot R_{\km}^{(n)}$, $\bT_{\km}^{(n)}$ admits a \tbf{maximal Eisenstein ideal} $P_{n}$ generated by $T_{l}-1-l\sA{l}$, $U_{q}$ for $q\mid N$, $\sA{r}-[r]_{\km}$ and $\Img(\km R_{\km}^{(n)}\ar\bT_{\km}^{(n)})$, one has $R_{\km}^{(n)}/\km R_{\km}^{(n)}\cong \bT_{\km}^{(n)}/P_{n}$; let $B_{n}$ be the canonical quotient of $A_{n}$ which is $\mu$-deprived at $P_{n}$; let $Z_{n}$ be the $\Gma_{1}(N)$-orbit in $\bP^{1}(\bQ)$ of the elements $\pm(\afa,\bta)$ where $(\bta,N)=1$, define $\eps_{r}:=U_{p}^{n-1}\prod_{q\mid pr}(U_{q}-q\sA{n_{q}})$, then the \tbf{stabilized cuspidal group} is defined
+	\[
+		C_{\km,r}^{(n)}:=\Img(\bZ_{p}[Z_{n}]\ahr\Div(X_{1}(ap^{n}))\ot\bZ_{p}\axr{\eps_{r}}\Div^{0}(X_{1}(ap^{n}))\ot\bZ_{p}\ar J_{1}(ap^{n})_{\km}\atr A_{n,\km}\atr B_{n,\km}).
+	\]
+	\begin{itm}
+		\item Define the \tbf{basic ideal} $\kb_{\km}^{(n)}\sbs R_{\km}^{(n)}$ to be the annihilator ideal of $C_{\km}^{(n)}$.
+		\item Define the \tbf{stabilized Eisenstein ideal} $I_{\km}^{(n)}\sbs\bT_{\km}^{(n)}$ to be the annihilator ideal of $C_{\km}^{(n)}$.
+	\end{itm}
+	The natural map $R_{\km}^{(n)}/\kb_{\km}^{(n)}\ar\bT_{\km}^{(n)}/I_{\km}^{(n)}$ is an isomorphism. If $C_{\km,r}^{(n)}$ is not trivial, $I_{\km}^{(n)}$ is primary to $P_{n}$, indeed, if $\oH{S}_{\km}'(ap)$ is not the unit, then $C_{\km,r}^{(n)}$ is non-trivial for sufficiently large $n$.
+\end{dfn}
 
-\begin{thm}
-	For each even primitive character $\chi$ of conductor not divisible by $p^{2}$, $(h_{p}(\oH{\chi},T))=(G_{p}(\chi,T))$.
+\begin{thm}[{\cite[4.3~Theorem]{MW1984}}]
+	The basic ideal $\kb_{\km}^{(n)}\sbs R_{\km}^{(n)}$ satisfies the following,
+	\begin{itm}
+		\item $\prod_{q\mid r, q\neq p}(q[n_{q}]_{\km}-1)\cdot \kb_{\km}^{(n)}\sbs\oH{S}_{\km}'(ap^{n})$.
+		\item $(R_{\km}^{(n)}/\kb_{\km}^{(n)})[\km R_{\km}^{(n)}]$ has dimension $\lqs1$ over $R_{\km}^{(n)}/\kb_{\km}^{(n)}$, the ring $R_{\km}^{(n)}/\kb_{\km}^{(n)}$ is Gorenstein.
+	\end{itm}
 \end{thm}
 
+\begin{dfn}[{\cite[5.2~Lemma~4]{MW1984}}]
+	There is an exact sequence of finite flat group schemes over $S=\Spc\cO_{F}[a\xI]$, $0\ar C_{\km,r}^{(n)}\ar B_{n}[I_{\km}^{(n)}] \ar M_{\km}^{(n)}\ar 0$, where $M_{\km}^{(n)}$ is of multiplicative type.
+
+	Let $K_{\km}^{(n)}$ be the minimal extension of $\bQ$ which contains $\bQ(\zta_{p\xF})$ and is a splitting field for all $\chi$ of conductor $ap^{t}$ belonging to $\km$, and let $L_{\km}^{(n)}$ be the minimal extension of $K_{\km}^{(n)}$ which is a splitting field of $B_{n}[I_{\km}^{(n)}]$.
+\end{dfn}
+
+
+\begin{thm}
+	The extension $L_{\km}^{(n)}/K_{\km}^{(n)}$ satisfies the following,
+	\begin{itm}
+		\item (\cite[5.4~Proposition~1]{MW1984}) $L_{m}^{(n)}/K_{\km}^{(n)}$ is virtually unramified of type $\km$.
+		\item (\cite[5.5~Proposition~1]{MW1984}) The Fitting ideal of the $R_{\km}^{(n)}$-module $\Gal(L_{\km}^{(n)}/K_{\km}^{(n)})$ is contained in $\kb_{\km}^{(n)}$.
+	\end{itm}
+\end{thm}
+
+% \begin{thm}[1.6~Proposition~3]
+	% $\afa_{\km,\chi}(\oH{S}_{\km}'(ap^{\ift}))=G_{p,2}(\chi\xI,(1+T)\xI-1)$.
+% \end{thm}
+
+
+
+% \ssc{Method of Euler systems}
+% Ref:~\cite{MR2004Kolyvagin}
 
 
 \printref
