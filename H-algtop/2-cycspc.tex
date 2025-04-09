@@ -1,0 +1,30 @@
+\documentclass[article, a4paper, twoside]{universal}
+
+\setshowlvl{1}
+\begin{document}
+\confighead{}{}{}
+\printhead{}{}{1}
+
+\sct{Topological Hochschild homology}
+Ref:~\cite{NS2018}.
+
+
+\begin{dfn}[{\cite[\Rnum{2}.1.1]{NS2018}}]
+    Let $\bT$ be the group $\bR/\bZ$ and $C_{p\xF}=p^{-\ift}\bZ/\bZ\sbs\bT$. A \tbf{cyclotomic spectrum} is a $\bT$-equivariant object in $\Spr$ with $\bT$-equivariant map $\vfi_{p}:X\ar X^{tC_{p}}$ for every prime $p$. For fixed prime $p$, a \tbf{$p$-cyclotomic spectrum} is a $C_{p\xF}$-equivariant object in $\Spr$ with $C_{p\xF}$-equivariant map $\vfi_{p}:X\ar X^{tC_{p}}$.
+\end{dfn}
+
+\begin{thm}[{\cite[\Rnum{3}.1.1, \Rnum{3}.1.4, \Rnum{3}.3.1]{NS2018}}]
+    Let $p$ be a prime, then the functor $T_{p}:\Spr\ar\Spr$, $X\amt (X\ot\cds\ot X)^{tC_{p}}$ is exact. The \tbf{Tate diagonal} is the natural transformation $\Dta_{p}:\Id_{\Spr}\ar T_{p}$, $X\ar(X\ot\cds\ot X)^{tC_{p}}$ that corresponds to the map $\bS\ar\bS^{tC_{p}}$, it admits a unique lax symmetric monoidal structure.
+\end{thm}
+
+\begin{dfn}[{\cite[B.5, \Rnum{3}.2.3]{NS2018}}]
+    Let $A$ be an $\bE_{1}$-ring spectrum, $\THH(A)\in\Spr^{\bB\bT}$ is realized by the map
+    \[
+        N(\Lda^{\T{op}})\axr{V\xC}N(\Ass_{\T{act}}^{\ot})\axr{A^{\ot}}\Spr_{\T{act}}^{\ot}\axr{\ot}\Spr,
+    \]
+    together with a $\bT$-equivariant map $\vfi_{p}:\THH(A)\ar\THH(A)^{tC_{p}}$ given by the Tate diagonal.
+\end{dfn}
+
+
+\printref
+\end{document}
