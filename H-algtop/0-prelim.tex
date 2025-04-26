@@ -203,9 +203,9 @@ Ref:~\cite{Lurie2009}, Lurie-HigherAlgebra (2017),
 \begin{dfn}[6.1.6.2, 6.1.6.24]
     Let $G$ be a group, view $\bB G$ as a Kan complex, a \tbf{$G$-equivariant object} of $\cC$ is an object of $\cC^{\bB G}$, if $\cC$ admits small limits and colimits, the projection $\pr:\bB G\ar\Dta^{0}$ induces
     \[
-        \pr\zS:\cC^{\bB G}\ar\cC, M\amt M^{G};\quad \pr\zE:\cC^{\bB G}\ar\cC, M\amt M_{G},
+        \pr\zS:\cC^{\bB G}\ar\cC, M\amt M^{hG};\quad \pr\zE:\cC^{\bB G}\ar\cC, M\amt M_{hG},
     \]
-    the \tbf{Tate construction} of $M$ is defined by $M\amt M^{tG}:=\Cfb(\Nrm:M_{G}\ar M^{G})$.
+    the \tbf{Tate construction} of $M$ is defined by $M\amt M^{tG}:=\Cfb(\Nrm:M_{hG}\ar M^{hG})$.
 \end{dfn}
 
 \begin{dfn}[1.1.1.1]
@@ -300,18 +300,24 @@ Ref:~\cite{Lurie2009}, Lurie-HigherAlgebra (2017),
 
     Let $\cC$ be an $\ift$-category which admits finite limits, a \tbf{spectrum object} of $\cC$ is a reduced, excisive functor $X:\cS\zS^{\T{fin}}\ar\cC$, let $\Spr(\cC)$ be the category of spectrum objects of $\cC$.
 
-    A \tbf{spectrum} is a spectrum object of the $\ift$-category $\cS$ of spaces. Denote by $\Spr$ the $\ift$-category of spectra, the \tbf{sphere spectrum} $\bS\in\Spr$ is the image of the final object $*\in\cS$ under $\Sgm^{\ift}:\cS\ar\Spr$.
+    A \tbf{spectrum} is a spectrum object of the $\ift$-category $\cS$ of spaces. Denote by $\Spr$ the $\ift$-category of spectra, the \tbf{sphere spectrum} $\bS\in\Spr$ is the image of the final object $*\in\cS$ under $\Sgm_{+}^{\ift}:\cS\ar\Spr$.
 
     A spectrum is \tbf{connective} if $\pi_{n}X=0$ for $n<0$, \tbf{discrete} if $\pi_{n}X=0$ for $n\neq0$.
 \end{dfn}
 
 
-\begin{thm}[1.4.3.6]
+\begin{thm}[1.4.3.5, 1.4.3.6]
     $\Spr$ is a stable $\ift$-category, moreover,
     \begin{enr}[label=(\arabic*)]
         \item Let $\Spr_{\lqs-1}$ be the full subcategory spanned by those $X$ such that $\Oga^{\ift}(X)$ is contractible, then $\Spr_{\lqs-1}$ determines an accessible $t$-structure on $\Spr$.
         \item The $t$-structure on $\Spr$ is both left and right complete, $\Spr^{\hrts}$ is canonically equivalent to $N(\Ab)$.
     \end{enr}
+
+    By identifying $X\in\Spr$ with a sequence pointed space $\{X_{n}\}_{n\gqs0}$ such that $X(n)\cong\Oga X(n+1)$, one has $X\in\Spr_{\lqs m}$ if and only if $X(n)$ is $(n+m)$-truncated for all $n\gqs0$ and $X\in\Spr_{\gqs m}$ if and only if $X(n)$ is $(n+m+1)$-connective for all $n\gqs0$. In particular,
+    \[
+        \Spr_{\gqs0}=\{X\in\Spr:\fal n < 0, \pi_{n}X\cong 0\},\quad \Spr_{\lqs0}=\{X\in\Spr:\fal n>0, \pi_{n}X\cong 0\}.
+    \]
+    Alternarively, $\Spr_{\gqs0}$ is generated under extensions and colimits by the essential image of $\Sgm_{+}^{\ift}$.
 \end{thm}
 
 

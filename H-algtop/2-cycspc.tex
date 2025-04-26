@@ -9,9 +9,23 @@
 Ref:~\cite{NS2018}.
 
 
-\begin{dfn}[{\cite[\Rnum{2}.1.1]{NS2018}}]
-    Let $\bT$ be the group $\bR/\bZ$ and $C_{p\xF}=p^{-\ift}\bZ/\bZ\sbs\bT$. A \tbf{cyclotomic spectrum} is a $\bT$-equivariant object in $\Spr$ with $\bT$-equivariant map $\vfi_{p}:X\ar X^{tC_{p}}$ for every prime $p$. For fixed prime $p$, a \tbf{$p$-cyclotomic spectrum} is a $C_{p\xF}$-equivariant object in $\Spr$ with $C_{p\xF}$-equivariant map $\vfi_{p}:X\ar X^{tC_{p}}$.
+\begin{dfn}[{\cite[\Rnum{2}.1.1, \Rnum{2}.1.6]{NS2018}}]
+    Let $\bT$ be the group $\bR/\bZ$. A \tbf{cyclotomic spectrum} is a $\bT$-equivariant object $X$ in $\Spr$ with $\bT$-equivariant map $\vfi_{p}:X\ar X^{tC_{p}}$ for every prime $p$, the $\ift$-category of cyclotomic spectra $\CycSpr$ is given by the Lax equalizer
+    \[
+        \CycSpr:=\LEq(\prod_{p}\Id,\prod_{p}(-)^{tC_{p}}:\tcd{\Spr^{\bB\bT}\ar[r, shift left=1]\ar[r, shift right=1] \& \prod_{p}\Spr^{\bB\bT}}).
+    \]
 \end{dfn}
+
+\begin{dfn}[{\cite[2.1]{AN2021}}]
+    Let $p$ be a prime, a \tbf{$p$-typical cyclotomic spectrum} is a $\bT$-equivariant object $X$ in $\Spr$ with $\bT$-equivariant map $\vfi_{p}:X\ar X^{tC_{p}}$, the $\ift$-category of $p$-typical cyclotomic spectra is given by the Lax equalizer
+    \[
+        \CycSpr_{p}:=\LEq(\Id,(-)^{tC_{p}}:\tcd{\Spr^{\bB\bT}\ar[r, shift left=1]\ar[r, shift right=1]\&\Spr^{\bB\bT}}).
+    \]
+\end{dfn}
+
+\begin{thm}[{\cite[3.24, 3.26]{AN2021}}]
+    A $p$-typical Cartier module $M$ is \tbf{derived $V$-complete} if the canonical map $M\ar\lim_{n}\Cfb(M\axr{V^{n}}M)$ is an equivalence. Denote by $\oH{\Cart}_{p}$ the category of derived $V$-complete Cartier modules. $\CycSpr_{p}$ admits a $t$-structure, whose connective part is exactly $\CycSpr_{p,\gqs0}$, $\CycSpr_{p}^{\hrts}$ is equivalent to the abelian category $\oH{\Cart}_{p}$.
+\end{thm}
 
 \begin{thm}[{\cite[\Rnum{3}.1.1, \Rnum{3}.1.4, \Rnum{3}.3.1]{NS2018}}]
     Let $p$ be a prime, then the functor $T_{p}:\Spr\ar\Spr$, $X\amt (X\ot\cds\ot X)^{tC_{p}}$ is exact. The \tbf{Tate diagonal} is the natural transformation $\Dta_{p}:\Id_{\Spr}\ar T_{p}$, $X\ar(X\ot\cds\ot X)^{tC_{p}}$ that corresponds to the map $\bS\ar\bS^{tC_{p}}$, it admits a unique lax symmetric monoidal structure.
@@ -25,6 +39,55 @@ Ref:~\cite{NS2018}.
     together with a $\bT$-equivariant map $\vfi_{p}:\THH(A)\ar\THH(A)^{tC_{p}}$ given by the Tate diagonal.
 \end{dfn}
 
+
+Ref:~\cite{KMCN2023}.
+
+\begin{dfn}[{\cite[2.1, 2.4, 2.6]{KMCN2023}}]
+    A \tbf{truncation set} $T$ is a subset of $\bN_{>0}$ such that if $xy\in T$, then $x,y\in T$. For every $n$, $T/n:=\{t\in T:tn\in T\}$ is also a truncation set.
+
+    A \tbf{$T$-typical polygonic spectrum} is the data of a collection of spectra $\{X_{t}\}_{t\in T}$ such that $X_{t}\in\Spr^{\bB C_{t}}$, for any prime $p$ and any $t\in T/p$, there is a $C_{t}$-equivariant map $\vfi_{p,t}:X_{t}\ar(X_{pt})^{tC_{p}}$. The $\ift$-category of $T$-typical polygonic spectra $\PgcSpr_{T}$ is given by the lax equalizer
+    \[
+        \PgcSpr_{T}:=\LEq(\prod_{p}\Id,\prod_{p}F_{p}:\tcd{\prod_{t\in T}\Spr^{\bB C_{t}}\ar[r, shift left=1]\ar[r, shift right=1]\&\prod_{p}\prod_{t\in T/p}\Spr^{\bB C_{t}}}),
+    \]
+    where $F_{p}$ is given by $\prod_{t\in T}\Spr^{\bB C_{t}}\axr{\pr}\prod_{t\in T/p}\Spr^{\bB C_{pt}}\axr{(-)^{tC_{p}}}\Spr^{\bB C_{t}}$.
+\end{dfn}
+
+
+\begin{dfn}[{\cite[1.1.1, 1.2.1]{McCandless2024}}]
+    Let $\bS[t]$ be the $\bE_{\ift}$-ring defined by $\bS[t]=\Sgm_{+}^{\ift}\bN$, the reduced topological Hochschild homology is given by $\tTHH(\bS[t]):=\Fib(\THH(\bS[t])\ar\bS)$. Indeed, $\tTHH(\bS[t])=\op_{n\gqs1}\Sgm_{+}^{\ift}(\bT/C_{n})$.
+\end{dfn}
+
+% \begin{dfn}[{\cite[2.4.1]{McCandless2024}}]
+%     Define a functor of $\ift$-categories $\TR:\CycSpr\ar\Spr$, for each cyclotomic spectrum $X$, $\TR(X):=\Map_{\CycSpr}(\tTHH(\bS[t]),X)=\map_{\CycSpr}(\op_{n\gqs1}\Sgm_{+}^{\ift}(\bT/C_{n}),X)$.
+% \end{dfn}
+
+\begin{thm}[{\cite[4.1.9]{McCandless2024}}]
+    For any $n\gqs1$, there is an equivalence of $\bT$-equivariant spectra $\THH(\bS[t]/t^{n})\cong\op_{k\gqs0}\THH(\bS[t]/t^{n})_{k}$, where $\THH(\bS[t]/t^{n})_{0}\cong\bS, \THH(\bS[t]/t^{n})_{k}\cong\Sgm_{+}^{\ift}(\bT/C_{k})$ for $1\lqs k\lqs n - 1$.
+\end{thm}
+
+\begin{thm}[{\cite[4.1.14, 4.2.3]{McCandless2024}}]
+    For every $X\in\CycSpr$ whose underlying spectrum is bounded below,
+    \begin{itm}
+        \item there is an equivalence of cyclotimic spectra $\plim_{n}(X\ot\tTHH(\bS[t]/t^{n}))\cong\prod_{n\gqs1}X\ot\Sgm_{+}^{\ift}(\bT/C_{n})$.
+        \item there is a natural equivalence of spectra $\TR(X)\cong\plim_{n}\Oga\TC(X\ot\tTHH(\bS[t]/t^{n}))$.
+    \end{itm}
+\end{thm}
+
+% \begin{dfn}[{\cite[4.2.2]{McCandless2024}}]
+%     Let $R$ be a connected $\bE_{1}$-ring, the \tbf{spectrum of curves on $K$-theory} is defined by $\RMC(R):=\plim_{n}\Oga\KK(R[t]/t^{n},(t))$.
+% \end{dfn}
+
+
+\begin{thm}[{\cite[2.24]{KMCN2023}}]
+    Let $T$ be a truncation set, the canonical functor $i_{T}:\CycSpr\ar\PgcSpr_{T}$ admits both left adjoint $L_{T}$ and right adjoint $R_{T}$, if $T=\bN_{>0}$, one has
+    \[
+        (L\cc i)(X)\cong X\ot \tTHH(\bS[t]),\quad (R\cc i)(X)\cong \plim_{n}(X\ot\tTHH(\bS[t]/t^{n})).
+    \]
+\end{thm}
+
+\begin{thm}[{\cite[6.31]{KMCN2023}}]
+    Let $R$ be an $\bE_{1}$-ring spectrum, then $\THH(R;-):B\Mod_{R}\ar\Spr$ canonically refines to a functor $\THH(R;-):B\Mod_{R}\ar\PgcSpr$ such that $\THH(R;-)_{n}=\THH(R,(-)^{\ot_{R}n})$ for $n\gqs1$.
+\end{thm}
 
 \printref
 \end{document}

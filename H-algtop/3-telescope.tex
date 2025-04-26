@@ -1,0 +1,30 @@
+\documentclass[article, a4paper, twoside]{universal}
+
+\setshowlvl{1}
+\begin{document}
+\confighead{}{}{}
+\printhead{}{}{1}
+
+
+\sct{Telescope conjecture}
+
+Ref:~\cite{BHLS2023}.
+
+
+
+\begin{thm}[{\cite[6.25]{BHLS2023}}]
+    For every prime $p$, height $n\gqs1$ and $k\gqs0$, there is a diagram
+    \[
+        \begin{tikzcd}
+            L_{T(n+1)}\KK(L_{T(n)}\sBP\sA{n}^{hp^{k}\bZ})\ar[d] & L_{T(n+1)}\KK(\sBP\sA{n}^{hp^{k}\bZ})\ar[r, "\cong"]\ar[l, "\cong"']\ar[d] & L_{T(n+1)}\TC(\sBP\sA{n}^{hp^{k}\bZ})\ar[d] \\
+            L_{T(n+1)}\KK(L_{T(n)}\sBP\sA{n})^{hp^{k}\bZ} & L_{T(n+1)}\KK(\sBP\sA{n})^{hp^{k}\bZ}\ar[r, "\cong"]\ar[l, "\cong"'] & L_{T(n+1)}\TC(\sBP\sA{n})^{hp^{k}\bZ}
+        \end{tikzcd}
+    \]
+    where the vertical maps are not isomorphisms, but cyclotomic completions. One can then deduce $\KK(\sBP\sA{n}^{hp^{k}\bZ})$ is $T(n+1)$-local but not $K(n+1)$-local, thus disproving the telescope conjecture $\Spr_{K(n+1)}=\Spr_{T(n+1)}$.
+\end{thm}
+
+
+
+\printref
+\end{document}
+
