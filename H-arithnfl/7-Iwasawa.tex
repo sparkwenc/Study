@@ -43,7 +43,7 @@ Ref:~\cite{Washington1997}, \cite{Rubin1991}.
 
 \ssc{Method of Eisenstein ideals}
 
-Ref:~\cite{MW1984}
+Ref:~\cite{MW1984}.
 
 \begin{stp}
     Let $p$ be an odd prime, $\chi:\Gal(\oL{\bQ}/\bQ)\atr\Gal(K_{\chi}/\bQ)\ar\cO_{\chi}\xT$ a non-trivial even primitive $p$-adic Dirichlet character of conductor not divisible by $p^{2}$ with field of definition $K_{\chi}$.
@@ -203,8 +203,8 @@ Let $A_{n,S}$ be the N{\'e}ron model of $A_{n}$, $\km$ an even pseudo-primitive 
 		C_{\km,r}^{(n)}:=\Img(\bZ_{p}[Z_{n}]\ahr\Div(X_{1}(ap^{n}))\ot\bZ_{p}\axr{\eps_{r}}\Div^{0}(X_{1}(ap^{n}))\ot\bZ_{p}\ar J_{1}(ap^{n})_{\km}\atr A_{n,\km}\atr B_{n,\km}).
 	\]
 	\begin{itm}
-		\item Define the \tbf{basic ideal} $\kb_{\km}^{(n)}\sbs R_{\km}^{(n)}$ to be the annihilator ideal of $C_{\km}^{(n)}$.
-		\item Define the \tbf{stabilized Eisenstein ideal} $I_{\km}^{(n)}\sbs\bT_{\km}^{(n)}$ to be the annihilator ideal of $C_{\km}^{(n)}$.
+		\item Define the \tbf{basic ideal} $\kb_{\km}^{(n)}\sbs R_{\km}^{(n)}$ to be the annihilator ideal of $C_{\km,r}^{(n)}$.
+		\item Define the \tbf{stabilized Eisenstein ideal} $I_{\km}^{(n)}\sbs\bT_{\km}^{(n)}$ to be the annihilator ideal of $C_{\km,r}^{(n)}$.
 	\end{itm}
 	The natural map $R_{\km}^{(n)}/\kb_{\km}^{(n)}\ar\bT_{\km}^{(n)}/I_{\km}^{(n)}$ is an isomorphism. If $C_{\km,r}^{(n)}$ is not trivial, $I_{\km}^{(n)}$ is primary to $P_{n}$, indeed, if $\oH{S}_{\km}'(ap)$ is not the unit, then $C_{\km,r}^{(n)}$ is non-trivial for sufficiently large $n$.
 \end{dfn}
@@ -237,9 +237,154 @@ Let $A_{n,S}$ be the N{\'e}ron model of $A_{n}$, $\km$ an even pseudo-primitive 
 % \end{thm}
 
 
+\newpage
+\ssc{Method of Euler systems}
+Ref:~\cite{MR2004Kolyvagin}.
 
-% \ssc{Method of Euler systems}
-% Ref:~\cite{MR2004Kolyvagin}
+\begin{stp}
+    Fix a prime $p$, let $R$ be a complete Noetherian local ring with maximal ideal $\km$ and finite residue field $k=R/\km$ of characteristic $p$. Let $T$ be a free $R$-module of finite rank with a continuous action of $\Gal_{\bQ}$ unramified outside a finite set of primes.
+\end{stp}
+
+\begin{dfn}[1.1.6]
+    Let $\ell\neq p,\ift$ be an unramified prime of $T$, associated to $\HH{}{1}{(\bQ_{\ell},T)}$, define the \tbf{finite part} as $\HH{\T{f}}{1}{(\bQ_{\ell},T)}:=\Ker(\HH{}{1}{(\bQ_{\ell},T)}\ar\HH{}{1}{(\bQ_{\ell}^{\T{ur}},T)})$, the \tbf{singular quotient} as $\HH{\T{s}}{1}{(\bQ_{\ell},T)}:=\HH{}{1}{(\bQ_{\ell},T)}/\HH{\T{f}}{1}{(\bQ_{\ell},T)}$, and the \tbf{transverse} condition $\HH{\T{tr}}{1}{(\bQ_{\ell},T)}:=\Ker(\HH{}{1}{(\bQ_{\ell},T)}\ar\HH{}{1}{(\bQ_{\ell}(\mu_{\ell}),T)})$.
+
+    % indeed, one has $\HH{}{1}{(\bQ_{\ell},T)}=\HH{\T{f}}{1}{(\bQ_{\ell},T)}\op\HH{\T{tr}}{1}{(\bQ_{\ell},T)}$.
+\end{dfn}
+
+\begin{thm}[1.2.1, 1.2.2, 1.2.4]
+    Suppose that $(\ell-1)T=0$, then
+    \begin{itm}
+        \item $\HH{\T{f}}{1}{(\bQ_{\ell},T)}\cong T/(\Frb-\Id)T,\quad \HH{}{1}{(\bQ_{\ell},T)}\cong\HH{\T{f}}{1}{(\bQ_{\ell},T)}\op\HH{\T{tr}}{1}{(\bQ_{\ell},T)}$.
+        \item $\HH{\T{s}}{1}{(\bQ_{\ell},T)}\cong\Hom{}{}{(I_{\bQ_{\ell}},T^{\Frb=\Id})},\quad \HH{\T{s}}{1}{(\bQ_{\ell},T)}\ot\bF_{\ell}\xT=T^{\Frb=\Id}$.
+        \item there is the \tbf{finite-singular comparison map} $\phi_{\ell}^{\T{fs}}:\HH{\T{f}}{1}{(\bQ_{\ell},T)}\ar\HH{\T{s}}{1}{(\bQ_{\ell},T)}\ot\bF_{\ell}\xT$.
+    \end{itm}
+\end{thm}
+
+
+\begin{dfn}[2.1.1, 2.3.1]
+    A \tbf{Selmer structure} $\cF$ on $T$ is the data of
+    \begin{itm}
+        \item a finite set $\Sgm(\cF)$ of places of $\bQ$ containing $p,\ift$ and primes where $T$ is ramified.
+        \item for every $\ell\in\Sgm(\cF)$, a choice of $R$-submodule $\HH{\cF}{1}{(\bQ_{\ell},T)}\sbs\HH{}{1}{(\bQ_{\ell},T)}$.
+        \item for every $\ell\nin\Sgm(\cF)$, let $\HH{\cF}{1}{(\bQ_{\ell},T)}:=\HH{\T{f}}{1}{(\bQ_{\ell},T)}$.
+    \end{itm}
+    The \tbf{Selmer module} $\HH{\cF}{1}{(\bQ,T)}\sbs\HH{}{1}{(\bQ,T)}$ is defined by
+    \[
+        \HH{\cF}{1}{(\bQ,T)}:=\Ker(\HH{}{1}{(\bQ_{\Sgm(\cF)}/\bQ,T)}\ar\op_{\ell\in\Sgm(\cF)}\HH{}{1}(\bQ_{\ell},T)/\HH{\cF}{1}{(\bQ_{\ell},T)}).
+    \]
+\end{dfn}
+
+\begin{rmk}
+    The dual Selmer structure $\cF\xS$ on $T\xS:=\Hom{}{}{(T,\mu_{p\xF})}$ is given by $\Sgm(\cF\xS)=\Sgm(\cF)$, and $\HH{\cF\xS}{1}{(\bQ_{\ell},T)}$ is the orthogonal complement of $\HH{\cF}{1}{(\bQ_{\ell},T)}$ under the local Tate pairing
+    \[
+        \sA{-,-}_{\ell}:\HH{}{1}{(\bQ_{\ell},T)}\tms\HH{}{1}{(\bQ_{\ell},T\xS)}\ar\bQ_{p}/\bZ_{p}.
+    \]
+    The Selmer structures on $T$ admits a partial ordering, $\cF\lqs \cG$ if and only if $\HH{\cF}{1}{(\bQ_{\ell},T)}\sbs\HH{\cG}{1}{(\bQ_{\ell},T)}$ for all $\ell$.
+
+    (2.1.8) Let $\cF$ be a Selmer structure, $a,b,c\in\bZ_{>0}$ relatively prime integers such that $c$ is not divided by any primes in $\Sgm(\cF)$, the modified Selmer structure $\cF_{a}^{b}(c)$ is given by $\Sgm(\cF_{a}^{b}(c))=\Sgm(\cF)\cup\{\ell:\ell\mid abc\}$ and
+    \[
+        \HH{\cF_{a}^{b}(c)}{1}{(\bQ_{\ell},T)}=\begin{cases}
+          0 & \ell \mid a \\
+          \HH{}{1}{(\bQ_{\ell},T)} & \ell\mid b \\
+          \HH{\T{tr}}{1}{(\bQ_{\ell},T)} & \ell\mid c
+        \end{cases}
+    \]
+    one has for every $n$, $\cF_{n}\lqs\cF\lqs\cF^{n}$ and $\cF_{n}\lqs\cF(n)\lqs\cF^{n}$.
+\end{rmk}
+
+\begin{thm}[2.1.5]
+    $\HH{\cF}{1}{(\bQ,T)}$ is a finitely generated $R$-module.
+
+    If $R$ is an integral domain, $T$ is torsion-free, and $(T/\km T)^{\Gal_{\bQ}}=0$, then $\HH{\cF}{1}{(\bQ,T)}$ is torsion-free.
+\end{thm}
+
+\begin{thm}[2.3.4]
+
+    Let $\cF,\cG$ be Selmer structures on $T$ such that $\cF\lqs\cG$, there are exact sequences
+    \[
+        \begin{tikzcd}[row sep=small]
+            0\ar[r] & \HH{\cF}{1}{(\bQ,T)}\ar[r] & \HH{\cG}{1}{(\bQ,T)}\ar[r, "\loc_{\cF}^{\cG}"] & \Op_{\ell}\HH{\cG}{1}{(\bQ_{\ell},T)}/\HH{\cF}{1}{(\bQ_{\ell},T)} \\
+            0\ar[r] & \HH{\cG\xS}{1}{(\bQ,T\xS)}\ar[r] & \HH{\cF\xS}{1}{(\bQ,T\xS)}\ar[r, "\loc_{\cG\xS}^{\cF\xS}"] & \Op_{\ell}\HH{\cF\xS}{1}{(\bQ_{\ell},T\xS)}/\HH{\cG\xS}{1}{(\bQ_{\ell},T\xS)}
+        \end{tikzcd}
+    \]
+    satisfying that $\Img(\loc_{\cF}^{\cG})$ and $\Img(\loc_{\cG\xS}^{\cF\xS})$ are orthogonal complements with respect to $\sum_{\ell}\sA{-,-}_{\ell}$.
+\end{thm}
+
+\begin{stp}
+    Let $\cP$ be a set of primes disjoint from $\Sgm(\cF)$, and $\cN$ the set of square-free products of primes in $\cP$, for an unramified prime $\ell\neq p,\ift$, let $P_{\ell}(x)=\Det(\Id-\Frb_{\ell}x)\in R[x]$, and $I_{\ell}\sbs R$ the ideal generated by $\ell-1$ and $P_{\ell}(1)$. For $n\in\cN$ write $I_{n}:=\sum_{\ell\mid n}I_{\ell}$ and $G_{n}:=\ot_{\ell\mid n}\bF_{\ell}\xT$, indeed, $G_{n}\ot(R/I_{n})$ is free of rank one over $R/I_{n}$.
+\end{stp}
+
+\begin{dfn}[3.1.2, 3.1.3, 3.1.5, 3.1.6]
+    A \tbf{Selmer sheaf} $\cH$ associated to $(T,\cF,\cP)$ is the data of
+    \begin{itm}
+        \item $\cH(n):=\HH{\cF(n)}{1}{(\bQ,T/I_{n}T)}\ot G_{n}$ for each $n\in\cN$.
+        \item $\cH(n,n\ell):=\HH{\T{s}}{1}{(\bQ_{\ell},T/I_{n\ell}T)}\ot G_{n\ell}$ for each $n\in\cN$ and some prime $\ell$ such that $n\ell\in\cN$, and
+        \[
+            \begin{tikzcd}[row sep=small]
+                \psi_{0}^{n,n\ell}:\cH(n)\ar[r, "\loc_{\ell}"] & \HH{\T{f}}{1}{(\bQ_{\ell},T/I_{n\ell}T)}\ot G_{n}\ar[r, "\phi_{\ell}^{\T{fs}}\ot\Id"] & \cH(n,n\ell) \\
+                \psi_{1}^{n,n\ell}:\cH(n\ell)\ar[r, "\loc_{\ell}"] & \HH{\T{tr}}{1}{(\bQ_{\ell},T/I_{n\ell}T)}\ot G_{n\ell}\ar[r] & \cH(n,n\ell)
+            \end{tikzcd}
+        \]
+    \end{itm}
+    A \tbf{Kolyvagin system} $\kpa$ for $(T,\cF,\cP)$ is the data of classes $\{\kpa_{n}\in\cH(n)\}_{n\in\cN}$ such that $\psi_{1}^{n,n\ell}(\kpa_{n\ell})=\psi_{0}^{n,n\ell}(\kpa_{n})$, denote by $\KS(T,\cF,\cP)$ the $R$-module of Kolyvagin systems. The \tbf{order of vanishing} of a nonzero $\kpa$ is $\Ord(\kpa):=\min\{\nu(n):\kpa_{n}\neq0\}$, the \tbf{module of $L$-values} of $T$ is $\cL(T,\cF,\cP):=\{\kpa_{1}:\kpa\in\KS(T,\cF,\cP)\}\sbs\HH{\cF}{1}{(\bQ,T)}$.
+
+    \red{\TODO: 5.1.1, 5.2.12, 5.2.14, 5.3.10}
+
+
+    For $j\in\bZ_{>0}$, let $\cP_{j}$ be the set of primes $\ell\nin\Sgm(\cF)$ such that $T/(\km^{k}T+(\Frb_{\ell}-\Id)T)$ is free of rank $1$ over $R/\km^{k}$ and $I_{\ell}\sbs\km^{k}$, define
+    \[
+        \oL{\KS}(T,\cF,\cP):=\plim_{k}\ilim_{j}\KS(T/\km^{k}T,\cP\cap\cP_{j}),
+    \]
+    the \tbf{blind spot} of a Kolyvagin system $\kpa$ is the set of ideals $I\sbs R$ such that the image of $\kpa$ under the composition $\KS(T)\ar\KS(T/I)\ar\oL{\KS}(T/I)$ is zero.
+
+    \red{\TODO:5.2.9}
+
+    % $\kpa$ is called \tbf{primitive} if $R\kpa_{n}=\cH(n)$ for all $n\in\cN$.
+\end{dfn}
+
+\begin{dfn}[3.3.1]
+    Suppose for each edge $e_{n,n\ell}$ there is an isomorphism $\cH(n,n\ell)\cong\cH(1,\ell)$, for each $n\in\cN$, define $\psi^{n}:\cH(n)\ar\op_{\ell\mid n}\cH(1,\ell)$ as $\psi^{n}=\op_{\ell\mid n}\psi_{1}^{n/\ell,n}$, for a Kolyvagin system $\kpa$ define the \tbf{Kolyvagin-constructed dual Selmer group} $\Sel\xS(\kpa):=\ilim_{n\in\cN}\Sel\xS(\kpa;n)$, where
+    \[
+        \Sel\xS(\kpa;n):=(\Op_{\ell\mid n}\cH(1,\ell))/(\sum_{d\mid n}\psi^{d}(R\kpa_{d})).
+    \]
+\end{dfn}
+
+\begin{thm}[3.3.2, 3.3.3]
+    Suppose $I_{\ell}=0$ for every $\ell\in\cP$, and fix a generator of $G_{\ell}$ for every $\ell\in\cP$, one has isomorphisms $\cH(n,n\ell)\cong\cH(1,\ell)\cong\HH{\T{s}}{1}{(\bQ_{\ell},T)}$. For every $\kpa\in\KS(T,\cF,\cP)$ there is an exact sequence
+    \[
+        0\ar\bcap_{n\in\cN}\HH{\cF_{n}\xS}{1}{(\bQ,T\xS)}\ar\HH{\cF\xS}{1}{(\bQ,T\xS)}\ar\Hom{}{}{(\Sel\xS(\kpa),\bQ_{p}/\bZ_{p})}.
+    \]
+\end{thm}
+
+\begin{stp}
+    Suppose now $R$ is principal and Artinian, \red{together with a triple $(T,\cF,\cP)$ satisfying (H1)-(H6)}.
+\end{stp}
+
+\begin{dfn}[4.1.2, 4.1.8, 4.10, 4.11]
+    For every $n\in\cN$, define $\lda(n,T):=\Len_{R}(\cH(n))$, say that $n\in\cN$ is a \tbf{core vertex} if $\lda(n,T)=0$ or $\lda(n,T\xS)=0$. Define the \tbf{core Selmer rank} of $T$ to be $\chi(T):=\Rnk_{R}(\cH(n))$ for any core vertex $n$, which is independent of the choice of $n$.
+\end{dfn}
+
+\begin{thm}[4.2]
+    The core Selmer rank controls the existence of Kolyvagin systems,
+    \begin{itm}
+        \item if $\chi(T)=0$, then $\KS(T)=0$.
+        \item if $\chi(T)=1$, then $\KS(T)$ is free of rank one over $R$.
+        \item if $\chi(T)>1$, then $\KS(T)$ contains a free $R$-module of rank $r$ for every $r$.
+    \end{itm}
+\end{thm}
+
+\begin{stp}
+    Suppose now $R$ is the Iwasawa algebra $\Lda:=\bZ_{p}\dS{\Gal(\bQ_{\ift}/\bQ)}$, fix a finite set of primes $\Sgm$ containing $p,\ift$ and ramified primes of $T$, \red{assume $T$ satisfies (H1)-(H4)}.
+\end{stp}
+
+\begin{thm}[5.3.2, 5.3.5, 5.3.10, 6.1.9]
+    Let $\cF_{\Lda}$ be a Selmer structure defined on $T$ such that $\Sgm(\cF_{\Sgm})=\Sgm$, one has $\HH{\cF_{\Lda}}{1}{(\bQ_{\ell},T)}=\HH{}{1}{(\bQ_{\ell},T)}$ for each $\ell$, and $\HH{\cF_{\Lda}}{1}{(\bQ,T)}=\HH{}{1}{(\bQ,T)}$, indeed, $\HH{}{1}{(\bQ,T)}$ is finitely generated and torsion-free.
+
+    For $\kpa\in\KS(T)$ or $\kpa\in\oL{\KS}(T)$, $\Chr(\Hom{}{}{(\HH{\cF_{\Lda}\xS}{1}{(\bQ,T\xS)},\bQ_{p}/\bZ_{p})})$ divides $\Chr((\HH{}{1}{(\bQ,T)}/\Lda\kpa_{1})_{\T{tor}})$. In particular, for a finite order character $\chi:\Gal_{\bQ}\ar\bZ_{p}\xT$ with $p>2$ and fixed field $L$, let $L_{n}:=\bQ_{n}L$, $\cC_{n}$ the cyclotomic units of $L_{n}$, $\cC_{\ift},\cE_{\ift}$ the inverse limits of the $p$-adic completions of $\cC_{n}$ and $\cO_{L_{n}}\xT$, then
+    \[
+        \Chr(\plim_{n}(\Cl(L_{n})[p\xF])^{\chi})=\Chr(\cE_{\ift}^{\chi}/\cC_{\ift}^{\chi}).
+    \]
+\end{thm}
 
 
 \printref
