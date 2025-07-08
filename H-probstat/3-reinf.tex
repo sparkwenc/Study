@@ -1,0 +1,34 @@
+\documentclass[article, a4paper, twoside]{universal}
+
+\setshowlvl{1}
+\begin{document}
+\confighead{}{}{}
+\printhead{}{}{1}
+
+
+% Ref:~\cite{SB2018}
+
+Here, we summarize some (single-agent) reinforcement learning algorithms.
+
+
+\begin{stp}
+    Let $\cS$ be the set of states and $\cA$ the set of actions in a given environment. One would like to have a good estimation of a map $\cS\ar\cA$ to achieve certain goals.
+\end{stp}
+
+
+\sct{Value-Based methods}
+
+\TODO Q-learning\cite{Q-learning1992}, SARSA, DQN\cite{DQN2013}, Double DQN\cite{DoubleDQN2016}, Dueling DQN\cite{DuelingDQN2016}, PER\cite{PER2016}, Rainbow\cite{Rainbow2018}, C51\cite{C512017}, QR-DQN\cite{QR-DQN2018}.
+
+
+\sct{Policy-Based methods}
+
+\TODO AC\cite{AC1999}, ACER\cite{ACER2017}, IMPALA\cite{IMPALA2018}, LASER\cite{LASER2020}.
+
+\TODO A2C\cite{A2C2016}, TRPO\cite{TRPO2015}, PPO\cite{PPO2017}, DDPG\cite{DDPG2016}, TD3\cite{TD32018}, SAC\cite{SAC2018}.
+
+
+
+
+\printref
+\end{document}

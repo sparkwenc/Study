@@ -1,0 +1,121 @@
+\documentclass[article, a4paper, twoside]{universal}
+
+\setshowlvl{1}
+\begin{document}
+\confighead{}{}{}
+\printhead{}{}{1}
+
+Ref:~\cite{JYC2009}.
+
+\sct{Preliminaries}
+
+\begin{stp}
+    Let $(\Oga,\cF,P)$ be a probability space, random variables will be real-valued, namely measurable map $X:(\Oga,\cF)\ar(\bR,\cB)$ where $\cB$ is the Borel $\sgm$-algebra.
+
+    A filtration $\BF=\{\cF_{t}\}_{t\gqs0}$ on $(\Oga,\cF,P)$ is a family of $\sgm$-algebras satisfying that $\cF_{s}\sbs\cF_{t}$ for all $0\lqs s < t$, $\cF_{t}=\bcap_{u>t}\cF_{u}$ and $\cF_{0}$ contains the $(P,\cF)$-negligible sets of $\cF_{\ift}$.
+\end{stp}
+
+\begin{dfn}[1.1.10]
+    A \tbf{continuous time process} $X$ on $(\Oga,\cF,P)$ is a family of random variables $\{X_{t}\}_{t\gqs0}$ such that $(\oga,t)\amt X_{t}(\oga)$ is $\cF\ot\cB(\bR\xP)$-measurable. Say that $X$ is \tbf{continuous} if $t\amt X_{t}(\oga)$ is continuous for almost all $\oga$, $X$ is \tbf{increasing} if $X_{0}=0$, $X$ is right-continuous and $X_{s}\lqs X_{t}$ almost surely for $s\lqs t$.
+
+    $X$ is \tbf{$\BF$-adapted} if $X_{t}$ is $\cF_{t}$-measurable for all $t\gqs0$, in particular, $\BF^{X}:=\{\cF_{t}^{X}\}_{t\gqs0}$ where $\cF_{t}^{X}=\sgm(X_{s},s\lqs t)$ is the smallest filtration $\BF$ such that $X$ is $\BF$-adapted.
+\end{dfn}
+
+\begin{thm}[1.1.10.6, Kolmogorov]
+    If a process $X$ satisfies $\bE(\sP{X_{s}-X_{t}}^{p})\lqs C\sP{s-t}^{1+\eps}$ for some $C,p,\eps>0$, then there exists a continuous process $\oT{X}$ such that $P(\oT{X}_{t}=X_{t})=1$ for all $t\gqs0$.
+\end{thm}
+
+\begin{dfn}[1.1.13, 1.1.14]
+    A process $X$ is a \tbf{Gaussian process} if any finite linear combination $\sum_{i=1}^{n}a_{i}X_{t_{i}}$ is a Gaussian variable, a \tbf{Markov process} if for any $t$, $\sgm(X_{s},s\lqs t)$ and $\sgm(X_{u},u\gqs t)$ are conditionally independent with respect to $\sgm(X_{t})$.
+\end{dfn}
+
+
+\begin{dfn}[1.2.1.1]
+    An $\BF$-adapted process $X$ is an \tbf{$\BF$-martingale} if $\bE(\sP{X_{t}})<\ift$ for all $t\gqs0$ and $\bE(X_{t}\mid \cF_{s})=X_{s}$ almost surely for all $0\lqs s < t$.
+
+\end{dfn}
+
+\begin{dfn}[1.2.3.1]
+    An $\bR\xP\cup\{+\ift\}$-valued random variable $\tau$ is an \tbf{$\BF$-stopping time} if $\{\tau\lqs t\}\in\cF_{t}$ for all $t\gqs0$. A stopping time is \tbf{predictable} if there exists an increasing sequence $\{\tau_{n}\}$ of stoppting times such that almost surely $\lim_{n}\tau_{n}=\tau$ and $\tau_{n}<\tau$ for all $n$ on $\{\tau>0\}$, \tbf{totally inaccessible} if $P(\tau=\tta<\ift)=0$ for any predictable stopping time $\tta$.
+
+    For two stopping times $\tau,\tta$, the \tbf{stochastic interval} is $\dTS{\tau,\tta}:=\{(\oga,t):\tau(\oga)<t\lqs\tta(\oga)\}$. The \tbf{optional $\sgm$-algebra} $\cO$ is the $\sgm$-algebra generated on $\cF\tms\cB$ by $\dST{\tau,\ift}$. The \tbf{predictable $\sgm$-algebra} $\cP$ is the $\sgm$-algebra generated on $\cF\tms\cB$ by $\dTS{\tau,\tta}$. A process $X$ is \tbf{predictable} if the map $(\oga,t)\amt X_{t}(\oga)$ is $\cP$-measurable.
+\end{dfn}
+
+\begin{dfn}[1.2.4.1]
+    An $\BF$-local martingale is an $\BF$-adapted, right-continuous process $M$ such that there exists a sequence of stopping times $\{\tau_{n}\}$ such that $\tau_{n}$ is increasing and almost surely $\lim_{n}\tau_{n}=\ift$, and for every $n$, the stopped process $M^{\tau_{n}}\mbm{1}_{\{\tau_{n}>0\}}$ is an $\BF$-martingale.
+\end{dfn}
+
+\begin{thm}[1.2.3.5, Optional Sampling]
+    A process $M$ is a uniformly integrable martingale and $\tau,\tta$ are two stopping times with $\tau\lqs\tta$, then almost surely $M_{\tta}=\bE(M_{\tau}\mid\cF_{\tta})=\bE(M_{\ift}\mid\cF_{\tta})$.
+\end{thm}
+
+\begin{thm}[1.2.4.2, Doob-Meyer Decomposition]
+    The process $X$ is a sub-martingale if and only if $X_{t}=M_{t}+A_{t}$, where $M$ is a local martingale, and $A$ is an increasing predictable process.
+\end{thm}
+
+\begin{dfn}[1.4.1.1, 1.4.1.2, 1.4.1.4]
+    A $\bR$-valued continuous process $X$ is a \tbf{Brownian motion} with respect to a filtration $\BF$ larger than $\BF^{X}$ if one of the following equivalent conditions holds,
+    \begin{itm}
+        \item $X_{t+s}-X_{t}$ is independent of $\cF_{t}$ and is $\cN(0,s)$ distributed.
+        \item $\{X_{t}\}_{t\gqs0}$ and $\{X_{t}^{2}-t\}_{t\gqs0}$ are continuous $\BF$-local martingales.
+    \end{itm}
+
+    A \tbf{drifted process} is a process $X_{t}=\mu t+\sgm B_{t}$ where $B$ is a Brownian motion. A $\bR^{d}$-valued process is a $d$-dimensional Brownian motion of its components are independent Brownian motions.
+\end{dfn}
+
+\begin{dfn}[1.3]
+    A $d$-dimensional \tbf{continuous semi-martingale} is a $\bR^{d}$-valued process $X$ such that each component $X^{i}=M^{i}+A^{i}$, where $M^{i}$ is a continuous local martingale with $M_{0}^{i}=0$ and $A^{i}$ is a continuous adapted process with locally finite variation.
+\end{dfn}
+
+\begin{dfn}[1.3.1.2]
+    Let $M,N$ be two continuous local martingales, there is a unique continuous process $\{\sA{M,N}_{t}\}_{t\gqs0}$ with locally finite variation such that $MN-\sA{M,N}$ is a continuous martingale, call $\sA{M,N}$ the \tbf{predictable bracket} of $M$ and $N$, $M$ and $N$ are \tbf{orthogonal} if $\sA{M,N}=0$.
+\end{dfn}
+
+\begin{thm}[1.4.2.1]
+    Let $B$ be a $d$-dimsional Brownian motion, and let $T_{x}:=\inf\{t>0:B_{t}=x\}$ be the \tbf{first hitting time} of $x$, then
+    \begin{itm}
+        \item if $d=1$, $P(T_{x}<\ift)=1$ for all $x\in\bR$.
+        \item if $d=2$, $P(T_{x}<\ift)=0$ for all $x\in\bR^{n}$.
+        \item if $d\lqs2$, $B$ is \tbf{recurrent}, i.e., almost surely $\{t:B_{t}\in A\}$ is unbounded for all open $A\sbs\bR^{d}$.
+        \item if $d\gqs3$, $B$ is \tbf{transient}, i.e., almost surely $\lim_{t\ar\ift}\sP{B_{t}}=+\ift$.
+    \end{itm}
+\end{thm}
+
+\begin{thm}[1.5.3.1, It{\^o}]
+    Let $F\in C^{1,2}(\bR\xP\tms\bR^{d},\bR)$ and $X=M+A$ a continuous $d$-dimensional semi-martingale, then $\{F(t,X_{t})\}_{t\gqs0}$ is a continuous semi-martingale and
+    \[\
+      F(t,X_{t})=F(0,X_{0})+\int_{0}^{t}\frac{\ptl F}{\ptl t}(s,X_{s})\dif{s}+\sum_{i=1}^{d}\int_{0}^{t}\frac{\ptl F}{\ptl x_{i}}(s,X_{s})\dif{X_{s}^{i}}+\frac{1}{2}\sum_{i,j=1}^{d}\int_{0}^{t}\frac{\ptl^{2}F}{\ptl x_{i}\ptl x_{j}}(s,X_{s})\dif{\sA{X^{i},X^{j}}_{s}}.
+    \]
+\end{thm}
+
+
+\begin{thm}[1.5.4.6]
+    Let $b:[0,T]\tms\bR^{d}\ar\bR^{d}$ and $\sgm:[0,T]\tms\bR^{d}\ar\bR^{d\tms n}$ be Borel functions such that for some $C>0$, and all $t\in [0,T]$,
+    \begin{align*}
+      \dP{b(t,x)}+\dP{\sgm(t,x)}&\lqs C(1+\dP{x}), \fal x\in\bR^{d}\\
+      \dP{b(t,x)-b(t,y)}+\dP{\sgm(t,x)-\sgm(t,y)}&\lqs C\dP{x-y}, \fal x,y\in\bR^{d},
+    \end{align*}
+    let $X_{0}$ be a square integrable random variable independent of the $n$-dimensional Brownian motion $B$, then the stochastic differential equation admits a unique continuous strong solution up to indistinguishability,
+    \[
+        \dif{X_{t}}=b(t,X_{t})\dif{t}+\sgm(t,X_{t})\dif{B_{t}}, t\lqs T, X_{0}=x.
+    \]
+\end{thm}
+
+\begin{thm}[1.5.6.1]
+    Consider the second-order operator $\cA$ on $C^{1,2}$ given by
+    \[
+        \cA(\vfi)(t,x)=\frac{\ptl\vfi}{\ptl t}(t,x)+b(t,x)\frac{\ptl\vfi}{\ptl x}(t,x)+\frac{1}{2}\sgm^{2}(t,x)\frac{\ptl^{2}\vfi}{\ptl x^{2}}(t,x),
+    \]
+    and assume $X$ the is the unique solution of $\dif{X_{t}}=b(t,X_{t})\dif{t}+\sgm(t,X_{t})\dif{B_{t}}$, let $\vfi(t,x)=\bE(f(X_{T})\mid X_{t}=x)$, then for any $f\in C_{b}(\bR)$, the Cauchy problem $\cA\vfi=0,\vfi(T,x)=f(x)$ is solved by $\vfi(t,x)$.
+\end{thm}
+
+\begin{thm}[1.7.3.1, Cameron-Martin, Girsanov]
+    Let $W$ be a $\BF$-Brownian motion and $\tta$ an $\BF$-adapted process such that the solution to $\dif{L_{t}}=-L_{t}\tta_{t}\dif{W_{t}}, L_{0}=1$ is a martingale, let $Q|_{\cF_{t}}=L_{t}P|_{\cF_{t}}$, then $W$ admits a $Q$-semi-martingale decomposition
+    \[
+        W_{t}=\oT{W_{t}}-\int_{0}^{t}\tta_{s}\dif{s},
+    \]
+    where $\oT{W}$ becomes a $\bQ$-Brownian motion.
+\end{thm}
+
+\printref
+\end{document}

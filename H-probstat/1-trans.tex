@@ -1,0 +1,87 @@
+\documentclass[article, a4paper, twoside]{universal}
+
+\setshowlvl{1}
+\begin{document}
+\confighead{}{}{}
+\printhead{}{}{1}
+
+
+% Ref~:\cite{DeepSeek-V3,DeepSeek-R1,DeepSeek-Prover-V2}.
+
+Here, we summarize the architectures of some transformer-based~\cite{Transformer2017} AI-models.
+
+\begin{stp}
+    Let $\cT$ be the set of tokens of size $T$ in a given language, $n$ be the context size, $\cS$ be a sample set from $\cT^{n}$, the prefix order relations in $\cS$ form a subset $\cM$ of all maps $\cT^{n-1}\ar\cT^{n}$, one would like to have a good parameter estimation based on $\cM$ for the map $\cT^{n-1}\ar\cT^{n}$ approximating the prefix order.
+
+
+    Traditionally, let $\cE\cong\bR^{d}$ be the ``embedding space'', $\cF\cong\bR^{f}$ the ``feature space'', and $\cE'\cong\bR^{d'}$ an auxilliary vector space. One considers the following diagram, where $i$ is trivial, $\pr$ is taking the generator corresponding to the maximal component; $L^{i},H^{i}$ are affine maps; all other arrows are linear maps, where $1\lqs j\lqs h$,
+    \[
+        \begin{tikzcd}[labels=description]
+            \cT\ar[rr, "i", hook, shift left=2] && \ar[ll, "\pr", shift left=2]\bR\cT\ar[rr, "{E}", shift left=2] && \ar[ll, "{U}", shift left=2]\cE\ar[rr, "{Q^{j}}", shift left=6]\ar[rr, "{K^{j}}", shift left=2]\ar[rr, "{V^{j}}", shift right=2] && \ar[ll, "{O^{j}}", shift left=6]\cF \\
+            \\
+            &&&& \cE'\ar[uu, "L", shift left=2]\ar[uu, leftarrow, "H", shift right=2] &&
+        \end{tikzcd}
+    \]
+    each pair $Q^{j},K^{j}$ define a pairing over $\cE$ via $\sA{v_{1},v_{2}}_{j}:=v_{1}^{T}Q^{j,T}K^{j}v_{2}$, for $v=(v_{1},\lds,v_{n})\in\cE^{\op n}$, denote by $G^{j}(v)$ the Gram matrix where $G^{j}(v)_{s,t}=\sA{v_{s},v_{t}}_{j}$, one could construct $\cT^{n-1}\ar\cT^{n}$ via the following diagram,
+    \[
+        \begin{tikzcd}
+            (\bR\cT)^{\op n-1}\ar[dd, "{(E^{\op n-1},0)}"] && \cT^{n-1}\ar[ll, "i^{\op n-1}"', hook']\ar[rr, dashed, blue] && \cT^{n} && (\bR\cT)^{\op n}\ar[ll, "\pr^{\op n}"'] \\
+            \\
+            \cE_{1}^{\op n}\ar[r] & \cds\ar[r] & \cE_{k}^{\op n}\ar[r, "{\T{ATT}_{k}}"] &\cE_{k}^{\op n}\ar[r, "{\T{FFN}_{k}}"] & \cE_{k+1}^{\op n}\ar[r] & \cds\ar[r] & \cE_{l+1}^{\op n}\ar[uu, "{U^{\op n}}"]
+        \end{tikzcd}
+    \]
+    where for each $1\lqs k\lqs l$, $\cE_{k}\cong\cE$ and $\T{ATT}_{k},\T{FFN}_{k}:\cE^{\op n}\ar\cE^{\op n}$ are given by
+    \begin{align*}
+      \T{ATT}_{k}:& \cE^{\op n}\ar\cE^{\op n},\quad v=(v_{1},\lds,v_{n})\amt v+\sum_{j=1}^{h}(O_{k}^{j}V_{k}^{j}v)\T{Softmax}(G_{k}^{j}(v)) \\
+      \T{FFN}_{k}:& \cE^{\op n}\ar\cE^{\op n},\quad v=(v_{1},\lds,v_{n})\amt v+L_{k}\cc\T{ReLU}\cc H_{k}(v)
+    \end{align*}
+\end{stp}
+
+\begin{rmk}
+    To count the parameters $N$ involved in this architecture,
+    \begin{itm}
+        \item $E,U$ contribute $2Td$;
+        \item $\T{ATT}$ part: $\{Q_{k}^{j},K_{k}^{j},V_{k}^{j},O_{k}^{j}\}_{1\lqs j\lqs h, 1\lqs k\lqs l}$ contribute $4ldhf$;
+        \item $\T{FFN}$ part: $\{L_{k},H_{k}\}_{1\lqs k\lqs l}$ contribute $2l(d+1)d'$;
+    \end{itm}
+    so overall $N=2Td+4ldhf+2nl(d+1)d'$.
+
+    In GPT-3~\cite{GPT3-2020}, $T,d'\apx 4d$ and $l,f,h\apx d^{1/2}$ and $d\apx 10^{4}$, so overall $N\sim12d^{5/2}+9d^{2}\apx 10^{11}$ (175B).
+\end{rmk}
+
+\begin{rmk}
+    There are interpretations that the information of the logical structure of a language is stored in the $\T{ATT}$ part and in particular in the Gram matrix $v^{T}Q^{T}Kv$, while the general knowledge of a language is stored in the $\T{FFN}$ part, one can modify both of them to improve the model.
+\end{rmk}
+
+
+\newpage
+\begin{stp}
+    In DeepSeek-V3~\cite{DeepSeek-V3}, for the $\T{ATT}$ part, one introduces an auxiliary vector space $\cL\cong\bR^{c}$ such that $c\ll hf$ to compress $\{Q^{j},K^{j},V^{j}\}_{1\lqs j\lqs h}$, and introduce another auxiliary vector space $\cR\cong\bR^{r}$, where $R_{i}:\cR\ar\cR$ is orthogonal, depends on $i$ such that $R_{s}\cc R_{t}=R_{s+t}$,
+    \[
+        \begin{tikzcd}
+            \cE\ar[rr, "W"] && \cL\ar[rr, "Q^{j}" description, shift left=4]\ar[rr, "K^{j}" description]\ar[rr, "V^{j}" description, shift right=4]\ar[dd, "R_{Q}", shift left=2]\ar[dd, "R_{K}"', shift right=2] && \cF \\
+            \\
+            && \cR\ar[rr, "R_{i}"] && \cR
+        \end{tikzcd}
+    \]
+    for $v=(v_{1},\lds,v_{n})\in\cE^{\op n}$, the Gram matrix $G^{j}(v)$ is given by $G^{j}(v)_{s,t}:=(Wv_{s})^{T}(Q^{j,T}K^{j}+R_{Q}^{T}R_{t-s}R_{K})(Wv_{t})$, then again the map $\T{ATT}_{k}:\cE^{\op n}\ar\cE^{\op n}$ is given by
+    \[
+        \T{ATT}: \cE^{\op n}\ar\cE^{\op n},\quad v=(v_{1},\lds,v_{n})\amt v+\sum_{j=1}^{h}(O_{k}^{j}V_{k}^{j}W_{k}v)\T{Softmax}(G_{k}^{j}(v)) \\
+    \]
+
+    For the $\T{FFN}$ part, one introduces multiple $\T{FFN}$ with $N_{s}$ of them coined shared and $N_{r}$ of them coined routed, $K_{r}<N_{r}$ the number of activated routed $\T{FFN}$. Each routed $\T{FFN}^{t,(r)}$ is associated a vector $e_{t}\in\cE$ and gains a weight $w_{t}^{i}=\T{Sigmoid}(v_{i}^{T}e_{t})$ for each $v_{i}\in\cE$, then
+    \[
+        \T{FFN}_{k}:\cE^{\op n}\ar\cE^{\op n},\quad v=(v_{1},\lds,v_{n})\amt (v_{i}+\sum_{t=1}^{N_{s}}\T{FFN}_{k}^{t,(s)}(v_{i})+\sum_{t=1}^{N_{r}}g_{t}^{i}\T{FFN}_{k}^{t,(r)}(v_{i}))_{1\lqs i\lqs n}
+    \]
+    where the last term is a weighted sum over $K_{r}$ highest weights, $g_{t}^{i}=w_{t}^{i}/\sum w_{t}^{i}$
+\end{stp}
+
+\begin{rmk}
+    The purpose of compressing $Q,K,V$ matrices is to accelerate the KV cache; one may interpretate~\cite{RoFormer2024} that the rotations $R_{i}:\cR\ar\cR$ encode the position of each token into the $\T{ATT}$ part.
+\end{rmk}
+
+
+
+
+\printref
+\end{document}
