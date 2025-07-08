@@ -1,0 +1,379 @@
+\documentclass[article, a4paper, twoside]{universal}
+
+\setshowlvl{1}
+\begin{document}
+\confighead{}{}{}
+\printhead{}{}{1}
+
+\sct{Height formulae over Shimura curves}
+
+Ref:~\cite{YZZ2013,YZ2018,YZ2018Erratum,Yuan2022}.
+
+\begin{stp}
+    Let $F$ be a totally real number field, $\Sgm$ a finite set of places of $F$ containing all infinite places with odd $\sP{\Sgm}$, let $\bB_{F,\Sgm}$ be the totally definite incoherent quaternion algebra over $\bA_{F}$ with ramification set $\Sgm$ and reduced norm $q:\bB_{F,\Sgm}\ar\bA_{F}$; $E/F$ a totally imaginary quadratic extension with a fixed embedding $\bA_{E}\ahr\bB_{F,\Sgm}$ and $\eta:F\xT\bs\bA_{F}\xT\ar\bC\xT$ the associated quadratic character; $\chi:E\xT\bs\bA_{E}\xT\ar\bC\xT$ a finite order character.
+
+    Let $\cA(\bB_{F,\Sgm}\xT)$ be the set of irreducible admissible complex representations of $\bB_{F,\Sgm}\xT$ whose Jacquet-Langlands correspondence $\sgm:=\T{JL}(\pi)$ is automorphic cuspidal and discrete of parallel weight $2$. The space of Schwartz functions $\cS(\bB_{F,\Sgm}\tms\bA_{F}\xT)$ admits an action of $\GL_{2}(\bA_{F})\tms\bB_{F,\Sgm}\xT\tms\bB_{F,\Sgm}\xT$ by Weil representation $r$, its maximal $\bB_{F,\Sgm,\ift}\xT\tms\bB_{F,\Sgm,\ift}\xT$-quotient $\oL{\cS}(\bB_{F,\Sgm}\tms\bA_{F}\xT)$ admits a local decomposition (\cite[3.4.1]{YZZ2013}) $\oL{\cS}(\bB_{F,\Sgm}\tms\bA_{F}\xT)=\Ot_{v}\oL{\cS}(\bB_{F,\Sgm,v}\tms F_{v}\xT)$.
+
+    Let $\afa=\ot_{v}\afa_{v}:\pi\ot\oT{\pi}\ar\bC$ be the bilinear form given by
+    \[
+        \afa_{v}(f_{1,v},f_{2,v})=\frac{L(1,\eta_{v})L(1,\pi_{v},\adj)}{\zta_{v}(2)L(1/2,\pi_{v},\chi_{v})}\int_{F_{v}\xT\bs E_{v}\xT}(\pi_{v}(t)f_{1,v},f_{2,v})\chi_{v}(t)\dif{t}.
+    \]
+
+    For $\Phi\in\cS(\bB_{F,\Sgm}\tms\bA_{F}\xT)$, $g\in\GL_{2}(\bA_{F})$ and $h\in\bB_{F,\Sgm}\xT\tms\bB_{F,\Sgm}\xT$, the theta series $\tta(g,h,\Phi)$ is given by
+    \[
+        \tta(g,h,\Phi):=\sum_{u\in F\xT}\sum_{x\in\bB_{F,\Sgm}}r(g,h)\Phi(x,u),
+    \]
+    the normalized global Shimizu lifting $\tta:\cS(\bB_{F,\Sgm}\tms\bA_{F}\xT)\tms\sgm\atr\pi\ot\oT{\pi}$ is given by
+    \[
+        \tta(\Phi\ot\vfi)(h):=\frac{\zta_{F}(2)}{2L(1,\pi,\adj)}\int_{\GL_{2}(F)\bs\GL_{2}(\bA_{F})}\vfi(g)\tta(g,h,\Phi)\dif{g}.
+    \]
+\end{stp}
+
+
+\ssc{Quaternion algebras and the geometric kernel}
+
+\begin{stp}[Shimura curves]
+    The open compact subgroups $U$ of $\bB_{F,\Sgm}^{\ift,\tms}$ gives the inverse system of Shimura curves $\{X_{U}\}_{U}$ over $F$, they satisfy
+    \begin{itm}
+        \item (Components) $\pi_{0}(X_{U,\oL{F}})\cong F_{+}\xT\bs\bA_{F}^{\ift,\tms}/q(U)=B(\tau)_{+}^{\tms}\bs\bB_{F,\Sgm}^{\ift,\tms}/U$ respects the $\Gal_{F}$-action.
+        \item (Hodge class, \cite[Lemma~3.1]{YZZ2013}) The Hodge class $L_{U}:=\oga_{X_{U}/F}+\sum_{x\in X_{U}(\oL{F})}(1-e_{x}\xI)x\in\Pic(X_{U})_{\bQ}$ satisfies $\Deg L_{U}=\Vol(X_{U})$, write $\kpa_{U}\xC:=\Deg L_{U,\afa}=\Deg L_{U}/\sP{F_{+}^{\tms}\bs\bA_{F}^{\ift,\tms}/q(U)}$ and $\xi_{U,\afa}:=L_{U,\afa}/\kpa_{U}\xC$ for any $\afa\in\pi_{0}(X_{U,\oL{F}})$, the system $\{\xi_{U,\afa}\}_{U}$ gives a well-defined element $\xi_{\afa}\in\Cl(X_{\oL{F}})_{\bQ}$.
+        \item (Hecke action) $X:=\plim_{U}X_{U}$ is a locally Noetherian regular scheme over $F$ with right action $\T{T}$ by $\bB_{F,\Sgm}\xT$.
+        \item (CM points) $X^{E\xT}(\oL{F})$ is defined over $E^{\T{ab}}$, fix a CM point $P=[z_{0},1]\in X^{E\xT}(E^{\T{ab}})$, for $t\in\bB_{F,\Sgm}\xT$, define $[t]\xC:=\T{T}_{t}P-\xi_{q(t)}\in J(\oL{F})_{\bQ}$. CM points $\{[z_{0},t]:t\in\bA_{E}^{\ift,\tms}\}$ are indexed by $C_{U}=E\xT\bs\bA_{E}^{\ift,\tms}/(U\cap\bA_{E}^{\ift,\tms})$, and those of the form $\{[z_{0},\bta]: \bta\in\bB_{F,\Sgm}^{\ift,\tms}\}$ are indexed by $\T{CM}_{U}=E\xT\bs\bB_{F,\Sgm}^{\ift,\tms}/U$.
+    \end{itm}
+    For archimedean places $\tau:F\ahr\bC$, $X_{U,\tau}(\bC)$ satisfy
+    \begin{itm}
+        \item (Uniformization) $X_{U,\tau}(\bC)\cong B(\tau)\xT\bs\cH^{\pm}\tms\bB_{F,\Sgm}^{\ift,\tms}/U\cup\{\T{cusps}\}$.
+        \item (Cohomology, \cite[Theorem~3.7]{YZZ2013}) There is a decomposition with $\bB_{F,\Sgm}\xT$-action,
+        \[
+            \HH{}{1}{(X_{\tau}(\bC),\bQ)}=\Op_{\pi\in\cA(\bB_{F,\Sgm}\xT,\bQ)}\pi\ot_{M}V(\pi),
+        \]
+        where $M=\End{\bB_{F,\Sgm}\xT}{}{(\pi)}$ is a number field and  $V(\pi)=\Hom{\bB_{F,\Sgm}\xT}{}{(\pi,\HH{}{1}{(X_{\tau}(\bC),\bQ)})}$.
+    \end{itm}
+    For $v$ be a finite place non-split in $E$ and split in $\bB_{F,\Sgm}$,
+    \begin{itm}
+        \item (Parametrization) The supersingular points on $X_{U}$ over $v$ is indexed by
+        \[
+            \bS_{U}=B(v)\xT\bs F_{v}\xT/\Det U_{v}\tms\bB_{F,\Sgm(v)}^{\ift,\tms}/U^{v}.
+        \]
+        \item (Reduction) The reduction map $\T{CM}_{U}\cong B(v)\xT\bs (B(v)\xT\tms_{E\xT}\bB_{F,\Sgm,v}\xT/U_{v})\tms \bB_{F,\Sgm(v)}^{\ift,\tms}/U^{v}\ar\bS_{U}$ is given by
+        \[
+            q:B(v)\xT\tms_{E\xT}\bB_{F,\Sgm,v}\ar F_{v}\xT,\quad (b,\bta)\amt q(b)q(\bta).
+        \]
+    \end{itm}
+    For $v$ be a finite place non-split in both $E$ and $\bB_{F,\Sgm}$,
+\end{stp}
+
+\begin{stp}[Geometric kernel]
+    For $\phi\in\oL{\cS}(\bB_{F,\Sgm}\tms\bA_{F}\xT)$, $u\in F\xT$ and $g\in\GL_{2}(\bA_{F})$, the Siegel-Eisenstein series is
+    \[
+        E(s,g,u,\phi):=\sum_{\gma\in P^{1}(F)\bs\SL_{2}(F)}\dta(\gma g)^{s}r(\gma g)\phi(0,u),
+    \]
+    whose Fourier expansion can be written as $E(s,g,u,\phi)=\dta(g)^{s}r(g)\phi(0,u)+\sum_{a\in F}W_{a}(s,g,u,\phi)$, where
+    \[
+        W_{a}(s,g,u,\phi):=\int_{\bA_{F}}\dta(wn(b)g)^{s}r(wn(b)g)\phi(0,u)\psi(-ab)\dif{b},\quad \fal a\in F.
+    \]
+
+    Let $Z(x)_{U}:=\Img((\pi_{U_{x},U},\pi_{U_{x},U}\cc \T{T}_{x}):X_{U_{x}}\ar X_{U}\tms X_{U})\in\Pic(X_{U}\tms X_{U})$ be the Hecke correspondence, and take $L_{K}:=(\pr_{1}\xS L_{U}+\pr_{2}\xS L_{U})/2\in\Pic(X_{U}\tms X_{U})_{\bQ}$. For any $\phi\in\oL{\cS}(\bB_{F,\Sgm}\tms\bA_{F}\xT)$ bi-invariant under $U$, define the generating series $Z(\phi)_{U}:=Z_{0}(\phi)_{U}+Z_{*}(\phi)_{U}$, where
+    \[
+        Z_{0}(\phi)_{U}:=-\sum_{\afa\in F_{+}\xT\bs\bA_{F}^{\ift,\tms}/q(U)}\sum_{u\in\mu_{U}^{2}\bs F\xT}E_{0}(\afa\xI u,\phi)L_{K,\afa},\quad Z_{*}(\phi)_{U}:=w_{U}\sum_{a\in F\xT}\sum_{x\in U\bs \bB_{F,\Sgm}^{\ift,\tms}/U}\phi(x,aq(x)\xI)Z(x)_{U},
+    \]
+    for any $g\in\GL_{2}(\bA_{F})$, define $Z(g,\phi)_{U}:=Z(r(g)\phi)_{U}$, $Z(g,\phi)_{U}$ is absolutely convergent and defines an automorphic form on $\GL_{2}(\bA_{F})$ with coefficients in $\Pic(X_{U}\tms X_{U})_{\bC}$ (\cite[Theorem~3.17]{YZZ2013}). One has the height series $Z(g,(h_{1},h_{2}),\Phi)_{U}:=\sA{Z(g,\Phi)_{U}[h_{1}]\xC, [h_{2}]\xC}_{\T{NT}}$ for any $h_{1},h_{2}\in\bB_{F,\Sgm}\xT$, it is independent of the choice of $P$, invariant under the left action of $T(F)\tms T(F)$, and is always a cusp form on $g$ (\cite[Lemma~3.19]{YZZ2013}).
+
+    The geometric kernel is given by
+    \[
+        Z(g,\chi,\phi)_{U}:=\int_{T(F)\bs T(\bA_{F})/Z(\bA_{F})}^{*}Z(g,(t,1),\phi)_{U}\chi(t)\dif{t},
+    \]
+    one can normalize these generating series to form a well-defined system independent of $U$,
+    \[
+        \oT{Z}(g,\phi)_{U}:=\frac{2^{[F:\bQ]-1}h_{F}}{[\cO_{F}\xT:\mu_{U}^{2}]\sP{D_{F}}^{1/2}}Z(g,\phi)_{U},\quad \oT{Z}(g,\chi,\phi)_{U}:=\frac{2^{[F:\bQ]-1}h_{F}}{[\cO_{F}\xT:\mu_{U}^{2}]\sP{D_{F}}^{1/2}}Z(g,\chi,\phi)_{U}.
+    \]
+\end{stp}
+
+
+\begin{thm}[{\cite[Proposition~3.14, Theorem 3.22]{YZZ2013}}]\label{thm:arithmetic-theta-lift}
+    For any open compact subgroup $U\sbs\bB_{F,\Sgm}^{\ift,\tms}$, the map $\T{T}_{U}:\Op_{\pi\in\cA(\bB_{F,\Sgm}\xT)}\pi^{U}\ot\oT{\pi}^{U}\ahr\Hom{F}{}{(J_{U},J_{U}\xV)}\ot_{\bZ}\bC$ is well-defined, the direct system $\{\Vol(X_{U})\T{T}_{U}\}_{U}$ gives
+    \[
+        \T{T}:\Op_{\pi\in\cA(\bB_{F,\Sgm}\xT)}\pi\ot\oT{\pi}\ahr\Hom{F}{}{(J,J\xV)}\ot_{\bZ}\bC.
+    \]
+    For any $\Phi\in\cS(\bB_{F,\Sgm}\tms\bA_{F}\xT)$ and $\vfi\in\sgm$, the arithmetic theta lifting satisfies the identity in $\Hom{F}{}{(J,J\xV)}\ot_{\bZ}\bC$,
+    \[
+        \oT{Z}(\Phi\ot\vfi):=\int_{\GL_{2}(F)\bs\GL_{2}(\bA_{F})/Z(\bA_{F})}^{*}\vfi(g)\oT{Z}(g,\Phi)\dif{g}=\frac{L(1,\pi,\adj)}{2\zta_{F}(2)}\T{T}\cc\tta(\Phi\ot\vfi).
+    \]
+\end{thm}
+
+\begin{prf}[Sketch of the proof]
+    There are three steps:
+
+    By multiplicity one, $\oT{Z}$ and $T\cc\tta$ are both multiples of the Shimizu lifting, so they only differ by a constant.
+
+    On the one hand, one can directly compute that
+    \[
+        \Trc(\T{T}\cc\tta(\Phi\ot\vfi)|_{\HH{}{1,0}{(X_{U})}})=\Vol(X_{U})\cF\cc\tta(\Phi\ot\vfi).
+    \]
+
+    On the other hand, by Lefschetz trace formula, one has
+    \[
+        \Trc(\oT{Z}(\Phi\ot\vfi)|_{\HH{}{1,0}(Z_{U})})=-\frac{1}{2}\Deg\Dta\xS\oT{Z}(\Phi\ot\vfi)_{U}+\Deg\oT{Z}(\Phi\ot\vfi)_{U}.
+    \]
+    So the result reduces to the following two theorems.
+\end{prf}
+
+
+\begin{thm}[{\cite[Proposition~4.3]{YZZ2013}}]
+    \[
+        \int_{\GL_{2}(F)\bs\GL_{2}(\bA_{F})/Z(\bA_{F})}^{*}\vfi(g)\Deg\oT{Z}(g,\Phi)_{U}\dif{g}=0.
+    \]
+\end{thm}
+
+\begin{rmk}
+    This is essentially due to \cite[Proposition~4.2]{YZZ2013}:
+
+    For any component $\afa$, $\Deg Z(g,\phi)_{U,\afa}=-\frac{1}{2}\kpa_{U}\xC E(0,g,r(h)\phi)_{U}$. (\red{think more about this one.})
+\end{rmk}
+
+\begin{thm}[{\cite[Proposition~4.4]{YZZ2013}}]
+    \[
+        \int_{\GL_{2}(F)\bs\GL_{2}(\bA_{F})/Z(\bA_{F})}^{*}\vfi(g)\Deg\Dta\xS\oT{Z}(g,\Phi)_{U}\dif{g}=-\Vol(X_{U})\frac{L(1,\pi,\adj)}{\zta_{F}(2)}\cF\cc\tta(\Phi\ot\vfi).
+    \]
+\end{thm}
+
+\begin{rmk}
+    For proof, compute the mixed Eisenstein-theta series by brute-force, follow the computation in \cite[Proposition~4.5]{YZZ2013} for compact case and \cite[Theorem~4.15]{YZZ2013} for non-compact case.
+\end{rmk}
+
+\begin{stp}[Height decomposition]
+    Choose a regular and semistable integral model $\cX$ of $X$ over an extension $L$ of $F$, and an arithmetic class $\oH{\xi}\in\aPic(\cX)$ whose generic fiber has degree one on all geometrically connected components. For any $D\in\Div(X_{\oL{F}})$ defined over $L$, there is a unique choice of a vertical divisor $V$ and Green's function $g_{D}$ such that $\oH{D}:=(\oL{D}+V,g_{D})$ is an $\oH{\xi}$-admissible arithmetic divisor.
+
+    If $D_{1},D_{2}\in\Div(X_{\oL{F}})$ are defined over $L$ and have distinct support, the pairing $\sA{D_{1},D_{2}}:=-\oH{D}_{1}\cdot\oH{D}_{2}/[L:F]$ (\cite[Theorem~7.4]{YZZ2013}) admits a corresponding decomposition $\sA{D_{1},D_{2}}=-i(D_{1},D_{2})-j(D_{1},D_{2})$, where
+    \[
+        i(D_{1},D_{2}):=\frac{1}{[L:F]}(\oL{D}_{1}\cdot\oL{D}_{2}+g(D_{1}(\bC),D_{2}(\bC))),\quad j(D_{1},D_{2}):=\frac{1}{[L:F]}\oL{D}_{1}\cdot V_{2},
+    \]
+    these further decomposes into local heights,
+    \begin{align*}
+        i(D_{1},D_{2})=\sum_{w\in S_{L}}i_{w}(D_{1},D_{2})\log N_{w},&\quad j(D_{1},D_{2})=\sum_{w\in S_{L}}j_{w}(D_{1},D_{2})\log N_{w}, \\
+        i_{w}(D_{1},D_{2})=\begin{cases}
+          \dfrac{1}{[L:F]}(\oL{D}_{2}\cdot\oL{D}_{2})_{w} & w\nmid\ift \\
+          \dfrac{1}{[L:F]}g(D_{1,w}(\bC),D_{2,w}(\bC)) & w\mid\ift
+        \end{cases},&\quad j_{w}(D_{1},D_{2})=\begin{cases}
+          \dfrac{1}{[L:F]}(D_{1}\cdot V_{2})_{w} & w\nmid\ift \\
+          0 & w\mid\ift
+        \end{cases}
+    \end{align*}
+\end{stp}
+
+\begin{stp}[Integral models]
+    $X_{U}$ admits a canonical regular semistable integral model $\cX_{U}$ over $\cO_{F}$, the Hodge bundle $L_{U}$ canonically extends to a Hermitian line bundle $\cL_{U}$ over $\cX_{U}$, take $\oH{\xi}_{U}=(\cL_{U},\dP{\cdot}_{\T{Pet}})/\kpa_{U}\xC\in\aPic(\cX_{U})$. Let $H$ be the minimal extension of $E$ which contains the fields of definition of all $t\in C_{U}$.
+
+    (\cite[7.2, 8.5]{YZZ2013}) There is a regular integral model $\cY_{U}$ of $X_{U}$ over $\cO_{H}$, the arithmetic intersection $Z(g,(t_{1},t_{2}),\phi)$ for $t_{1},t_{2}\in C_{U}$ is computed over $\cY_{U}$. The local models $\cY_{U,w}:=\cY_{U}\tms\cO_{H_{w}}$ is described as follows, under the assumption (5) below, $U=\prod_{v}U_{v}$, for the $v$ under $w$, modify $U$ to be $U^{0}=U^{v}\tms\cO_{\bB_{F,\Sgm,v}}\xT$, then $X_{U^{0}}$ admits a canonical regular model $\cX_{U^{0},v}$ over $\cO_{F_{v}}$, take its normalization in the function field of $X_{U,H_{w}}$, and then make a minimal desingularization to get $\cY_{U,w}$, thus there is a morphism $\cY_{U,w}\ar\cX_{U^{0},v}$.
+
+    The irreducible components $C$ of the special fiber of $\cY_{U,w}$ is classified into $\cV_{U}^{\T{ord}},\cV_{U}^{\T{sin}},\cV_{U}^{\T{spe}}$,
+    \begin{itm}
+        \item $C$ is ordinary if its image in $\cX_{U^{0},v}$ is not a point; $\cV_{U}^{\T{ord}}=F_{+}\xT\bs\bA_{F}^{\ift,\tms}/q(U)\tms P(F_{v})\bs\GL_{2}(F_{v})/U_{v}$; the reduction map $\T{CM}_{U}\ar\cV_{U}^{\T{ord}}$ is given by $g\amt(\Det g, g_{v})$.
+        \item $C$ is supersingular if $v$ is split in $\bB_{F,\Sgm}$ and its image is a supersingular point; let $\cN_{U_{v}}$ be the formal completion along a supersingular point on the special fiber of $\cX_{U,v}$, then the formal completion of $\cX_{U,v}$ along its supersingular locus $\bS_{U}$ is given by $B(v)\xT\bs(\cN_{U_{v}}\tms\bZ)\tms\bB_{F,\Sgm(v)}^{\ift,\tms}/U^{v}$, let $\oT{\cN}_{U_{v}}$ be the minimal desingularization of $\cN_{U_{v}}\oH{\ot}\cO_{H_{w}}$ and $\oT{\cV}$ the set of irreducible components on the special fiber of $\oT{\cN}_{U_{v}}\tms\bZ$, then $\cV_{U}^{\T{sin}}=B(v)\xT\bs\oT{\cV}\tms\bB_{F,\Sgm(v)}^{\ift,\tms}/U$, the reduction map $\T{CM}_{U}\ar\cV_{U}^{\T{sin}}\ar\bS_{U}$ is induced by the $(B(v)_{v}\xT\tms U_{v})$-equivariant maps $B(v)_{v}\xT\tms_{E_{v}\xT}\bB_{F,\Sgm,v}\xT\ar\oT{\cV}\ar\bZ$.
+        \item $C$ is superspecial if $v$ is non-split in $\bB_{F,\Sgm}$.
+    \end{itm}
+\end{stp}
+
+
+
+\ssc{Holomorphic projection and the analytic kernel}
+
+\begin{stp}[Analytic kernel]
+    For $\Phi\in\cS(\bB_{F,\Sgm}\tms\bA_{F}\xT)$ and $g\in\GL_{2}(\bA_{F})$, define the series $I(s,g,\Phi)$ and its $\chi$-component $I(s,g,\chi,\Phi)$; for any $\vfi\in\sgm$, define the series $P(s,\chi,\Phi,\vfi):=(I(s,g,\chi,\Phi),\vfi(g))_{\T{Pet}}$,
+    \[
+        I(s,g,\Phi):=\sum_{\gma\in P(F)\bs\GL_{2}(F)}\dta(\gma g)^{s}\sum_{(x,u)\in \bA_{E}\tms F\xT}r(\gma g)\Phi(x,u),\quad I(s,g,\chi,\Phi):=\int_{T(F)\bs T(\bA_{F})}\chi(t)I(s,g,r(t,1)\Phi)\dif{t}.
+    \]
+    For $\phi\in\oL{\cS}(\bB_{F,\Sgm}\tms\bA_{F}\xT)$ bi-invariant under some $U$, define the series $I(s,g,\phi)_{U}$ and $I(s,g,\chi,\phi)_{U}$ as follows,
+    \begin{align*}
+      I(s,g,\phi)_{U}&:=\sum_{u\in\mu_{U}^{2}\bs F\xT}\sum_{\gma\in P^{1}(F)\bs\SL_{2}(F)}\dta(\gma g)^{s}\sum_{x\in E}r(\gma g)\phi(x,u),\\
+      I(s,g,\chi,\phi)_{U}&:=\int_{T(F)\bs T(\bA_{F})/Z(\bA_{F})}^{*}\chi(t)I(s,g,r(t,1)\phi)_{U}\dif{t}.
+    \end{align*}
+    The twisted series satisfies following normalization (\cite[(5.1.3)]{YZZ2013}) with the same factor of geometric kernel,
+    \[
+        I(s,g,\chi,\Phi)=\frac{2^{[F:\bQ]-1}h_{F}}{[\cO_{F}\xT:\mu_{U}^{2}]\sP{D_{F}}^{1/2}}I(s,g,\chi,\phi)_{U}.
+    \]
+\end{stp}
+
+
+\begin{thm}[{\cite[Proposition~2.5, Proposition~2.6]{YZZ2013}}]\label{thm:integral-representation}
+    For $\Phi\in\cS(\bB_{F,\Sgm}\tms\bA_{F}\xT)$, suppose $\Phi=\ot_{v}\Phi_{v}$ and $\vfi=\ot_{v}\vfi_{v}$, then the series $P(s,g,\chi,\Phi)$ satisfies the following,
+    \begin{itm}
+        \item (Local decomposition) $P(s,\chi,\Phi,\vfi)=\prod_{v}P_{v}(s,\chi_{v},\Phi_{v},\vfi_{v})$, where
+        \[
+            P_{v}(s,\chi_{v},\Phi_{v},\vfi_{v})=\int_{Z(F_{v})\bs T(F_{v})}\chi(t)\dif{t}\int_{N(F_{v})\bs\GL_{2}(F_{v})}\dta(g)^{s}W_{-1,v}(g)r(g)\Phi_{v}(t\xI,q(t))\dif{g}.
+        \]
+        \item (Integral representation) One has $L(1/2, \pi, \chi)=0$, and
+        \[
+            P(0,\chi,\Phi,\vfi)=\frac{L(1/2,\pi,\chi)}{L(1,\eta)}\afa\cc\tta(\Phi\ot\vfi),\quad P'(0,\chi,\Phi,\vfi)=\frac{L'(1/2,\pi,\chi)}{2L(1,\eta)}\afa\cc\tta(\Phi\ot\vfi).
+        \]
+    \end{itm}
+\end{thm}
+
+
+\begin{stp}
+    Let $\cA(\GL_{2}(\bA_{F}),\oga)$ be space of automorphic forms on $\GL_{2}(\bA_{F})$ with central character $\oga$, and let $\cA_{0}^{(2)}(\GL_{2}(\bA_{F}),\oga)$ be the subspace of holomorphic cuspforms of parallel weight $2$. Let $\cP r:\cA(\GL_{2}(\bA_{F}),\oga)\atr\cA_{0}^{(2)}(\GL_{2}(\bA_{F}),\oga)$ be the orthogonal projection with respect to the Petersson pairing, $\cP r(f)=0$ if $f$ is an Eisenstein series. It is desirable to compute the holomorphic projection $\cP r$ explicitly.
+\end{stp}
+
+
+\begin{thm}[{\cite[Proposition~6.12]{YZZ2013}}]
+    Define another operator $\cP r':N(F)\bs\GL_{2}(\bA_{F})\ar\bC$ for $g\in\GL_{2}(\bA_{F})$ via $\cP r'(f)(g):=\sum_{a\in F\xT}\cP r'(f)_{\psi}(d\xS(a)g)$, where $\cP r'(f)_{\psi}(g)=\oT{\lim}_{s\ar 0}f_{\psi,s}(g)$, and
+    \[
+        f_{\psi,s}(g)=(4\pi)^{[F:\bQ]}W^{(2)}(g_{\ift})\int_{Z(F_{\ift})N(F_{\ift})\bs\GL_{2}(F_{\ift})}\dta(h)^{s}f_{\psi}(gh)\oL{W^{(2)}(h)}\dif{h}.
+    \]
+
+    If $f\in\cA(\GL_{2}(\bA_{F}),\oga)$ satisfies the following growth condition for some $\eps>0$, then $\cP r(f)=\cP r'(f)$,
+    \[
+        f\sR{\mat{a & 0 \\ 0 & 1}g}=O_{g}(\sP{a}_{\bA_{F}}^{1-\eps}),\quad a\in\bA_{F}\xT,\quad \sP{a}_{\bA_{F}}\ar\ift.
+    \]
+\end{thm}
+
+\begin{thm}[{\cite[Proposition~6.5, Proposition~6.15]{YZZ2013}}]\label{thm:analytic-kernel-projection}
+    Under assumption (2) specified below, one has
+    \[
+        \cP r'(I'(0,g,\phi)_{U})=-\sum_{v\in S_{\ift}}\oL{I'}(0,g,\phi)(v)-\sum_{v\in S_{\T{ns}}}I'(0,g,\phi)(v),\quad \fal g\in P(F_{S_{1}})\GL_{2}(\bA_{F}^{S_{1}}),
+    \]
+    where $I'(0,g,\phi)(v)=2\fint_{Z(\bA_{F})T(F)\bs T(\bA_{F})}\cK_{\phi}^{(v)}(g,(t,t))\dif{t}$ and $\oL{I'}(0,g,\phi)(v)=2\fint_{Z(\bA_{F})T(F)\bs T(\bA_{F})}\oL{\cK}_{\phi}^{(v)}(g,(t,t))\dif{t}$,
+    \begin{align*}
+      \cK_{\phi}^{(v)}(g,(t_{1},t_{2}))&=\sum_{u\in\mu_{U}^{2}\bs F\xT}\sum_{y\in B(v)-E}k_{r(t_{1},t_{2})\phi_{v}}(g,y,u)r(g,(t_{1},t_{2}))\phi^{v}(y,u),\\
+      \oL{\cK}_{\phi}^{(v)}(g,(t_{1},t_{2}))&=\sum_{a\in F\xT}\oT{\lim\limits_{s\ar 0}}\sum_{y\in \mu_{U}\bs(B(v)_{+}^{\tms}-E\xT)}r(g,(t_{1},t_{2}))\phi(y)_{a}k_{v,s}(y),
+    \end{align*}
+    where $k_{\phi_{v}}(g,y,u)$ is linear in $\phi_{v}$, for $\phi_{v}=\phi_{1,v}\ot\phi_{2,v}$, one has
+    \[
+        k_{\phi_{v}}(g,y,u)=\frac{L(1,\eta_{v})}{\Vol(E_{v}^{1})}r(g)\phi_{1,v}(y_{1},u)W_{uq(y_{2}),v}^{\circ}{}'(0,g,u,\phi_{2,v}), \quad k_{v,s}(y)=\frac{\Gma(s+1)}{2(4\pi)^{s}}\int_{1}^{\ift}\frac{1}{t(1-\lda(y)t)^{s+1}}\dif{t}.
+    \]
+\end{thm}
+
+
+\ssc{Comparison of geometric and analytic kernels}
+
+\begin{stp}
+    Let $\cD(g,\chi,\phi)_{U}=\cP r I'(0,g,\chi,\phi)_{U}-2Z(g,\chi,\phi)_{U}$, it is very interesting to carefully study this series.
+\end{stp}
+
+
+\spg{Treatment of \cite{YZZ2013}}
+
+\begin{stp}
+    Let $S_{F}$ be the set of all places of $F$, $S_{\ift}$ the archimedean places, $S_{\T{ns}}$ the non-split places in $E$, $S_{\T{sp}}$ the split places in $E$. Let $S_{1}\sbs S_{\T{ns}}$ be a finite subset of ramified places over $\bQ$, or $E$, or $\bB_{F,\Sgm}$, or $\sgm$, or $\chi$; let $S_{2}\sbs S_{\T{sp}}$ consist of two places at which $\sgm$ and $\chi$ are unramified.
+
+
+    Consider the following assumptions
+    \begin{enr}[label=(\arabic*)]
+        \item The Schwartz function $\phi\in\oL{\cS}(\bB_{F,\Sgm}\tms\bA_{F}\xT)$ is a pure tensor, and $\phi_{v}$ is standard for $v\in S_{\ift}$.
+        \item For any $v\in S_{1}$, $\phi_{v}\in\oL{\cS}(\bB_{F,\Sgm,v}\tms F_{v}\xT)$ satisfies $\phi_{v}(x,u)=0$ if $v(uq(x))\gqs-v(d_{v})$ or $v(uq(x_{2}))\gqs-v(d_{v})$.
+        \item For any $v\in S_{2}$, $\phi_{v}\in\oL{\cS}(\bB_{F,\Sgm,v}\tms F_{v}\xT)$ satisfies $r(g)\phi_{v}(0,u)=0$ for all $g\in\GL_{2}(F_{v})$ and $u\in F_{v}\xT$.
+        \item For any $v\in S_{\T{ns}}-S_{1}$, $\phi_{v}$ is the standard characteristic function of $\cO_{\bB_{F,\Sgm,v}}\tms\cO_{F_{v}}\xT$.
+        \item $U=\prod_{v}U_{v}$ is an open compact subgroup of $\bB_{F,\Sgm}^{\ift,\tms}$ satisfying: $\phi$ is invariant under $K=U\tms U$, $\chi$ is invariant under $U\cap T(\bA_{F}^{\ift})$, $U_{v}=(1+\vpi_{v}^{r}\cO_{\bB_{F,\Sgm,v}})\xT$ for some $r\gqs0$ for all finite places $v$, $U_{v}$ is maximal for all $v\in S_{\T{ns}}-S_{1}$ and $v\in S_{2}$, $U$ does not contain $-1$, $U$ is sufficiently small so that every connected component of the complex points of $X_{U}$ is an unramified quotient of $\cH$.
+\end{enr}
+
+\end{stp}
+
+\begin{rmk}
+    These assumptions are imposed to simplify local computations. See \cite{YZ2018,YZ2018Erratum} to absorb the techniques of matching the degenerate terms by removing (2), and \cite{Yuan2022} by removing (2) and (3).
+
+    On the analytic side, the growth condition will not hold anymore, the computation in holomorphic projection is harder. On the geometric side, the self-intersection will appear and needs to be properly defined.
+\end{rmk}
+
+\begin{thm}[{\cite[Theorem~5.1, Theorem~3.21]{YZZ2013}}]\label{thm:kernel-id}
+    Let $\phi\in\oL{\cS}(\bB_{F,\Sgm}\tms\bA_{F}\xT)$ be any Schwartz function bi-invariant under the action of some open compact $U$ of $\bB_{F,\Sgm}^{\ift,\tms}$, then for any $\vfi\in\sgm$, $(\cD(g,\chi,\phi)_{U},\vfi(g))_{\T{Pet}}=0$.
+
+    Equivalently, for any Schwartz function $\Phi\in\cS(\bB_{F,\Sgm}\tms\bA\xT)$ and for any $\vfi\in\sgm$,
+    \[
+        \sR{I'(0,g,\chi,\Phi),\vfi(g)}_{\T{Pet}}=2(\oT{Z}(g,\chi,\Phi),\vfi(g))_{\T{Pet}}.
+    \]
+\end{thm}
+
+\begin{thm}[{\cite[Theorem~5.7, Lemma~3.23, Proposition~5.8]{YZZ2013}}]\label{thm:kernel-id-conditional}
+    There exists a Schwartz function $\Phi=\ot_{v}\Phi_{v}\in\cS(\bB_{F,\Sgm}\tms\bA_{F}\xT)$ satisfying $\phi=\oL{\Phi}\in\oL{\cS}(\bB_{F,\Sgm}\tms\bA_{F}\xT)$ satisfies assumptions (1)--(4) and $\afa\cc\tta(\phi_{f}\ot\vfi_{f})\neq0$ for some $\vfi\in\sgm$. As a result, it suffices to prove the identity under assumptions (1)--(5) to deduce \cref{thm:kernel-id}.
+\end{thm}
+
+\begin{prf}[Sketch of the proof]
+    This result is local, to prove the existence of $(\Phi_{v},\vfi_{v})$ for each $v$, it suffices to treat the case $v\in S_{1}$ (\cite[Proposition~5.11]{YZZ2013}) and $v\in S_{2}$ (\cite[Proposition~5.15]{YZZ2013}).
+\end{prf}
+
+\begin{thm}[{\cite[Theorem~7.8]{YZZ2013}}]\label{thm:local-compute}
+    Under assumptions (1)--(5), the following local computations are true for all $t_{1},t_{2}\in T(\bA_{F}^{\ift})$ and all $g\in 1_{S_{1}}\GL_{2}(\bA_{F}^{S_{1}})$,
+    \begin{itm}
+        \item If $v\in S_{\T{sp}}$, then $i_{\oL{v}}(Z_{*}(g,\phi)t_{1},t_{2})=j_{\oL{v}}(Z_{*}(g,\phi)t_{1},t_{2})=0$.
+        \item If $v\in S_{\ift}$, then $\oL{\cK}_{\phi}^{(v)}(g,(t_{1},t_{2}))=i_{\oL{v}}(Z_{*}(g,\phi)t_{1},t_{2})$ and $j_{\oL{v}}(Z_{*}(g,\phi)t_{1},t_{2})=0$.
+        \item If $v\in S_{\T{ns}}-S_{1}$, then $\oL{\cK}_{\phi}^{(v)}(g,(t_{1},t_{2}))=i_{\oL{v}}(Z_{*}(g,\phi)t_{1},t_{2})\log N_{v}$ and $j_{\oL{v}}(Z_{*}(g,\phi)t_{1},t_{2})=0$.
+        \item If $v\in S_{1}$, there exists Schwartz functions $k_{\phi_{v}},m_{\phi_{v}},l_{\phi_{v}}\in\oL{\cS}(B(v)_{v}\tms F_{v}\xT)$ depending on $\phi_{v},U_{v}$ such that
+        \begin{align*}
+          \cK_{\phi}^{(v)}(g,(t_{1},t_{2})) &=\tta(g,(t_{1},t_{2}),k_{\phi_{v}}\ot\phi^{v}), \\
+          i_{\oL{v}}(Z_{*}(g,\phi)t_{1},t_{2}) &=\tta(g,(t_{1},t_{2}),m_{\phi_{v}}\ot\phi^{v}), \\
+          j_{\oL{v}}(Z_{*}(g,\phi)t_{1},t_{2}) &=\tta(g,(t_{1},t_{2}),l_{\phi_{v}}\ot\phi^{v}),
+        \end{align*}
+        let $d_{\phi_{v}}=k_{\phi_{v}}-(\log N_{v})m_{\phi_{v}}-(\log N_{v})l_{\phi_{v}}$.
+    \end{itm}
+\end{thm}
+
+\begin{prf}[Sketch of the proof of \cref{thm:kernel-id}]
+    By \cref{thm:kernel-id-conditional}, one can assume $(\phi,U)$ satisfies assumptions (1)--(5).
+
+    The analytic kernel $I'(0,g,\chi,\phi)$ will meet the growth condition (\cite[Proposition~6.14]{YZZ2013}) under assumption (3), so that its holomorphic projection could be explicitly written down in \cref{thm:analytic-kernel-projection}.
+
+    The geometric kernel $Z(g,(t_{1},t_{2}),\phi)$ will reduce to $\sA{Z_{*}(g,\phi)t_{1},t_{2}}$ under assumption (3) (\cite[Proposition~7.5]{YZZ2013}), and will not involve self-intersection under assumption (2) (\cite[7.2.2]{YZZ2013}). These combined with the local computations \cref{thm:local-compute} and the approximation argument give the identity
+    \[
+        \cD(g,\chi,\phi)_{U}=2\int_{T(F)\bs T(\bA_{F})/Z(\bA_{F})}^{*}\fint_{T(F)\bs T(\bA_{F})/Z(\bA_{F})}\sum_{v\in S_{1}}\tta(g,(tt_{1},t), d_{\phi_{v}}\ot \phi^{v})\chi(t_{1})\dif{t_{1}}\dif{t},\quad \fal g\in\GL_{2}(\bA_{F}).
+    \]
+    Rewrite $(\cD(g,\chi,\phi)_{U},\vfi(g))_{\T{Pet}}$ using Shimizu lifting, one will see the relevant theta series is only defined on the nearby quaternion algebra, so it is $0$ by the multiplicity one of Saito-Tunnell.
+\end{prf}
+
+\begin{rmk}
+    As a consequence, one obtains the Gross-Zagier formula over Shimura curves.
+\end{rmk}
+
+\begin{stp}
+    Let $A$ be a simple abelian variety over $F$ with a non-constant morphism $X_{U}\ar A$ for some $U$, then $\pi_{A}:=\ilim_{U}\Hom{F}{}{(J_{U},A)}\ot_{\bZ}\bQ$ is an automorphic representation of $\bB_{F,\Sgm}\xT$ over $\bQ$ with central character $\oga_{A}$.
+
+    Let $L$ be a finite extension of $M$, $\chi:E\xT\bs\bA_{E}\xT\ar\Gal_{E}^{\T{ab}}\ar L\xT$ be a finite order character, for any $f\in\pi_{A}$, the integration $P_{\chi}(f):=\int_{\Gal_{E}}f(P^{\tau})\ot_{M}\chi(\tau)\dif{\tau}\in A(E^{\T{ab}})_{\bQ}\ot_{M}L\neq 0$ if and only if $\oga_{A}\cdot\chi|_{\bA_{F}\xT}=1$ by Saito-Tunnell.
+\end{stp}
+
+
+\begin{thm}[{\cite[Theorem~1.2]{YZZ2013}}]
+    If $\oga_{A}\cdot\chi|_{\bA_{F}\xT}=1$, then for any $f_{1}\in\pi_{A}$ and $f_{2}\in\pi_{A\xV}$,
+    \[
+        \sA{P_{\chi}(f_{1}),P_{\chi\xI}(f_{2})}_{\T{NT},L}=\frac{\zta_{F}(2)L'(1/2,\pi_{A},\chi)}{4L(1,\eta)^{2}L(1,\pi_{A},\adj)}\afa(f_{1},f_{2}).
+    \]
+\end{thm}
+
+\begin{prf}[Sketch of the proof]
+    It suffices to prove (\cite[Theorem~3.15]{YZZ2013}) for any $\pi\in\cA(\bB_{F,\Sgm}\xT)$ and $f_{1}\ot f_{2}\in\pi\ot\oT{\pi}$,
+    \[
+        \sA{\T{T}(f_{1}\ot f_{2})P_{\chi},P_{\chi\xI}}_{\T{NT}}=\frac{\zta_{F}(2)L'(1/2,\pi,\chi)}{4L(1,\eta)^{2}L(1,\pi,\adj)}\afa(f_{1},f_{2}),\quad P_{\chi}:=\fint_{T(F)\bs T(\bA_{F})/Z(\bA_{F})}[t]\xC\chi(t)\dif{t}\in J(\oL{F})_{\bC}.
+    \]
+    to prove this, note that the global Shimizu lifting $\tta=\ot_{v}\tta_{v}:\cS(\bB_{F,\Sgm}\tms\bA_{F}\xT)\ot\sgm\ar\pi\ot\oT{\pi}$ is surjective, so assume $f_{1}\ot f_{2}=\tta(\Phi\ot\vfi)$, then by \cref{thm:arithmetic-theta-lift} and direct computation, the left hand side becomes
+    \[
+        \frac{2\zta_{F}(2)}{L(1,\pi,\adj)}\sA{\oT{Z}(\Phi\ot\vfi)P_{\chi},P_{\chi\xI}}_{\T{NT}}=\frac{\zta_{F}(2)}{L(1,\eta)L(1,\pi,\adj)}(\oT{Z}(g,\chi,\Phi),\vfi(g))_{\T{Pet}},
+    \]
+    then using the kernel identity \cref{thm:kernel-id} and the integral representation \cref{thm:integral-representation}, this becomes
+    \[
+        \frac{\zta_{F}(2)}{2L(1,\eta)L(1,\pi,\adj)}(I'(0,g,\chi,\Phi),\vfi(g))_{\T{Pet}}=\frac{\zta_{F}(2)L'(1/2,\pi,\chi)}{4L(1,\eta)^{2}L(1,\pi,\adj)}\afa\cc\tta(\Phi\ot\vfi)=\frac{\zta_{F}(2)L'(1/2,\pi_{A},\chi)}{4L(1,\eta)^{2}L(1,\pi_{A},\adj)}\afa(f_{1},f_{2}).
+    \]
+\end{prf}
+
+% \spg{Treatment of \cite{YZ2018,YZ2018Erratum}}
+
+% \spg{Treatment of \cite{Yuan2022}}
+
+% \sct{typos, questions}
+
+
+% page 42, $\tta$ in line 10 and Proposition 2.6 should be $\tta_{v}$
+
+% page 72 line 3,4 from bottom, $\cA(\bB)$ should be $\cA(\bB\xT)$.
+
+% page 75 line 12, $X_{\tau}$ should be $X_{U,\tau}$.
+
+% page 84 middle, seems nothing needs to be modified.
+
+% page 94 (3.4.3), summation term $K\bs \bB_{f}^{\tms}$ may be better written as $U\bs\bB_{f}^{\tms}/U$.
+
+% page 98 line 17, should be $[h]=\T{T}_{h}P$.
+
+% page 228 line 7, Jacquet-Langland should be Jacquet-Langlands.
+
+% page 234 line 3, $X_{K}$ should be $X_{U}$.
+
+\printref
+\end{document}
