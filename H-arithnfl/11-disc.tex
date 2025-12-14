@@ -1,0 +1,45 @@
+\documentclass[article, a4paper, twoside]{universal}
+
+\setshowlvl{1}
+\begin{document}
+\confighead{}{}{}
+\printhead{}{}{1}
+
+Ref:~\AX{2510.14434}.
+
+This tiny note gives a remark about Theorem~7.1 in loc. cit.
+
+\begin{stp}
+    The following properties of the discriminant locus are given in (Proposition~5.2, Lemma~5.3)
+    \[
+        \begin{tikzcd}
+            \vfi^{-1}(D_{1})\ar[r, hook]\ar[d, "\vfi_{1}"] & \vfi^{-1}(D_{\T{fin}})\ar[r, hook]\ar[d, "\vfi_{\T{fin}}"] & \cH_{\T{sing}}\ar[r, hook]\ar[d, "\vfi"] & \bP^{n}\tms\bA^{N}\ar[d, "\pr_{2}"] & \\
+            D_{1}\ar[r, hook] & D_{\T{fin}}\ar[r, hook] & D\ar[r, hook] & \bA^{N}\ar[r] & \Spc{\bZ}
+        \end{tikzcd}
+    \]
+    \begin{itm}
+        \item For the horizontal arrows, $D\ahr\bA^{N}$ is the divisor defined by $\Dta$, $D_{1}\sbs D_{\T{fin}}\sbs D$ are open subschemes.
+        \item For the vertical arrows, $\vfi_{1}$ is an isomorphism, $\vfi_{\T{fin}}$ is a normalization map, and $\vfi$ is birational.
+
+        Moreover, $\vfi_{A}$ is birational for any integral domain $A$ except when $\Chr A=2$ and $n$ is odd, in this case $\kpa(\cH_{\T{sing},A})$ is purely inseparable of degree $2$ over $\kpa(D_{A})$. $\vfi_{\T{fin},A}$ is a normalization for any normal Noetherian domain $A$ except when $\Chr A=2$ and $n$ is odd, in this case $\vfi^{-1}(D_{\T{fin},A})$ is the normalization of $(D_{\T{fin},A})_{\T{red}}$ in the purely inseparable extension $\kpa(\cH_{\T{sing},A})$.
+    \end{itm}
+\end{stp}
+
+\begin{thm}[Theorem~7.1]
+    Let $R$ be a discrete valuation ring with valuation $v$, maximal ideal $\km$ and residue field $k$, take $0\neq f\in R[x_{0},\lds,x_{n}]_{d}$ and let $H:=\Prj(R[x_{0},\lds,x_{n}]/\sA{f})$.
+
+    If $(H_{k})_{\T{sing}}$ contains $r$ closed points, then $v(\Dta(f))\gqs r$.
+\end{thm}
+
+\begin{rmk}
+    If $\Chr R=0$, then the equality holds iff all the $r$ closed points are nondegenerate double points.
+\end{rmk}
+
+\begin{prf}
+    If $\Chr R=0$, then $R$ is excellent (c.f. \cite[8.2.3, 2.34]{Liu2002}), and so is $A$, then Lemma~6.2 becomes an equality by [Stacks, \SP{0C2E}], the $r$ maximal ideals of $B'$ correspond to $r$ minimal primes of $A$ as well as $\oH{A}$, the equality holds iff each $v(p_{i}(f))=1$, that is, the reduction of the the $r$ points of $\vfi^{-1}(D_{\T{fin},R})$ above $P$ are reduced, they are nondegenerate double points.
+\end{prf}
+
+
+
+\printref
+\end{document}
