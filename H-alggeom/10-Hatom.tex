@@ -1,0 +1,39 @@
+\documentclass[article, a4paper, twoside]{universal}
+
+\setshowlvl{1}
+\begin{document}
+\confighead{}{}{}
+\printhead{}{}{1}
+
+
+\sct{Hodge atoms}
+
+Ref:~\AX{2508.05105}.
+
+
+\begin{thm}
+    Let $X$ be a smooth projective variety of dimension $d$, if $X$ is rational, then all its Hodge atoms $\afa$ come from varieties of dimension $\lqs d-2$.
+\end{thm}
+
+\begin{prf}[Sketch of the proof]
+    Suppose $X$ is birational to $\bP_{\bC}^{d}$, by the weak factorization \cite[Theorem~0.1.1]{AKMW2002}, $X\adr\bP^{d}$ can be realized as a sequence of blowups and blowdowns with smooth centers of dimension $\lqs d-2$.
+
+    By construction, the atoms of $X$ will consist of those atoms of $\bP_{\bC}^{d}$, which is $d+1$ copies of the atom of a point, and those atoms of those smooth centers, so all of them are of dimension $\lqs d-2$, hence the result.
+\end{prf}
+
+
+\begin{thm}
+    Let $X$ be a smooth cubic Noether-Lefschetz general hypersurface in $\bP_{\bC}^{5}$, then it is not rational.
+\end{thm}
+
+\begin{prf}[Sketch of the proof]
+    Indeed for $X$, utilizing Voisin's work \cite{Voisin1986}, one can show that any of its Hodge atom $\afa$ satisfies $\rho_{\afa}\lqs2$; some of its Hodge atom $\afa$ satisfies $\Coef_{t^{2}}(P_{\afa}(t))=1$.
+
+    Moreover, for Hodge atoms $\afa$ in smooth projective varieties of dimension $\lqs1$, one has $\Coef_{t^{2}}(P_{\afa}(t))=0$; for those $\afa$ in smooth projective surfaces, one has $\Coef_{t^{2}}(P_{\afa}(t))\lqs p_{g}(S)$, if $p_{g}(S)\gqs1$, by Enriques-Kodaira classification one finds $K_{S}$ is nef, so it admits a single atom $\eta(S)$, and $\rho_{\eta(S)}\gqs3$.
+
+    So there is a Hodge atom $\afa$ of $X$ which does not comes from varieties of dimension $\lqs2$, $X$ is not rational.
+\end{prf}
+
+
+\printref
+\end{document}

@@ -9,7 +9,7 @@
 \sct{Birational geometry}
 
 \ssc{Singularities}
-Ref:~\cite{KM1998Birational}.
+Ref:~\cite{KM1998Birational,Kollar2013,Xu2025}.
 
 \begin{dfn}[2.11, 2.12]
 	Let $Y$ be a normal variety, say that $Y$ has
@@ -91,6 +91,47 @@ Ref:~\cite{KM1998Birational}.
 
 	If $D$ is a $\bQ$-Cartier $\bQ$-divisor on $X$ such that $-(K_{X}+D)$ is $f$-ample, then the $(K_{X}+D)$-flip of $f$ is also called the \tbf{$D$-flop}, if $X\ar Y$ is extremal, the $D$-flop does not depend on $D$, call $\phi:X\adr X\xP$ the \tbf{flop} of $f$.
 \end{dfn}
+
+\ssc{KSBA moduli of general type varieties}
+Ref:~Kollar2022 (families of varieties of general type)
+
+\begin{dfn}[6.10, Good moduli theory]
+	Say that a moduli theory $\cM$ is a \tbf{good moduli theory} if it is separated, valuative-proper, admits embedded moduli spaces, representable and bounded in the weaker form.
+\end{dfn}
+
+
+\begin{thm}[8.6, 8.7, 8.9]
+	Fix a rational coefficent vector $a=(a_{1},\lds,a_{r})$ and $\Dta=\sum_{i}a_{i}D_{i}$. The stable objects are defined to be marked pairs $(X,\Dta)$ such that $(X,\Dta)$ is slc, $X$ is projective and $K_{X}+\Dta$ is ample. A family $f:(X,\Dta)\ar S$ is \tbf{locally KSBA-stable} if
+	\begin{itm}
+		\item $f:X\ar S$ is flat, finite type and pure dimensional,
+		\item $D_{i}$ are K-flat families of relative Mumford $\bZ$-divisors,
+		\item the fibers $(X_{s},\Dta_{s})$ are slc,
+		\item $\oga_{X/S}^{[m]}(m\Dta-B)$ is a flat family of divisorial sheaves if $\T{lcd}(a)\mid m$ and $B=\sum_{i, a_{i}=1}D_{i}$,
+	\end{itm}
+	the family is \tbf{KSBA-stable} if it is locally KSBA-stable, $f$ is proper and $K_{X/S}+\Dta$ is $f$-ample.
+
+	This definition forms a good moduli theory.
+\end{thm}
+
+\begin{thm}[8.12, 8.13, 8.15]
+	Fix a coefficient vector $a=(a_{1},\lds,a_{r})\in[0,1]^{r}$ and $\Dta=\sum_{i}a_{i}D_{i}$. The stable objects are defined to be marked pairs $(X,\Dta)$ such that $(X,\Dta)$ is slc, $X$ is projective and $K_{X}+\Dta$ is ample. A family $f:(X,\Dta)\ar S$ is \tbf{locally KSBA-stable} if
+	\begin{itm}
+		\item $f:X\ar S$ is flat, finite type and pure dimensional,
+		\item $D_{i}$ are K-flat families of relative, Mumford $\bZ$-divisors,
+		\item the fibers $(X_{s},\Dta_{s})$ are slc,
+		\item $\oga_{X/S}^{[m]}(\sum m_{i}D_{i}-B)$ is a flat family of divisorial sheaves if $(m_{0},\lds,m_{r})\in\T{LEnv}_{\bZ}(K_{X}+\Dta)$ and $B=\sum_{i,a_{i}=1}D_{i}$.
+	\end{itm}
+	the family is \tbf{KSBA-stable} if it is locally KSBA-stable, $f$ is proper and $K_{X/S}+\Dta$ is $f$-ample.
+
+	This definition forms a good moduli theory.
+\end{thm}
+
+
+\begin{thm}[8.1]
+	Let $S$ be a scheme of characteristic $0$, $a=(a_{1},\lds,a_{r})\in[0,1]^{r}$ a coefficient vector, $n$ an integer and $v$ a real number. Then the moduli functor $\mathcal{SP}(a,n,v)$ of marked stable pairs of dimension $n$ and volume $v$ is a good moduli theory, which admits a coarse moduli space $\T{SP}(a,n,v)$ projective over $S$.
+\end{thm}
+
+
 
 \ssc{Finite generation of canonical ring}
 Ref:~\cite{BCHM2010}.
