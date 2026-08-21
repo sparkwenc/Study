@@ -1,0 +1,107 @@
+\documentclass[article, a4paper, twoside]{universal}
+
+\setshowlvl{1}
+\begin{document}
+\confighead{}{}{}
+\printhead{}{}{1}
+
+
+\sct{Primes in arithmetic progression}
+
+Ref:~\cite{GT2008Primes}.
+
+\ssc{Generalization of Szemer{\'e}di's theorem}
+
+\begin{dfn}
+    Say that a function $\nu:\bZ/N\bZ\ar\bR\xP$ is a \tbf{measure} if $\bE(\nu)=1+o(1)$.
+\end{dfn}
+
+\begin{thm}[{\cite[2.3]{GT2008Primes}}]
+    Let $k\gqs1$ and $0<\dta\lqs1$. Suppose $\nu:\bZ/N\bZ\ar\bR\xP$ is constant, i.e., $\nu\eqv1$, and let $f:\bZ/N\bZ\ar\bR\xP$ be any function such that $0\lqs f(x)\lqs \nu(x)=1$ for all $x\in\bZ/N\bZ$ and $\bE(f)\gqs\dta$, then
+    \[
+        \bE(f(x)f(x+r)\lds f(x+(k-1)r)\mid x,r\in\bZ/N\bZ)\gqs c(k,\dta)-o_{k,\dta}(1),
+    \]
+    where $c(k,\dta)>0$ only depends on $k$ and $\dta$.
+\end{thm}
+
+\begin{dfn}[{\cite[3.1]{GT2008Primes}}]
+    A measure $\nu:\bZ/N\bZ\ar\bR\xP$ satisfies the \tbf{$(m_{0},t_{0},L_{0})$-linear forms condition} if for all $1\lqs m\lqs m_{0}$, $1\lqs t\lqs t_{0}$ and $L_{ij}\in\bQ, 1\lqs i\lqs m, 1\lqs j\lqs t$ with $h(L_{ij})\lqs L_{0}$, and for all $b_{i}\in\bZ/N\bZ, 1\lqs i\lqs m$, let $\psi_{i}:(\bZ/N\bZ)^{t}\ar\bZ/N\bZ$ be the linear forms given by $\psi_{i}(x)=\sum_{j=1}^{t}L_{ij}x_{j}+b_{i}$, one has
+    \[
+        \bE(\nu(\psi_{1}(x))\lds\nu(\psi_{m}(x))\mid x\in(\bZ/N\bZ)^{t})=1+o_{m_{0},t_{0},L_{0}}(1).
+    \]
+\end{dfn}
+
+\begin{dfn}[{\cite[3.2]{GT2008Primes}}]
+    A measure $\nu:\bZ/N\bZ\ar\bR\xP$ satisfies the \tbf{$m_{0}$-correlation condition} if for every $1<m\lqs m_{0}$ there exists a weight function $\tau_{m}:\bZ/N\bZ\ar\bR\xP$ such that $\bE(\tau_{m}^{q})=O_{m,q}(1)$ for all $1\lqs q<\ift$ and for all $h_{1},\lds,h_{m}\in\bZ/N\bZ$,
+    \[
+        \bE(\nu(x+h_{1})\lds\nu(x+h_{m})\mid x\in\bZ/N\bZ)\lqs\sum_{1\lqs i< j\lqs m}\tau(h_{i}-h_{j}).
+    \]
+\end{dfn}
+
+\begin{dfn}[{\cite[3.3]{GT2008Primes}}]
+    A measure $\nu:\bZ/N\bZ\ar\bR\xP$ is said to be \tbf{$k$-pseudorandom} if it satisfies the $(k2^{k-1},3k-4,k)$-linear forms condition and the $2^{k-1}$-correlation condition.
+\end{dfn}
+
+\begin{thm}[{\cite[3.5]{GT2008Primes}}]\label{thm:Szemeredi}
+    Let $k\gqs3$ and $0<\dta\lqs1$. Suppose $\nu:\bZ/N\bZ\ar\bR\xP$ is $k$-pseudorandom, and let $f:\bZ/N\bZ\ar\bR\xP$ be any function such that $0\lqs f(x)\lqs \nu(x)$ for all $x\in\bZ/N\bZ$ and $\bE(f)\gqs\dta$, then
+    \[
+        \bE(f(x)f(x+r)\lds f(x+(k-1)r)\mid x,r\in\bZ/N\bZ)\gqs c(k,\dta)-o_{k,\dta}(1),
+    \]
+    where $c(k,\dta)>0$ only depends on $k$ and $\dta$.
+\end{thm}
+
+\ssc{Construction of pseudorandom measures}
+
+\begin{stp}
+    Take any function $w=w(N)$ such that $w(N)=\oga(1)$ and $w(N)=o(\log\log N)$.
+\end{stp}
+
+\begin{dfn}
+    Let $W=\prod_{p\lqs w(N)}p$, define the \tbf{modified von Mangoldt function} $\oT{\Lda}:\bZ\xP\ar\bR\xP$ via
+    \[
+        \oT{\Lda}(n):=\begin{cases}
+          \frac{\phi(W)}{W}\log(Wn+1) & \T{$Wn+1$ is prime} \\
+          0 & \T{otherwise}            
+        \end{cases}
+    \]
+    $\oT{\Lda}$ then makes sense as a function on $\bZ/N\bZ$, and is in fact a measure by Dirichlet's theorem.
+\end{dfn}
+
+\begin{dfn}[{\cite[9.2]{GT2008Primes}}]
+    Define the \tbf{truncated divisor sums} $\Lda_{R}:\bZ\xP\ar\bR\xP$ via
+    \[
+        \Lda_{R}(n):=\sum_{d\mid n, d\lqs R}\mu(d)\log(R/d).
+    \]
+\end{dfn}
+
+\begin{thm}[{\cite[9.3, 9.1]{GT2008Primes}}]\label{thm:GoldstonYidirim}
+    Let $\eps_{k}=1/2^{k}(k+4)!$ and $R=N^{k^{-1}2^{-k-4}}$, define $\nu,f:\bZ/N\bZ\ar\bR\xP$ via
+    \[
+        f(n):=\begin{cases}
+          k^{-1}2^{-k-5}\oT{\Lda}(n) & \eps_{k}\lqs n\lqs 2\eps_{k}N \\
+          0 & \T{otherwise}
+        \end{cases},\quad \nu(n):=\begin{cases}
+          \frac{\phi(W)}{W}\frac{\Lda_{R}(Wn+1)^{2}}{\log R} & \eps_{k}\lqs n\lqs 2\eps_{k}N \\
+          1 & \T{otherwise}
+        \end{cases}
+    \]
+    then $\bE(f)=k^{-1}2^{-k-5}\eps_{k}(1+o(1))$, $\nu$ is a $k$-pseudorandom measure and $f(n)\lqs\nu(n)$ for sufficiently large $N$.
+\end{thm}
+
+\ssc{Infinitude of arithmetic progressions}
+
+\begin{thm}[{\cite[1.1]{GT2008Primes}}]
+    The primes contain infinitely many arithmetic progressions of length $k$ for all $k$.
+\end{thm}
+
+\begin{prf}[Sketch of the proof]
+    Combining \cref{thm:Szemeredi} and \cref{thm:GoldstonYidirim}, one has
+    \[
+        \bE(f(x)f(x+r)\lds f(x+(k-1)r)\mid x,r\in\bZ/N\bZ)\gqs c(k,k^{-1}2^{-k-5}\eps_{k})-o(1),
+    \]
+    the degenerate case $r=0$ contributes at most $O(N^{-1}\log^{k}N)=o(1)$ to the left, and every counted progression is a genuine progression in integers since $\eps_{k}<1/k$, hence the result follows.
+\end{prf}
+
+
+\printref
+\end{document}
