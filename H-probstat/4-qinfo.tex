@@ -1,0 +1,222 @@
+\documentclass[article, a4paper, twoside]{universal}
+\usetikzlibrary{quantikz2}
+
+\setshowlvl{0}
+\begin{document}
+\confighead{}{}{}
+\printhead{}{}{1}
+
+
+\sct{Preliminaries in quantum information}
+
+\begin{stp}
+    Take $\cH:=\bC^{2}$ be the Hilbert space of single qubits, and $\cH^{\ot n}$ the Hilbert space of multiple qubits.
+
+    Let $\Sgm=\{0,1\}$ be the binary alphabet. For any binary string $s\in\Sgm^{n}$, adopt the Dirac notation $\ket{s}\in\cH^{\ot n}$. For any two binary strings $a,b\in\Sgm^{n}$, denote by $a\op b$ their exclusive or, $a\cdot b$ their binary dot product, and $ab$ their product as binary numbers. Consider only pure states in this section.
+\end{stp}
+
+\begin{fct}
+    The following are commonly used,
+    \begin{itm}
+        \item Over $\cH$, denote $\ket{\psi_{\afa}}:=\cos(\afa)\ket{0}+\sin(\afa)\ket{1}$, and
+        \[
+            \ket{+}=\frac{1}{\sqrt{2}}(\ket{0}+\ket{1}),\quad \ket{-}=\frac{1}{\sqrt{2}}(\ket{0}-\ket{1}),\quad \ket{+i}=\frac{1}{\sqrt{2}}\ket{0}+\frac{i}{\sqrt{2}}\ket{1},\quad \ket{-i}=\frac{1}{\sqrt{2}}\ket{0}-\frac{i}{\sqrt{2}}\ket{1},
+        \]
+        the Pauli gates, phase shift gate and Hadamard gate are given by
+        \[
+            X=\mat{0&1\\1&0},\quad Y=\mat{0&-i\\i&0},\quad Z=\mat{1&0\\0&-1},\quad P_{\vfi}=\mat{1&0\\0&e^{i\vfi}},\quad H=\frac{1}{\sqrt{2}}\mat{1&1\\1&-1}.
+        \]
+        \item Over $\cH^{\ot 2}$, there are Bell basis,
+        \[
+            \ket{\phi^{+}}=\frac{1}{\sqrt{2}}(\ket{00}+\ket{11}),\quad \ket{\phi^{-}}=\frac{1}{\sqrt{2}}(\ket{00}-\ket{11}),\quad \ket{\psi^{+}}=\frac{1}{\sqrt{2}}(\ket{01}+\ket{10}),\quad \ket{\psi^{-}}=\frac{1}{\sqrt{2}}(\ket{01}-\ket{10}).
+        \]
+        \item Over $\cH^{\ot n}$, the quantum Fourier transform is given by $\QFT_{2^{n}}=2^{-n/2}\sum_{x,y\in\Sgm^{n}}\oga_{2^{n}}^{xy}\ket{x}\bra{y}$.
+        \item For any $x\in\Sgm^{n}$, one has $H^{\ot n}\ket{x}=2^{-n/2}\sum_{y\in\Sgm^{n}}(-1)^{x\cdot y}\ket{y}$.
+    \end{itm}
+
+    The following query gates are commonly used. One can construct $Z_{f}$ from $U_{f}$, and $U_{f}$ from controlled $Z_{f}$.
+    \begin{itm}
+        \item For any function $f:\Sgm^{n}\ar\Sgm^{m}$, its query gate is defined via $U_{f}(\ket{y}\ket{x})=\ket{y\op f(x)}\ket{x}$.
+        \item For any function $f:\Sgm^{n}\ar\Sgm$, its phase query gate is defiend via $Z_{f}\ket{x}=(-1)^{f(x)}\ket{x}$.
+    \end{itm}
+
+\end{fct}
+
+\begin{exg}
+    Consider the following quantum circuit
+    \[
+        \begin{quantikz}[thin lines]
+            \lstick{$\ket{0^{n}}$} & \qwbundle{n} & \gate{H^{\ot n}} & \gate[2]{U_{f}} & \gate{H^{\ot n}}\slice{$\ket{-}\ot\ket{\pi}$} & \meter{} & \setwiretype{c} & \rstick{$y\in\Sgm^{n}$}\\
+            \lstick{$\ket{1}$} & & \gate{H} &&&&&
+        \end{quantikz}
+    \]
+    by computation $\ket{\pi}=2^{-n}\sum_{y,x\in\Sgm^{n}}(-1)^{f(x)+x\cdot y}\ket{y}$. This solves the following problems in one query.
+    \begin{itm}
+        \item (Deutsch-Jozsa) Determine if $f:\Sgm^{n}\ar\Sgm$ is balanced or constant:
+        \[
+            \Pr(y=0^{n})=\sP{2^{-n}\sum_{x\in\Sgm^{n}}(-1)^{f(x)}}^{2}=\begin{cases}
+              1 & \T{$f$ is constant} \\
+              0 & \T{$f$ is balanced}
+            \end{cases}.
+        \]
+        \item (Bernstein-Vazirani) Recover the binary string $s$ from $f:\Sgm^{n}\ar\Sgm, x\amt x\cdot s$:
+        \[
+            \ket{\pi}=2^{-n}\sum_{y,x\in\Sgm^{n}}(-1)^{(s\op y)\cdot x}\ket{y}=\ket{s}.
+        \]
+    \end{itm}
+\end{exg}
+
+\begin{exg}
+    Consider the following quantum circuit
+    \[
+        \begin{quantikz}[thin lines]
+            \lstick{$\ket{0^{n}}$} & \qwbundle{n} & \gate{H^{\ot n}} & \gate[2]{U_{f}} & \gate{H^{\ot n}}\slice{$\ket{\pi}$} & \meter{} & \setwiretype{c} & \rstick{$y\in\Sgm^{n}$}\\
+            \lstick{$\ket{0^{m}}$} & \qwbundle{m} &&&&&&
+        \end{quantikz}
+    \]
+    by computation $\ket{\pi}=2^{-n}\sum_{y,x\in\Sgm^{n}}(-1)^{x\cdot y}\ket{f(x)}\ket{y}$. This solves the following problem in linear time.
+
+    (Simon) Recover the binary string $s$ from $f:\Sgm^{n}\ar\Sgm^{m}$ satisfying $f(x)=f(y)$ iff $x=y$ or $x=y\op s$:
+    \[
+        \T{if $s=0^{n}$}, \Pr(y)=2^{-n},\quad \T{if $s\neq0^{n}$}, \Pr(y)=\begin{cases}
+          2^{-(n-1)} & s\cdot y=0 \\
+          0 & s\cdot y=1
+        \end{cases},
+    \]
+    thus running the circuit $k=n+r$ times, the kernel of $(y^{1},\lds,y^{k})$ computed by Gauss elimination will be $\{0^{n},s\}$ with probability greater than $1-2^{-r}$.
+\end{exg}
+
+
+\begin{exg}
+    The quantum circuit of the quantum Fourier transform $\QFT_{2^{n}}$ can be recursively defined via
+    \[
+        \begin{quantikz}[thin lines]
+            &\gategroup[6, steps=12, style={rounded corners}]{$\QFT_{2^{n}}$} & \gate{P_{\pi/2^{n-1}}} & \gate{P_{\pi/2^{n-2}}} & \ \cds\ & \gate{P_{\pi/4}} & \gate{P_{\pi/2}} & \gate{H} & \swap{5} & \swap{1} &&&& \\
+            & \gate[5]{\QFT_{2^{n-1}}} & \ctrl{-1} && \ \cds\  &&&&& \targX{} & \swap{1} &&& \\
+            &&& \ctrl{-2} & \ \cds\ &&&&&& \targX{} & \swap{1} && \\
+            & \setwiretype{n} & \cds & \cds & \cds & \cds & \cds & \cds & \cds &\cds&\cds&\cds&\cds& \\
+            &&&& \ \cds\  & \ctrl{-4} &&&&&&& \targX{}\wire[u][1]{q} & \\
+            &&&& \ \cds\ && \ctrl{-5} && \targX{} &&&&&
+        \end{quantikz}
+    \]
+\end{exg}
+
+\begin{exg}
+    Consider the following quantum circuit
+    \[
+        \begin{quantikz}[thin lines]
+            \lstick[4]{$\ket{0^{m}}$} & \gate[4]{H^{\ot m}} & \ctrl{4} && \ \cds\ && \gate[4]{\QFT_{2^{m}}^{\dag}}\slice{$\ket{\pi}$} & \meter{} & \setwiretype{c} & \rstick[4]{$y$} \\
+            &&& \ctrl{3} & \ \cds\ &&& \meter{} & \setwiretype{c} & \\
+            & \setwiretype{n} & \cds & \cds & \cds & \cds & \cds & \cds && \\
+            &&&& \ \cds\ & \ctrl{1} && \meter{} & \setwiretype{c} & \\
+            \lstick{$\ket{\psi}$} & \qwbundle{n} & \gate{U} & \gate{U^{2}} & \ \cds\ & \gate{U^{2^{m-1}}} &&&&
+        \end{quantikz}
+    \]
+    This solves the following problems.
+    \begin{itm}
+        \item (Phase estimation) Given that $U\ket{\psi}=e^{2\pi i\tta}\ket{\psi}$, find rational estimation of $\tta$:
+
+        by computation $\ket{\pi}=2^{-m}\ket{\psi}\ot\sum_{y,x\in\Sgm^{m}}e^{2\pi ix(\tta-y/2^{m})}\ket{y}$, thus $\Pr(y)=\sP{2^{-m}\sum_{x\in\Sgm^{m}}e^{2\pi ix(\tta-y/2^{m})}}^{2}$,
+        \[
+            \T{if $\sP{\tta-y/2^{m}}\lqs 2^{-(m+1)}$}, \Pr(y)\gqs4/\pi^{2},\quad \T{if $\sP{\tta-y/2^{m}}\gqs 2^{-m}$}, \Pr(y)\lqs 1/4.
+        \]
+        \item (Shor's algorithm) Given $N> a\gqs1$ such that $\Gcd(a,N)=1$, find the order $r$ of $a$ in $G:=(\bZ/N\bZ)\xT$:
+
+        take $U$ via $U\ket{x}=\ket{ax}$ for any $x\in G$, set $\ket{\psi}=\ket{1}$ and $m=2\log_{2}(N)+1$, note that $U$ has eigenvectors $\ket{\psi_{j}}$ with eigenvalue $\oga_{r}^{j}$ for $j=1,\lds,r$, and $\ket{1}=\frac{1}{\sqrt{r}}\sum_{j=1}^{r}\ket{\psi_{j}}$, by computation one has
+        \[
+            \ket{\pi}=\frac{1}{2^{m}\sqrt{r}}\sum_{j=1}^{r}\sum_{y,x\in\Sgm^{m}}e^{2\pi ix(j/r-y/2^{m})}\ket{\psi_{j}}\ket{y},\quad \Pr(y)=\frac{1}{r}\sum_{j=1}^{r}\sP{2^{-m}\sum_{x\in\Sgm^{m}}e^{2\pi ix(j/r-y/2^{m})}}^{2},
+        \]
+        note that for each sample $y$, for some $j$ one has $\sP{y/2^{m}-j/r}\lqs 1/2N^{2}$, then the continued fraction approximation $u/v$ of $y/2^{m}$ is exactly $j/r$, take the least common multiple of these $v$ gives the result $r$.
+    \end{itm}
+\end{exg}
+
+\begin{exg}[Grover's algorithm]
+    Given $f:\Sgm^{n}\ar\Sgm$, find $x\in\Sgm^{n}$ such that $f(x)=1$:
+
+    define the Grover's operation $G:=H^{\ot n}Z_{\T{OR}}H^{\ot n}Z_{f}$, consider the following quantum circuit
+    \[
+        \begin{quantikz}[thin lines]
+            \lstick{$\ket{0^{n}}$} & \qwbundle {n} & \gate{H^{\ot n}} & \gate{G}\gategroup[1, steps=3, style={rounded corners}]{Repeating $t$ times} & \ \cds\ & \gate{G} & \slice{$\ket{\pi}$} & \meter{} & \setwiretype{c} & \rstick{$y\in\Sgm^{n}$}
+        \end{quantikz}
+    \]
+    for $j\in\Sgm$, let $A_{j}:=\{x\in\Sgm^{n}:f(x)=j\}$ and $\ket{A_{j}}=\sP{A_{j}}^{-1/2}\sum_{s\in A_{j}}\ket{s}$. Take $\tta:=\sin^{-1}(\sqrt{\sP{A_{1}}/2^{n}})$, then by computation $\ket{\pi}=\cos((2t+1)\tta)\ket{A_{0}}+\sin((2t+1)\tta)\ket{A_{1}}$, choose $t:=\sFl{\pi/4\tta}$, the problem is solved in $O(\sqrt{2^{n}/\sP{A_{1}}})$ queries with probability $\Pr(f(y)=1)\gqs\max(\sP{A_{1}}/2^{n},1-\sP{A_{1}}/2^{n})$.
+
+\end{exg}
+
+\begin{dfn}
+    A \tbf{density matrix} is a positive semidefinite operator on a Hilbert space with unit trace.
+
+    A \tbf{quantum channel} is a linear mapping between density matrices.
+\end{dfn}
+
+\begin{dfn}
+    A quantum channel could be equivalently characterized as follows,
+    \begin{itm}
+        \item (Stinespring) $\Phi(\rho)=\Trc_{G}(U(\ket{0}\bra{0}\ot\rho)U\xG)$.
+        \[
+            \begin{quantikz}[thin lines]
+                \lstick{$\rho$} & \gate[2][2cm]{U}\gateinput{$X$}\gateoutput{$Y$} & \rstick{$\Phi(\rho)$} \\
+                \lstick{$\ket{0}$} & \gateinput{$W$}\gateoutput{$G$} & \ground{} &
+            \end{quantikz}
+        \]
+        \item (Kraus) $\Phi(\rho)=\sum_{a\in\Gma}A_{a}\rho A_{a}\xG$ where $\sum_{a}A_{a}\xG A_{a}=\Id$.
+        \item (Choi) $J(\Phi)=\sum_{a,b\in\Gma}\ket{a}\bra{b}\ot\Phi(\ket{a}\bra{b})$.
+    \end{itm}
+\end{dfn}
+
+\begin{fct}
+    Over density matrices, the following quantum channels are commonly used
+    \begin{itm}
+        \item Qubit reset channel: $\Lda(\rho):=\Trc(\rho)\ket{0}\bra{0}$.
+        \item Complete dephasing channel: $\Dta(\ket{j}\bra{k}):=\dta_{jk}\ket{j}\bra{k}$ for $j,k\in\Sgm$.
+        \item Complete depolarizing channel: $\Oga(\rho):=\frac{1}{2}\Trc(\rho)\Id$.
+    \end{itm}
+\end{fct}
+
+\begin{dfn}
+    A \tbf{measurement} on system $X$ is a collection of positive semidefinite matrices $\{P_{1},\lds,P_{m}\}$ such that $\sum_{a=1}^{m}P_{a}=\Id_{X}$.
+\end{dfn}
+
+\begin{thm}[Naimark]
+    There exists a unitary operation $U$ implementing the measurements $\{P_{1},\lds,P_{m}\}$.
+    \[
+            \begin{quantikz}[thin lines]
+                \lstick{$\rho$} & \gate[2][2cm]{U}\gateinput{$X$}\gateoutput{$X$} & & & \\
+                \lstick{$\ket{0}$} & \gateinput{$Y$}\gateoutput{$Y$} & \meter{} & \setwiretype{c} & \rstick{$a$}
+            \end{quantikz}
+    \]
+\end{thm}
+
+\begin{dfn}
+    Let $X$ be a system represented by density matrix $\rho$, a state vector $\ket{\vfi}$ of a pair $(X,Y)$ is a \tbf{purification} of $\rho$ if $\rho=\Trc_{Y}(\ket{\vfi}\bra{\vfi})$. A purification of $\rho$ exists iff $Y$ has $\gqs\Rnk(\rho)$ classical states, in this case the purification $\ket{\vfi}$ is unique up to unitary operation.
+\end{dfn}
+
+
+\begin{thm}[Hughston-Jozsa-Wootters]
+    If $\ket{\phi}$ is a state vector of $(X,Y)$ such that
+    \[
+        \Trc_{Y}(\ket{\phi}\bra{\phi})=\sum_{a=1}^{N-1}p_{a}\ket{\psi_{a}}\bra{\psi_{a}},
+    \]
+    then there is a measurement $\{P_{0},\lds,P_{N-1}\}$ on $Y$ such that $\Pr(a)=p_{a}$ and the resulting state becomes $\ket{\psi_{a}}$.
+\end{thm}
+
+\begin{dfn}
+    The \tbf{fidelity} of two density matrices $\rho,\sgm$ on system $X$ is given by $F(\rho,\sgm):=\Trc(\rho^{1/2}\sgm\rho^{1/2})^{1/2}$.
+\end{dfn}
+
+\begin{thm}
+    The fidelity satisfies following properties,
+    \begin{itm}
+        \item $0\lqs F(\rho,\sgm)\lqs 1$, $F(\rho,\sgm)=0$ iff they have orthogonal images and $F(\rho,\sgm)=1$ iff $\rho=\sgm$.
+        \item $F(\rho_{1}\ot\lds\ot\rho_{m},\sgm_{1}\ot\lds\ot\sgm_{m})=F(\rho_{1},\sgm_{1})\lds F(\rho_{m},\sgm_{m})$.
+        \item If $\Phi$ is a quantum channel, then $F(\rho,\sgm)\lqs F(\Phi(\rho),\Phi(\sgm))$.
+        \item (Fuchs-van de Graaf) $1-\frac{1}{2}\dP{\rho-\sgm}_{1}\lqs F(\rho,\sgm)\lqs (1-\frac{1}{4}\dP{\rho-\sgm}_{1}^{2})^{1/2}$.
+    \end{itm}
+
+\end{thm}
+
+\begin{thm}[Uhlmann]
+    Let $\rho,\sgm$ be density matrices of a system $X$, $Y$ a system having at least as many as classical states as $X$, then $F(\rho,\sgm)=\max_{\ket{\phi},\ket{\psi}}\{\sP{\braket{\phi}{\psi}}:\Trc_{Y}(\ket{\phi}\bra{\phi})=\rho,\Trc_{Y}(\ket{\psi}\bra{\psi})=\sgm\}$.
+\end{thm}
+
+\end{document}

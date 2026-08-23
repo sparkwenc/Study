@@ -1,0 +1,111 @@
+\documentclass[article, a4paper, twoside]{universal}
+
+\setshowlvl{1}
+\begin{document}
+\confighead{}{}{}
+\printhead{}{}{1}
+
+
+% Ref:~\cite{SB2018}
+
+\sct{Reinforcement learning algorithms}
+
+\ssc{Fundamentals}
+
+\begin{dfn}
+    A \tbf{Markov decision process} is a tuple $(\cS,\cA,\{P_{a}\}_{a\in\cA},R,\gma)$ where $\cS$ is the set of state space, $\cA$ the action space, $P_{a}$ are the transition matrices, $R:\cS\tms\cA\ar\bR$ is the reward functions and $0\lqs\gma\lqs1$ the is discount factor. A \tbf{stochastic policy} is a map $\pi:\cS\ar\cP(\cA)$. A \tbf{trajectory} is a map $\tau:\bN\ar\cS\tms\cA\tms\bR$, where $R_{t}=R(S_{t},A_{t})$. The \tbf{return} of a given trajectory $\tau$ is $G_{\tau}:=\sum_{t=0}^{\ift}\gma^{t}R_{t}$.
+\end{dfn}
+
+\begin{dfn}
+    Given a policy $\pi$, abbreviate $\bE_{\tau\sim\pi}$ by $\bE_{\pi}$, define
+    \begin{itm}
+        \item the \tbf{state-value function} is $V^{\pi}(s):=\bE_{\pi}[G_{\tau}\mid S_{0}=s]$, the expectation equation is
+        \[
+            V^{\pi}(s)=\bE_{\pi}[R_{0}+\gma V^{\pi}(S_{1})\mid S_{0}=s],
+        \]
+        \item the \tbf{action-value function} is $Q^{\pi}(s,a):=\bE_{\tau\sim\pi}[G_{\tau}\mid S_{0}=s, A_{0}=a]$, the expectation equation is
+        \[
+            Q^{\pi}(s,a)=\bE_{\pi}[R_{0}+\gma Q^{\pi}(S_{1},A_{1})\mid S_{0}=s,A_{0}=a],
+        \]
+    \end{itm}
+    their relation is given by $V^{\pi}(s)=\sum_{a\in\cA}\pi(a\mid s)Q^{\pi}(s,a)$ and $Q^{\pi}(s,a)=R(s,a)+\gma\sum_{s'\in\cS}P_{a}(s,s')V^{\pi}(s')$.
+\end{dfn}
+
+\begin{dfn}
+    Given a policy $\pi$, abbreviate $\bE_{\tau\sim\pi}$ by $\bE_{\pi}$, define
+    \begin{itm}
+        \item The \tbf{state visitation distribution} is $\nu^{\pi}(s):=(1-\gma)\sum_{t=0}^{\ift}\gma^{t}P_{t}^{\pi}(s)$.
+        \item The \tbf{occupation measure} is $\rho^{\pi}(s,a):=(1-\gma)\sum_{t=0}^{\ift}\gma^{t}P_{t}^{\pi}(s)\pi(a\mid s)$.
+    \end{itm}
+\end{dfn}
+
+\begin{dfn}
+    A \tbf{optimal policy} $\pi^{*}$ satisfies that for all $\pi$, $V^{\pi^{*}}(s)\gqs V^{\pi}(s)$ for all $s\in\cS$ and $Q^{\pi^{*}}(s,a)\gqs Q^{\pi}(s,a)$ for all $s\in\cS$ and $a\in\cA$. Abbreviate $V^{\pi^{*}}$ by $V^{*}$ and $Q^{\pi^{*}}$ by $Q^{*}$, then $V^{*}(s)=\max_{a\in\cA}Q^{*}(s,a)$ and $Q^{*}(s,a)=R(s,a)+\gma\sum_{s'\in\cS}P_{a}(s,s')V^{*}(s')$. The \tbf{Bellman optimality equation} is
+    \begin{align*}
+      V^{*}(s)&=\max_{a\in\cA}\{R(s,a)+\gma\sum_{s'\in\cS}P_{a}(s,s')V^{*}(s')\} \\
+      Q^{*}(s,a)&=R(s,a)+\gma\sum_{s'\in\cS}P_{a}(s,s')\max_{a'\in\cA}Q^{*}(s',a')
+    \end{align*}    
+\end{dfn}
+
+
+\ssc{Examples}
+
+\spg{Deep $Q$-network}
+
+Consider updating $Q$-values with temporal difference $Q(s,a)\al(1-\afa)Q(s,a)+\afa(r+\max_{a'\in\cA}Q(s',a'))$ and using a network $Q_{\tta}$ to approximate them, for a set of data $\{(s_{i},a_{i},r_{i},s_{i}')\}_{i=1}^{N}$, use the loss function
+\[
+    \cL(\tta)=\frac{1}{2N}\sum_{i=1}^{N}\sS{Q_{\tta}(s_{i},a_{i})-(r_{i}+\max_{a'}Q_{\tta}(s_{i}',a'))}^{2}.
+\]
+
+In practice, to stabilize the training process, use an auxiliary network $Q_{\oga}^{\T{tar}}$, compute the loss function via
+\[
+    \cL(\tta)=\frac{1}{2N}\sum_{i=1}^{N}\sS{Q_{\tta}(s_{i},a_{i})-(r_{i}+\max_{a'}Q_{\oga}^{\T{tar}}(s_{i}',a'))}^{2},
+\]
+and synchronize $\vfi\al\tta$ every $C$ steps.
+
+% TODO DQN\cite{DQN2013}, Double DQN\cite{DoubleDQN2016}, Dueling DQN\cite{DuelingDQN2016},
+% TODO Q-learning\cite{Q-learning1992}, SARSA,
+
+
+\spg{REINFORCE}
+
+Consider a policy network $\pi_{\tta}$, consider maximizing $J(\tta)=\bE_{s_{0}}[V^{\pi_{\tta}}(s_{0})]=\bE_{\pi_{\tta}}\sS{\sum_{t=0}^{\ift}\gma^{t}R(S_{t},A_{t})}$, one has
+\[
+    \nbl_{\tta}J(\tta)\propto\bE_{\pi_{\tta}}[Q^{\pi_{\tta}}(s,a)\nbl_{\tta}\log\pi_{\tta}(a\mid s)]\apx\bE_{\pi_{\tta}}\sS{\sum_{t=0}^{T}\sR{\sum_{t'=t}^{T}\gma^{t'-t}R_{t'}}\nbl_{\tta}\log\pi_{\tta}(A_{t}\mid S_{t})}.
+\]
+
+
+\spg{Actor-Critic}
+
+Consider the policy gradient in the general form $g=\bE_{\pi_{\tta}}[\sum_{t=0}^{T}\vfi_{t}\nbl_{\tta}\log\pi_{\tta}(A_{t}\mid S_{t})]$, with $\vfi_{t}$ given by $\vfi_{t}=R_{t}+\gma V_{\oga}(S_{t+1})-V_{\oga}(S_{t})$. For trajectories sampled from $\pi_{\tta}$, update the critic network $V_{\oga}$ and actor network $\pi_{\tta}$ alternatively.
+
+
+
+\spg{Proximal Policy Optimization}
+% TRPO\cite{TRPO2015}, PPO\cite{PPO2017},
+
+To get a better policy $\pi_{\tta}$ starting from policy $\pi^{\T{ref}}$, let $r(a\mid s)=\pi_{\tta}(a\mid s)/\pi^{\T{ref}}(a\mid s)$, consider maximizing
+\[
+    J^{\T{PPO}}(\tta)=\bE_{\pi^{\T{ref}}}[\min(r(a\mid s)\oH{A}_{t},\T{clip}\sR{r(a\mid s), 1-\eps, 1+\eps}\oH{A}_{t})]-\bta D_{\T{KL}}(\pi_{\tta}\|\pi^{\T{ref}}),
+\]
+where the generalized advantage estimation $\oH{A}_{t}$ is computed by
+\[
+    \oH{A}_{t}=\sum_{l=0}^{T-t}(\gma\lda)^{l}\dta_{t+l},\quad \dta_{t+l}=R_{t}+\gma V_{\phi}(S_{t+1})-V_{\phi}(S_{t}).
+\]
+
+
+
+
+
+% PER\cite{PER2016}, Rainbow\cite{Rainbow2018}, C51\cite{C512017}, QR-DQN\cite{QR-DQN2018}.
+%
+% \TODO AC\cite{AC1999}, ACER\cite{ACER2017}, IMPALA\cite{IMPALA2018}, LASER\cite{LASER2020}.
+%
+% \TODO A2C\cite{A2C2016},
+%
+% DDPG\cite{DDPG2016}, TD3\cite{TD32018}, SAC\cite{SAC2018}.
+
+
+
+\printref
+\end{document}
