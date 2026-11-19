@@ -1,0 +1,68 @@
+\documentclass[article, a4paper, twoside]{universal}
+
+\setshowlvl{1}
+\begin{document}
+\confighead{}{}{}
+\printhead{}{}{1}
+
+\sct{Preliminaries}
+
+Ref:~\cite{Marker2002}
+
+\begin{dfn}
+    A \tbf{language} $\cL$ is the collection of data
+    \begin{itm}
+    \item a set of \tbf{constant} symbols $\cC$.
+    \item a set of \tbf{function} symbols $\cF$ and $n_{f}\in\bZ_{>0}$ for each $f\in\cF$.
+    \item a set of \tbf{relation} symbols $\cR$ and $n_{r}\in\bZ_{>0}$ for each $r\in\cR$.
+    \end{itm}
+\end{dfn}
+
+\begin{dfn}
+    An \tbf{$\cL$-structure} $\cM$ is the data of a nonempty set $M$ called the \tbf{domain} and
+    \begin{itm}
+    \item an element $c^{\cM}\in M$ for each $c\in\cC$.
+    \item a function $f^{\cM}:M^{n_f}\ar M$ for each $f\in\cF$.
+    \item a set $r^{\cM}\sbs M^{n_r}$ for each $r\in\cR$.
+    \end{itm}
+\end{dfn}
+
+\begin{dfn}
+    The set of \tbf{$\cL$-terms} is the smallest set $\cT$ satisfying
+    \begin{itm}
+    \item $\cT$ contains all constant symbols $c\in\cC$.
+    \item $\cT$ contains a countable set of variable symbols $v_{i}$, $i\in\bN$.
+    \item for each $f\in\cF$ and $t_{1},\lds,t_{n_{f}}\in\cT$, $f(t_{1},\lds,t_{n_{f}})\in\cT$.
+    \end{itm}
+    A term $t$ using $m$ variables can be interpreted as a function $t^{\cM}:M^{m}\ar M$.
+\end{dfn}
+
+\begin{dfn}
+    An \tbf{atomic $\cL$-formula} $\phi$ is of the form (1) $t_{1}=t_{2}$ where $t_{1},t_{2}\in\cT$, or (2) $r(t_{1},\lds,t_{n_{r}})$ where $r\in\cR$ and $t_{1},\lds,t_{n_{r}}\in\cT$. The set of \tbf{$\cL$-formulas} is the smallest set $\cW$ satisfying
+    \begin{itm}
+    \item $\cW$ contains all atomic $\cL$-formulas.
+    \item if $\phi\in\cW$, then $\neg\phi, \fal v\phi, \xis v\phi\in\cW$.
+    \item if $\phi,\vfi\in\cW$, then $\phi\vee\vfi,\phi\wge\vfi\in\cW$.
+    \end{itm}
+
+    A variable $v$ is \tbf{bound} in a formula $\phi$ if it is in a $\xis$ or $\fal$ quantifier and is \tbf{free} otherwise. An \tbf{$\cL$-sentence} is an $\cL$-formula $\phi$ with no free variables.
+\end{dfn}
+
+\begin{dfn}
+    An \tbf{$\cL$-theory} is a set of $\cL$-sentences. An $\cL$-structure $\cM$ is a \tbf{model} of $T$ and write $M\vDash T$ if $\cM\vDash\phi$ for all $\phi\in T$. A theory is \tbf{satisfiable} if it has a model. A theory $T$ is \tbf{complete} if for any $\cL$-sentence $\phi$ either $T\vDash\phi$ or $T\nvDash\phi$. The \tbf{full theory} of an $\cL$-structure $\cM$ is the set of all $\cL$-sentences $\phi$ such that $M\vDash\phi$.
+\end{dfn}
+
+\begin{dfn}
+    Let $T$ be an $\cL$-theory and $\phi$ be an $\cL$-sentence, say that $\phi$ is a \tbf{logical consequence} of $T$ and write $\phi\vDash T$ if $\cM\vDash\phi$ whenever $\cM\vDash T$.
+\end{dfn}
+
+\begin{dfn}
+    Let $\cM$ be an $\cL$-structure with domain $X$, say that $X\sbs M^n$ is \tbf{definable (over $A$)} if there is an $\cL$-formula $\phi(v_{1},\lds,v_{n},w_{1},\lds,w_{m})$ and $\oL{b}\in M^{m}$ (or $\oL{b}\in A^{m}$) such that $X=\{\oL{a}\in M^{n}:\cM\vDash\phi(\oL{a},\oL{b})\}$.
+\end{dfn}
+
+\begin{thm}[Compactness]
+    An $\cL$-theory $T$ is satisfiable if and only if every finite subset of $T$ is satisfiable.
+\end{thm}
+
+\printref
+\end{document}
